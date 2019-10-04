@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # Application definition
 
@@ -39,6 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'home',
+    'advert',
+    'blog',
+    'others',
+    'owner',
+    'search',
+
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -51,12 +59,24 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.yahoo.YahooOpenId',
+
+)
+
 ROOT_URLCONF = 'rockflint.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,3 +140,28 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "../static/")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+SITE_ID = 1
+
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = 'XXX'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'XXX'
+
+SOCIAL_AUTH_TWITTER_KEY = 'XXX'
+SOCIAL_AUTH_TWITTER_SECRET = 'XXX'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'XXX'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XXX'
+

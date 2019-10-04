@@ -1,0 +1,386 @@
+{% extends "base.html" %}
+
+{% block title %}Submit property{% endblock %}
+
+{% block content %}
+   <section class="submit-property">
+    <div class="container">
+        <ul class="ht-breadcrumbs ht-breadcrumbs--y-padding ht-breadcrumbs--b-border">
+            <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Home</span></a></li>
+            <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Pages</span></a></li>
+            <li class="ht-breadcrumbs__item"><span class="ht-breadcrumbs__page">Submit New Property</span></li>
+        </ul><!-- .ht-breadcrumb -->
+
+        <div class="submit-property__container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h2 class="bookmarked-listing__headline">Howdy, <strong>FelixDG!</strong></h2>
+                    <div class="settings-block">
+                        <span class="settings-block__title">Manage Account</span>
+                        <ul class="settings">
+                            <li class="setting"><a href="my_profile.html" class="setting__link"><i class="ion-ios-person-outline setting__icon"></i>My Profile</a></li>
+                            <li class="setting"><a href="bookmarked_listing.html" class="setting__link"><i class="ion-ios-heart-outline setting__icon"></i>Bookmarked Listings</a></li>
+                        </ul><!-- settings -->
+                    </div><!-- .settings-block -->
+
+                    <div class="settings-block">
+                        <span class="settings-block__title">Manage Listing</span>
+                        <ul class="settings">
+                            <li class="setting"><a href="my_property.html" class="setting__link"><i class="ion-ios-home-outline setting__icon"></i>My Property</a></li>
+                            <li class="setting setting--current"><a href="#" class="setting__link"><i class="ion-ios-upload-outline setting__icon"></i>Submit New Property</a></li>
+                            <li class="setting"><a href="package.html" class="setting__link"><i class="ion-ios-cart-outline setting__icon"></i>My Packages</a></li>
+                        </ul><!-- settings -->
+                    </div><!-- .settings-block -->
+
+                    <div class="settings-block">
+                        <ul class="settings">
+                            <li class="setting"><a href="change_password.html" class="setting__link"><i class="ion-ios-unlocked-outline setting__icon"></i>Change Password</a></li>
+                            <li class="setting"><a href="index-2.html" class="setting__link"><i class="ion-ios-undo-outline setting__icon"></i>Log Out</a></li>
+                        </ul><!-- settings -->
+                    </div><!-- .settings-block -->
+                </div><!-- .col -->
+
+                <form action="http://haintheme.com/demo/html/realand/submit_property.html">
+                    <div class="col-md-9">
+                        <div class="submit-property__block">
+                            <h3 class="submit-property__headline">Basic Information</h3>
+
+                            <div class="submit-property__group">
+                                <label for="property-title" class="submit-property__label">Property Title *</label>
+                                <input type="text" class="submit-property__field" id="property-title" placeholder="Perfect House for Sale" required>
+                            </div><!-- .submit-property__group -->
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-type" class="submit-property__label">Property Type *</label>
+                                        <select class="ht-field" id="property-type" required>
+                                            <option value="house">House</option>
+                                            <option value="apartment">Apartment</option>
+                                            <option value="commercial">Commercial</option>
+                                        </select>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-offer" class="submit-property__label">Offer *</label>
+                                        <select class="ht-field" id="property-offer" required>
+                                            <option value="rent">For Rent</option>
+                                            <option value="sale">For Sale</option>
+                                        </select>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-rental-period" class="submit-property__label">Rental Period *</label>
+                                        <select class="ht-field" id="property-rental-period" required>
+                                            <option value="monthly">Monthly</option>
+                                            <option value="yearly">Yearly</option>
+                                        </select>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+                            </div><!-- .row -->
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-price" class="submit-property__label">Property Price *</label>
+                                        <input type="text" class="submit-property__field" id="property-price" required>
+                                        <span class="submit-property__unit">USD</span>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-area" class="submit-property__label">Property Area *</label>
+                                        <input type="text" class="submit-property__field" id="property-area" required>
+                                        <span class="submit-property__unit">sq.ft</span>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-room" class="submit-property__label">Property Room *</label>
+                                        <select class="ht-field" id="property-rental-period" required>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="more">More than 5</option>
+                                        </select>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+                            </div><!-- .row -->
+
+                            <div class="submit-property__group">
+                                <label for="submit-property-wysiwyg" class="submit-property__label">Description *</label>
+                                <div id="submit-property-wysiwyg"></div>
+                            </div><!-- .submit-property__group -->
+                        </div><!-- .submit-property__block -->
+
+                        <div class="submit-property__block">
+                            <h3 class="submit-property__headline">Gallery or Video</h3>
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="submit-property__group">
+                                        <label for="property-featured-image" class="submit-property__label">Featured Image *</label>
+                                        <div class="submit-property__upload">
+                                            <input type="file">
+                                            <div class="submit-property__upload-inner">
+                                                <span class="ion-ios-plus-outline submit-property__icon"></span>
+                                                <span class="submit-property__upload-desc">Drop image here or click to upload</span>
+                                            </div>
+                                        </div><!-- .submit-proeprty__upload -->
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-7">
+                                    <div class="submit-property__group">
+                                        <label for="property-media" class="submit-property__label">All Images or Video *</label>
+                                        <div class="submit-property__upload">
+                                            <input type="file" multiple>
+                                            <div class="submit-property__upload-inner">
+                                                <span class="ion-ios-plus-outline submit-property__icon"></span>
+                                                <span class="submit-property__upload-desc">Drop all images here or click to upload</span>
+                                            </div>
+                                        </div><!-- .submit-proeprty__upload -->
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+                            </div><!-- .row -->
+                        </div><!-- .submit-property__block -->
+
+                        <div class="submit-property__block">
+                            <h3 class="submit-property__headline">Location</h3>
+                            <div class="submit-property__group">
+                                <div id="submit-property-map"></div>
+                            </div><!-- .submit-property__group -->
+
+                            <div class="submit-property__group">
+                                <label for="property-map-address" class="submit-property__label">Google Map Address *</label>
+                                <input type="text" class="submit-property__field" id="roperty-map-address" required>
+                            </div><!-- .submit-property__group -->
+
+                            <div class="submit-property__group">
+                                <label for="property-address" class="submit-property__label">Friendly Address</label>
+                                <input type="text" class="submit-property__field" id="property-address">
+                            </div><!-- .submit-property__group -->
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-longtitude" class="submit-property__label">Longtitude</label>
+                                        <input type="text" class="submit-property__field" id="property-longtitude">
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-latitude" class="submit-property__label">Latitude</label>
+                                        <input type="text" class="submit-property__field" id="property__latitude">
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-region" class="submit-property__label">Region</label>
+                                        <select id="property-region" class="ht-field">
+                                            <option value="AZ">Arizona</option>
+                                            <option value="CO">Colorado</option>
+                                            <option value="ID">Idaho</option>
+                                            <option value="MT">Montana</option>
+                                            <option value="NE">Nebraska</option>
+                                            <option value="NM">New Mexico</option>
+                                            <option value="ND">North Dakota</option>
+                                            <option value="UT">Utah</option>
+                                            <option value="WY">Wyoming</option>
+                                            <option value="CT">Connecticut</option>
+                                            <option value="DE">Delaware</option>
+                                            <option value="FL">Florida</option>
+                                            <option value="GA">Georgia</option>
+                                            <option value="IN">Indiana</option>
+                                            <option value="ME">Maine</option>
+                                            <option value="MD">Maryland</option>
+                                            <option value="MA">Massachusetts</option>
+                                            <option value="MI">Michigan</option>
+                                            <option value="NH">New Hampshire</option>
+                                            <option value="NJ">New Jersey</option>
+                                            <option value="NY">New York</option>
+                                            <option value="NC">North Carolina</option>
+                                            <option value="OH">Ohio</option>
+                                            <option value="PA">Pennsylvania</option>
+                                            <option value="RI">Rhode Island</option>
+                                            <option value="SC">South Carolina</option>
+                                            <option value="VT">Vermont</option>
+                                            <option value="VA">Virginia</option>
+                                            <option value="WV">West Virginia</option>
+                                        </select>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+                            </div><!-- .row -->
+                        </div><!-- .submit-property__block -->
+
+                        <div class="submit-property__block">
+                            <h3 class="submit-property__headline">Detailed Information</h3>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-year" class="submit-property__label">Building Year *</label>
+                                        <select id="property-year" class="ht-field">
+                                            <option value="1990s">1990 - 1999</option>
+                                            <option value="2000s">2000 - 2009</option>
+                                            <option value="2010s">2010 - 2019</option>
+                                        </select>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-bedrooms" class="submit-property__label">Bedrooms *</label>
+                                        <select id="property-bedrooms" class="ht-field">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-bathrooms" class="submit-property__label">Bathrooms *</label>
+                                        <select id="property-bathrooms" class="ht-field">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-lot-size" class="submit-property__label">Lot size *</label>
+                                        <input type="text" class="submit-property__field" id="property-lot-size" required>
+                                        <span class="submit-property__unit">sq.ft</span>
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-parking" class="submit-property__label">Parking</label>
+                                        <input type="text" class="submit-property__field" id="property-parking">
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-cooling" class="submit-property__label">Cooling</label>
+                                        <input type="text" class="submit-property__field" id="property-cooling">
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-sewer" class="submit-property__label">Sewer</label>
+                                        <input type="text" class="submit-property__field" id="property-sewer">
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-water" class="submit-property__label">Water</label>
+                                        <input type="text" class="submit-property__field" id="">
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+
+                                <div class="col-md-4">
+                                    <div class="submit-property__group">
+                                        <label for="property-exercise-room" class="submit-property__label">Exercise Room</label>
+                                        <input type="text" class="submit-property__field" id="property-exercise-room">
+                                    </div><!-- .submit-property__group -->
+                                </div><!-- .col -->
+                            </div><!-- .row -->
+                        </div><!-- .submit-property__block -->
+
+                        <div class="submit-property__block">
+                            <h3 class="submit-property__headline">Other Features</h3>
+                            <div class="submit-property__features">
+                                <div class="submit-property__group">
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" id="air-conditioning" class="submit-property__checkbox">
+                                        <label for="air-conditioning" class="submit-property__label submit-property__feature">Air Conditioning</label>
+                                    </div>
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" name="lawn" id="lawn" class="submit-property__checkbox">
+                                        <label for="lawn" class="submit-property__label submit-property__feature">Lawn</label>
+                                    </div>
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" name="swimming-pool" id="swimming-pool" class="submit-property__checkbox">
+                                        <label for="swimming-pool" class="submit-property__label submit-property__feature">Swimming Pool</label>
+                                    </div>
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" name="barbecue" id="barbecue" class="submit-property__checkbox">
+                                        <label for="barbecue" class="submit-property__label submit-property__feature">Barbecue</label>
+                                    </div>
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" name="microwave" id="microwave" class="submit-property__checkbox">
+                                        <label for="microwave" class="submit-property__label submit-property__feature">Microwave</label>
+                                    </div>
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" name="tv-cable" id="tv-cable" class="submit-property__checkbox">
+                                        <label for="tv-cable" class="submit-property__label submit-property__feature">TV Cable</label>
+                                    </div>
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" name="washer" id="washer" class="submit-property__checkbox">
+                                        <label for="washer" class="submit-property__label submit-property__feature">Washer</label>
+                                    </div>
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" name="outdoor-shower" id="outdoor-shower" class="submit-property__checkbox">
+                                        <label for="outdoor-shower" class="submit-property__label submit-property__feature">Outdoor Shower</label>
+                                    </div>
+
+                                    <div class="submit-property__wrapper">
+                                        <input type="checkbox" name="gym" id="gym" class="submit-property__checkbox">
+                                        <label for="gym" class="submit-property__label submit-property__feature">Gym</label>
+                                    </div>
+                                </div><!-- .submit-property__group -->
+                            </div><!-- .submit-property__features -->
+                        </div><!-- .submit-property__block -->
+
+                        <div class="submit-property__block">
+                            <h3 class="submit-property__headline">Plan</h3>
+                            <div class="submit-property__group">
+                                <div class="submit-property__upload">
+                                    <input type="file" multiple>
+                                    <div class="submit-property__upload-inner">
+                                        <span class="ion-ios-plus-outline submit-property__icon"></span>
+                                        <span class="submit-property__upload-desc">Drop all images here or click to upload</span>
+                                    </div>
+                                </div><!-- .submit-proeprty__upload -->
+                            </div><!-- .submit-property__group -->
+                        </div><!-- .submit-property__block -->
+
+                        <button type="submit" class="submit-property__submit">Submit</button>
+                    </div><!-- .col -->
+                </form>
+
+            </div><!-- .row -->
+        </div><!-- .submit-property__container -->
+    </div><!-- .container -->
+    </section><!-- .submit-property -->
+{% endblock %}
