@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'others',
     'owner',
     'search',
+    'comments',
 
     'social_django',
 ]

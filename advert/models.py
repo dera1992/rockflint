@@ -7,13 +7,21 @@ from django.utils.translation import ugettext_lazy as _
 from django.core import serializers
 import json
 from django.http import  HttpResponse
+from django.template.defaultfilters import slugify
+from django.urls import reverse
 
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=200,
+                            unique=True,blank=True)
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('home:ads_list_by_category',
+                       args=[self.slug])
 
 class SubCategory(models.Model):
     category = models.ForeignKey('Category',null=True, blank=True,on_delete=models.CASCADE)
@@ -22,17 +30,25 @@ class SubCategory(models.Model):
     def __str__(self):
         return self.name
 
-class Condition(models.Model):
+class State(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
         return self.name
 
-class Location(models.Model):
+class Lga(models.Model):
+    state = models.ForeignKey('State',null=True, blank=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
 
     def __str__(self):
-         return self.name
+        return self.name
+
+class Offer(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return self.name
+
 
 class AdsQuerySet(models.query.QuerySet): #for active
     def active(self):
@@ -48,17 +64,90 @@ class AdsManager(models.Manager):#for active
 
 
 class Ads(models.Model):
-    profile = models.ForeignKey(Profile,on_delete=models.CASCADE)
+    AGE = (
+        ('05', '0-5 Years'),
+        ('10', '0-10 Years'),
+        ('15', '0-15 Years'),
+        ('20', '0-20 Years'),
+        ('21', '20+ Years'),)
+
+    BEDROOMS = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', 'More than 5'),)
+
+    BATHROOMS = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', 'More than 5'),)
+
+    ROOMS = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', 'More than 5'),)
+
+    PERIOD = (
+        ('monthly', 'Monthly'),
+        ('yearly', 'Yearly'),)
+
+    CONDITION = (
+        ('new', 'New'),
+        ('old', 'Old'),
+        ('uncompleted', 'Uncompleted'),
+        ('renovated', 'Renovated'),)
+
+    profile = models.ForeignKey(Profile,
+                                on_delete=models.CASCADE)
     ad_title =models.CharField( max_length=255)
-    category = models.ForeignKey(Category,on_delete=models.CASCADE)
-    subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
-    condition = models.ForeignKey(Condition,on_delete=models.CASCADE)
-    price = models.DecimalField(decimal_places=0,max_digits=30)
+    category = models.ForeignKey(Category,
+                                 on_delete=models.CASCADE)
+    subcategory = models.ForeignKey(SubCategory,
+                                    on_delete=models.CASCADE)
+    state = models.ForeignKey(State, on_delete=models.CASCADE)
+    lga = models.ForeignKey(Lga,
+                            on_delete=models.CASCADE)
+    condition = models.CharField(max_length=25,choices=CONDITION)
+    ad_offer = models.ManyToManyField(Offer)
+    ad_price = models.DecimalField(decimal_places=0,
+                                   max_digits=30)
+    slug = models.SlugField(max_length=200,blank=True)
+    ad_area = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=255)
-    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    building_age = models.CharField(max_length=25,choices=AGE)
+    rent_period = models.CharField(max_length=25,choices=PERIOD)
+    ad_room = models.CharField(max_length=25,choices=ROOMS)
+    bedroom = models.CharField(max_length=25,choices=BEDROOMS)
+    bathroom = models.CharField(max_length=25,choices=BATHROOMS)
+    lot_size = models.CharField(max_length=255, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     created_date = models.DateField(auto_now_add=True, null=True, blank=True)
-    ad_image = models.ImageField(upload_to='ads/',default='profile/None/no-img.jpg')
+    updated = models.DateTimeField(auto_now=True,null=True, blank=True)
+    plan_image = models.ImageField(upload_to='ads/',
+                                   null=True, blank=True,default='profile/None/no-img.jpg')
+    church = models.BooleanField(default=False, null=True, blank=True)
+    school = models.BooleanField(default=False, null=True, blank=True)
+    mosque = models.BooleanField(default=False, null=True, blank=True)
+    beach = models.BooleanField(default=False, null=True, blank=True)
+    air_conditioning = models.BooleanField(default=False, null=True, blank=True)
+    parking = models.BooleanField(default=False, null=True, blank=True)
+    sewer = models.BooleanField(default=False, null=True, blank=True)
+    water = models.BooleanField(default=False, null=True, blank=True)
+    lawn = models.BooleanField(default=False, null=True, blank=True)
+    swimming_pool = models.BooleanField(default=False, null=True, blank=True)
+    barbecue = models.BooleanField(default=False, null=True, blank=True)
+    tv_cable = models.BooleanField(default=False, null=True, blank=True)
+    microwave = models.BooleanField(default=False, null=True, blank=True)
+    wi_fi = models.BooleanField(default=False, null=True, blank=True)
+    gym = models.BooleanField(default=False, null=True, blank=True)
     active = models.BooleanField(default=True)
     # deleted = models.BooleanField(default=False,null=True, blank=True)
     # disabled =  models.BooleanField(default=False,null=True, blank=True)
@@ -67,7 +156,15 @@ class Ads(models.Model):
     def __str__(self):
         return self.ad_title
 
+    def get_absolute_url(self):
+        return reverse('home:ad_detail', args=[self.id, self.slug])
+
+def get_image_filename(instance, filename):
+    title = instance.ads.ad_title
+    slug = slugify(title)
+    return "post_images/%s-%s" % (slug, filename)
+
 
 class AdsImages(models.Model):
     ads = models.ForeignKey(Ads, on_delete=models.CASCADE)
-    ad_image = models.ImageField(upload_to='ads/', verbose_name=_('Photo'), default='profile/None/no-img.jpg')
+    ad_image = models.ImageField(upload_to='ads/', default='profile/None/no-img.jpg')
