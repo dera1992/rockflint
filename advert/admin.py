@@ -10,11 +10,11 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Ads)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['ad_title', 'slug', 'ad_price',
+    list_display = ['property_title', 'slug', 'property_price',
     'active', 'created', 'updated']
     list_filter = ['active', 'created', 'updated']
-    list_editable = ['ad_price', 'active']
-    prepopulated_fields = {'slug': ('ad_title',)}
+    list_editable = ['property_price', 'active']
+    prepopulated_fields = {'slug': ('property_title',)}
 
 admin.site.register(Offer)
 admin.site.register(State)

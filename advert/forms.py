@@ -85,8 +85,8 @@ class AdsForm(forms.ModelForm):
 
     class Meta:
         model = Ads
-        fields = ('ad_title', 'category','state','city', 'ad_offer', 'condition','ad_price','description','ad_area',
-                  'building_age','rent_period','ad_room','bedroom','bathroom','address','lot_size','church',
+        fields = ('property_title', 'category','state','city', 'property_offer', 'condition','property_price','description','property_area',
+                  'building_age','rent_period','property_room','bedroom','bathroom','address','lot_size','church',
                   'school','mosque','beach','air_conditioning','parking','sewer','water','lawn','swimming_pool',
                   'barbecue','tv_cable','microwave','wi_fi','gym','market','hospital','resturant')
 

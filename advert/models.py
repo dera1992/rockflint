@@ -107,7 +107,7 @@ class Ads(models.Model):
 
     profile = models.ForeignKey(Profile,
                                 on_delete=models.CASCADE)
-    ad_title =models.CharField( max_length=255)
+    property_title =models.CharField( max_length=255)
     category = models.ForeignKey(Category,
                                  on_delete=models.CASCADE)
     subcategory = models.ForeignKey(SubCategory,
@@ -116,15 +116,15 @@ class Ads(models.Model):
     city = models.ForeignKey(Lga,
                             on_delete=models.CASCADE)
     condition = models.CharField(max_length=25,choices=CONDITION)
-    ad_offer = models.ManyToManyField(Offer, null=True, blank=True)
-    ad_price = models.DecimalField(decimal_places=0,
+    property_offer = models.ManyToManyField(Offer, blank=True)
+    property_price = models.DecimalField(decimal_places=0,
                                    max_digits=30)
     slug = models.SlugField(max_length=200,blank=True)
-    ad_area = models.CharField(max_length=255, null=True, blank=True)
+    property_area = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=255, null=True, blank=True)
     building_age = models.CharField(max_length=25,choices=AGE , null=True, blank=True)
     rent_period = models.CharField(max_length=25,choices=PERIOD, null=True, blank=True)
-    ad_room = models.CharField(max_length=25,choices=ROOMS, null=True, blank=True)
+    property_room = models.CharField(max_length=25,choices=ROOMS, null=True, blank=True)
     bedroom = models.CharField(max_length=25,choices=BEDROOMS, null=True, blank=True)
     bathroom = models.CharField(max_length=25,choices=BATHROOMS, null=True, blank=True)
     lot_size = models.CharField(max_length=255, null=True, blank=True)
@@ -157,13 +157,13 @@ class Ads(models.Model):
     objects = AdsManager()#for active
 
     def __str__(self):
-        return self.ad_title
+        return self.property_title
 
     def get_absolute_url(self):
         return reverse('home:ad_detail', args=[self.id, self.slug])
 
 def get_image_filename(instance, filename):
-    title = instance.ads.ad_title
+    title = instance.ads.property_title
     slug = slugify(title)
     return "post_images/%s-%s" % (slug, filename)
 

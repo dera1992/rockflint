@@ -58,17 +58,17 @@ def filter(request):
                        ).distinct()
 
     if is_valid_queryparam(ad_price_min):
-        qs = qs.filter(ad_price__gte=ad_price_min)
+        qs = qs.filter(property_price__gte=ad_price_min)
 
     if is_valid_queryparam(ad_price_max):
-        qs = qs.filter(ad_price__lt=ad_price_max)
+        qs = qs.filter(property_price__lt=ad_price_max)
 
 
     if is_valid_queryparam(ad_area_min):
-        qs = qs.filter(ad_area__gte=ad_area_min)
+        qs = qs.filter(property_area__gte=ad_area_min)
 
     if is_valid_queryparam(ad_area_max):
-        qs = qs.filter(ad_area__lt=ad_area_max)
+        qs = qs.filter(property_area__lt=ad_area_max)
 
     if is_valid_queryparam(date_min):
         qs = qs.filter(publish_date__gte=date_min)
@@ -83,7 +83,7 @@ def filter(request):
         qs = qs.filter(state__name=state)
 
     if is_valid_queryparam(ad_offer) and state != 'Choose...':
-        qs = qs.filter(ad_offer__name=ad_offer)
+        qs = qs.filter(property_offer__name=ad_offer)
 
     if is_valid_queryparam(condition) and condition != 'Choose...':
         qs = qs.filter(condition=condition)
@@ -95,7 +95,7 @@ def filter(request):
         qs = qs.filter(rent_period=rent_period)
 
     if is_valid_queryparam(ad_room) and ad_room != 'Choose...':
-        qs = qs.filter(ad_room=ad_room)
+        qs = qs.filter(property_room=ad_room)
 
     if is_valid_queryparam(bedroom) and bedroom != 'Choose...':
         qs = qs.filter(bedroom=bedroom)
