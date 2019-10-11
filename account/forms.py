@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from django import forms
 
-from .models import Profile
+from .models import Profile,Type
 
 class UserRegistrationForm(forms.ModelForm):
     password = forms.CharField(label='Password',widget=forms.PasswordInput)
@@ -27,6 +27,9 @@ class ProfileForm(forms.ModelForm):
             attrs={'class': 'form-control', 'placeholder': 'Enter Last Name'}
         )
     )
+    agent_type = forms.ModelChoiceField(
+        queryset=Type.objects.all(), to_field_name='id', required=True)
+
     phone = forms.CharField(
         widget=forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'eg: +234 8030793112'}
@@ -40,7 +43,7 @@ class ProfileForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('first_name', 'last_name','phone', 'address', 'photo')
+        fields = ('first_name', 'last_name','phone', 'address', 'photo','agent_type')
 
     def __init__(self, *args, **kwargs):
         super(ProfileForm, self).__init__(*args, **kwargs)
@@ -68,6 +71,9 @@ class ProfileEditForm(forms.ModelForm):
             attrs={'class': 'form-control', 'placeholder': 'eg: +234 8030793112'}
         )
     )
+    agent_type = forms.ModelChoiceField(
+        queryset=Type.objects.all(), to_field_name='id', required=True)
+
     address = forms.CharField(
         widget=forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Address'}
@@ -76,4 +82,4 @@ class ProfileEditForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('first_name', 'last_name','phone', 'address', 'photo')
+        fields = ('first_name', 'last_name','phone', 'address', 'photo','agent_type')

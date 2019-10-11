@@ -6,7 +6,7 @@ from django.forms import modelformset_factory, inlineformset_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Ads, AdsImages, Category, SubCategory
+from .models import Ads, AdsImages, Category, SubCategory,Lga
 from .forms import AdsImageForm, AdsForm
 
 from django.shortcuts import get_object_or_404
@@ -88,6 +88,10 @@ def editAd(request, id):
         "formset": formset,
     })
 
+def load_cities(request):
+    state_id = request.GET.get('state')
+    cities = Lga.objects.filter(state_id=state_id).order_by('name')
+    return render(request, 'advert/city_dropdown_list_options.html', {'cities': cities})
 
 
 

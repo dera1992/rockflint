@@ -1,6 +1,6 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from .models import Ads,AdsImages,Category,SubCategory,State
+from .models import Ads,AdsImages,Category,SubCategory,State,Lga
 
 
 
@@ -85,10 +85,23 @@ class AdsForm(forms.ModelForm):
 
     class Meta:
         model = Ads
-        fields = ('ad_title', 'category','state', 'ad_offer', 'condition','ad_price','description','ad_area',
+        fields = ('ad_title', 'category','state','city', 'ad_offer', 'condition','ad_price','description','ad_area',
                   'building_age','rent_period','ad_room','bedroom','bathroom','address','lot_size','church',
                   'school','mosque','beach','air_conditioning','parking','sewer','water','lawn','swimming_pool',
-                  'barbecue','tv_cable','microwave','wi_fi','gym')
+                  'barbecue','tv_cable','microwave','wi_fi','gym','market','hospital','resturant')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['city'].queryset = Lga.objects.none()
+
+        if 'state' in self.data:
+            try:
+                state_id = int(self.data.get('state'))
+                self.fields['city'].queryset = Lga.objects.filter(state_id=state_id).order_by('name')
+            except (ValueError, TypeError):
+                pass  # invalid input from the client; ignore and fallback to empty City queryset
+        elif self.instance.pk:
+            self.fields['city'].queryset = self.instance.state.city_set.order_by('name')
 
 
 class AdsImageForm(forms.ModelForm):
