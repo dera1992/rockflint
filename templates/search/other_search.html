@@ -1,157 +1,96 @@
-  <section class="widget main-listing__widget">
-    <form class="main-listing__form">
-      <div class="main-listing__wrapper">
-        <label class="main-listing__form-title">Property Type</label>
-        <div class="main-listing__form-select">
-          <input type="radio" name="property-type" id="propertyType1" class="main-listing__form-radio" value="all">
-          <label for="propertyType1" class="main-listing__form-label">All</label>
-          <span class="main-listing__form-desc">(50)</span>
-        </div><!-- main-listing__form-select -->
+{% load static %}
 
-        <div class="main-listing__form-select">
-          <input type="radio" name="property-type" id="propertyType2" class="main-listing__form-radio" value="luxury">
-          <label for="propertyType2" class="main-listing__form-label">House/Luxury</label>
-          <span class="main-listing__form-desc">(26)</span>
-        </div><!-- main-listing__form-select -->
+<div class="hero-search-wrap">
+    <div class="hero-search">
+        <h1>Find Your Dream</h1>
+    </div>
+    <div class="hero-search-content">
 
-        <div class="main-listing__form-select">
-          <input type="radio" name="property-type" id="propertyType3" class="main-listing__form-radio" value="apartment">
-          <label for="propertyType3" class="main-listing__form-label">Apartment</label>
-          <span class="main-listing__form-desc">(20)</span>
-        </div><!-- main-listing__form-select -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <input type="text" class="form-control" placeholder="Neighborhood">
+                        <i class="ti-search"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <div class="main-listing__form-select">
-          <input type="radio" name="property-type" id="propertyType4" class="main-listing__form-radio" value="office">
-          <label for="propertyType4" class="main-listing__form-label">Office</label>
-          <span class="main-listing__form-desc">(04)</span>
-        </div><!-- main-listing__form-select -->
-      </div><!-- .main-listing__wrapper -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <input type="text" class="form-control" placeholder="Minimum">
+                        <i class="ti-money"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <input type="text" class="form-control" placeholder="Maximum">
+                        <i class="ti-money"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      <div class="main-listing__wrapper">
-        <label for="listing-city" class="main-listing__form-title">City</label>
-        <select name="city" id="listing-city" class="ht-field main-listing__form-field">
-          <option value="All" selected>All City</option>
-          <option value="AL">Alabama</option>
-          <option value="AK">Alaska</option>
-          <option value="AZ">Arizona</option>
-          <option value="AR">Arkansas</option>
-          <option value="CA">California</option>
-          <option value="CO">Colorado</option>
-          <option value="CT">Connecticut</option>
-        </select><!-- .main-listing__form-field -->
-      </div><!-- .main-listing__wrapper -->
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <select id="bedrooms" class="form-control">
+                            <option value="">&nbsp;</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <i class="fas fa-bed"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <select id="bathrooms" class="form-control">
+                            <option value="">&nbsp;</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <i class="fas fa-bath"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      <div class="main-listing__wrapper">
-        <label for="main-listing-keyword" class="main-listing__form-title">Keyword</label>
-        <input type="text" id="main-listing-keyword" class="main-listing__form-field" placeholder="Enter keywords...">
-      </div><!-- .main-listing__wrapper -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="form-group">
+                    <div class="input-with-icon">
+                        <select id="cities" class="form-control">
+                            <option value="">&nbsp;</option>
+                            <option value="1">Los Angeles, CA</option>
+                            <option value="2">New York City, NY</option>
+                            <option value="3">Chicago, IL</option>
+                            <option value="4">Houston, TX</option>
+                            <option value="5">Philadelphia, PA</option>
+                            <option value="6">San Antonio, TX</option>
+                            <option value="7">San Jose, CA</option>
+                        </select>
+                        <i class="ti-briefcase"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-      <div class="main-listing__wrapper">
-        <label for="listing-bedroom" class="main-listing__form-title">Bedrooms</label>
-        <select name="bedroom" id="listing-bedroom" class="ht-field main-listing__form-field">
-          <option value="All" selected>All Beds</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select><!-- .main-listing__form-field -->
-      </div><!-- .main-listing__wrapper -->
-
-      <div class="main-listing__wrapper">
-        <label for="listing-bathroom" class="main-listing__form-title">Bathrooms</label>
-        <select name="bathroom" id="listing-bathroom" class="ht-field main-listing__form-field">
-          <option value="All" selected>All Baths</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-        </select><!-- .main-listing__form-field -->
-      </div><!-- .main-listing__wrapper -->
-
-      <div class="main-listing__wrapper">
-        <label for="min-area" class="main-listing__form-title">Square Feet (Ft<sup>2</sup>)</label>
-        <div class="main-listing__form-container">
-          <select name="min-area" id="min-area" class="ht-field main-listing__form-field">
-            <option value="0" selected>No min</option>
-            <option value="1">100</option>
-            <option value="2">200</option>
-            <option value="3">300</option>
-            <option value="4">400</option>
-          </select><!-- .main-listing__form-field -->
-
-          <select name="max-area" id="max-area" class="ht-field main-listing__form-field">
-            <option value="0" selected>No max</option>
-            <option value="1">200</option>
-            <option value="2">300</option>
-            <option value="3">400</option>
-            <option value="4">500</option>
-          </select><!-- .main-listing__form-field -->
-        </div><!-- .main-listing__form-container -->
-      </div><!-- .main-listing__wrapper -->
-
-      <div class="main-listing__wrapper">
-        <label for="min-lot" class="main-listing__form-title">Lot Size</label>
-        <div class="main-listing__form-container">
-          <select name="min-lot" id="min-lot" class="ht-field main-listing__form-field">
-            <option value="0" selected>No min</option>
-            <option value="1">100</option>
-            <option value="2">200</option>
-            <option value="3">300</option>
-            <option value="4">400</option>
-          </select><!-- .main-listing__form-field -->
-
-          <select name="max-lot" id="max-lot" class="ht-field main-listing__form-field">
-            <option value="0" selected>No max</option>
-            <option value="1">200</option>
-            <option value="2">300</option>
-            <option value="3">400</option>
-            <option value="4">500</option>
-          </select><!-- .main-listing__form-field -->
-        </div><!-- .main-listing__form-container -->
-      </div><!-- .main-listing__wrapper -->
-
-      <a href="#" class="main-listing__form-more-filter">More Filter</a>
-      <div class="main-listing__form-expand">
-        <div class="main-listing__wrapper">
-          <label for="min-year" class="main-listing__form-title">Year Built</label>
-          <div class="main-listing__form-container">
-            <select name="min-year" id="min-year" class="ht-field main-listing__form-field">
-              <option value="0" selected>No min</option>
-              <option value="2000">2000</option>
-              <option value="2001">2001</option>
-              <option value="2002">2002</option>
-              <option value="2003">2003</option>
-              <option value="2004">2004</option>
-              <option value="2005">2005</option>
-              <option value="2006">2006</option>
-            </select><!-- .main-listing__form-field -->
-
-            <select name="max-year" id="max-year" class="ht-field main-listing__form-field">
-              <option value="0" selected>No max</option>
-              <option value="2006">2006</option>
-              <option value="2007">2007</option>
-              <option value="2008">2008</option>
-              <option value="2009">2009</option>
-              <option value="2010">2010</option>
-              <option value="2011">2011</option>
-              <option value="2012">2012</option>
-            </select><!-- .main-listing__form-field -->
-          </div><!-- .main-listing__form-container -->
-        </div><!-- .main-listing__wrapper -->
-      </div><!-- .main-listing_-form-expand -->
-
-      <button class="main-listing__form-reset" type="reset">Clear Filter</button>
-    </form><!-- .main-listing__form -->
-  </section><!-- .widget -->
+    </div>
+    <div class="hero-search-action">
+        <a href="#" class="btn search-btn">Search Result</a>
+    </div>
+</div>

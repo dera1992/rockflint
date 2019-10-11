@@ -3,8 +3,14 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from advert.models import Ads, AdsImages, Category
 from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
 from django.http import  HttpResponse
+from django.db.models import Q
+from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 import json
 from django.core import serializers
 import ast
@@ -31,3 +37,15 @@ def ad_detail(request, id, slug):
                                 slug=slug,
                                 available=True)
     return render(request, 'home/detail.html', {'ad':ad})
+
+def delete_post(request,pk=None):
+    ad = Ads.objects.get(id=pk)
+    ad.delete()
+    messages.success(request, "Successfuly deleted")
+    return redirect('home:my_aids')
+
+
+def category_count(request):
+    counts = Ads.objects.all().values('category__name').annotate(total=Count('category'))
+    lates = Ads.objects.order_by('-created_date')[:3]
+    return render(request, 'home/footer.html', {'counts': counts, 'lates':lates})

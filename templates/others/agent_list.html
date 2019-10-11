@@ -1,7 +1,438 @@
 {% extends "base.html" %}
 
-{% block title %}{% endblock %}
+{% block title %}List agent{% endblock %}
 
 {% block content %}
+    <!-- ============================ Page Title Start================================== -->
+    <div class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
 
+                    <h2 class="ipt-title">All Agents</h2>
+                    <span class="ipn-subtitle">Lists of our all expert agents</span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================ Page Title End ================================== -->
+
+    <!-- ============================ Agent List Start ================================== -->
+    <section>
+
+        <div class="container">
+
+            <!-- row Start -->
+            <div class="row">
+
+                <div class="col-lg-6 col-md-6">
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <input type="text" class="form-control" placeholder="Search agents">
+                            <i class="ti-search"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3">
+                    <a href="#" class="btn search-btn">Find Agents</a>
+                </div>
+
+            </div>
+            <!-- /row -->
+
+            <div class="row">
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">4.4</div>
+                                    <img src="assets/img/user-1.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="#">Colin H. Renda</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>colin@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="#" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">4.3</div>
+                                    <img src="assets/img/user-2.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="#">James N. Green</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>James58@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="#" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">4.5</div>
+                                    <img src="assets/img/user-3.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="http://themezhub.com/">Colin H. Renda</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>colin@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="http://themezhub.com/" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">4.4</div>
+                                    <img src="assets/img/user-4.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="http://themezhub.com/">Regina K. Lee</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>R25egina@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="http://themezhub.com/" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">4.8</div>
+                                    <img src="assets/img/user-5.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="http://themezhub.com/">Charles T. Hines </a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>Charles@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="http://themezhub.com/" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">4.4</div>
+                                    <img src="assets/img/user-6.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="http://themezhub.com/">Laura M. Jensen</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>Laurasi89@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="http://themezhub.com/" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">5</div>
+                                    <img src="assets/img/user-7.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="http://themezhub.com/">John K. Alfaro</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>Johnpeet@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="http://themezhub.com/" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">4.2</div>
+                                    <img src="assets/img/user-8.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="http://themezhub.com/">Karyn P. Lokken</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>Karynp@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="http://themezhub.com/" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Single Agent -->
+                <div class="col-lg-4 col-md-6 col-sm-12">
+                    <div class="agents-grid">
+
+                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                        <div class="agents-grid-wrap">
+
+                            <div class="fr-grid-thumb">
+                                <a href="http://themezhub.com/">
+                                    <div class="overall-rate">5</div>
+                                    <img src="assets/img/user-9.jpg" class="img-fluid mx-auto" alt="" />
+                                </a>
+                            </div>
+                            <div class="fr-grid-deatil">
+                                <h5 class="fr-can-name"><a href="http://themezhub.com/">Agnes J. Ward</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <div class="fr-can-rating">
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star filled"></i>
+                                    <i class="ti-star"></i>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="fr-grid-info">
+                            <ul>
+                                <li>Property<span>306</span></li>
+                                <li>Email<span>agnes@gmail.com</span></li>
+                                <li>Phone<span>91 123 456 7859</span></li>
+                            </ul>
+                        </div>
+
+                        <div class="fr-grid-footer">
+                            <a href="http://themezhub.com/" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <!-- ============================ Agent List End ================================== -->
 {% endblock %}

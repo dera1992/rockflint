@@ -1,386 +1,535 @@
 {% extends "base.html" %}
 
-{% block title %}{% endblock %}
+{% block title %}Property Detail{% endblock %}
 
 {% block content %}
-   <section class="submit-property">
-    <div class="container">
-        <ul class="ht-breadcrumbs ht-breadcrumbs--y-padding ht-breadcrumbs--b-border">
-            <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Home</span></a></li>
-            <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Pages</span></a></li>
-            <li class="ht-breadcrumbs__item"><span class="ht-breadcrumbs__page">Submit New Property</span></li>
-        </ul><!-- .ht-breadcrumb -->
+   <!-- ============================ Hero Banner  Start================================== -->
+    <div class="single-advance-property gray">
+        <div class="container-fluid p-0">
+            <div class="row align-items-center">
 
-        <div class="submit-property__container">
+                <div class="col-lg-7 col-md-7 col-sm-12">
+                    <div class="slider-for">
+                        <a href="assets/img/p-1.jpg" class="item-slick"><img src="assets/img/p-1.jpg" alt="Alt"></a>
+                        <a href="assets/img/p-2.jpg" class="item-slick"><img src="assets/img/p-2.jpg" alt="Alt"></a>
+                        <a href="assets/img/p-3.jpg" class="item-slick"><img src="assets/img/p-3.jpg" alt="Alt"></a>
+                        <a href="assets/img/p-4.jpg" class="item-slick"><img src="assets/img/p-4.jpg" alt="Alt"></a>
+                        <a href="assets/img/p-5.jpg" class="item-slick"><img src="assets/img/p-5.jpg" alt="Alt"></a>
+                        <a href="assets/img/p-6.jpg" class="item-slick"><img src="assets/img/p-6.jpg" alt="Alt"></a>
+                        <a href="assets/img/p-7.jpg" class="item-slick"><img src="assets/img/p-7.jpg" alt="Alt"></a>
+                        <a href="assets/img/p-8.jpg" class="item-slick"><img src="assets/img/p-8.jpg" alt="Alt"></a>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-5 col-md-5 col-sm-12">
+                    <div class="single-advance-caption">
+
+                        <div class="property-name-info">
+                            <h4 class="property-name">Green Realty Smart Apartment</h4>
+                            <p class="property-desc">2 Bedrooms, Kitchen,and bathrooms included with balcony</p>
+                        </div>
+
+                        <div class="property-price-info">
+                            <h4 class="property-price">$23,5487.00</h4>
+                            <p class="property-sqa">70,00<sub>m2</sub> (5485$/m2)</p>
+                        </div>
+
+                        <div class="property-statement">
+                            <ul>
+                                <li>
+                                    <i class="lni-apartment"></i>
+                                    <div class="ps-trep">
+                                        <span>Type</span>
+                                        <h5 class="ps-type">Apartment</h5>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="lni-restaurant"></i>
+                                    <div class="ps-trep">
+                                        <span>Build On</span>
+                                        <h5 class="ps-type">2007</h5>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="lni-helmet"></i>
+                                    <div class="ps-trep">
+                                        <span>Maintenence Fee</span>
+                                        <h5 class="ps-type">$710/PA</h5>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="lni-leaf"></i>
+                                    <div class="ps-trep">
+                                        <span>Let</span>
+                                        <h5 class="ps-type">Own</h5>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
             <div class="row">
-                <div class="col-md-3">
-                    <h2 class="bookmarked-listing__headline">Howdy, <strong>FelixDG!</strong></h2>
-                    <div class="settings-block">
-                        <span class="settings-block__title">Manage Account</span>
-                        <ul class="settings">
-                            <li class="setting"><a href="my_profile.html" class="setting__link"><i class="ion-ios-person-outline setting__icon"></i>My Profile</a></li>
-                            <li class="setting"><a href="bookmarked_listing.html" class="setting__link"><i class="ion-ios-heart-outline setting__icon"></i>Bookmarked Listings</a></li>
-                        </ul><!-- settings -->
-                    </div><!-- .settings-block -->
+                <div class="col-lg-12 col-md-12">
+                    <div class="slider-nav">
+                        <div class="item-slick"><img src="assets/img/p-1.jpg" alt="Alt"></div>
+                        <div class="item-slick"><img src="assets/img/p-2.jpg" alt="Alt"></div>
+                        <div class="item-slick"><img src="assets/img/p-3.jpg" alt="Alt"></div>
+                        <div class="item-slick"><img src="assets/img/p-4.jpg" alt="Alt"></div>
+                        <div class="item-slick"><img src="assets/img/p-5.jpg" alt="Alt"></div>
+                        <div class="item-slick"><img src="assets/img/p-6.jpg" alt="Alt"></div>
+                        <div class="item-slick"><img src="assets/img/p-7.jpg" alt="Alt"></div>
+                        <div class="item-slick"><img src="assets/img/p-8.jpg" alt="Alt"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <div class="settings-block">
-                        <span class="settings-block__title">Manage Listing</span>
-                        <ul class="settings">
-                            <li class="setting"><a href="my_property.html" class="setting__link"><i class="ion-ios-home-outline setting__icon"></i>My Property</a></li>
-                            <li class="setting setting--current"><a href="#" class="setting__link"><i class="ion-ios-upload-outline setting__icon"></i>Submit New Property</a></li>
-                            <li class="setting"><a href="package.html" class="setting__link"><i class="ion-ios-cart-outline setting__icon"></i>My Packages</a></li>
-                        </ul><!-- settings -->
-                    </div><!-- .settings-block -->
+    <section class="spd-wrap">
+        <div class="container">
+            <div class="row">
 
-                    <div class="settings-block">
-                        <ul class="settings">
-                            <li class="setting"><a href="change_password.html" class="setting__link"><i class="ion-ios-unlocked-outline setting__icon"></i>Change Password</a></li>
-                            <li class="setting"><a href="index-2.html" class="setting__link"><i class="ion-ios-undo-outline setting__icon"></i>Log Out</a></li>
-                        </ul><!-- settings -->
-                    </div><!-- .settings-block -->
-                </div><!-- .col -->
+                <div class="col-lg-12 col-md-12">
 
-                <form action="http://haintheme.com/demo/html/realand/submit_property.html">
-                    <div class="col-md-9">
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Basic Information</h3>
+                    <div class="slide-property-detail">
 
-                            <div class="submit-property__group">
-                                <label for="property-title" class="submit-property__label">Property Title *</label>
-                                <input type="text" class="submit-property__field" id="property-title" placeholder="Perfect House for Sale" required>
-                            </div><!-- .submit-property__group -->
+                        <div class="slide-property-first">
+                            <div class="pr-price-into">
+                                <h2>$1700 <i>/ monthly</i> <span class="prt-type rent">For Rental</span></h2>
+                                <span><i class="lni-map-marker"></i> 778 Country St. Panama City, FL</span>
+                            </div>
+                        </div>
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-type" class="submit-property__label">Property Type *</label>
-                                        <select class="ht-field" id="property-type" required>
-                                            <option value="house">House</option>
-                                            <option value="apartment">Apartment</option>
-                                            <option value="commercial">Commercial</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
+                        <div class="slide-property-sec">
+                            <div class="pr-all-info">
 
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-offer" class="submit-property__label">Offer *</label>
-                                        <select class="ht-field" id="property-offer" required>
-                                            <option value="rent">For Rent</option>
-                                            <option value="sale">For Sale</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
+                                <div class="pr-single-info">
+                                    <div class="share-opt-wrap">
+                                        <button type="button" class="btn-share" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-original-title="Share this">
+                                            <i class="lni-share"></i>
+                                        </button>
+                                        <div class="dropdown-menu animated flipInX">
+                                            <a href="#" class="cl-facebook"><i class="lni-facebook"></i></a>
+                                            <a href="#" class="cl-twitter"><i class="lni-twitter"></i></a>
+                                            <a href="#" class="cl-gplus"><i class="lni-google-plus"></i></a>
+                                            <a href="#" class="cl-instagram"><i class="lni-instagram"></i></a>
+                                        </div>
+                                    </div>
 
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-rental-period" class="submit-property__label">Rental Period *</label>
-                                        <select class="ht-field" id="property-rental-period" required>
-                                            <option value="monthly">Monthly</option>
-                                            <option value="yearly">Yearly</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
+                                </div>
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-price" class="submit-property__label">Property Price *</label>
-                                        <input type="text" class="submit-property__field" id="property-price" required>
-                                        <span class="submit-property__unit">USD</span>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
+                                <div class="pr-single-info">
+                                    <a href="JavaScript:Void(0);" data-toggle="tooltip" data-original-title="Get Print"><i class="ti-printer"></i></a>
+                                </div>
 
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-area" class="submit-property__label">Property Area *</label>
-                                        <input type="text" class="submit-property__field" id="property-area" required>
-                                        <span class="submit-property__unit">sq.ft</span>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
+                                <div class="pr-single-info">
+                                    <a href="JavaScript:Void(0);" class="compare-button" data-toggle="tooltip" data-original-title="Compare"><i class="ti-control-shuffle"></i></a>
+                                </div>
 
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-room" class="submit-property__label">Property Room *</label>
-                                        <select class="ht-field" id="property-rental-period" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="more">More than 5</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
+                                <div class="pr-single-info">
+                                    <a href="JavaScript:Void(0);" class="like-bitt add-to-favorite" data-toggle="tooltip" data-original-title="Add To Favorites"><i class="lni-heart-filled"></i></a>
+                                </div>
 
-                            <div class="submit-property__group">
-                                <label for="submit-property-wysiwyg" class="submit-property__label">Description *</label>
-                                <div id="submit-property-wysiwyg"></div>
-                            </div><!-- .submit-property__group -->
-                        </div><!-- .submit-property__block -->
+                            </div>
+                        </div>
 
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Gallery or Video</h3>
+                    </div>
 
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="submit-property__group">
-                                        <label for="property-featured-image" class="submit-property__label">Featured Image *</label>
-                                        <div class="submit-property__upload">
-                                            <input type="file">
-                                            <div class="submit-property__upload-inner">
-                                                <span class="ion-ios-plus-outline submit-property__icon"></span>
-                                                <span class="submit-property__upload-desc">Drop image here or click to upload</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ============================ Hero Banner End ================================== -->
+
+    <!-- ============================ Property Detail Start ================================== -->
+    <section class="gray">
+        <div class="container">
+            <div class="row">
+
+                <!-- property main detail -->
+                <div class="col-lg-8 col-md-12 col-sm-12">
+
+                    <!-- Single Block Wrap -->
+                    <div class="block-wrap">
+
+                        <div class="block-header">
+                            <h4 class="block-title">Property Info</h4>
+                        </div>
+
+                        <div class="block-body">
+                            <ul class="dw-proprty-info">
+                                <li><strong>Bedrooms</strong>2</li>
+                                <li><strong>Bathrooms</strong>2</li>
+                                <li><strong>Garage</strong>Yes</li>
+                                <li><strong>Area</strong>570 sq ft</li>
+                                <li><strong>Type</strong>Apartment</li>
+                                <li><strong>Price</strong>$53264</li>
+                                <li><strong>City</strong>New York</li>
+                                <li><strong>Build On</strong>2007</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Single Block Wrap -->
+                    <div class="block-wrap">
+
+                        <div class="block-header">
+                            <h4 class="block-title">Description</h4>
+                        </div>
+
+                        <div class="block-body">
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                        </div>
+
+                    </div>
+
+                    <!-- Single Block Wrap -->
+                    <div class="block-wrap">
+
+                        <div class="block-header">
+                            <h4 class="block-title">Ameneties</h4>
+                        </div>
+
+                        <div class="block-body">
+                            <ul class="avl-features third">
+                                <li>Air Conditioning</li>
+                                <li>Swimming Pool</li>
+                                <li>Central Heating</li>
+                                <li>Laundry Room</li>
+                                <li>Gym</li>
+                                <li>Alarm</li>
+                                <li>Window Covering</li>
+                                <li>Internet</li>
+                                <li>Pets Allow</li>
+                                <li>Free WiFi</li>
+                                <li>Car Parking</li>
+                                <li>Spa & Massage</li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                    <!-- Single Block Wrap -->
+                    <div class="block-wrap">
+
+                        <div class="block-header">
+                            <h4 class="block-title">Floor Plan</h4>
+                        </div>
+
+                        <div class="block-body">
+                            <div class="accordion" id="floor-option">
+                                <div class="card">
+                                    <div class="card-header" id="firstFloor">
+                                        <h2 class="mb-0">
+                                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#firstfloor">First Floor<span>740 sq ft</span></button>
+                                        </h2>
+                                    </div>
+                                    <div id="firstfloor" class="collapse" aria-labelledby="firstFloor" data-parent="#floor-option">
+                                        <div class="card-body">
+                                            <img src="assets/img/floor.jpg" class="img-fluid" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="seconfFloor">
+                                        <h2 class="mb-0">
+                                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#secondfloor">Second Floor<span>710 sq ft</span></button>
+                                        </h2>
+                                    </div>
+                                    <div id="secondfloor" class="collapse" aria-labelledby="seconfFloor" data-parent="#floor-option">
+                                        <div class="card-body">
+                                            <img src="assets/img/floor.jpg" class="img-fluid" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card">
+                                    <div class="card-header" id="third-garage">
+                                        <h2 class="mb-0">
+                                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#garages">Garage<span>520 sq ft</span></button>
+                                        </h2>
+                                    </div>
+                                    <div id="garages" class="collapse" aria-labelledby="third-garage" data-parent="#floor-option">
+                                        <div class="card-body">
+                                            <img src="assets/img/floor.jpg" class="img-fluid" alt="" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Single Block Wrap -->
+                    <div class="block-wrap">
+
+                        <div class="block-header">
+                            <h4 class="block-title">Location</h4>
+                        </div>
+
+                        <div class="block-body">
+                            <div class="map-container">
+                                <div id="singleMap" data-latitude="40.7427837" data-longitude="-73.11445617675781" data-mapTitle="Our Location"></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+
+                <!-- property Sidebar -->
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="page-sidebar">
+
+                        <!-- Agent Detail -->
+                        <div class="agent-widget">
+                            <div class="agent-title">
+                                <div class="agent-photo"><img src="assets/img/user-6.jpg" alt=""></div>
+                                <div class="agent-details">
+                                    <h4><a href="#">Shivangi Preet</a></h4>
+                                    <span><i class="lni-phone-handset"></i>(91) 123 456 7895</span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Email">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Phone">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control">I'm interested in this property.</textarea>
+                            </div>
+                            <button class="btn btn-theme full-width">Send Message</button>
+                        </div>
+
+                        <!-- Mortgage Calculator -->
+                        <div class="sidebar-widgets">
+
+                            <h4>Mortgage Calculator</h4>
+
+                            <div class="form-group">
+                                <div class="input-with-icon">
+                                    <input type="text" class="form-control" placeholder="Sale Price">
+                                    <i class="ti-money"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-with-icon">
+                                    <input type="text" class="form-control" placeholder="Down Payment">
+                                    <i class="ti-money"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-with-icon">
+                                    <input type="text" class="form-control" placeholder="Loan Term (Years)">
+                                    <i class="ti-calendar"></i>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="input-with-icon">
+                                    <input type="text" class="form-control" placeholder="Interest Rate">
+                                    <i class="fa fa-percent"></i>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-theme full-width">Calculate</button>
+
+                        </div>
+
+                        <!-- Featured Property -->
+                        <div class="sidebar-widgets">
+
+                            <h4>Featured Property</h4>
+
+                            <div class="sidebar-property-slide">
+
+                                <!-- Single Property -->
+                                <div class="single-items">
+                                    <div class="property-listing property-1">
+
+                                        <div class="listing-img-wrapper">
+                                            <a href="single-property-2.html">
+                                                <img src="assets/img/p-1.jpg" class="img-fluid mx-auto" alt="" />
+                                            </a>
+                                            <div class="listing-like-top">
+                                                <i class="ti-heart"></i>
                                             </div>
-                                        </div><!-- .submit-proeprty__upload -->
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-7">
-                                    <div class="submit-property__group">
-                                        <label for="property-media" class="submit-property__label">All Images or Video *</label>
-                                        <div class="submit-property__upload">
-                                            <input type="file" multiple>
-                                            <div class="submit-property__upload-inner">
-                                                <span class="ion-ios-plus-outline submit-property__icon"></span>
-                                                <span class="submit-property__upload-desc">Drop all images here or click to upload</span>
+                                            <div class="listing-rating">
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star"></i>
                                             </div>
-                                        </div><!-- .submit-proeprty__upload -->
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-                        </div><!-- .submit-property__block -->
+                                            <span class="property-type">For Sale</span>
+                                        </div>
 
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Location</h3>
-                            <div class="submit-property__group">
-                                <div id="submit-property-map"></div>
-                            </div><!-- .submit-property__group -->
+                                        <div class="listing-content">
 
-                            <div class="submit-property__group">
-                                <label for="property-map-address" class="submit-property__label">Google Map Address *</label>
-                                <input type="text" class="submit-property__field" id="roperty-map-address" required>
-                            </div><!-- .submit-property__group -->
+                                            <div class="listing-detail-wrapper">
+                                                <div class="listing-short-detail">
+                                                    <h4 class="listing-name"><a href="single-property-2.html">Resort Valley Ocs</a></h4>
+                                                    <span class="listing-location"><i class="ti-location-pin"></i>3848 Swick Hill, New Orleans</span>
+                                                </div>
+                                                <div class="list-author">
+                                                    <a href="#"><img src="assets/img/add-user.png" class="img-fluid img-circle avater-30" alt=""></a>
+                                                </div>
+                                            </div>
 
-                            <div class="submit-property__group">
-                                <label for="property-address" class="submit-property__label">Friendly Address</label>
-                                <input type="text" class="submit-property__field" id="property-address">
-                            </div><!-- .submit-property__group -->
+                                            <div class="listing-features-info">
+                                                <ul>
+                                                    <li><strong>Bed:</strong>2</li>
+                                                    <li><strong>Bath:</strong>1</li>
+                                                    <li><strong>Sqft:</strong>3,700</li>
+                                                </ul>
+                                            </div>
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-longtitude" class="submit-property__label">Longtitude</label>
-                                        <input type="text" class="submit-property__field" id="property-longtitude">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
+                                            <div class="listing-footer-wrapper">
+                                                <div class="listing-price">
+                                                    <h4 class="list-pr">$632,580</h4>
+                                                </div>
+                                                <div class="listing-detail-btn">
+                                                    <a href="single-property-2.html" class="more-btn">More Info</a>
+                                                </div>
+                                            </div>
 
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-latitude" class="submit-property__label">Latitude</label>
-                                        <input type="text" class="submit-property__field" id="property__latitude">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
+                                        </div>
 
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-region" class="submit-property__label">Region</label>
-                                        <select id="property-region" class="ht-field">
-                                            <option value="AZ">Arizona</option>
-                                            <option value="CO">Colorado</option>
-                                            <option value="ID">Idaho</option>
-                                            <option value="MT">Montana</option>
-                                            <option value="NE">Nebraska</option>
-                                            <option value="NM">New Mexico</option>
-                                            <option value="ND">North Dakota</option>
-                                            <option value="UT">Utah</option>
-                                            <option value="WY">Wyoming</option>
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="FL">Florida</option>
-                                            <option value="GA">Georgia</option>
-                                            <option value="IN">Indiana</option>
-                                            <option value="ME">Maine</option>
-                                            <option value="MD">Maryland</option>
-                                            <option value="MA">Massachusetts</option>
-                                            <option value="MI">Michigan</option>
-                                            <option value="NH">New Hampshire</option>
-                                            <option value="NJ">New Jersey</option>
-                                            <option value="NY">New York</option>
-                                            <option value="NC">North Carolina</option>
-                                            <option value="OH">Ohio</option>
-                                            <option value="PA">Pennsylvania</option>
-                                            <option value="RI">Rhode Island</option>
-                                            <option value="SC">South Carolina</option>
-                                            <option value="VT">Vermont</option>
-                                            <option value="VA">Virginia</option>
-                                            <option value="WV">West Virginia</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-                        </div><!-- .submit-property__block -->
-
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Detailed Information</h3>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-year" class="submit-property__label">Building Year *</label>
-                                        <select id="property-year" class="ht-field">
-                                            <option value="1990s">1990 - 1999</option>
-                                            <option value="2000s">2000 - 2009</option>
-                                            <option value="2010s">2010 - 2019</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-bedrooms" class="submit-property__label">Bedrooms *</label>
-                                        <select id="property-bedrooms" class="ht-field">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-bathrooms" class="submit-property__label">Bathrooms *</label>
-                                        <select id="property-bathrooms" class="ht-field">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-lot-size" class="submit-property__label">Lot size *</label>
-                                        <input type="text" class="submit-property__field" id="property-lot-size" required>
-                                        <span class="submit-property__unit">sq.ft</span>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-parking" class="submit-property__label">Parking</label>
-                                        <input type="text" class="submit-property__field" id="property-parking">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-cooling" class="submit-property__label">Cooling</label>
-                                        <input type="text" class="submit-property__field" id="property-cooling">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-sewer" class="submit-property__label">Sewer</label>
-                                        <input type="text" class="submit-property__field" id="property-sewer">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-water" class="submit-property__label">Water</label>
-                                        <input type="text" class="submit-property__field" id="">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-exercise-room" class="submit-property__label">Exercise Room</label>
-                                        <input type="text" class="submit-property__field" id="property-exercise-room">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-                        </div><!-- .submit-property__block -->
-
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Other Features</h3>
-                            <div class="submit-property__features">
-                                <div class="submit-property__group">
-
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" id="air-conditioning" class="submit-property__checkbox">
-                                        <label for="air-conditioning" class="submit-property__label submit-property__feature">Air Conditioning</label>
                                     </div>
+                                </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="lawn" id="lawn" class="submit-property__checkbox">
-                                        <label for="lawn" class="submit-property__label submit-property__feature">Lawn</label>
+                                <!-- Single Property -->
+                                <div class="single-items">
+                                    <div class="property-listing property-1">
+
+                                        <div class="listing-img-wrapper">
+                                            <a href="single-property-2.html">
+                                                <img src="assets/img/p-2.jpg" class="img-fluid mx-auto" alt="" />
+                                            </a>
+                                            <div class="listing-like-top">
+                                                <i class="ti-heart"></i>
+                                            </div>
+                                            <div class="listing-rating">
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star"></i>
+                                            </div>
+                                            <span class="property-type">For Rent</span>
+                                        </div>
+
+                                        <div class="listing-content">
+
+                                            <div class="listing-detail-wrapper">
+                                                <div class="listing-short-detail">
+                                                    <h4 class="listing-name"><a href="single-property-2.html">New Clue Apartment</a></h4>
+                                                    <span class="listing-location"><i class="ti-location-pin"></i>127, Quice Market, New York</span>
+                                                </div>
+                                                <div class="list-author">
+                                                    <a href="#"><img src="assets/img/add-user.png" class="img-fluid img-circle avater-30" alt=""></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="listing-features-info">
+                                                <ul>
+                                                    <li><strong>Bed:</strong>2</li>
+                                                    <li><strong>Bath:</strong>2</li>
+                                                    <li><strong>Sqft:</strong>2,900</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="listing-footer-wrapper">
+                                                <div class="listing-price">
+                                                    <h4 class="list-pr">$3,570</h4>
+                                                </div>
+                                                <div class="listing-detail-btn">
+                                                    <a href="single-property-2.html" class="more-btn">More Info</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
                                     </div>
+                                </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="swimming-pool" id="swimming-pool" class="submit-property__checkbox">
-                                        <label for="swimming-pool" class="submit-property__label submit-property__feature">Swimming Pool</label>
+                                <!-- Single Property -->
+                                <div class="single-items">
+                                    <div class="property-listing property-1">
+
+                                        <div class="listing-img-wrapper">
+                                            <a href="single-property-2.html">
+                                                <img src="assets/img/p-3.jpg" class="img-fluid mx-auto" alt="" />
+                                            </a>
+                                            <div class="listing-like-top">
+                                                <i class="ti-heart"></i>
+                                            </div>
+                                            <div class="listing-rating">
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star filled"></i>
+                                                <i class="ti-star"></i>
+                                            </div>
+                                            <span class="property-type">For Sale</span>
+                                        </div>
+
+                                        <div class="listing-content">
+
+                                            <div class="listing-detail-wrapper">
+                                                <div class="listing-short-detail">
+                                                    <h4 class="listing-name"><a href="single-property-2.html">Luxury Home in Manhattan</a></h4>
+                                                    <span class="listing-location"><i class="ti-location-pin"></i>588 Oakmound Road, Chicago</span>
+                                                </div>
+                                                <div class="list-author">
+                                                    <a href="#"><img src="assets/img/add-user.png" class="img-fluid img-circle avater-30" alt=""></a>
+                                                </div>
+                                            </div>
+
+                                            <div class="listing-features-info">
+                                                <ul>
+                                                    <li><strong>Bed:</strong>3</li>
+                                                    <li><strong>Bath:</strong>2</li>
+                                                    <li><strong>Sqft:</strong>2,400</li>
+                                                </ul>
+                                            </div>
+
+                                            <div class="listing-footer-wrapper">
+                                                <div class="listing-price">
+                                                    <h4 class="list-pr">$182,880</h4>
+                                                </div>
+                                                <div class="listing-detail-btn">
+                                                    <a href="single-property-2.html" class="more-btn">More Info</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
                                     </div>
+                                </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="barbecue" id="barbecue" class="submit-property__checkbox">
-                                        <label for="barbecue" class="submit-property__label submit-property__feature">Barbecue</label>
-                                    </div>
+                            </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="microwave" id="microwave" class="submit-property__checkbox">
-                                        <label for="microwave" class="submit-property__label submit-property__feature">Microwave</label>
-                                    </div>
+                        </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="tv-cable" id="tv-cable" class="submit-property__checkbox">
-                                        <label for="tv-cable" class="submit-property__label submit-property__feature">TV Cable</label>
-                                    </div>
+                    </div>
+                </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="washer" id="washer" class="submit-property__checkbox">
-                                        <label for="washer" class="submit-property__label submit-property__feature">Washer</label>
-                                    </div>
-
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="outdoor-shower" id="outdoor-shower" class="submit-property__checkbox">
-                                        <label for="outdoor-shower" class="submit-property__label submit-property__feature">Outdoor Shower</label>
-                                    </div>
-
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="gym" id="gym" class="submit-property__checkbox">
-                                        <label for="gym" class="submit-property__label submit-property__feature">Gym</label>
-                                    </div>
-                                </div><!-- .submit-property__group -->
-                            </div><!-- .submit-property__features -->
-                        </div><!-- .submit-property__block -->
-
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Plan</h3>
-                            <div class="submit-property__group">
-                                <div class="submit-property__upload">
-                                    <input type="file" multiple>
-                                    <div class="submit-property__upload-inner">
-                                        <span class="ion-ios-plus-outline submit-property__icon"></span>
-                                        <span class="submit-property__upload-desc">Drop all images here or click to upload</span>
-                                    </div>
-                                </div><!-- .submit-proeprty__upload -->
-                            </div><!-- .submit-property__group -->
-                        </div><!-- .submit-property__block -->
-
-                        <button type="submit" class="submit-property__submit">Submit</button>
-                    </div><!-- .col -->
-                </form>
-
-            </div><!-- .row -->
-        </div><!-- .submit-property__container -->
-    </div><!-- .container -->
-    </section><!-- .submit-property -->
+            </div>
+        </div>
+    </section>
+    <!-- ============================ Property Detail End ================================== -->
 {% endblock %}

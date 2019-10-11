@@ -1,43 +1,97 @@
-{% extends "base.html" %}
+{% load static %}
 
 {% block title %}Register{% endblock %}
 
-{% block content %}
-    <section class="sign-up">
-    <div class="container">
-        <ul class="ht-breadcrumbs ht-breadcrumbs--y-padding ht-breadcrumbs--b-border">
-            <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Home</span></a></li>
-            <li class="ht-breadcrumbs__item"><span class="ht-breadcrumbs__page">Register</span></li>
-        </ul><!-- .ht-breadcrumb -->
+<!-- Sign Up Modal -->
+    <div class="modal fade signup" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
+            <div class="modal-content" id="sign-up">
+                <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
+                <div class="modal-body">
+                    <h4 class="modal-header-title">Sign Up</h4>
+                    <div class="login-form">
+                        <form>
 
-        <div class="sign-up__container">
-            <div class="row">
-                <div class="col-md-4 col-md-offset-4">
-                    <div class="sign-up__header">
-                        <h1 class="sign-up__textcontent"> <a href="#sign-up" class="sign-up__tab">Sign Up</a></h1>
-                    </div><!-- .sign-up__header -->
+                            <div class="row">
 
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="text" class="form-control" placeholder="Full Name">
+                                            <i class="ti-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="sign-up__main">
-                        <form action="http://haintheme.com/demo/html/realand/sign_up.html" class="sign-up__form" id="sign-up">
-                            {% csrf_token %}
-                            <label for="sign-up-name" class="sign-up__label">Name</label>
-                            <input type="text" class="sign-up__field" id="sign-up-name" placeholder="Enter your full name">
-                            <label for="sign-up-email" class="sign-up__label">Email</label>
-                            <input type="email" class="sign-up__field" id="sign-up-email" placeholder="Your email goes here">
-                            <label for="sign-up-password" class="sign-up__label">Password</label>
-                            <input type="password" class="sign-up__field" id="sign-up-password" placeholder="******">
-                            <div class="sign-up__wrapper">
-                                <input type="checkbox" for="sign-up-term" class="sign-up__checkbox">
-                                <label for="sign-up-term" class="sign-up__desc">I agree all statements in <a href="#">Terms of Service</a></label>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="email" class="form-control" placeholder="Email">
+                                            <i class="ti-email"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="text" class="form-control" placeholder="Username">
+                                            <i class="ti-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="password" class="form-control" placeholder="*******">
+                                            <i class="ti-unlock"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="password" class="form-control" placeholder="123 546 5847">
+                                            <i class="lni-phone-handset"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <select class="form-control">
+                                                <option>As a Customer</option>
+                                                <option>As a Agent</option>
+                                                <option>As a Agency</option>
+                                            </select>
+                                            <i class="ti-briefcase"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
-                            <button type="submit" class="sign-up__submit">Sign Up</button>
-                        </form><!-- .sign-up__form -->
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-md full-width pop-login">Sign Up</button>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-divider"><span>Or login via</span></div>
+                    <div class="social-login mb-3">
+                        <ul>
+                            <li><a href="#" class="btn connect-fb"><i class="ti-facebook"></i>Facebook</a></li>
+                            <li><a href="#" class="btn connect-twitter"><i class="ti-twitter"></i>Twitter</a></li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <p class="mt-5"><i class="ti-user mr-1"></i>Already Have An Account? <a href="#" class="link">Go For LogIn</a></p>
                     </div>
                 </div>
-            </div><!-- .row -->
-        </div><!-- .sign-up__container -->
-    </div><!-- .container -->
-    </section><!-- .sign-up -->
-{% endblock %}
+            </div>
+        </div>
+    </div>
+    <!-- End Modal -->

@@ -10,7 +10,7 @@ import ast
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 def agent_list(request):
-        return render(request,'others/agent_list.html', {})
+    return render(request,'others/agent_list.html', {})
 
 
 def agent_detail(request):

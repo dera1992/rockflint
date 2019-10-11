@@ -1,338 +1,196 @@
 {% extends "base.html" %}
 
-{% block title %}Submit property{% endblock %}
+{% block title %}Blog post{% endblock %}
 
 {% block content %}
-  <section class="blog">
-  <div class="container">
-    <ul class="ht-breadcrumbs ht-breadcrumbs--y-padding ht-breadcrumbs--b-border">
-      <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Home</span></a></li>
-      <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Pages</span></a></li>
-      <li class="ht-breadcrumbs__item"><span class="ht-breadcrumbs__page">Blog</span></li>
-    </ul><!-- ht-breadcrumb -->
+  <!-- ============================ Page Title Start================================== -->
+    <div class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
 
-    <div class="blog__main">
-      <div class="row">
-        <main class="col-md-8 col-md-main">
-          <div class="row">
-            <div class="col-md-6">
-              <article class="news__single--v2 news__single--b-margin">
-                <div class="news__thumbnail">
-                  <a href="blog_single.html">
-                    <div class="news__thumbnail-overlay"></div><!-- .news__thumbnail-overlay -->
-                    <img src="images/uploads/news_1.jpg" alt="News">
-                  </a>
-                  <span class="item__label">Pinned</span>
-                </div><!-- .news_thumbnail -->
+                    <h2 class="ipt-title">Our Articles</h2>
+                    <span class="ipn-subtitle">See Our Latest Articles & News</span>
 
-                <div class="news__content">
-                  <div class="news__body">
-                    <span class="news__meta news__meta-time"><span class="ion-ios-calendar-outline"></span> July 21, 2017</span>
-                    <h3 class="news__title"><a href="blog_single.html">Releases 2Q 2017 Tokyo, Japan</a></h3>
-                    <p class="news__excerpt news__excerpt--v2">The upper level has three bedrooms, with the main bedroom having built-in wardrobes and an ensuite with his-and-hers sinks, underfloor heating and shower dosis...</p>
-                  </div><!-- .news__body -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================ Page Title End ================================== -->
 
-                  <div class="news__footer">
-                    <span class="news__meta news__meta-comments"><span class="ion-ios-chatboxes-outline"></span> 3 Comment(s)</span>
-                    <a href="blog_single.html" class="news__readmore">&plus; Read More</a>
-                  </div><!-- .news__footer -->
-                </div><!-- .news__content -->
-              </article><!-- news__single--v2 -->
-            </div><!-- .col -->
+    <!-- ============================ Agency List Start ================================== -->
+    <section>
 
-            <div class="col-md-6">
-              <article class="news__single--v2 news__single--b-margin">
-                <div class="news__thumbnail">
-                  <a href="blog_single.html">
-                    <div class="news__thumbnail-overlay"></div><!-- .news__thumbnail-overlay -->
-                    <img src="images/uploads/news_2.jpg" alt="News">
-                  </a>
-                </div><!-- .news_thumbnail -->
+        <div class="container">
 
-                <div class="news__content">
-                  <div class="news__body">
-                    <span class="news__meta news__meta-time"><span class="ion-ios-calendar-outline"></span> July 21, 2017</span>
-                    <h3 class="news__title"><a href="blog_single.html">Releases 2Q 2017 Tokyo, Japan</a></h3>
-                    <p class="news__excerpt news__excerpt--v2">The upper level has three bedrooms, with the main bedroom having built-in wardrobes and an ensuite with his-and-hers sinks, underfloor heating and shower dosis...</p>
-                  </div><!-- .news__body -->
+            <div class="row">
+                <div class="col text-center">
+                    <div class="sec-heading center">
+                        <h2>Latest News</h2>
+                        <p>We post regulary most powerful articles for help and support.</p>
+                    </div>
+                </div>
+            </div>
 
-                  <div class="news__footer">
-                    <span class="news__meta news__meta-comments"><span class="ion-ios-chatboxes-outline"></span> 3 Comment(s)</span>
-                    <a href="blog_single.html" class="news__readmore">&plus; Read More</a>
-                  </div><!-- .news__footer -->
-                </div><!-- .news__content -->
-              </article><!-- news__single--v2 -->
-            </div><!-- .col -->
+            <!-- row Start -->
+            <div class="row">
 
-            <div class="col-md-6">
-              <article class="news__single--v2 news__single--b-margin">
-                <div class="news__thumbnail">
-                  <a href="blog_single.html">
-                    <div class="news__thumbnail-overlay"></div><!-- .news__thumbnail-overlay -->
-                    <img src="images/uploads/news_3.jpg" alt="News">
-                  </a>
-                </div><!-- .news_thumbnail -->
+                <!-- Single blog Grid -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-wrap-grid">
 
-                <div class="news__content">
-                  <div class="news__body">
-                    <span class="news__meta news__meta-time"><span class="ion-ios-calendar-outline"></span> July 21, 2017</span>
-                    <h3 class="news__title"><a href="blog_single.html">Releases 2Q 2017 Tokyo, Japan</a></h3>
-                    <p class="news__excerpt news__excerpt--v2">The upper level has three bedrooms, with the main bedroom having built-in wardrobes and an ensuite with his-and-hers sinks, underfloor heating and shower dosis...</p>
-                  </div><!-- .news__body -->
+                        <div class="blog-thumb">
+                            <a href="blog-detail.html"><img src="assets/img/p-11.jpg" class="img-fluid" alt="" /></a>
+                        </div>
 
-                  <div class="news__footer">
-                    <span class="news__meta news__meta-comments"><span class="ion-ios-chatboxes-outline"></span> 3 Comment(s)</span>
-                    <a href="blog_single.html" class="news__readmore">&plus; Read More</a>
-                  </div><!-- .news__footer -->
-                </div><!-- .news__content -->
-              </article><!-- news__single--v2 -->
-            </div><!-- .col -->
+                        <div class="blog-info">
+                            <span class="post-date"><i class="ti-calendar"></i>30 july 2018</span>
+                        </div>
 
-            <div class="col-md-6">
-              <article class="news__single--v2 news__single--b-margin">
-                <div class="news__thumbnail">
-                  <a href="blog_single.html">
-                    <div class="news__thumbnail-overlay"></div><!-- .news__thumbnail-overlay -->
-                    <img src="images/uploads/news_4.jpg" alt="News">
-                  </a>
-                </div><!-- .news_thumbnail -->
+                        <div class="blog-body">
+                            <h4 class="bl-title"><a href="blog-detail.html">Why people choose listio for own properties</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
+                            <a href="http://themezhub.com/" class="bl-continue">Continue</a>
+                        </div>
 
-                <div class="news__content">
-                  <div class="news__body">
-                    <span class="news__meta news__meta-time"><span class="ion-ios-calendar-outline"></span> July 21, 2017</span>
-                    <h3 class="news__title"><a href="blog_single.html">Releases 2Q 2017 Tokyo, Japan</a></h3>
-                    <p class="news__excerpt news__excerpt--v2">The upper level has three bedrooms, with the main bedroom having built-in wardrobes and an ensuite with his-and-hers sinks, underfloor heating and shower dosis...</p>
-                  </div><!-- .news__body -->
+                    </div>
+                </div>
 
-                  <div class="news__footer">
-                    <span class="news__meta news__meta-comments"><span class="ion-ios-chatboxes-outline"></span> 3 Comment(s)</span>
-                    <a href="blog_single.html" class="news__readmore">&plus; Read More</a>
-                  </div><!-- .news__footer -->
-                </div><!-- .news__content -->
-              </article><!-- news__single--v2 -->
-            </div><!-- .col -->
+                <!-- Single blog Grid -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-wrap-grid">
 
-            <div class="col-md-6">
-              <article class="news__single--v2 news__single--b-margin">
-                <div class="news__thumbnail">
-                  <a href="blog_single.html">
-                    <div class="news__thumbnail-overlay"></div><!-- .news__thumbnail-overlay -->
-                    <img src="images/uploads/news_5.jpg" alt="News">
-                  </a>
-                </div><!-- .news_thumbnail -->
+                        <div class="blog-thumb">
+                            <a href="blog-detail.html"><img src="assets/img/p-8.jpg" class="img-fluid" alt="" /></a>
+                        </div>
 
-                <div class="news__content">
-                  <div class="news__body">
-                    <span class="news__meta news__meta-time"><span class="ion-ios-calendar-outline"></span> July 21, 2017</span>
-                    <h3 class="news__title"><a href="blog_single.html">Releases 2Q 2017 Tokyo, Japan</a></h3>
-                    <p class="news__excerpt news__excerpt--v2">The upper level has three bedrooms, with the main bedroom having built-in wardrobes and an ensuite with his-and-hers sinks, underfloor heating and shower dosis...</p>
-                  </div><!-- .news__body -->
+                        <div class="blog-info">
+                            <span class="post-date"><i class="ti-calendar"></i>10 August 2018</span>
+                        </div>
 
-                  <div class="news__footer">
-                    <span class="news__meta news__meta-comments"><span class="ion-ios-chatboxes-outline"></span> 3 Comment(s)</span>
-                    <a href="blog_single.html" class="news__readmore">&plus; Read More</a>
-                  </div><!-- .news__footer -->
-                </div><!-- .news__content -->
-              </article><!-- news__single--v2 -->
-            </div><!-- .col -->
+                        <div class="blog-body">
+                            <h4 class="bl-title"><a href="blog-detail.html">List of benifits and impressive listeo services</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
+                            <a href="http://themezhub.com/" class="bl-continue">Continue</a>
+                        </div>
 
-            <div class="col-md-6">
-              <article class="news__single--v2 news__single--b-margin">
-                <div class="news__thumbnail">
-                  <a href="blog_single.html">
-                    <div class="news__thumbnail-overlay"></div><!-- .news__thumbnail-overlay -->
-                    <img src="images/uploads/news_6.jpg" alt="News">
-                  </a>
-                </div><!-- .news_thumbnail -->
+                    </div>
+                </div>
 
-                <div class="news__content">
-                  <div class="news__body">
-                    <span class="news__meta news__meta-time"><span class="ion-ios-calendar-outline"></span> July 21, 2017</span>
-                    <h3 class="news__title"><a href="blog_single.html">Releases 2Q 2017 Tokyo, Japan</a></h3>
-                    <p class="news__excerpt news__excerpt--v2">The upper level has three bedrooms, with the main bedroom having built-in wardrobes and an ensuite with his-and-hers sinks, underfloor heating and shower dosis...</p>
-                  </div><!-- .news__body -->
+                <!-- Single blog Grid -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-wrap-grid">
 
-                  <div class="news__footer">
-                    <span class="news__meta news__meta-comments"><span class="ion-ios-chatboxes-outline"></span> 3 Comment(s)</span>
-                    <a href="blog_single.html" class="news__readmore">&plus; Read More</a>
-                  </div><!-- .news__footer -->
-                </div><!-- .news__content -->
-              </article><!-- news__single--v2 -->
-            </div><!-- .col -->
+                        <div class="blog-thumb">
+                            <a href="blog-detail.html"><img src="assets/img/p-10.jpg" class="img-fluid" alt="" /></a>
+                        </div>
 
-            <div class="col-md-6">
-              <article class="news__single--v2 news__single--b-margin">
-                <div class="news__thumbnail">
-                  <a href="blog_single.html">
-                    <div class="news__thumbnail-overlay"></div><!-- .news__thumbnail-overlay -->
-                    <img src="images/uploads/news_7.jpg" alt="News">
-                  </a>
-                </div><!-- .news_thumbnail -->
+                        <div class="blog-info">
+                            <span class="post-date"><i class="ti-calendar"></i>30 Sep 2018</span>
+                        </div>
 
-                <div class="news__content">
-                  <div class="news__body">
-                    <span class="news__meta news__meta-time"><span class="ion-ios-calendar-outline"></span> July 21, 2017</span>
-                    <h3 class="news__title"><a href="blog_single.html">Releases 2Q 2017 Tokyo, Japan</a></h3>
-                    <p class="news__excerpt news__excerpt--v2">The upper level has three bedrooms, with the main bedroom having built-in wardrobes and an ensuite with his-and-hers sinks, underfloor heating and shower dosis...</p>
-                  </div><!-- .news__body -->
+                        <div class="blog-body">
+                            <h4 class="bl-title"><a href="blog-detail.html">What people says about listio properties</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
+                            <a href="http://themezhub.com/" class="bl-continue">Continue</a>
+                        </div>
 
-                  <div class="news__footer">
-                    <span class="news__meta news__meta-comments"><span class="ion-ios-chatboxes-outline"></span> 3 Comment(s)</span>
-                    <a href="blog_single.html" class="news__readmore">&plus; Read More</a>
-                  </div><!-- .news__footer -->
-                </div><!-- .news__content -->
-              </article><!-- news__single--v2 -->
-            </div><!-- .col -->
+                    </div>
+                </div>
 
-            <div class="col-md-6">
-              <article class="news__single--v2 news__single--b-margin">
-                <div class="news__thumbnail">
-                  <a href="blog_single.html">
-                    <div class="news__thumbnail-overlay"></div><!-- .news__thumbnail-overlay -->
-                    <img src="images/uploads/news_8.jpg" alt="News">
-                  </a>
-                </div><!-- .news_thumbnail -->
+                <!-- Single blog Grid -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-wrap-grid">
 
-                <div class="news__content">
-                  <div class="news__body">
-                    <span class="news__meta news__meta-time"><span class="ion-ios-calendar-outline"></span> July 21, 2017</span>
-                    <h3 class="news__title"><a href="blog_single.html">Releases 2Q 2017 Tokyo, Japan</a></h3>
-                    <p class="news__excerpt news__excerpt--v2">The upper level has three bedrooms, with the main bedroom having built-in wardrobes and an ensuite with his-and-hers sinks, underfloor heating and shower dosis...</p>
-                  </div><!-- .news__body -->
+                        <div class="blog-thumb">
+                            <a href="blog-detail.html"><img src="assets/img/p-14.jpg" class="img-fluid" alt="" /></a>
+                        </div>
 
-                  <div class="news__footer">
-                    <span class="news__meta news__meta-comments"><span class="ion-ios-chatboxes-outline"></span> 3 Comment(s)</span>
-                    <a href="blog_single.html" class="news__readmore">&plus; Read More</a>
-                  </div><!-- .news__footer -->
-                </div><!-- .news__content -->
-              </article><!-- news__single--v2 -->
-            </div><!-- .col -->
-          </div><!-- .row -->
+                        <div class="blog-info">
+                            <span class="post-date"><i class="ti-calendar"></i>30 july 2018</span>
+                        </div>
 
-          <ul class="pagination pagination--t-margin pagination--b-margin">
-            <li class="pagination__item">
-              <a href="#" class="pagination__link pagination__link_prev"><i class="fa fa-angle-left" aria-hidden="true"></i></a>
-            </li>
-            <li class="pagination__item"><a href="#" class="pagination__link pagination__link--selected">1</a></li>
-            <li class="pagination__item"><a href="#" class="pagination__link">2</a></li>
-            <li class="pagination__item"><a href="#" class="pagination__link">3</a></li>
-            <li class="pagination__item"><a href="#" class="pagination__link pagination__link_next"><i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-          </ul><!-- pagination -->
-        </main><!-- .col -->
-        <aside class="col-md-4 col-md-sidebar">
-          <section class="widget widget_search">
-            <form class="search-form" method="get" action="http://haintheme.com/demo/html/realand/blog.html">
-              <input type="text" class="search-form__field" id="s" name="s" placeholder="Search...">
-              <button type="submit" class="search-form__submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-            </form>
-          </section><!-- .widget -->
+                        <div class="blog-body">
+                            <h4 class="bl-title"><a href="blog-detail.html">Why people choose listio for own properties</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
+                            <a href="http://themezhub.com/" class="bl-continue">Continue</a>
+                        </div>
 
-          <section class="widget widget_categories widget_list">
-            <h3 class="widget__title widget__title--uppercase">Categories</h3>
-            <ul>
-              <li><a href="#">Fashion</a><span>(05)</span></li>
-              <li><a href="#">Music</a><span>(10)</span></li>
-              <li><a href="#">Photography</a><span>(25)</span></li>
-              <li><a href="#">Game</a><span>(02)</span></li>
-              <li><a href="#">Lorem Ipsum</a><span>(25)</span></li>
-              <li><a href="#">Other</a><span>(02)</span></li>
-            </ul>
-          </section><!-- .widget -->
+                    </div>
+                </div>
 
-          <section class="widget widget_thumbnail">
-            <h3 class="widget__title widget__title--uppercase">Newest</h3>
-            <ul class="widget_thumbnail__list">
-              <li class="widget_thumbnail__item">
-                <div class="widget_thumbnail__img">
-                  <a href="#">
-                    <img src="images/uploads/widget_thumbnail_1.jpg" alt="Arcte">
-                  </a>
-                </div><!-- .widget_thumbnail-img -->
-                <div class="widget_thumbnail__content">
-                  <h4 class="widget_thumbnail__title"><a href="#" class="widget_thumbnail__link">Arcte Beritatis et Quasi solar</a></h4>
-                  <span class="widget_thumbnail__date">July 22, 2017</span>
-                </div><!-- .widget_thumbnail__content -->
-              </li><!-- .widget_thumbnail__item -->
+                <!-- Single blog Grid -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-wrap-grid">
 
-              <li class="widget_thumbnail__item">
-                <div class="widget_thumbnail__img">
-                  <a href="#">
-                    <img src="images/uploads/widget_thumbnail_2.jpg" alt="Arcte">
-                  </a>
-                </div><!-- .widget_thumbnail-img -->
-                <div class="widget_thumbnail__content">
-                  <h4 class="widget_thumbnail__title"><a href="#" class="widget_thumbnail__link">Arcte Beritatis et Quasi solar</a></h4>
-                  <span class="widget_thumbnail__date">July 22, 2017</span>
-                </div><!-- .widget_thumbnail__content -->
-              </li><!-- .widget_thumbnail__item -->
+                        <div class="blog-thumb">
+                            <a href="blog-detail.html"><img src="assets/img/p-7.jpg" class="img-fluid" alt="" /></a>
+                        </div>
 
-              <li class="widget_thumbnail__item">
-                <div class="widget_thumbnail__img">
-                  <a href="#">
-                    <img src="images/uploads/widget_thumbnail_3.jpg" alt="Arcte">
-                  </a>
-                </div><!-- .widget_thumbnail-img -->
-                <div class="widget_thumbnail__content">
-                  <h4 class="widget_thumbnail__title"><a href="#" class="widget_thumbnail__link">Arcte Beritatis et Quasi solar</a></h4>
-                  <span class="widget_thumbnail__date">July 22, 2017</span>
-                </div><!-- .widget_thumbnail__content -->
-              </li><!-- .widget_thumbnail__item -->
-            </ul><!-- widget_thumbnail__list -->
-          </section><!-- .widget -->
+                        <div class="blog-info">
+                            <span class="post-date"><i class="ti-calendar"></i>10 August 2018</span>
+                        </div>
 
-          <section class="widget widget_archive widget_list">
-            <h3 class="widget__title widget__title--uppercase">Archive</h3>
-            <ul>
-              <li><a href="#">May 2017</a><span>(05)</span></li>
-              <li><a href="#">June 2017</a><span>(10)</span></li>
-              <li><a href="#">July 2017</a><span>(25)</span></li>
-              <li><a href="#">August 2017</a><span>(02)</span></li>
-            </ul>
-          </section><!-- .widget -->
+                        <div class="blog-body">
+                            <h4 class="bl-title"><a href="blog-detail.html">List of benifits and impressive listeo services</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
+                            <a href="http://themezhub.com/" class="bl-continue">Continue</a>
+                        </div>
 
-          <section class="widget widget_ads">
-            <img src="images/uploads/widget_ads.jpg" alt="Ads">
-          </section><!-- .widget -->
+                    </div>
+                </div>
 
-          <section class="widget widget_tag_cloud">
-            <h3 class="widget__title widget__title--uppercase">Tags</h3>
-            <div class="tag-cloud">
-              <a href="#" class="tag-cloud__item">Blog</a>
-              <a href="#" class="tag-cloud__item">Real Estate Blog</a>
-              <a href="#" class="tag-cloud__item">Clever</a>
-              <a href="#" class="tag-cloud__item">Estate</a>
-              <a href="#" class="tag-cloud__item">Felix</a>
-              <a href="#" class="tag-cloud__item">Clean</a>
-              <a href="#" class="tag-cloud__item">Clear Smooth</a>
-            </div><!-- .tag-cloud -->
-          </section><!-- .widget -->
+                <!-- Single blog Grid -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="blog-wrap-grid">
 
-          <section class="widget widget_gallery">
-            <h3 class="widget__title widget__title--uppercase">Flickr</h3>
-            <ul>
-              <li>
-                <a href="#"><img src="images/uploads/flickr_1.jpg" alt="House"></a>
-              </li>
-              <li>
-                <a href="#"><img src="images/uploads/flickr_2.jpg" alt="House"></a>
-              </li>
-              <li>
-                <a href="#"><img src="images/uploads/flickr_3.jpg" alt="House"></a>
-              </li>
-              <li>
-                <a href="#"><img src="images/uploads/flickr_4.jpg" alt="House"></a>
-              </li>
-              <li>
-                <a href="#"><img src="images/uploads/flickr_5.jpg" alt="House"></a>
-              </li>
-              <li>
-                <a href="#"><img src="images/uploads/flickr_6.jpg" alt="House"></a>
-              </li>
-            </ul>
-          </section>
-        </aside><!-- .col -->
-      </div><!-- .row -->
-    </div><!-- .blog__main -->
-  </div><!-- .container -->
-  </section><!-- .blog -->
+                        <div class="blog-thumb">
+                            <a href="blog-detail.html"><img src="assets/img/p-5.jpg" class="img-fluid" alt="" /></a>
+                        </div>
+
+                        <div class="blog-info">
+                            <span class="post-date"><i class="ti-calendar"></i>30 Sep 2018</span>
+                        </div>
+
+                        <div class="blog-body">
+                            <h4 class="bl-title"><a href="blog-detail.html">What people says about listio properties</a></h4>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore. </p>
+                            <a href="http://themezhub.com/" class="bl-continue">Continue</a>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- /row -->
+
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <ul class="pagination p-center">
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Previous">
+                            <span class="ti-arrow-left"></span>
+                            <span class="sr-only">Previous</span>
+                          </a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item active"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">...</a></li>
+                        <li class="page-item"><a class="page-link" href="#">18</a></li>
+                        <li class="page-item">
+                          <a class="page-link" href="#" aria-label="Next">
+                            <span class="ti-arrow-right"></span>
+                            <span class="sr-only">Next</span>
+                          </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    <!-- ============================ Agency List End ================================== -->
 {% endblock %}

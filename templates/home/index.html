@@ -1,386 +1,897 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}{% endblock %}
 
 {% block content %}
-   <section class="submit-property">
-    <div class="container">
-        <ul class="ht-breadcrumbs ht-breadcrumbs--y-padding ht-breadcrumbs--b-border">
-            <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Home</span></a></li>
-            <li class="ht-breadcrumbs__item"><a href="#" class="ht-breadcrumbs__link"><span class="ht-breadcrumbs__title">Pages</span></a></li>
-            <li class="ht-breadcrumbs__item"><span class="ht-breadcrumbs__page">Submit New Property</span></li>
-        </ul><!-- .ht-breadcrumb -->
 
-        <div class="submit-property__container">
-            <div class="row">
-                <div class="col-md-3">
-                    <h2 class="bookmarked-listing__headline">Howdy, <strong>FelixDG!</strong></h2>
-                    <div class="settings-block">
-                        <span class="settings-block__title">Manage Account</span>
-                        <ul class="settings">
-                            <li class="setting"><a href="my_profile.html" class="setting__link"><i class="ion-ios-person-outline setting__icon"></i>My Profile</a></li>
-                            <li class="setting"><a href="bookmarked_listing.html" class="setting__link"><i class="ion-ios-heart-outline setting__icon"></i>Bookmarked Listings</a></li>
-                        </ul><!-- settings -->
-                    </div><!-- .settings-block -->
+        <!-- ============================ Hero Banner  Start================================== -->
+        <div class="image-cover hero-banner" style="background:url({% static 'assets/img/a.jpg' %}) no-repeat;">
+            <div class="container">
+                {% include 'search/other_search.html' %}
+            </div>
+        </div>
+        <!-- ============================ Hero Banner End ================================== -->
+       <!-- ============================ Slide Property Start ================================== -->
+        <section>
+            <div class="container">
 
-                    <div class="settings-block">
-                        <span class="settings-block__title">Manage Listing</span>
-                        <ul class="settings">
-                            <li class="setting"><a href="my_property.html" class="setting__link"><i class="ion-ios-home-outline setting__icon"></i>My Property</a></li>
-                            <li class="setting setting--current"><a href="#" class="setting__link"><i class="ion-ios-upload-outline setting__icon"></i>Submit New Property</a></li>
-                            <li class="setting"><a href="package.html" class="setting__link"><i class="ion-ios-cart-outline setting__icon"></i>My Packages</a></li>
-                        </ul><!-- settings -->
-                    </div><!-- .settings-block -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="sec-heading center">
+                            <h2>New & featured Property</h2>
+                            <p>Find new & featured property for you.</p>
+                        </div>
+                    </div>
+                </div>
 
-                    <div class="settings-block">
-                        <ul class="settings">
-                            <li class="setting"><a href="change_password.html" class="setting__link"><i class="ion-ios-unlocked-outline setting__icon"></i>Change Password</a></li>
-                            <li class="setting"><a href="index-2.html" class="setting__link"><i class="ion-ios-undo-outline setting__icon"></i>Log Out</a></li>
-                        </ul><!-- settings -->
-                    </div><!-- .settings-block -->
-                </div><!-- .col -->
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="property-slide">
 
-                <form action="http://haintheme.com/demo/html/realand/submit_property.html">
-                    <div class="col-md-9">
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Basic Information</h3>
+                            <!-- Single Property -->
+                            <div class="single-items">
+                                <div class="property-listing property-2">
 
-                            <div class="submit-property__group">
-                                <label for="property-title" class="submit-property__label">Property Title *</label>
-                                <input type="text" class="submit-property__field" id="property-title" placeholder="Perfect House for Sale" required>
-                            </div><!-- .submit-property__group -->
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-type" class="submit-property__label">Property Type *</label>
-                                        <select class="ht-field" id="property-type" required>
-                                            <option value="house">House</option>
-                                            <option value="apartment">Apartment</option>
-                                            <option value="commercial">Commercial</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-offer" class="submit-property__label">Offer *</label>
-                                        <select class="ht-field" id="property-offer" required>
-                                            <option value="rent">For Rent</option>
-                                            <option value="sale">For Sale</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-rental-period" class="submit-property__label">Rental Period *</label>
-                                        <select class="ht-field" id="property-rental-period" required>
-                                            <option value="monthly">Monthly</option>
-                                            <option value="yearly">Yearly</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-price" class="submit-property__label">Property Price *</label>
-                                        <input type="text" class="submit-property__field" id="property-price" required>
-                                        <span class="submit-property__unit">USD</span>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-area" class="submit-property__label">Property Area *</label>
-                                        <input type="text" class="submit-property__field" id="property-area" required>
-                                        <span class="submit-property__unit">sq.ft</span>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-room" class="submit-property__label">Property Room *</label>
-                                        <select class="ht-field" id="property-rental-period" required>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="more">More than 5</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-
-                            <div class="submit-property__group">
-                                <label for="submit-property-wysiwyg" class="submit-property__label">Description *</label>
-                                <div id="submit-property-wysiwyg"></div>
-                            </div><!-- .submit-property__group -->
-                        </div><!-- .submit-property__block -->
-
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Gallery or Video</h3>
-
-                            <div class="row">
-                                <div class="col-md-5">
-                                    <div class="submit-property__group">
-                                        <label for="property-featured-image" class="submit-property__label">Featured Image *</label>
-                                        <div class="submit-property__upload">
-                                            <input type="file">
-                                            <div class="submit-property__upload-inner">
-                                                <span class="ion-ios-plus-outline submit-property__icon"></span>
-                                                <span class="submit-property__upload-desc">Drop image here or click to upload</span>
+                                    <div class="listing-img-wrapper">
+                                        <div class="list-img-slide">
+                                            <div class="click">
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-1.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-2.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-3.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
                                             </div>
-                                        </div><!-- .submit-proeprty__upload -->
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
+                                        </div>
+                                        <span class="property-type">For Rent</span>
+                                    </div>
 
-                                <div class="col-md-7">
-                                    <div class="submit-property__group">
-                                        <label for="property-media" class="submit-property__label">All Images or Video *</label>
-                                        <div class="submit-property__upload">
-                                            <input type="file" multiple>
-                                            <div class="submit-property__upload-inner">
-                                                <span class="ion-ios-plus-outline submit-property__icon"></span>
-                                                <span class="submit-property__upload-desc">Drop all images here or click to upload</span>
+                                    <div class="listing-detail-wrapper pb-0">
+                                        <div class="listing-short-detail">
+                                            <h4 class="listing-name"><a href="single-property-1.html">New Clue Apartment</a><i class="list-status ti-check"></i></h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-features-wrapper">
+                                        <div class="listing-price-fx">
+                                            <h6 class="listing-card-info-price price-prefix">10,547<span class="price-suffix">/mo</span></h6>
+                                        </div>
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bed">3 Beds</span>
                                             </div>
-                                        </div><!-- .submit-proeprty__upload -->
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-                        </div><!-- .submit-property__block -->
-
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Location</h3>
-                            <div class="submit-property__group">
-                                <div id="submit-property-map"></div>
-                            </div><!-- .submit-property__group -->
-
-                            <div class="submit-property__group">
-                                <label for="property-map-address" class="submit-property__label">Google Map Address *</label>
-                                <input type="text" class="submit-property__field" id="roperty-map-address" required>
-                            </div><!-- .submit-property__group -->
-
-                            <div class="submit-property__group">
-                                <label for="property-address" class="submit-property__label">Friendly Address</label>
-                                <input type="text" class="submit-property__field" id="property-address">
-                            </div><!-- .submit-property__group -->
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-longtitude" class="submit-property__label">Longtitude</label>
-                                        <input type="text" class="submit-property__field" id="property-longtitude">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-latitude" class="submit-property__label">Latitude</label>
-                                        <input type="text" class="submit-property__field" id="property__latitude">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-region" class="submit-property__label">Region</label>
-                                        <select id="property-region" class="ht-field">
-                                            <option value="AZ">Arizona</option>
-                                            <option value="CO">Colorado</option>
-                                            <option value="ID">Idaho</option>
-                                            <option value="MT">Montana</option>
-                                            <option value="NE">Nebraska</option>
-                                            <option value="NM">New Mexico</option>
-                                            <option value="ND">North Dakota</option>
-                                            <option value="UT">Utah</option>
-                                            <option value="WY">Wyoming</option>
-                                            <option value="CT">Connecticut</option>
-                                            <option value="DE">Delaware</option>
-                                            <option value="FL">Florida</option>
-                                            <option value="GA">Georgia</option>
-                                            <option value="IN">Indiana</option>
-                                            <option value="ME">Maine</option>
-                                            <option value="MD">Maryland</option>
-                                            <option value="MA">Massachusetts</option>
-                                            <option value="MI">Michigan</option>
-                                            <option value="NH">New Hampshire</option>
-                                            <option value="NJ">New Jersey</option>
-                                            <option value="NY">New York</option>
-                                            <option value="NC">North Carolina</option>
-                                            <option value="OH">Ohio</option>
-                                            <option value="PA">Pennsylvania</option>
-                                            <option value="RI">Rhode Island</option>
-                                            <option value="SC">South Carolina</option>
-                                            <option value="VT">Vermont</option>
-                                            <option value="VA">Virginia</option>
-                                            <option value="WV">West Virginia</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-                        </div><!-- .submit-property__block -->
-
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Detailed Information</h3>
-
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-year" class="submit-property__label">Building Year *</label>
-                                        <select id="property-year" class="ht-field">
-                                            <option value="1990s">1990 - 1999</option>
-                                            <option value="2000s">2000 - 2009</option>
-                                            <option value="2010s">2010 - 2019</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-bedrooms" class="submit-property__label">Bedrooms *</label>
-                                        <select id="property-bedrooms" class="ht-field">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-bathrooms" class="submit-property__label">Bathrooms *</label>
-                                        <select id="property-bathrooms" class="ht-field">
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                        </select>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-lot-size" class="submit-property__label">Lot size *</label>
-                                        <input type="text" class="submit-property__field" id="property-lot-size" required>
-                                        <span class="submit-property__unit">sq.ft</span>
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-parking" class="submit-property__label">Parking</label>
-                                        <input type="text" class="submit-property__field" id="property-parking">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-cooling" class="submit-property__label">Cooling</label>
-                                        <input type="text" class="submit-property__field" id="property-cooling">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-sewer" class="submit-property__label">Sewer</label>
-                                        <input type="text" class="submit-property__field" id="property-sewer">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-water" class="submit-property__label">Water</label>
-                                        <input type="text" class="submit-property__field" id="">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-
-                                <div class="col-md-4">
-                                    <div class="submit-property__group">
-                                        <label for="property-exercise-room" class="submit-property__label">Exercise Room</label>
-                                        <input type="text" class="submit-property__field" id="property-exercise-room">
-                                    </div><!-- .submit-property__group -->
-                                </div><!-- .col -->
-                            </div><!-- .row -->
-                        </div><!-- .submit-property__block -->
-
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Other Features</h3>
-                            <div class="submit-property__features">
-                                <div class="submit-property__group">
-
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" id="air-conditioning" class="submit-property__checkbox">
-                                        <label for="air-conditioning" class="submit-property__label submit-property__feature">Air Conditioning</label>
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bath">1 Bath</span>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="lawn" id="lawn" class="submit-property__checkbox">
-                                        <label for="lawn" class="submit-property__label submit-property__feature">Lawn</label>
+                                </div>
+                            </div>
+
+                            <!-- Single Property -->
+                            <div class="single-items">
+                                <div class="property-listing property-2">
+
+                                    <div class="listing-img-wrapper">
+                                        <div class="list-img-slide">
+                                            <div class="click">
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-4.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-5.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-6.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                            </div>
+                                        </div>
+                                        <div class="listing-price">
+                                            <h4 class="list-pr">$2,580</h4>
+                                        </div>
+                                        <span class="property-type">For Sale</span>
                                     </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="swimming-pool" id="swimming-pool" class="submit-property__checkbox">
-                                        <label for="swimming-pool" class="submit-property__label submit-property__feature">Swimming Pool</label>
+                                    <div class="listing-detail-wrapper pb-0">
+                                        <div class="listing-short-detail">
+                                            <h4 class="listing-name"><a href="single-property-1.html">Resort Valley Ocs</a><i class="list-status ti-check"></i></h4>
+                                        </div>
                                     </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="barbecue" id="barbecue" class="submit-property__checkbox">
-                                        <label for="barbecue" class="submit-property__label submit-property__feature">Barbecue</label>
+                                    <div class="price-features-wrapper">
+                                        <div class="listing-price-fx">
+                                            <h6 class="listing-card-info-price price-prefix">85,470</h6>
+                                        </div>
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bed">2 Beds</span>
+                                            </div>
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bath">2 Bath</span>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="microwave" id="microwave" class="submit-property__checkbox">
-                                        <label for="microwave" class="submit-property__label submit-property__feature">Microwave</label>
+                                </div>
+                            </div>
+
+                            <!-- Single Property -->
+                            <div class="single-items">
+                                <div class="property-listing property-2">
+
+                                    <div class="listing-img-wrapper">
+                                        <div class="list-img-slide">
+                                            <div class="click">
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-7.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-9.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-8.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                            </div>
+                                        </div>
+                                        <span class="property-type">For Rent</span>
                                     </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="tv-cable" id="tv-cable" class="submit-property__checkbox">
-                                        <label for="tv-cable" class="submit-property__label submit-property__feature">TV Cable</label>
+                                    <div class="listing-detail-wrapper pb-0">
+                                        <div class="listing-short-detail">
+                                            <h4 class="listing-name"><a href="single-property-1.html">Luxury Home in Manhattan</a><i class="list-status ti-check"></i></h4>
+                                        </div>
                                     </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="washer" id="washer" class="submit-property__checkbox">
-                                        <label for="washer" class="submit-property__label submit-property__feature">Washer</label>
+                                    <div class="price-features-wrapper">
+                                        <div class="listing-price-fx">
+                                            <h6 class="listing-card-info-price price-prefix">11,584<span class="price-suffix">/mo</span></h6>
+                                        </div>
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bed">3 Beds</span>
+                                            </div>
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bath">2 Bath</span>
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="outdoor-shower" id="outdoor-shower" class="submit-property__checkbox">
-                                        <label for="outdoor-shower" class="submit-property__label submit-property__feature">Outdoor Shower</label>
+                                </div>
+                            </div>
+
+                            <!-- Single Property -->
+                            <div class="single-items">
+                                <div class="property-listing property-2">
+
+                                    <div class="listing-img-wrapper">
+                                        <div class="list-img-slide">
+                                            <div class="click">
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-10.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-11.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-12.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                            </div>
+                                        </div>
+                                        <span class="property-type">For Rent</span>
                                     </div>
 
-                                    <div class="submit-property__wrapper">
-                                        <input type="checkbox" name="gym" id="gym" class="submit-property__checkbox">
-                                        <label for="gym" class="submit-property__label submit-property__feature">Gym</label>
+                                    <div class="listing-detail-wrapper pb-0">
+                                        <div class="listing-short-detail">
+                                            <h4 class="listing-name"><a href="single-property-1.html">Energy Certificate for EU</a><i class="list-status ti-check"></i></h4>
+                                        </div>
                                     </div>
-                                </div><!-- .submit-property__group -->
-                            </div><!-- .submit-property__features -->
-                        </div><!-- .submit-property__block -->
 
-                        <div class="submit-property__block">
-                            <h3 class="submit-property__headline">Plan</h3>
-                            <div class="submit-property__group">
-                                <div class="submit-property__upload">
-                                    <input type="file" multiple>
-                                    <div class="submit-property__upload-inner">
-                                        <span class="ion-ios-plus-outline submit-property__icon"></span>
-                                        <span class="submit-property__upload-desc">Drop all images here or click to upload</span>
+                                    <div class="price-features-wrapper">
+                                        <div class="listing-price-fx">
+                                            <h6 class="listing-card-info-price price-prefix">5,750<span class="price-suffix">/mo</span></h6>
+                                        </div>
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bed">2 Beds</span>
+                                            </div>
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bath">1 Bath</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div><!-- .submit-proeprty__upload -->
-                            </div><!-- .submit-property__group -->
-                        </div><!-- .submit-property__block -->
 
-                        <button type="submit" class="submit-property__submit">Submit</button>
-                    </div><!-- .col -->
-                </form>
+                                </div>
+                            </div>
+                            <!-- Single Property -->
+                            <div class="single-items">
+                                <div class="property-listing property-2">
 
-            </div><!-- .row -->
-        </div><!-- .submit-property__container -->
-    </div><!-- .container -->
-    </section><!-- .submit-property -->
+                                    <div class="listing-img-wrapper">
+                                        <div class="list-img-slide">
+                                            <div class="click">
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-13.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-14.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-15.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                            </div>
+                                        </div>
+                                        <span class="property-type">For Sale</span>
+                                    </div>
+
+                                    <div class="listing-detail-wrapper pb-0">
+                                        <div class="listing-short-detail">
+                                            <h4 class="listing-name"><a href="single-property-1.html">Office Space New York</a><i class="list-status ti-check"></i></h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-features-wrapper">
+                                        <div class="listing-price-fx">
+                                            <h6 class="listing-card-info-price price-prefix">187,895</h6>
+                                        </div>
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bed">3 Beds</span>
+                                            </div>
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bath">2 Bath</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- Single Property -->
+                            <div class="single-items">
+                                <div class="property-listing property-2">
+
+                                    <div class="listing-img-wrapper">
+                                        <div class="list-img-slide">
+                                            <div class="click">
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-16.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-17.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-18.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                            </div>
+                                        </div>
+                                        <span class="property-type">For Rent</span>
+                                    </div>
+
+                                    <div class="listing-detail-wrapper pb-0">
+                                        <div class="listing-short-detail">
+                                            <h4 class="listing-name"><a href="single-property-1.html">Apartment to rent in Queens</a><i class="list-status ti-check"></i></h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-features-wrapper">
+                                        <div class="listing-price-fx">
+                                            <h6 class="listing-card-info-price price-prefix">9,587<span class="price-suffix">/mo</span></h6>
+                                        </div>
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bed">3 Beds</span>
+                                            </div>
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bath">2 Bath</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="text-center mt-4">
+                            <a href="#" class="btn btn-theme-2">Browse More Property</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ============================ Slide Property End ================================== -->
+
+        <!-- ============================ Agent Start ================================== -->
+        <section class="gray-bg">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="sec-heading center">
+                            <h2>Our Featured Agent</h2>
+                            <p>Find new & featured property for you.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <!-- Single Agent -->
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="agents-grid">
+
+                            <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                            <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                            <div class="agents-grid-wrap">
+
+                                <div class="fr-grid-thumb">
+                                    <a href="http://themezhub.com/">
+                                        <div class="overall-rate">4.4</div>
+                                        <img src="{% static 'assets/img/user-1.jpg' %}" class="img-fluid mx-auto" alt="" />
+                                    </a>
+                                </div>
+                                <div class="fr-grid-deatil">
+                                    <h5 class="fr-can-name"><a href="#">Colin H. Renda</a></h5>
+                                    <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                    <div class="fr-can-rating">
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="fr-grid-info">
+                                <ul>
+                                    <li>Property<span>306</span></li>
+                                    <li>Email<span>colin@gmail.com</span></li>
+                                    <li>Phone<span>91 123 456 7859</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fr-grid-footer">
+                                <a href="#" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Single Agent -->
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="agents-grid">
+
+                            <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                            <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                            <div class="agents-grid-wrap">
+
+                                <div class="fr-grid-thumb">
+                                    <a href="http://themezhub.com/">
+                                        <div class="overall-rate">4.3</div>
+                                        <img src="{% static 'assets/img/user-2.jpg' %}" class="img-fluid mx-auto" alt="" />
+                                    </a>
+                                </div>
+                                <div class="fr-grid-deatil">
+                                    <h5 class="fr-can-name"><a href="#">James N. Green</a></h5>
+                                    <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                    <div class="fr-can-rating">
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="fr-grid-info">
+                                <ul>
+                                    <li>Property<span>306</span></li>
+                                    <li>Email<span>James58@gmail.com</span></li>
+                                    <li>Phone<span>91 123 456 7859</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fr-grid-footer">
+                                <a href="#" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Single Agent -->
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="agents-grid">
+
+                            <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
+                            <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                            <div class="agents-grid-wrap">
+
+                                <div class="fr-grid-thumb">
+                                    <a href="http://themezhub.com/">
+                                        <div class="overall-rate">4.5</div>
+                                        <img src="assets/img/user-3.jpg" class="img-fluid mx-auto" alt="" />
+                                    </a>
+                                </div>
+                                <div class="fr-grid-deatil">
+                                    <h5 class="fr-can-name"><a href="http://themezhub.com/">Colin H. Renda</a></h5>
+                                    <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                    <div class="fr-can-rating">
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="fr-grid-info">
+                                <ul>
+                                    <li>Property<span>306</span></li>
+                                    <li>Email<span>colin@gmail.com</span></li>
+                                    <li>Phone<span>91 123 456 7859</span></li>
+                                </ul>
+                            </div>
+
+                            <div class="fr-grid-footer">
+                                <a href="http://themezhub.com/" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- ============================ Agent End ================================== -->
+
+        <!-- ============================ Property Start ================================== -->
+			<section>
+				<div class="container">
+
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							<div class="sec-heading center">
+								<h2>Trending Properties For Rent</h2>
+								<p>Find new & featured property for you.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<!-- Single Property -->
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="property-listing property-2">
+
+								<div class="listing-img-wrapper">
+									<div class="list-img-slide">
+										<div class="click">
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-1.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-2.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-3.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+										</div>
+									</div>
+									<span class="property-type">For Rent</span>
+								</div>
+
+								<div class="listing-detail-wrapper pb-0">
+									<div class="listing-short-detail">
+										<h4 class="listing-name"><a href="single-property-1.html">New Clue Apartment</a><i class="list-status ti-check"></i></h4>
+									</div>
+								</div>
+
+								<div class="price-features-wrapper">
+									<div class="listing-price-fx">
+										<h6 class="listing-card-info-price price-prefix">10,547<span class="price-suffix">/mo</span></h6>
+									</div>
+									<div class="list-fx-features">
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bed">3 Beds</span>
+										</div>
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bath">1 Bath</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- End Single Property -->
+
+						<!-- Single Property -->
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="property-listing property-2">
+
+								<div class="listing-img-wrapper">
+									<div class="list-img-slide">
+										<div class="click">
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-4.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-5.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-6.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+										</div>
+									</div>
+									<div class="listing-price">
+										<h4 class="list-pr">$2,580</h4>
+									</div>
+									<span class="property-type">For Sale</span>
+								</div>
+
+								<div class="listing-detail-wrapper pb-0">
+									<div class="listing-short-detail">
+										<h4 class="listing-name"><a href="single-property-1.html">Resort Valley Ocs</a><i class="list-status ti-check"></i></h4>
+									</div>
+								</div>
+
+								<div class="price-features-wrapper">
+									<div class="listing-price-fx">
+										<h6 class="listing-card-info-price price-prefix">85,470</h6>
+									</div>
+									<div class="list-fx-features">
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bed">2 Beds</span>
+										</div>
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bath">2 Bath</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- End Single Property -->
+
+						<!-- Single Property -->
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="property-listing property-2">
+
+								<div class="listing-img-wrapper">
+									<div class="list-img-slide">
+										<div class="click">
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-7.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-9.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-8.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+										</div>
+									</div>
+									<span class="property-type">For Rent</span>
+								</div>
+
+								<div class="listing-detail-wrapper pb-0">
+									<div class="listing-short-detail">
+										<h4 class="listing-name"><a href="single-property-1.html">Luxury Home in Manhattan</a><i class="list-status ti-check"></i></h4>
+									</div>
+								</div>
+
+								<div class="price-features-wrapper">
+									<div class="listing-price-fx">
+										<h6 class="listing-card-info-price price-prefix">11,584<span class="price-suffix">/mo</span></h6>
+									</div>
+									<div class="list-fx-features">
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bed">3 Beds</span>
+										</div>
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bath">2 Bath</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- End Single Property -->
+
+						<!-- Single Property -->
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="property-listing property-2">
+
+								<div class="listing-img-wrapper">
+									<div class="list-img-slide">
+										<div class="click">
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-10.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-11.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-12.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+										</div>
+									</div>
+									<span class="property-type">For Rent</span>
+								</div>
+
+								<div class="listing-detail-wrapper pb-0">
+									<div class="listing-short-detail">
+										<h4 class="listing-name"><a href="single-property-1.html">Energy Certificate for EU</a><i class="list-status ti-check"></i></h4>
+									</div>
+								</div>
+
+								<div class="price-features-wrapper">
+									<div class="listing-price-fx">
+										<h6 class="listing-card-info-price price-prefix">5,750<span class="price-suffix">/mo</span></h6>
+									</div>
+									<div class="list-fx-features">
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bed">2 Beds</span>
+										</div>
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bath">1 Bath</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- End Single Property -->
+
+						<!-- Single Property -->
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="property-listing property-2">
+
+								<div class="listing-img-wrapper">
+									<div class="list-img-slide">
+										<div class="click">
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-13.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-14.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-15.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+										</div>
+									</div>
+									<span class="property-type">For Sale</span>
+								</div>
+
+								<div class="listing-detail-wrapper pb-0">
+									<div class="listing-short-detail">
+										<h4 class="listing-name"><a href="single-property-1.html">Office Space New York</a><i class="list-status ti-check"></i></h4>
+									</div>
+								</div>
+
+								<div class="price-features-wrapper">
+									<div class="listing-price-fx">
+										<h6 class="listing-card-info-price price-prefix">187,895</h6>
+									</div>
+									<div class="list-fx-features">
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bed">3 Beds</span>
+										</div>
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bath">2 Bath</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- End Single Property -->
+
+						<!-- Single Property -->
+						<div class="col-lg-4 col-md-6 col-sm-12">
+							<div class="property-listing property-2">
+
+								<div class="listing-img-wrapper">
+									<div class="list-img-slide">
+										<div class="click">
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-16.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-17.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-18.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+										</div>
+									</div>
+									<span class="property-type">For Rent</span>
+								</div>
+
+								<div class="listing-detail-wrapper pb-0">
+									<div class="listing-short-detail">
+										<h4 class="listing-name"><a href="single-property-1.html">Apartment to rent in Queens</a><i class="list-status ti-check"></i></h4>
+									</div>
+								</div>
+
+								<div class="price-features-wrapper">
+									<div class="listing-price-fx">
+										<h6 class="listing-card-info-price price-prefix">9,587<span class="price-suffix">/mo</span></h6>
+									</div>
+									<div class="list-fx-features">
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bed">3 Beds</span>
+										</div>
+										<div class="listing-card-info-icon">
+											<span class="inc-fleat inc-bath">2 Bath</span>
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<!-- End Single Property -->
+					</div>
+
+					<div class="row">
+						<div class="col-lg-12 col-md-12">
+							<div class="text-center mt-4">
+								<a href="#" class="btn btn-theme-2">Browse More Property</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</section>
+			<!-- ============================ Property End ================================== -->
+
+        <!-- ============================ Step How To Use Start ================================== -->
+        <section>
+            <div class="container">
+
+                <div class="row">
+                    <div class="col text-center">
+                        <div class="sec-heading center">
+                            <h2>How It Works?</h2>
+                            <p>How to start work with us and working process</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-4">
+                        <div class="middle-icon-features">
+                            <div class="middle-icon-features-item">
+                                <div class="middle-icon-large-features-box"><i class="ti-user text-danger"></i><span class="steps bg-danger">01</span></div>
+                                <div class="middle-icon-features-content">
+                                    <h4>Create An Account</h4>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="middle-icon-features">
+                            <div class="middle-icon-features-item">
+                                <div class="middle-icon-large-features-box"><i class="ti-search text-success"></i><span class="steps bg-success">02</span></div>
+                                <div class="middle-icon-features-content">
+                                    <h4>Find & Search Property</h4>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4">
+                        <div class="middle-icon-features">
+                            <div class="middle-icon-features-item">
+                                <div class="middle-icon-large-features-box"><i class="ti-location-arrow text-warning"></i><span class="steps bg-warning">03</span></div>
+                                <div class="middle-icon-features-content">
+                                    <h4>Book your Property</h4>
+                                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have Ipsum available.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <div class="clearfix"></div>
+        <!-- ============================ Step How To Use End ================================== -->
+
+        <!-- ============================ Browse Place ================================== -->
+        <section class="image-cover" style="background:url({% static 'assets/img/bg-1.jpg' %}) no-repeat;" data-overlay="6">
+            <div class="container">
+                <div class="row justify-content-md-center">
+                    <div class="col-lg-9 col-md-10">
+
+                        <div class="sec-heading center light">
+                            <h2>Are You Searching Top Places</h2>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi.</p>
+                            <a href="#" class="btn btn-theme-2 mt-3">Browse Top Property Places</a>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ============================ Browse Place End ================================== -->
+
+        <!-- ============================ Testimonials ================================== -->
+        <section>
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-5 col-md-5">
+
+                        <div class="sec-heading">
+                            <h2>What People Saying?</h2>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+                            <a href="#" class="btn btn-theme-2 mt-3">See More Reviews</a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-7 col-md-7">
+                        <div class="testi-slide item-slide">
+
+                            <!-- Single Testimonial -->
+                            <div class="single-items">
+                                <div class="testimonial-wrap">
+
+                                    <div class="client-thumb-box">
+                                        <div class="client-thumb-content">
+                                            <div class="client-thumb">
+                                                <img src="{% static 'assets/img/user-5.jpg' %}" class="img-responsive img-circle" alt="">
+                                            </div>
+                                            <div class="client-info">
+                                                <h5 class="mb-0">Adam Gillworm</h5>
+                                                <span class="small-font">Founder Of Apple</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+
+                                </div>
+                            </div>
+
+                            <!-- Single Testimonial -->
+                            <div class="single-items">
+                                <div class="testimonial-wrap">
+
+                                    <div class="client-thumb-box">
+                                        <div class="client-thumb-content">
+                                            <div class="client-thumb">
+                                                <img src="{% static 'assets/img/user-1.jpg' %}" class="img-responsive img-circle" alt="">
+                                            </div>
+                                            <div class="client-info">
+                                                <h5 class="mb-0">Sweb Gillworm</h5>
+                                                <span class="small-font">Founder Of Google</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+
+                                </div>
+                            </div>
+
+                            <!-- Single Testimonial -->
+                            <div class="single-items">
+                                <div class="testimonial-wrap">
+
+                                    <div class="client-thumb-box">
+                                        <div class="client-thumb-content">
+                                            <div class="client-thumb">
+                                                <img src="{% static 'assets/img/user-2.jpg' %}" class="img-responsive img-circle" alt="">
+                                            </div>
+                                            <div class="client-info">
+                                                <h5 class="mb-0">Rial Swittre Gillworm</h5>
+                                                <span class="small-font">Founder Of Amazone</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+
+                                </div>
+                            </div>
+
+                            <!-- Single Testimonial -->
+                            <div class="single-items">
+                                <div class="testimonial-wrap">
+
+                                    <div class="client-thumb-box">
+                                        <div class="client-thumb-content">
+                                            <div class="client-thumb">
+                                                <img src="{% static 'assets/img/user-3.jpg' %}" class="img-responsive img-circle" alt="">
+                                            </div>
+                                            <div class="client-info">
+                                                <h5 class="mb-0">Adam Gillworm</h5>
+                                                <span class="small-font">Founder Of Apple</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+
+                                </div>
+                            </div>
+
+                            <!-- Single Testimonial -->
+                            <div class="single-items">
+                                <div class="testimonial-wrap">
+
+                                    <div class="client-thumb-box">
+                                        <div class="client-thumb-content">
+                                            <div class="client-thumb">
+                                                <img src="{% static 'assets/img/user-4.jpg' %}" class="img-responsive img-circle" alt="">
+                                            </div>
+                                            <div class="client-info">
+                                                <h5 class="mb-0">Adam Hirasat</h5>
+                                                <span class="small-font">Founder Of Jior</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ============================ Testimonials End ================================== -->
+
 {% endblock %}
