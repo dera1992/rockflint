@@ -81,7 +81,7 @@ def post_detail(request, slug=None):
         "comments":comments,
         "form":form
     }
-    return render(request, "blog/post_detail.html", context)
+    return render(request, "blog/blog_detail.html", context)
 
 
 def post_list(request):
@@ -120,7 +120,7 @@ def post_list(request):
         'counts': counts,
         'lates': lates
     }
-    return render(request, "blog/post_list.html", context)
+    return render(request, "blog/blog_list.html", context)
 
 
 def post_update(request, slug=None):
@@ -171,10 +171,3 @@ def create_contact(request):
         args = {'form': form}
         return render(request, 'blog/contact.html', args)
 
-
-def blog_list(request):
-        return render(request,'blog/blog_list.html', {})
-
-
-def blog_detail(request):
-    return render(request, 'blog/blog_detail.html', {})
