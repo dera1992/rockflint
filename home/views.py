@@ -23,12 +23,14 @@ def home_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
     ads = Ads.objects.filter(active=True)
+    latests = Ads.objects.filter(active=True).order_by('-created', '?')[:10]
+    # adsimage = AdsImages.objects.filter(ads=ad)
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         ads = ads.filter(category=category)
     return render(request,'home/index.html', {'category': category,
-                                              'categories': categories,'ads': ads})
+                                              'categories': categories,'ads': ads,'latests':latests,})
 
 
 def ad_detail(request, id, slug):

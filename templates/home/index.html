@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
 {% block title %}{% endblock %}
 
 {% block content %}
@@ -31,40 +33,43 @@
 
                             <!-- Single Property -->
                             <div class="single-items">
-                                <div class="property-listing property-2">
+                                {% for latest in latests %}
+                                    <div class="property-listing property-2">
 
-                                    <div class="listing-img-wrapper">
-                                        <div class="list-img-slide">
-                                            <div class="click">
-                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-1.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
-                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-2.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
-                                                <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-3.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                        <div class="listing-img-wrapper">
+                                            <div class="list-img-slide">
+                                                {% for adv in adsimage %}
+                                                <div class="click">
+                                                    <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-1.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                    <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-2.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                    <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-3.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                            <span class="property-type">For Rent</span>
+                                        </div>
+
+                                        <div class="listing-detail-wrapper pb-0">
+                                            <div class="listing-short-detail">
+                                                <h4 class="listing-name"><a href="single-property-1.html">{{ latest.property_title }}</a><i class="list-status ti-check"></i></h4>
                                             </div>
                                         </div>
-                                        <span class="property-type">For Rent</span>
-                                    </div>
 
-                                    <div class="listing-detail-wrapper pb-0">
-                                        <div class="listing-short-detail">
-                                            <h4 class="listing-name"><a href="single-property-1.html">New Clue Apartment</a><i class="list-status ti-check"></i></h4>
-                                        </div>
-                                    </div>
-
-                                    <div class="price-features-wrapper">
-                                        <div class="listing-price-fx">
-                                            <h6 class="listing-card-info-price price-prefix">10,547<span class="price-suffix">/mo</span></h6>
-                                        </div>
-                                        <div class="list-fx-features">
-                                            <div class="listing-card-info-icon">
-                                                <span class="inc-fleat inc-bed">3 Beds</span>
+                                        <div class="price-features-wrapper">
+                                            <div class="listing-price-fx">
+                                                <h6 class="listing-card-info-price price-prefix">{{ latest.property_price}}<span class="price-suffix">/{{ latest.rent_period }}</span></h6>
                                             </div>
-                                            <div class="listing-card-info-icon">
-                                                <span class="inc-fleat inc-bath">1 Bath</span>
+                                            <div class="list-fx-features">
+                                                <div class="listing-card-info-icon">
+                                                    <span class="inc-fleat inc-bed">{{ latest.bedroom }}Beds</span>
+                                                </div>
+                                                <div class="listing-card-info-icon">
+                                                    <span class="inc-fleat inc-bath">{{ latest.bathroom }} Bath</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                </div>
+                                {% endfor %}
                             </div>
 
                         </div>

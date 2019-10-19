@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 {% load i18n %}
 {% load static %}
+{% load bootstrap4 %}
+{% load thumbnail %}
 <html lang="zxx">
 
 
@@ -215,27 +217,31 @@
 						</li>
 
 					</ul>
-
-					<ul class="attributes attributes-desk">
-						<li class="log-icon log-seprate"><a href="#" data-toggle="modal" data-target="#login">Log In</a></li>
-						<li class="log-icon"><a href="#" data-toggle="modal" data-target="#signup">Sign Up</a></li>
-						<li class="submit-attri theme-log"><a href="submit-property.html">Submit Property</a></li>
-					</ul>
-                    <ul class="attributes">
-						<li class="login-attri">
-							<div class="btn-group account-drop">
-								<button type="button" class="btn btn-order-by-filt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									<img src="{% static 'assets/img/user-5.jpg' %}" class="avater-img" alt="">Hi, Admin
-								</button>
-								<div class="dropdown-menu pull-right animated flipInX">
-									<a href="my-profile.html"><i class="ti-user"></i>My Profile</a>
-									<a href="my-property.html"><i class="ti-layers"></i>Property List</a>
-									<a href="bookmark-list.html"><i class="ti-bookmark"></i>Bookmarked Listings</a>
-									<a class="active" href="change-password.html"><i class="ti-unlock"></i>Change Password</a>
-								</div>
-							</div>
-						</li>
-					</ul>
+                    {% if user.is_authenticated %}
+                        <ul class="attributes">
+                            <li class="login-attri">
+                                <div class="btn-group account-drop">
+                                    <button type="button" class="btn btn-order-by-filt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <img src="{% static 'assets/img/user-5.jpg' %}" class="avater-img" alt="">Hi, {{ request.user.first_name }},
+                                    </button>
+                                    <div class="dropdown-menu pull-right animated flipInX">
+                                        <a href="my-profile.html"><i class="ti-user"></i>My Profile</a>
+                                        <a href="my-property.html"><i class="ti-layers"></i>Property List</a>
+                                        <a href="bookmark-list.html"><i class="ti-bookmark"></i>Bookmarked Listings</a>
+                                        <a class="active" href="change-password.html"><i class="ti-unlock"></i>Change Password</a>
+                                        <a href="{% url "login" %}"><i class="ti-power-off"></i>Log Out</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="submit-attri theme-log"><a href="submit-property.html">Submit Property</a></li>
+                        </ul>
+                    {% else %}
+                        <ul class="attributes attributes-desk">
+                            <li class="log-icon log-seprate"><a href="#" data-toggle="modal" data-target="#login">Log In</a></li>
+                            <li class="log-icon"><a href="#" data-toggle="modal" data-target="#signup">Sign Up</a></li>
+                            <li class="submit-attri theme-log"><a href="submit-property.html">Submit Property</a></li>
+                        </ul>
+                    {% endif %}
 
 
 				</nav>
@@ -249,10 +255,15 @@
 			{% if messages %}
                 <ul class="messages">
                     {% for message in messages %}
-                        <li class="{{ message.tags }}">
-                            {{ message|safe }}
-                                <a href="#" class="close">x</a>
-                        </li>
+                        {% if message.tags == 'success'%}
+                                <script>M.toast({html: "{{message}}", classes: 'green rounded', displayLength:2000});</script>
+                            {% elif message.tags == 'info'%}
+                                <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
+                            {% elif message.tags == 'warning'%}
+                                <script>M.toast({html: "{{message}}", classes: 'orange rounded', displayLength:10000});</script>
+                            {% elif message.tags == 'error'%}
+                                <script>M.toast({html: "{{message}}", classes: 'red rounded', displayLength:10000});</script>
+                            {% endif %}
                     {% endfor %}
                 </ul>
             {% endif %}
@@ -262,10 +273,6 @@
             {% endblock %}
 
             {% include 'footer.html' %}
-
-            {% include 'registration/login.html' %}
-
-             {% include 'account/register.html' %}
 
 			<a id="back2Top" class="top-scroll" title="Back to top" href="#"><i class="ti-arrow-up"></i></a>
 
@@ -313,6 +320,9 @@
 		<script src="{% static 'assets/js/coreNavigation.js' %}"></script>
 		<script src="{% static 'assets/js/custom.js' %}"></script>
         <script src="{% static 'assets/js/cl-switch.js' %}"></script>
+        {% block script %}
+
+        {% endblock %}
 		<!-- ============================================================== -->
 		<!-- This page plugins -->
 		<!-- ============================================================== -->

@@ -114,7 +114,7 @@ form.dropzone.dz-clickable.primary-dropzone {
 
 body {
 	background: #ffffff;
-	color:#797d8a;
+	color:#4a4d56;
 	font-size:16px;
 	font-family: 'Muli', sans-serif;
 	margin: 0;
@@ -2903,7 +2903,7 @@ outline:none;
 }
 .submit-form .form-control, .submit-page .form-control, .form-submit .form-control{
     background: #f9fafc;
-    border: 1px solid #ebedf5;
+    border: 1px solid #c7cccbad;
     border-radius: 3px;
 	color: #646e77;
 }
@@ -4395,11 +4395,11 @@ form.search-big-form.search-shadow, form.search-form.search-shadow {
 	background: #ffffff;
 	overflow: hidden;
     box-shadow: 0 0 6px 1px rgba(62,28,131,0.1);
-	-webkit-box-shadow: 0 0 6px 1px rgba(62,28,131,0.1);
+	/*-webkit-box-shadow: 0 0 6px 1px rgba(62,28,131,0.1);*/
 }
 .input-with-icon i {
     position: absolute;
-    top: 50%;
+    top: 60%;
     transform: translateY(-50%);
     left: 15px;
     font-size:18px;
@@ -5113,7 +5113,7 @@ span.tag_t {
 	padding-left: 0.35em;
 }
 .price-prefix:before {
-    content: '$';
+    content: '₦';
     position: absolute;
     left: 0;
     top:0em;
@@ -8279,4 +8279,15 @@ a.goodgreen-theme {
 }
 a.blue2-theme {
     background:#0176ff !important;
+}
+
+.form-check-input {
+    /* position: absolute; */
+    margin-top: .25rem;
+    margin-left: 0.5rem;
+}
+
+.form-check-label {
+    padding-left: 2.25rem;
+    margin-bottom: 0;
 }

@@ -1,16 +1,15 @@
 from django.contrib import admin
-from .models import Category, Ads,AdsImages,Offer,State,Lga,SubCategory
-
+from .models import Category, Ads,AdsImages,Offer,State,Lga
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name', 'slug']
+    list_display = ['name']
     prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Ads)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['property_title', 'slug', 'property_price',
+    list_display = ['property_title','property_price',
     'active', 'created', 'updated']
     list_filter = ['active', 'created', 'updated']
     list_editable = ['property_price', 'active']
@@ -19,4 +18,4 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Offer)
 admin.site.register(State)
 admin.site.register(Lga)
-admin.site.register(SubCategory)
+admin.site.register(AdsImages)

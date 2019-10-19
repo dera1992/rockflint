@@ -6,7 +6,7 @@ from django.forms import modelformset_factory, inlineformset_factory
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponseRedirect
-from .models import Ads, AdsImages, Category, SubCategory,Lga
+from .models import Ads, AdsImages, Category,Lga
 from .forms import AdsImageForm, AdsForm
 
 from django.shortcuts import get_object_or_404
@@ -19,25 +19,24 @@ import json
 def postAd(request):
 
     ImageFormSet = modelformset_factory(AdsImages,
-                                        form=AdsImageForm, extra=7)
+                                        form=AdsImageForm, extra=9)
     if request.method == 'POST':
 
-        postForm = AdsForm(request.POST)
+        postForm = AdsForm(request.POST, request.FILES)
         formset = ImageFormSet(request.POST, request.FILES,
                                queryset=AdsImages.objects.none())
 
-
         if postForm.is_valid() and formset.is_valid():
             post_form = postForm.save(commit=False)
-            post_form.user = request.user
+            post_form.profile = request.user.profile
             post_form.save()
 
             for form in formset.cleaned_data:
                 if form:
                     ad_image = form['ad_image']
-                    photo = AdsImages(post=post_form, ad_image=ad_image)
+                    photo = AdsImages(ads=post_form, ad_image=ad_image)
                     photo.save()
-            messages.success(request,
+                    messages.success(request,
                              "Your property has been created")
             return HttpResponseRedirect("/")
         else:
@@ -47,6 +46,7 @@ def postAd(request):
         formset = ImageFormSet(queryset=AdsImages.objects.none())
     return render(request, 'advert/post.html',
                   {'postForm': postForm, 'formset': formset})
+
 
 
 def editAd(request, id):
@@ -60,7 +60,7 @@ def editAd(request, id):
     formset = ImageFormSet(instance=ad)
 
     if request.method == "POST":
-        postForm = AdsForm(request.POST)
+        postForm = AdsForm(request.POST, request.FILES)
 
         if id:
             postForm = AdsForm(request.POST, instance=ad)
@@ -68,20 +68,21 @@ def editAd(request, id):
         formset = ImageFormSet(request.POST, request.FILES)
 
         if postForm.is_valid():
-            created_ad = postForm.save(commit=False)
-            formset = ImageFormSet(request.POST, request.FILES, instance=created_ad)
+            post_form = postForm.save(commit=False)
+            formset = ImageFormSet(request.POST, request.FILES, instance=post_form)
 
             if formset.is_valid():
-                created_ad.save()
+                post_form.save()
                 for form in formset.cleaned_data:
                     if form:
                         ad_image = form['ad_image']
-                        photo = AdsImages(post=postForm, ad_image=ad_image)
+                        photo = AdsImages(ads=postForm, ad_image=ad_image)
                         photo.save()
-                messages.success(request,
-                                 "Error updating your form")
+                        messages.success(request,"You have successfully updated your form")
+                    else:
+                        messages.error(request, 'Error updating your form')
                 formset.save()
-                return HttpResponseRedirect(created_ad.get_absolute_url())
+                return HttpResponseRedirect("/")
 
     return render("advert/edit_post.html", {
         "postForm": postForm,

@@ -4,8 +4,22 @@ from django import forms
 from .models import Profile,Type
 
 class UserRegistrationForm(forms.ModelForm):
-    password = forms.CharField(label='Password',widget=forms.PasswordInput)
-    password2 = forms.CharField(label='Repeat password',widget=forms.PasswordInput)
+    password = forms.CharField(label='',
+         widget=forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'Password'}
+        ))
+    password2 = forms.CharField(label='',
+         widget=forms.PasswordInput(
+            attrs={'class': 'form-control', 'placeholder': 'Repeat Password'}
+        ))
+    username = forms.CharField(label='',
+        widget=forms.TextInput(
+            attrs={'class': 'form-control', 'placeholder': 'Username'}
+        ))
+    email = forms.EmailField(label='',
+       widget=forms.EmailInput(
+           attrs={'class': 'form-control', 'placeholder': 'Email'}
+       ))
 
     class Meta:
         model = User
@@ -19,35 +33,30 @@ class UserRegistrationForm(forms.ModelForm):
 class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(
         widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Enter First Name'}
-        )
+            attrs={'class': 'form-control', 'placeholder': 'Enter First Name','label':''}
+        ),label='',
     )
     last_name = forms.CharField(
         widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Enter Last Name'}
-        )
+            attrs={'class': 'form-control', 'placeholder': 'Enter Last Name',}
+        ),label='',
     )
     agent_type = forms.ModelChoiceField(
-        queryset=Type.objects.all(), to_field_name='id', required=True)
+        queryset=Type.objects.all(), to_field_name='id', required=True,
+        widget=forms.Select(
+            attrs={'class': 'form-control', 'placeholder': 'agent type',}
+        ),label='',)
 
     phone = forms.CharField(
         widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'eg: +234 8030793112'}
-        )
-    )
-    address = forms.CharField(
-        widget=forms.TextInput(
-            attrs={'class': 'form-control', 'placeholder': 'Enter Address'}
-        )
+            attrs={'class': 'form-control', 'placeholder': 'eg: +234 8030793112','label':''}
+        ),label='',
     )
 
     class Meta:
         model = Profile
-        fields = ('first_name', 'last_name','phone', 'address', 'photo','agent_type')
+        fields = ('first_name', 'last_name','phone','agent_type')
 
-    def __init__(self, *args, **kwargs):
-        super(ProfileForm, self).__init__(*args, **kwargs)
-        self.fields['photo'].widget.attrs.update({'class': 'filestyle'})
 
 
 class UserEditForm(forms.ModelForm):
@@ -82,4 +91,9 @@ class ProfileEditForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ('first_name', 'last_name','phone', 'address', 'photo','agent_type')
+        fields = ('first_name', 'last_name','phone', 'address', 'photo','agent_type',
+                  'facebook','twitter','google','linkedin')
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileEditForm, self).__init__(*args, **kwargs)
+        self.fields['photo'].widget.attrs.update({'class': 'filestyle'})

@@ -1,24 +1,45 @@
+{% extends "base.html" %}
 {% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
 
 {% block title %}Register{% endblock %}
 
+{% block content %}
 <!-- Sign Up Modal -->
-    <div class="modal fade signup" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
+    <div class="" id="signup" tabindex="-1" role="dialog" aria-labelledby="sign-up" >
+        <div class="modal-dialog modal-dialog-centered " role="document">
             <div class="modal-content" id="sign-up">
-                <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
                 <div class="modal-body">
-                    <h4 class="modal-header-title">Sign Up</h4>
+                    <h2 class="modal-header-title" style="text-align:center;">Sign Up</h2>
                     <div class="login-form">
-                        <form>
-
+                        <form  id="signup_form" method="post" action="{% url 'register' %}">
+                            {% csrf_token %}
                             <div class="row">
 
+{#                                {% bootstrap_form user_form %}#}
+{#                                {% bootstrap_form profile_form %}#}
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <div class="input-with-icon">
-                                            <input type="text" class="form-control" placeholder="Full Name">
                                             <i class="ti-user"></i>
+                                            {% bootstrap_field profile_form.first_name %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <i class="ti-user"></i>
+                                            {% bootstrap_field profile_form.last_name %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <i class="ti-user"></i>
+                                            {% bootstrap_field user_form.username %}
                                         </div>
                                     </div>
                                 </div>
@@ -26,8 +47,8 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <div class="input-with-icon">
-                                            <input type="email" class="form-control" placeholder="Email">
                                             <i class="ti-email"></i>
+                                            {% bootstrap_field user_form.email %}
                                         </div>
                                     </div>
                                 </div>
@@ -35,17 +56,8 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <div class="input-with-icon">
-                                            <input type="text" class="form-control" placeholder="Username">
-                                            <i class="ti-user"></i>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <div class="input-with-icon">
-                                            <input type="password" class="form-control" placeholder="*******">
                                             <i class="ti-unlock"></i>
+                                            {% bootstrap_field user_form.password %}
                                         </div>
                                     </div>
                                 </div>
@@ -53,24 +65,29 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <div class="input-with-icon">
-                                            <input type="password" class="form-control" placeholder="123 546 5847">
+                                            <i class="ti-unlock"></i>
+                                            {% bootstrap_field user_form.password2 %}
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
                                             <i class="lni-phone-handset"></i>
+                                            {% bootstrap_field profile_form.phone %}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <i class="ti-briefcase"></i>
+                                            {% bootstrap_field profile_form.agent_type %}
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-lg-6 col-md-6">
-                                    <div class="form-group">
-                                        <div class="input-with-icon">
-                                            <select class="form-control">
-                                                <option>As a Customer</option>
-                                                <option>As a Agent</option>
-                                                <option>As a Agency</option>
-                                            </select>
-                                            <i class="ti-briefcase"></i>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
 
@@ -95,3 +112,4 @@
         </div>
     </div>
     <!-- End Modal -->
+{% endblock %}

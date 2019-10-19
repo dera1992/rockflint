@@ -20,31 +20,36 @@ def register(request):
         user_form = UserRegistrationForm(request.POST)
         profile_form = ProfileForm(request.POST)
         if user_form.is_valid()and profile_form.is_valid():
-            new_user = user_form.save(commit=False)
-            new_user.set_password(
-                user_form.cleaned_data['password'])
-            new_user.is_active = False
-            new_user.save()
-            profile_form.save()
+            user = user_form.save(commit=False)
+            user.set_password(user_form.cleaned_data['password'])
+            user.is_active = False
+            user.save()
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            profile.save()
+            # user.profile.first_name = profile_form.cleaned_data.get('first_name')
+            # user.profile.last_name = profile_form.cleaned_data.get('last_name')
+            # user.profile.agent_type = profile_form.cleaned_data.get('agent_type')
+            # user.profile.phone = profile_form.cleaned_data.get('phone')
+            # user.profile.save()
             current_site = get_current_site(request)
             subject = 'Activate Your MySite Account'
             message = render_to_string('registration/account_activation_email.html', {
-                'user': new_user,
+                'user': user,
                 'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(new_user.pk)),
-                'token': account_activation_token.make_token(new_user),
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                'token': account_activation_token.make_token(user),
             })
-            new_user.email_user(subject, message)
+            user.email_user(subject, message)
+            messages.success(request, 'An email has been sent to your email account,please go and activate your account')
             return render(request,
-                'account/register_done.html',
-                {'new_user': new_user})
+                'home/index.html')
     else:
         user_form = UserRegistrationForm()
         profile_form =ProfileForm()
     return render(request,
-        'account/register.html',
-        {'user_form': user_form,
-         'profile_form': profile_form})
+                  'account/register.html',
+                  {'user_form': user_form,'profile_form': profile_form})
 
 
 @login_required
@@ -59,8 +64,7 @@ def edit(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, 'Profile updated ' \
-                                      'successfully')
+            messages.success(request, 'Profile updated successfully')
         else:
             messages.error(request, 'Error updating your profile')
     else:
@@ -83,6 +87,6 @@ def activate(request, uidb64, token):
         user.profile.email_confirmed = True
         user.save()
         login(request, user)
-        return redirect('home')
+        return redirect('home:home')
     else:
         return render(request, 'registration/account_activation_invalid.html')

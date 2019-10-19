@@ -48,6 +48,9 @@ INSTALLED_APPS = [
     'comments',
 
     'social_django',
+    'bootstrap4',
+    'sorl.thumbnail',
+
 ]
 
 MIDDLEWARE = [
@@ -69,6 +72,9 @@ SOCIAL_AUTH_AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.yahoo.YahooOpenId',
+
+    'django.contrib.auth.backends.ModelBackend',
+    'account.authentication.EmailAuthBackend',
 
 )
 
@@ -152,7 +158,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 SITE_ID = 1
 
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 

@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
 
 {% block title %}Register{% endblock %}
 
@@ -32,6 +34,8 @@
                             <h4>My Account</h4>
                             <div class="submit-section">
                                 <div class="form-row">
+                                    {% bootstrap_form user_form %}
+                                    {% bootstrap_form profile_form %}
 
                                     <div class="form-group col-md-6">
                                         <label>Your Name</label>

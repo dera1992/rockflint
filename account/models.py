@@ -17,11 +17,15 @@ class Profile(models.Model):
                                  on_delete=models.CASCADE,null=True,blank=True)
     phone = models.CharField(max_length=20)
     address = models.CharField(max_length=255,null=True,blank=True)
+    facebook = models.URLField(max_length=255, null=True, blank=True)
+    twitter = models.URLField(max_length=255, null=True, blank=True)
+    google = models.URLField(max_length=255, null=True, blank=True)
+    linkedin = models.URLField(max_length=255, null=True, blank=True)
     photo = models.ImageField(upload_to='profile/%Y/%m/%d/',blank=True, default='profile/None/no-img.jpg')
     email_confirmed = models.BooleanField(default=False)
 
     def __str__(self):
-        return "confirmation for %s" % self.first_name
+        return self.first_name
 
     @property
     def fullname(self):

@@ -9,12 +9,12 @@ import json
 from django.http import  HttpResponse
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+import uuid
 
 
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=200,
-                            unique=True,blank=True)
+    slug = models.SlugField(max_length=200,blank=True)
 
     def __str__(self):
         return self.name
@@ -22,13 +22,6 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('home:ads_list_by_category',
                        args=[self.slug])
-
-class SubCategory(models.Model):
-    category = models.ForeignKey('Category',null=True, blank=True,on_delete=models.CASCADE)
-    name = models.CharField(max_length=255)
-
-    def __str__(self):
-        return self.name
 
 class State(models.Model):
     name = models.CharField(max_length=255)
@@ -105,20 +98,26 @@ class Ads(models.Model):
         ('uncompleted', 'Uncompleted'),
         ('renovated', 'Renovated'),)
 
+    LABEL_CHOICES = (
+        ('P', 'primary'),
+        ('S', 'secondary'),
+        ('D', 'danger')
+    )
+
     profile = models.ForeignKey(Profile,
                                 on_delete=models.CASCADE)
     property_title =models.CharField( max_length=255)
     category = models.ForeignKey(Category,
                                  on_delete=models.CASCADE)
-    subcategory = models.ForeignKey(SubCategory,
-                                    on_delete=models.CASCADE)
     state = models.ForeignKey(State, on_delete=models.CASCADE)
     city = models.ForeignKey(Lga,
                             on_delete=models.CASCADE)
-    condition = models.CharField(max_length=25,choices=CONDITION)
-    property_offer = models.ManyToManyField(Offer, blank=True)
+    address = models.CharField(max_length=255, null=True, blank=True)
+    condition = models.CharField(max_length=25,choices=CONDITION, blank=True, null=True)
+    property_offer = models.ForeignKey(Offer,on_delete=models.CASCADE, blank=True, null=True)
     property_price = models.DecimalField(decimal_places=0,
                                    max_digits=30)
+    # label = models.CharField(choices=LABEL_CHOICES, max_length=1, null=True, blank=True)
     slug = models.SlugField(max_length=200,blank=True)
     property_area = models.CharField(max_length=255, null=True, blank=True)
     description = models.CharField(max_length=255, null=True, blank=True)
@@ -131,7 +130,7 @@ class Ads(models.Model):
     created = models.DateTimeField(auto_now_add=True,null=True, blank=True)
     created_date = models.DateField(auto_now_add=True, null=True, blank=True)
     updated = models.DateTimeField(auto_now=True,null=True, blank=True)
-    plan_image = models.ImageField(upload_to='ads/',
+    plan_image = models.ImageField(upload_to='plans_images/',
                                    null=True, blank=True,default='profile/None/no-img.jpg')
     church = models.BooleanField(default=False, null=True, blank=True)
     school = models.BooleanField(default=False, null=True, blank=True)
@@ -152,8 +151,6 @@ class Ads(models.Model):
     wi_fi = models.BooleanField(default=False, null=True, blank=True)
     gym = models.BooleanField(default=False, null=True, blank=True)
     active = models.BooleanField(default=True)
-    # deleted = models.BooleanField(default=False,null=True, blank=True)
-    # disabled =  models.BooleanField(default=False,null=True, blank=True)
     objects = AdsManager()#for active
 
     def __str__(self):
@@ -162,10 +159,10 @@ class Ads(models.Model):
     def get_absolute_url(self):
         return reverse('home:ad_detail', args=[self.id, self.slug])
 
-def get_image_filename(instance, filename):
-    title = instance.ads.property_title
-    slug = slugify(title)
-    return "post_images/%s-%s" % (slug, filename)
+# def get_image_filename(instance, filename):
+#     title = instance.ads.property_title
+#     slug = slugify(title)
+#     return "post_images/%s-%s" % (slug, filename)
 
 
 class AdsImages(models.Model):

@@ -1,30 +1,39 @@
+{% extends "base.html" %}
 {% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
 
 {% block title %}Log-in{% endblock %}
 
+{% block content %}
 <!-- Log In Modal -->
-    <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" aria-hidden="true">
+    <div class=" " id="login" tabindex="-1" role="dialog" aria-labelledby="registermodal" >
         <div class="modal-dialog modal-dialog-centered login-pop-form" role="document">
             <div class="modal-content" id="registermodal">
-                <span class="mod-close" data-dismiss="modal" aria-hidden="true"><i class="ti-close"></i></span>
                 <div class="modal-body">
-                    <h4 class="modal-header-title">Log In</h4>
+                    <h2 class="modal-header-title" style="text-align:center;">Log In</h2>
+                    {% if form.errors %}
+                        <p>
+                            Your username and password didn't match.
+                            Please try again.
+                        </p>
+                    {% else %}
+                        <p>Please, use the following form to log-in:</p>
+                    {% endif %}
                     <div class="login-form">
-                        <form>
-
+                        <form method="post" action=".">
+                            {% csrf_token %}
                             <div class="form-group">
-                                <label>User Name</label>
                                 <div class="input-with-icon">
-                                    <input type="text" class="form-control" placeholder="Username">
                                     <i class="ti-user"></i>
+                                    {% bootstrap_field form.username %}
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label>Password</label>
                                 <div class="input-with-icon">
-                                    <input type="password" class="form-control" placeholder="*******">
                                     <i class="ti-unlock"></i>
+                                    {% bootstrap_field form.password %}
                                 </div>
                             </div>
 
@@ -42,10 +51,11 @@
                         </ul>
                     </div>
                     <div class="text-center">
-                        <p class="mt-5"><a href="#" class="link">Forgot password?</a></p>
+                        <p class="mt-5"><a href="{% url "password_reset" %}" class="link">Forgot password?</a></p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 <!-- End Modal -->
+{% endblock %}
