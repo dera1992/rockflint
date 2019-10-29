@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
 
 {% block title %}List agent{% endblock %}
 
@@ -46,20 +50,20 @@
                 <!-- Single Agent -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="agents-grid">
-
+                    {% for agent in agents %}
                         <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
                         <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
                         <div class="agents-grid-wrap">
 
                             <div class="fr-grid-thumb">
-                                <a href="http://themezhub.com/">
+                                <a href="{% url 'others:agent_detail' id=agent.id %}">
                                     <div class="overall-rate">4.4</div>
-                                    <img src="assets/img/user-1.jpg" class="img-fluid mx-auto" alt="" />
+                                    <img src="{{ agent.photo.url }}" class="img-fluid mx-auto" alt="" />
                                 </a>
                             </div>
                             <div class="fr-grid-deatil">
-                                <h5 class="fr-can-name"><a href="#">Colin H. Renda</a></h5>
-                                <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <h5 class="fr-can-name"><a href="#">{{ agent.fullname }}</a></h5>
+                                <span class="fr-position"><i class="lni-map-marker"></i>{{ agent.address }}</span>
                                 <div class="fr-can-rating">
                                     <i class="ti-star filled"></i>
                                     <i class="ti-star filled"></i>
@@ -73,15 +77,19 @@
 
                         <div class="fr-grid-info">
                             <ul>
-                                <li>Property<span>306</span></li>
-                                <li>Email<span>colin@gmail.com</span></li>
-                                <li>Phone<span>91 123 456 7859</span></li>
+                                {% with total_property_created=ads.agent.count %}
+                                <li>Property<span>{{ total_property_created }}</span></li>
+                                {% endwith %}
+                                <li>Email<span>{{ agent.user.email }}</span></li>
+                                <li>Phone<span>{{ agent.phone }}</span></li>
                             </ul>
                         </div>
 
                         <div class="fr-grid-footer">
-                            <a href="#" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                            <a href="{% url 'others:agent_detail' id=agent.id %}" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
                         </div>
+
+                    {% endfor %}
 
                     </div>
                 </div>

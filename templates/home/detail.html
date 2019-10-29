@@ -1,158 +1,53 @@
 {% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
 
 {% block title %}Property Detail{% endblock %}
 
 {% block content %}
-   <!-- ============================ Hero Banner  Start================================== -->
-    <div class="single-advance-property gray">
-        <div class="container-fluid p-0">
-            <div class="row align-items-center">
-
-                <div class="col-lg-7 col-md-7 col-sm-12">
-                    <div class="slider-for">
-                        <a href="assets/img/p-1.jpg" class="item-slick"><img src="assets/img/p-1.jpg" alt="Alt"></a>
-                        <a href="assets/img/p-2.jpg" class="item-slick"><img src="assets/img/p-2.jpg" alt="Alt"></a>
-                        <a href="assets/img/p-3.jpg" class="item-slick"><img src="assets/img/p-3.jpg" alt="Alt"></a>
-                        <a href="assets/img/p-4.jpg" class="item-slick"><img src="assets/img/p-4.jpg" alt="Alt"></a>
-                        <a href="assets/img/p-5.jpg" class="item-slick"><img src="assets/img/p-5.jpg" alt="Alt"></a>
-                        <a href="assets/img/p-6.jpg" class="item-slick"><img src="assets/img/p-6.jpg" alt="Alt"></a>
-                        <a href="assets/img/p-7.jpg" class="item-slick"><img src="assets/img/p-7.jpg" alt="Alt"></a>
-                        <a href="assets/img/p-8.jpg" class="item-slick"><img src="assets/img/p-8.jpg" alt="Alt"></a>
-                    </div>
-
-                </div>
-
-                <div class="col-lg-5 col-md-5 col-sm-12">
-                    <div class="single-advance-caption">
-
-                        <div class="property-name-info">
-                            <h4 class="property-name">Green Realty Smart Apartment</h4>
-                            <p class="property-desc">2 Bedrooms, Kitchen,and bathrooms included with balcony</p>
-                        </div>
-
-                        <div class="property-price-info">
-                            <h4 class="property-price">$23,5487.00</h4>
-                            <p class="property-sqa">70,00<sub>m2</sub> (5485$/m2)</p>
-                        </div>
-
-                        <div class="property-statement">
-                            <ul>
-                                <li>
-                                    <i class="lni-apartment"></i>
-                                    <div class="ps-trep">
-                                        <span>Type</span>
-                                        <h5 class="ps-type">Apartment</h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="lni-restaurant"></i>
-                                    <div class="ps-trep">
-                                        <span>Build On</span>
-                                        <h5 class="ps-type">2007</h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="lni-helmet"></i>
-                                    <div class="ps-trep">
-                                        <span>Maintenence Fee</span>
-                                        <h5 class="ps-type">$710/PA</h5>
-                                    </div>
-                                </li>
-                                <li>
-                                    <i class="lni-leaf"></i>
-                                    <div class="ps-trep">
-                                        <span>Let</span>
-                                        <h5 class="ps-type">Own</h5>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="row">
-                <div class="col-lg-12 col-md-12">
-                    <div class="slider-nav">
-                        <div class="item-slick"><img src="assets/img/p-1.jpg" alt="Alt"></div>
-                        <div class="item-slick"><img src="assets/img/p-2.jpg" alt="Alt"></div>
-                        <div class="item-slick"><img src="assets/img/p-3.jpg" alt="Alt"></div>
-                        <div class="item-slick"><img src="assets/img/p-4.jpg" alt="Alt"></div>
-                        <div class="item-slick"><img src="assets/img/p-5.jpg" alt="Alt"></div>
-                        <div class="item-slick"><img src="assets/img/p-6.jpg" alt="Alt"></div>
-                        <div class="item-slick"><img src="assets/img/p-7.jpg" alt="Alt"></div>
-                        <div class="item-slick"><img src="assets/img/p-8.jpg" alt="Alt"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="spd-wrap">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-12 col-md-12">
-
-                    <div class="slide-property-detail">
-
-                        <div class="slide-property-first">
-                            <div class="pr-price-into">
-                                <h2>$1700 <i>/ monthly</i> <span class="prt-type rent">For Rental</span></h2>
-                                <span><i class="lni-map-marker"></i> 778 Country St. Panama City, FL</span>
-                            </div>
-                        </div>
-
-                        <div class="slide-property-sec">
-                            <div class="pr-all-info">
-
-                                <div class="pr-single-info">
-                                    <div class="share-opt-wrap">
-                                        <button type="button" class="btn-share" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-original-title="Share this">
-                                            <i class="lni-share"></i>
-                                        </button>
-                                        <div class="dropdown-menu animated flipInX">
-                                            <a href="#" class="cl-facebook"><i class="lni-facebook"></i></a>
-                                            <a href="#" class="cl-twitter"><i class="lni-twitter"></i></a>
-                                            <a href="#" class="cl-gplus"><i class="lni-google-plus"></i></a>
-                                            <a href="#" class="cl-instagram"><i class="lni-instagram"></i></a>
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="pr-single-info">
-                                    <a href="JavaScript:Void(0);" data-toggle="tooltip" data-original-title="Get Print"><i class="ti-printer"></i></a>
-                                </div>
-
-                                <div class="pr-single-info">
-                                    <a href="JavaScript:Void(0);" class="compare-button" data-toggle="tooltip" data-original-title="Compare"><i class="ti-control-shuffle"></i></a>
-                                </div>
-
-                                <div class="pr-single-info">
-                                    <a href="JavaScript:Void(0);" class="like-bitt add-to-favorite" data-toggle="tooltip" data-original-title="Add To Favorites"><i class="lni-heart-filled"></i></a>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ============================ Hero Banner End ================================== -->
-
-    <!-- ============================ Property Detail Start ================================== -->
+   <!-- ============================ Property Detail Start ================================== -->
     <section class="gray">
         <div class="container">
             <div class="row">
 
                 <!-- property main detail -->
                 <div class="col-lg-8 col-md-12 col-sm-12">
+
+                    <div class="slide-property-first mb-4">
+                        <div class="pr-price-into">
+                            <h2>₦{{ ad.property_price}} <i>/ {{ ad.rent_period }}</i> <span class="prt-type rent">{{ ad.property_offer }}</span></h2>
+                            <span><i class="lni-map-marker"></i> {{ ad.address }}</span>
+                        </div>
+                    </div>
+
+                    <div class="property3-slide single-advance-property mb-4">
+
+                        <div class="slider-for">
+                            {% for adv in adsimage %}
+
+                                <a href="{{adv.ad_image.url}}" class="item-slick">
+                                    {% thumbnail adv.ad_image "770x511" crop="center"  as im %}
+                                        <img  style="margin:{{ im|margin:"770x511" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" alt="Alt">
+                                    {% endthumbnail %}
+                                </a>
+
+                            {% endfor %}
+                        </div>
+                        <div class="slider-nav">
+                            {% for adv2 in adsimage %}
+                                <div class="item-slick">
+
+                                       {% thumbnail adv2.ad_image "129x86" crop="center"  as im %}
+                                         <img  style="margin:{{ im|margin:"129x86" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" alt="Alt">
+                                       {% endthumbnail %}
+
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
 
                     <!-- Single Block Wrap -->
                     <div class="block-wrap">
@@ -163,14 +58,17 @@
 
                         <div class="block-body">
                             <ul class="dw-proprty-info">
-                                <li><strong>Bedrooms</strong>2</li>
-                                <li><strong>Bathrooms</strong>2</li>
-                                <li><strong>Garage</strong>Yes</li>
-                                <li><strong>Area</strong>570 sq ft</li>
-                                <li><strong>Type</strong>Apartment</li>
-                                <li><strong>Price</strong>$53264</li>
-                                <li><strong>City</strong>New York</li>
-                                <li><strong>Build On</strong>2007</li>
+                                <li><strong>Bedrooms</strong>{{ ad.bedroom }}</li>
+                                <li><strong>Bathrooms</strong>{{ ad.bathroom }}</li>
+                                <li><strong>State</strong>{{ ad.state }}</li>
+                                <li><strong>Area</strong>{{ ad.property_area}} sq ft</li>
+                                <li><strong>Type</strong>{{ ad.category }}</li>
+                                <li><strong>House Condition</strong>{{ ad.condition }}</li>
+                                <li><strong>Price</strong>₦{{ ad.property_price }}</li>
+                                <li><strong>City</strong>{{ ad.city}}</li>
+                                <li><strong>Build On</strong>{{ ad.building_age }}</li>
+                                <li><strong>Propeerty Room</strong>{{ ad.property_room }}</li>
+                                <li><strong>Lot Size</strong>{{ ad.lot_size }}</li>
                             </ul>
                         </div>
 
@@ -184,7 +82,7 @@
                         </div>
 
                         <div class="block-body">
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                            <p>{{ ad.description }}</p>
                         </div>
 
                     </div>
@@ -198,18 +96,42 @@
 
                         <div class="block-body">
                             <ul class="avl-features third">
-                                <li>Air Conditioning</li>
-                                <li>Swimming Pool</li>
-                                <li>Central Heating</li>
-                                <li>Laundry Room</li>
-                                <li>Gym</li>
-                                <li>Alarm</li>
-                                <li>Window Covering</li>
-                                <li>Internet</li>
-                                <li>Pets Allow</li>
-                                <li>Free WiFi</li>
-                                <li>Car Parking</li>
-                                <li>Spa & Massage</li>
+                                {% if ad.air_conditioning == yes %}
+                                    <li>Air Conditioning</li>
+                                {% endif %}
+                                {% if ad.swimming_pool == yes %}
+                                    <li>Swimming Pool</li>
+                                {% endif %}
+                                {% if ad.parking == yes %}
+                                    <li>Parking Space</li>
+                                {% endif %}
+                                {% if ad.lawn == yes %}
+                                    <li>Lawn</li>
+                                {% endif %}
+                                {% if ad.gym == yes %}
+                                    <li>Gym</li>
+                                {% endif %}
+                                {% if ad.sewer == yes %}
+                                    <li>Sewer</li>
+                                {% endif %}
+                                {% if ad.water == yes %}
+                                    <li>Water</li>
+                                {% endif %}
+                                {% if ad.microwave == yes %}
+                                    <li>Microwave</li>
+                                {% endif %}
+                                {% if ad.swimming_pool == yes %}
+                                    <li>Swimming Pool</li>
+                                {% endif %}
+                                {% if ad.barbecue == yes %}
+                                    <li>Barbecue</li>
+                                {% endif %}
+                                {% if ad.tv_cable == yes %}
+                                     <li>Tv Cable</li>
+                                {% endif %}
+                                {% if ad.wi_fi == yes %}
+                                     <li>Wi_fie</li>
+                                {% endif %}
                             </ul>
                         </div>
 
@@ -232,35 +154,49 @@
                                     </div>
                                     <div id="firstfloor" class="collapse" aria-labelledby="firstFloor" data-parent="#floor-option">
                                         <div class="card-body">
-                                            <img src="assets/img/floor.jpg" class="img-fluid" alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="seconfFloor">
-                                        <h2 class="mb-0">
-                                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#secondfloor">Second Floor<span>710 sq ft</span></button>
-                                        </h2>
-                                    </div>
-                                    <div id="secondfloor" class="collapse" aria-labelledby="seconfFloor" data-parent="#floor-option">
-                                        <div class="card-body">
-                                            <img src="assets/img/floor.jpg" class="img-fluid" alt="" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header" id="third-garage">
-                                        <h2 class="mb-0">
-                                            <button type="button" class="btn btn-link collapsed" data-toggle="collapse" data-target="#garages">Garage<span>520 sq ft</span></button>
-                                        </h2>
-                                    </div>
-                                    <div id="garages" class="collapse" aria-labelledby="third-garage" data-parent="#floor-option">
-                                        <div class="card-body">
-                                            <img src="assets/img/floor.jpg" class="img-fluid" alt="" />
+                                            <img src="{{ad.plan_image.url}}" class="img-fluid" alt="" />
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Single Block Wrap -->
+                    <div class="block-wrap">
+
+                        <div class="block-header">
+                            <h4 class="block-title">Schedule A Meeting</h4>
+                        </div>
+
+                        <div class="block-body">
+                            <form action="." method="post">
+                            <div class="form-row">
+
+                                {% csrf_token %}
+{#                            <div class="">#}
+                                    <div class="form-group col-md-6">
+                                        {% bootstrap_field schedule_form.date %}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        {% bootstrap_field schedule_form.time %}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        {% bootstrap_field schedule_form.name %}
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        {% bootstrap_field schedule_form.phone %}
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        {% bootstrap_field schedule_form.message %}
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-3">
+                                       <button class="btn btn-theme full-width">Send Message</button>
+                                    </div>
+                            </div>
+                            </form>
+
                         </div>
 
                     </div>
@@ -283,71 +219,146 @@
 
 
 
+
+
                 </div>
 
                 <!-- property Sidebar -->
                 <div class="col-lg-4 col-md-12 col-sm-12">
                     <div class="page-sidebar">
 
+                        <!-- slide-property-sec -->
+                        <div class="slide-property-sec mb-4">
+                            <div class="pr-all-info">
+
+                                <div class="pr-single-info">
+                                    <div class="share-opt-wrap">
+                                        <button type="button" class="btn-share" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-original-title="Share this">
+                                            <i class="lni-share"></i>
+                                        </button>
+                                        <div class="dropdown-menu animated flipInX">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{request.built_absolute_url}} "
+                                               class="cl-facebook"><i class="lni-facebook"></i></a>
+                                            <a href="https://twitter.com/home?status=I'm%20going%20to%20learn%20to%20Code
+                                                ...%20Come%20build%20an%20web%20apsp%20with%20me!%20%23CFE%20and%20@justinmitchel%20
+                                                {{request.built_absolute_url}}" class="cl-twitter"><i class="lni-twitter"></i></a>
+                                            <a href="https://plus.google.com/share?url= {{request.built_absolute_url}}" class="cl-gplus"><i class="lni-google-plus"></i></a>
+                                            <a href="#" class="cl-instagram"><i class="lni-instagram"></i></a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="pr-single-info">
+                                    <a href="JavaScript:Void(0);" class="compare-button" data-toggle="tooltip" data-original-title="Compare"><i class="ti-control-shuffle"></i></a>
+                                </div>
+
+                                <div class="pr-single-info">
+                                    <a href="JavaScript:Void(0);" class="like-bitt add-to-favorite" data-toggle="tooltip" data-original-title="Add To Favorites"><i class="lni-heart-filled"></i></a>
+                                </div>
+
+                            </div>
+                        </div>
+
                         <!-- Agent Detail -->
                         <div class="agent-widget">
                             <div class="agent-title">
-                                <div class="agent-photo"><img src="assets/img/user-6.jpg" alt=""></div>
+                                <div class="agent-photo"><img src="{{ ad.profile.photo.url }}" alt=""></div>
                                 <div class="agent-details">
-                                    <h4><a href="#">Shivangi Preet</a></h4>
-                                    <span><i class="lni-phone-handset"></i>(91) 123 456 7895</span>
+                                    <h4><a href="#">{{ ad.profile.fullname }}</a></h4>
+                                    <span><i class="lni-phone-handset"></i>{{ ad.profile.phone }}</span>
                                 </div>
                                 <div class="clearfix"></div>
                             </div>
 
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Email">
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Your Phone">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control">I'm interested in this property.</textarea>
-                            </div>
-                            <button class="btn btn-theme full-width">Send Message</button>
+                            <form action="." method="post">
+                                {{ form.as_p }}
+                                {% csrf_token %}
+
+                                 <button class="btn btn-theme full-width">Send Message</button>
+                            </form>
+
                         </div>
 
-                        <!-- Mortgage Calculator -->
+                        <!-- Find New Property -->
                         <div class="sidebar-widgets">
 
-                            <h4>Mortgage Calculator</h4>
+                            <h4>Find New Property</h4>
 
                             <div class="form-group">
                                 <div class="input-with-icon">
-                                    <input type="text" class="form-control" placeholder="Sale Price">
-                                    <i class="ti-money"></i>
+                                    <input type="text" class="form-control" placeholder="Neighborhood">
+                                    <i class="ti-search"></i>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="text" class="form-control" placeholder="Minimum">
+                                            <i class="ti-money"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="form-group">
+                                        <div class="input-with-icon">
+                                            <input type="text" class="form-control" placeholder="Maximum">
+                                            <i class="ti-money"></i>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="input-with-icon">
-                                    <input type="text" class="form-control" placeholder="Down Payment">
-                                    <i class="ti-money"></i>
+                                    <select id="bedrooms" class="form-control">
+                                        <option value="">&nbsp;</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <i class="fas fa-bed"></i>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="input-with-icon">
-                                    <input type="text" class="form-control" placeholder="Loan Term (Years)">
-                                    <i class="ti-calendar"></i>
+                                    <select id="bathrooms" class="form-control">
+                                        <option value="">&nbsp;</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                    <i class="fas fa-bath"></i>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="input-with-icon">
-                                    <input type="text" class="form-control" placeholder="Interest Rate">
-                                    <i class="fa fa-percent"></i>
+                                    <select id="cities" class="form-control">
+                                        <option value="">&nbsp;</option>
+                                        <option value="1">Los Angeles, CA</option>
+                                        <option value="2">New York City, NY</option>
+                                        <option value="3">Chicago, IL</option>
+                                        <option value="4">Houston, TX</option>
+                                        <option value="5">Philadelphia, PA</option>
+                                        <option value="6">San Antonio, TX</option>
+                                        <option value="7">San Jose, CA</option>
+                                    </select>
+                                    <i class="ti-briefcase"></i>
                                 </div>
                             </div>
 
-                            <button class="btn btn-theme full-width">Calculate</button>
+                            <button class="btn btn-theme full-width">Find New Home</button>
 
                         </div>
+
 
                         <!-- Featured Property -->
                         <div class="sidebar-widgets">
@@ -358,12 +369,17 @@
 
                                 <!-- Single Property -->
                                 <div class="single-items">
+                                    {% for city in same_city %}
                                     <div class="property-listing property-1">
 
                                         <div class="listing-img-wrapper">
-                                            <a href="single-property-2.html">
-                                                <img src="assets/img/p-1.jpg" class="img-fluid mx-auto" alt="" />
-                                            </a>
+                                                {% for image in city.get_second_image %}
+                                                    {% thumbnail image.ad_image "800x530" crop="10px 10px"  as im %}
+                                                        <div><a href="{{ city.get_absolute_url }}">
+                                                            <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  /></a>
+                                                        </div>
+                                                    {% endthumbnail %}
+                                                {% endfor %}
                                             <div class="listing-like-top">
                                                 <i class="ti-heart"></i>
                                             </div>
@@ -374,15 +390,15 @@
                                                 <i class="ti-star filled"></i>
                                                 <i class="ti-star"></i>
                                             </div>
-                                            <span class="property-type">For Sale</span>
+                                            <span class="property-type">{{ city.property_offer }}</span>
                                         </div>
 
                                         <div class="listing-content">
 
                                             <div class="listing-detail-wrapper">
                                                 <div class="listing-short-detail">
-                                                    <h4 class="listing-name"><a href="single-property-2.html">Resort Valley Ocs</a></h4>
-                                                    <span class="listing-location"><i class="ti-location-pin"></i>3848 Swick Hill, New Orleans</span>
+                                                    <h4 class="listing-name"><a href="single-property-2.html">{{ city.property_title }}</a></h4>
+                                                    <span class="listing-location"><i class="ti-location-pin"></i>{{ city.address }}</span>
                                                 </div>
                                                 <div class="list-author">
                                                     <a href="#"><img src="assets/img/add-user.png" class="img-fluid img-circle avater-30" alt=""></a>
@@ -391,24 +407,25 @@
 
                                             <div class="listing-features-info">
                                                 <ul>
-                                                    <li><strong>Bed:</strong>2</li>
-                                                    <li><strong>Bath:</strong>1</li>
-                                                    <li><strong>Sqft:</strong>3,700</li>
+                                                    <li><strong>Bed:</strong>{{ city.bedroom }}</li>
+                                                    <li><strong>Bath:</strong>{{ city.bathroom }}</li>
+                                                    <li><strong>Sqft:</strong>{{ city.property_area }}</li>
                                                 </ul>
                                             </div>
 
                                             <div class="listing-footer-wrapper">
                                                 <div class="listing-price">
-                                                    <h4 class="list-pr">$632,580</h4>
+                                                    <h4 class="list-pr">₦{{ city.property_price }}</h4>
                                                 </div>
                                                 <div class="listing-detail-btn">
-                                                    <a href="single-property-2.html" class="more-btn">More Info</a>
+                                                    <a href="{{ city.get_absolute_url }}" class="more-btn">More Info</a>
                                                 </div>
                                             </div>
 
                                         </div>
 
                                     </div>
+                                    {% endfor %}
                                 </div>
 
                             </div>

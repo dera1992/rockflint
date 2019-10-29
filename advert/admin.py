@@ -3,13 +3,13 @@ from .models import Category, Ads,AdsImages,Offer,State,Lga
 
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ['name']
+    list_display = ['name','slug']
     prepopulated_fields = {'slug': ('name',)}
 
 
 @admin.register(Ads)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['property_title','property_price',
+    list_display = ['property_title','property_price','slug',
     'active', 'created', 'updated']
     list_filter = ['active', 'created', 'updated']
     list_editable = ['property_price', 'active']

@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
 
 {% block title %}Blog Detail{% endblock %}
 
@@ -28,36 +32,34 @@
             <div class="row">
 
                 <div class="col-lg-7 col-md-7">
-
+                <form method="POST" action="."  novalidate="novalidate" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control simple">
+                               {% bootstrap_field form.name %}
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control simple">
+                                {% bootstrap_field form.email %}
                             </div>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label>Subject</label>
-                        <input type="text" class="form-control simple">
+                        {% bootstrap_field form.subject %}
                     </div>
 
                     <div class="form-group">
-                        <label>Message</label>
-                        <textarea class="form-control simple"></textarea>
+                        {% bootstrap_field form.message %}
                     </div>
 
                     <div class="form-group">
                         <button class="btn btn-theme" type="submit">Submit Request</button>
                     </div>
 
+                </form>
                 </div>
 
                 <div class="col-lg-5 col-md-5">

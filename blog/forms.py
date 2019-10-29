@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Post, Information
+from .models import Post
 
 class PostForm(forms.ModelForm):
     publish = forms.DateField(widget=forms.SelectDateWidget)
@@ -14,9 +14,3 @@ class PostForm(forms.ModelForm):
             "publish",
         ]
 
-class InformationForm(forms.ModelForm):
-    # content = forms.TextField(required = True)
-
-    class Meta:
-        model = Information
-        fields = ('name','subject','email','message')

@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
 
 {% block title %}My properties{% endblock %}
 
@@ -44,20 +47,24 @@
 
                                 <!-- Item #1 -->
                                 <tr>
-                                    <td class="property-container">
-                                        <img src="assets/img/p-2.jpg" alt="">
-                                        <div class="title">
-                                            <h4><a href="#">Serene Uptown</a></h4>
-                                            <span>6 Bishop Ave. Perkasie, PA </span>
-                                            <span class="table-property-price">$900 / monthly</span>
-                                        </div>
-                                    </td>
-                                    <td class="expire-date">December 30, 2016</td>
-                                    <td class="action">
-                                        <a href="#"><i class="ti-pencil"></i> Edit</a>
-                                        <a href="#"><i class="ti-eye"></i> Hide</a>
-                                        <a href="#" class="delete"><i class="ti-close"></i> Delete</a>
-                                    </td>
+                                    {% for mya in myab %}
+                                        <td class="property-container">
+                                            {% for image in mya.get_second_image %}
+                                                <img src="{{image.ad_image.url}}" alt="">
+                                            {% endfor %}
+                                            <div class="title">
+                                                <h4><a href="{{ mya.get_absolute_url }}">{{mya.property_title}}</a></h4>
+                                                <span>{{mya.address}}</span>
+                                                <span class="table-property-price">₦{{mya.property_price}}/ {{mya.rent_period}}</span>
+                                            </div>
+                                        </td>
+                                        <td class="expire-date">December 30, 2016</td>
+                                        <td class="action">
+                                            <a href="{% url 'advert:edit_post' pk=mya.pk %}"><i class="ti-pencil"></i> Edit</a>
+                                            <a href="{% url 'owner:delete_post' pk=mya.pk %}"><i class="ti-eye"></i> Hide</a>
+                                            <a href="{% url 'owner:delete_post' pk=mya.pk %}" class="delete"><i class="ti-close"></i> Delete</a>
+                                        </td>
+                                    {% endfor %}
                                 </tr>
 
                             </tbody>

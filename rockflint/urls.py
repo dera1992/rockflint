@@ -12,5 +12,6 @@ urlpatterns = [
     path('',include('home.urls', namespace='home')),
     path('others/',include('others.urls', namespace='others')),
     path('owner/',include('owner.urls', namespace='owner')),
+    path('search/',include('search.urls', namespace='search')),
 ]
 if settings.DEBUG:urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

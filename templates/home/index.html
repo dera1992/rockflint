@@ -38,20 +38,24 @@
 
                                         <div class="listing-img-wrapper">
                                             <div class="list-img-slide">
-                                                {% for adv in adsimage %}
+
                                                 <div class="click">
-                                                    <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-1.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
-                                                    <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-2.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
-                                                    <div><a href="single-property-1.html"><img src="{% static 'assets/img/p-3.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
+                                                    {% for images in latest.get_first_image %}
+                                                        {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
+                                                            <div><a href="{{ latest.get_absolute_url }}">
+                                                                <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  /></a>
+                                                            </div>
+                                                        {% endthumbnail %}
+                                                    {% endfor %}
                                                 </div>
-                                                {% endfor %}
+
                                             </div>
-                                            <span class="property-type">For Rent</span>
+                                            <span class="property-type">{{ latest.property_offer }}</span>
                                         </div>
 
                                         <div class="listing-detail-wrapper pb-0">
                                             <div class="listing-short-detail">
-                                                <h4 class="listing-name"><a href="single-property-1.html">{{ latest.property_title }}</a><i class="list-status ti-check"></i></h4>
+                                                <h4 class="listing-name"><a href="{{ latest.get_absolute_url }}">{{ latest.property_title }}</a><i class="list-status ti-check"></i></h4>
                                             </div>
                                         </div>
 
@@ -169,40 +173,47 @@
 					<div class="row">
 						<!-- Single Property -->
 						<div class="col-lg-4 col-md-6 col-sm-12">
-							<div class="property-listing property-2">
+							{% for ad in ads %}
+                                    <div class="property-listing property-2">
 
-								<div class="listing-img-wrapper">
-									<div class="list-img-slide">
-										<div class="click">
-											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-1.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
-											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-2.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
-											<div><a href="single-property-1.html"><img src="{% static 'assets/img/p-3.jpg' %}" class="img-fluid mx-auto" alt="" /></a></div>
-										</div>
-									</div>
-									<span class="property-type">For Rent</span>
-								</div>
+                                        <div class="listing-img-wrapper">
+                                            <div class="list-img-slide">
 
-								<div class="listing-detail-wrapper pb-0">
-									<div class="listing-short-detail">
-										<h4 class="listing-name"><a href="single-property-1.html">New Clue Apartment</a><i class="list-status ti-check"></i></h4>
-									</div>
-								</div>
+                                                <div class="click">
+                                                    {% for images in ad.get_first_image %}
+                                                        {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
+                                                            <div><a href="{{ ad.get_absolute_url }}">
+                                                                <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  /></a>
+                                                            </div>
+                                                        {% endthumbnail %}
+                                                    {% endfor %}
+                                                </div>
 
-								<div class="price-features-wrapper">
-									<div class="listing-price-fx">
-										<h6 class="listing-card-info-price price-prefix">10,547<span class="price-suffix">/mo</span></h6>
-									</div>
-									<div class="list-fx-features">
-										<div class="listing-card-info-icon">
-											<span class="inc-fleat inc-bed">3 Beds</span>
-										</div>
-										<div class="listing-card-info-icon">
-											<span class="inc-fleat inc-bath">1 Bath</span>
-										</div>
-									</div>
-								</div>
+                                            </div>
+                                            <span class="property-type">{{ ad.property_offer }}</span>
+                                        </div>
 
-							</div>
+                                        <div class="listing-detail-wrapper pb-0">
+                                            <div class="listing-short-detail">
+                                                <h4 class="listing-name"><a href="{{ ad.get_absolute_url }}">{{ ad.property_title }}</a><i class="list-status ti-check"></i></h4>
+                                            </div>
+                                        </div>
+
+                                        <div class="price-features-wrapper">
+                                            <div class="listing-price-fx">
+                                                <h6 class="listing-card-info-price price-prefix">{{ ad.property_price}}<span class="price-suffix">/{{ ad.rent_period }}</span></h6>
+                                            </div>
+                                            <div class="list-fx-features">
+                                                <div class="listing-card-info-icon">
+                                                    <span class="inc-fleat inc-bed">{{ ad.bedroom }}Beds</span>
+                                                </div>
+                                                <div class="listing-card-info-icon">
+                                                    <span class="inc-fleat inc-bath">{{ ad.bathroom }} Bath</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
 						</div>
 						<!-- End Single Property -->
 					</div>

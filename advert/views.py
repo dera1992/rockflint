@@ -49,9 +49,9 @@ def postAd(request):
 
 
 
-def editAd(request, id):
+def editAd(request, pk):
     if id:
-        ad = Ads.objects.get(pk=id)  # if this is an edit form, replace the author instance with the existing one
+        ad = Ads.objects.get(id=pk)  # if this is an edit form, replace the author instance with the existing one
     else:
         ad= Ads()
     postForm = AdsForm(instance=ad) # setup a form for the parent

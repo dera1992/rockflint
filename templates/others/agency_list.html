@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
 
 {% block title %}List of agencies{% endblock %}
 
@@ -47,24 +51,25 @@
 
                     <!-- Single Agency -->
                     <div class="agency agency-list">
+                        {% for agency in agentes %}
 
-                        <a href="agency-page.html" class="agency-avatar">
-                            <img src="assets/img/agency-9.jpg" alt="">
+                        <a href="{% url 'others:agency_detail' id=agency.id %}" class="agency-avatar">
+                            <img src="{{ agency.photo.url }}" alt="">
                         </a>
 
                         <div class="agency-content">
                             <div class="agency-name">
-                                <h4><a href="agency-page.html">Isvalia truek</a></h4>
-                                <span><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                <h4><a href="{% url 'others:agency_detail' id=agency.id %}">{{ agency.fullname }}</a></h4>
+                                <span><i class="lni-map-marker"></i>{{ agency.address }}</span>
                             </div>
 
                             <div class="agency-desc">
-                            <p>Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</p>
+                            <p>{{ agency.description }}</p>
                             </div>
 
                             <ul class="agency-detail-info">
-                                <li><i class="lni-phone-handset"></i>(123) 123-456</li>
-                                <li><i class="lni-envelope"></i><a href="#">contact@example.com</a></li>
+                                <li><i class="lni-phone-handset"></i>{{ agency.phone }}</li>
+                                <li><i class="lni-envelope"></i><a href="#">{{ agency.user.email }}</a></li>
                             </ul>
 
                             <ul class="social-icons">
@@ -75,6 +80,8 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
+
+                        {% endfor %}
 
                     </div>
 

@@ -132,6 +132,7 @@ class Ads(models.Model):
     updated = models.DateTimeField(auto_now=True,null=True, blank=True)
     plan_image = models.ImageField(upload_to='plans_images/',
                                    null=True, blank=True,default='profile/None/no-img.jpg')
+
     church = models.BooleanField(default=False, null=True, blank=True)
     school = models.BooleanField(default=False, null=True, blank=True)
     mosque = models.BooleanField(default=False, null=True, blank=True)
@@ -159,6 +160,14 @@ class Ads(models.Model):
     def get_absolute_url(self):
         return reverse('home:ad_detail', args=[self.id, self.slug])
 
+    def get_first_image(self):
+        images = list(self.images.all())
+        return images[0:3] if images else None
+
+    def get_second_image(self):
+        images = list(self.images.all())
+        return images[0:1] if images else None
+
 # def get_image_filename(instance, filename):
 #     title = instance.ads.property_title
 #     slug = slugify(title)
@@ -166,5 +175,8 @@ class Ads(models.Model):
 
 
 class AdsImages(models.Model):
-    ads = models.ForeignKey(Ads, on_delete=models.CASCADE)
-    ad_image = models.ImageField(upload_to='ads/', default='profile/None/no-img.jpg')
+    ads = models.ForeignKey(Ads,related_name="images", on_delete=models.CASCADE)
+    ad_image = models.ImageField(upload_to='ads/', default='profile/None/no-img.jpg', null=True, blank=True)
+
+    def get_ordering_queryset(self):
+        return self.ads.images.all()

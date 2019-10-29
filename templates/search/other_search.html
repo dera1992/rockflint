@@ -1,96 +1,113 @@
 {% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
 
 <div class="hero-search-wrap">
     <div class="hero-search">
         <h1>Find Your Dream</h1>
     </div>
-    <div class="hero-search-content">
+    <form method="GET" action="{% url 'search:filter' %}">
+        <div class="hero-search-content">
 
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <input type="text" class="form-control" placeholder="Neighborhood">
-                        <i class="ti-search"></i>
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <input type="search" class="form-control" name="title_contains_query" placeholder="Search">
+                            <i class="ti-search"></i>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <input type="number" name="ad_price_min" class="form-control" placeholder="Minimum Price">
+                            <i class="₦">₦</i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <input type="number" name="ad_price_max" class="form-control" placeholder="Maximum Price">
+                            <i class="">₦</i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <select id="bedrooms" class="form-control" name="bedroom">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">More than 5</option>
+                            </select>
+                            <i class="fas fa-bed"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <select id="bathrooms" class="form-control" name="bathroom">
+                                <option value="">&nbsp;</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">More than 5</option>
+                            </select>
+                            <i class="fas fa-bath"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <select id="states" class="form-control" name="state">
+                                <option value="">&nbsp;</option>
+                                {% for state in states %}
+                                  <option value="{{ state }}">{{ state }}</option>
+                                {% endfor %}
+                            </select>
+                            <i class="ti-briefcase"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6">
+                    <div class="form-group">
+                        <div class="input-with-icon">
+                            <select id="cities" class="form-control" name="city">
+                                <option value="">&nbsp;</option>
+                                {% for cit in cities %}
+                                  <option value="{{ cit }}">{{ cit }}</option>
+                                {% endfor %}
+                            </select>
+                            <i class="ti-briefcase"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <input type="text" class="form-control" placeholder="Minimum">
-                        <i class="ti-money"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <input type="text" class="form-control" placeholder="Maximum">
-                        <i class="ti-money"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="hero-search-action">
+            <button type="submit" class="btn search-btn">Search</button>
+{#            <a href="#" class="btn search-btn">Search Result</a>#}
         </div>
-
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <select id="bedrooms" class="form-control">
-                            <option value="">&nbsp;</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <i class="fas fa-bed"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <select id="bathrooms" class="form-control">
-                            <option value="">&nbsp;</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                        </select>
-                        <i class="fas fa-bath"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <div class="form-group">
-                    <div class="input-with-icon">
-                        <select id="cities" class="form-control">
-                            <option value="">&nbsp;</option>
-                            <option value="1">Los Angeles, CA</option>
-                            <option value="2">New York City, NY</option>
-                            <option value="3">Chicago, IL</option>
-                            <option value="4">Houston, TX</option>
-                            <option value="5">Philadelphia, PA</option>
-                            <option value="6">San Antonio, TX</option>
-                            <option value="7">San Jose, CA</option>
-                        </select>
-                        <i class="ti-briefcase"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="hero-search-action">
-        <a href="#" class="btn search-btn">Search Result</a>
-    </div>
+    </form>
 </div>

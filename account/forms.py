@@ -92,7 +92,7 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('first_name', 'last_name','phone', 'address', 'photo','agent_type',
-                  'facebook','twitter','google','linkedin')
+                  'facebook','twitter','google','linkedin','description')
 
     def __init__(self, *args, **kwargs):
         super(ProfileEditForm, self).__init__(*args, **kwargs)

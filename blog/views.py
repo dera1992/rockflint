@@ -21,7 +21,7 @@ from advert.models import Ads
 
 from comments.forms import CommentForm
 from comments.models import  Comment
-from .forms import PostForm, InformationForm
+from .forms import PostForm
 from .models import Post
 
 
@@ -152,22 +152,5 @@ def post_delete(request, slug=None):
 
 # for contact
 
-def create_contact(request):
-    if request.POST:
-        form = InformationForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.user = request.user
-            post.save()
 
-            # text = form.cleaned_data['headline','content']
-            messages.add_message(request, messages.SUCCESS, 'Your message has been recieved')
-            form = InformationForm()
-            return redirect('home:home')
-
-    else:
-        form = InformationForm()
-
-        args = {'form': form}
-        return render(request, 'blog/contact.html', args)
 

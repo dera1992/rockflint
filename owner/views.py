@@ -20,7 +20,7 @@ def my_property(request):
     lates = Ads.objects.all().order_by('-created_date')[:3]
     counts = Ads.objects.all().values('category__name').annotate(total=Count('category'))
 
-    paginator = Paginator(myab_list, 4)  # Show 25 contacts per page
+    paginator = Paginator(myab_list, 6)  # Show 25 contacts per page
     page_request_var = "page"
     page = request.GET.get('page')
     try:
@@ -38,3 +38,10 @@ def my_property(request):
 
 def bookmarked(request):
     return render(request, 'owner/bookmarked.html', {})
+
+
+def delete_post(request,pk=None):
+    ad = Ads.objects.get(id=pk)
+    ad.is_active = False
+    messages.success(request, "Successfuly deleted")
+    return redirect('home:my_aids')

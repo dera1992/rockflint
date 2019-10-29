@@ -30,7 +30,10 @@ def upload_location(instance, filename):
 
 
 class Post(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1,on_delete=models.CASCADE)
+
+    profile = models.ForeignKey(Profile,
+                                on_delete=models.CASCADE,null=True,
+                              blank=True)
     title = models.CharField(max_length=250)
     slug = models.SlugField(unique=True, blank=True)
     image = models.ImageField(upload_to=upload_location,
@@ -85,12 +88,3 @@ pre_save.connect(pre_save_post_receiver, sender=Post)
 
 # for contact
 
-class Information (models.Model):
-    name = models.CharField(max_length=300,blank=True, null=True)
-    subject = models.CharField(max_length=200)
-    message = models.TextField()
-    pub_date = models.DateField(auto_now_add=True)
-    email = models.EmailField(max_length=200)
-
-    def __str__(self):
-        return self.subject

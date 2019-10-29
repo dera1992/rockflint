@@ -32,42 +32,19 @@
                         <div class="post-details">
 
                             <div class="post-featured-img">
-                                <img class="img-fluid" src="assets/img/p-1.jpg" alt="">
+                                {% if instance.image %}
+                                <img class="img-fluid" src="{{ instance.image.url }}" alt="">
+                                {% endif %}
                             </div>
 
                             <div class="post-top-meta">
                                 <ul class="meta-comment-tag">
-                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span>by Rosalina Doe</a></li>
+                                    <li><a href="#"><span class="icons"><i class="ti-user"></i></span>by {{ instance.profile.full_name }}</a></li>
                                     <li><a href="#"><span class="icons"><i class="ti-comment-alt"></i></span>45 Comments</a></li>
                                 </ul>
                             </div>
-                            <h2 class="post-title">Lorem ipsum dolor sit amet, cons pisicing elit, sed do.</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem. <br><br> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.</p>
-                            <blockquote>
-                                <span class="icon"><i class="fas fa-quote-left"></i></span>
-                                <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tem
-                                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ut aliquip ex ea commodo onsequat.</p>
-                                <h5 class="name">- Rosalina Pong</h5>
-                            </blockquote>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-                                mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit
-                                voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo
-                                inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-                                ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur
-                                magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-                                dolorem. <br><br>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-                                dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                                culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis
-                                iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
-                                eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt
-                                explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-                                sed quia consequuntur magni dolores eos qui ratione voluptatem.</p>
+                            <h2 class="post-title">{{ instance.title }}</h2>
+                            <p>{{ instance.content|safe }}</p>
                             <div class="post-bottom-meta">
                                 <div class="post-tags">
                                     <h4 class="pbm-title">Related Tags</h4>
@@ -307,42 +284,6 @@
                                 <span class="right">
                                     <a class="feed-title" href="#">Alonso Kelina Falao Asiano Pero</a>
                                     <span class="post-date"><i class="ti-calendar"></i>10 Min ago</span>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="left">
-                                    <img src="assets/img/tour-2.jpg" alt="" class="">
-                                </span>
-                                <span class="right">
-                                    <a class="feed-title" href="#">It is a long established fact that a reader</a>
-                                    <span class="post-date"><i class="ti-calendar"></i>2 Hours ago</span>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="left">
-                                    <img src="assets/img/tour-3.jpg" alt="" class="">
-                                </span>
-                                <span class="right">
-                                    <a class="feed-title" href="#">Many desktop publish packages and web</a>
-                                    <span class="post-date"><i class="ti-calendar"></i>4 Hours ago</span>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="left">
-                                    <img src="assets/img/tour-4.jpg" alt="" class="">
-                                </span>
-                                <span class="right">
-                                    <a class="feed-title" href="#">Various versions have evolved over the years</a>
-                                    <span class="post-date"><i class="ti-calendar"></i>7 Hours ago</span>
-                                </span>
-                            </li>
-                            <li>
-                                <span class="left">
-                                    <img src="assets/img/tour-5.jpg" alt="" class="">
-                                </span>
-                                <span class="right">
-                                    <a class="feed-title" href="#">Photo booth anim 8-bit PBR 3 wolf moon.</a>
-                                    <span class="post-date"><i class="ti-calendar"></i>3 Days ago</span>
                                 </span>
                             </li>
                         </ul>
