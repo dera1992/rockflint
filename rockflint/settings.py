@@ -50,6 +50,9 @@ INSTALLED_APPS = [
     'social_django',
     'bootstrap4',
     'sorl.thumbnail',
+    'hitcount',
+    'django_prices',
+    'django.contrib.humanize',
 
 ]
 
@@ -161,6 +164,7 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = '/'
 
 
 SOCIAL_AUTH_FACEBOOK_KEY = 'XXX'
@@ -171,4 +175,6 @@ SOCIAL_AUTH_TWITTER_SECRET = 'XXX'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'XXX'
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XXX'
+
+SESSION_SAVE_EVERY_REQUEST = True
 

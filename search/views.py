@@ -1,6 +1,7 @@
 from django.db.models import Q, Count
 from django.shortcuts import render, get_object_or_404
 from advert.models import Ads, Category, State ,Offer,Lga
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 
@@ -57,6 +58,7 @@ def filter(request):
         qs = qs.filter(Q(property_title__icontains=title_contains_query )
                        | Q(profile__first_name__icontains=title_contains_query )
                        | Q(profile__last_name__icontains=title_contains_query )
+                       | Q(description__icontains=title_contains_query)
                        ).distinct()
 
     if is_valid_queryparam(ad_price_min):
@@ -171,11 +173,19 @@ def filter(request):
     if gym == 'on':
         qs = qs.filter(gym=True)
 
-    # elif not_reviewed == 'on':
-    #     qs = qs.filter(reviewed=False)
-
+    paginator = Paginator(qs, 10)  # Show 25 contacts per page
+    page_request_var = "page"
+    page = request.GET.get('page')
+    try:
+        queryset = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        queryset = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        queryset = paginator.page(paginator.num_pages)
     context = {
-        'queryset': qs,
+        'queryset': queryset,
         'categories': categories,
         'states':states,
         'cities':cities,

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from account.models import Profile
 from django.shortcuts import get_object_or_404
-from advert.models import Ads, AdsImages, Category
+from advert.models import Ads, AdsImages, Category, State ,Offer,Lga
 from django.db.models import Count
 from django.http import  HttpResponse
 
@@ -25,7 +25,13 @@ def agent_detail(request,id):
                              active=True)
     agent_ads = Ads.objects.filter(profile=agent).order_by('?')[:10]
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
-    return render(request, 'others/agent_detail.html', {'agent':agent,'agent_ads':agent_ads,'latests':latests})
+    qs = Ads.objects.all()
+    categories = Category.objects.all()
+    states = State.objects.all()
+    cities = Lga.objects.all()
+    offers = Offer.objects.all()
+    return render(request, 'others/agent_detail.html', {'agent':agent,'agent_ads':agent_ads,'latests':latests,'categories': categories,
+                                              'queryset': qs,'states':states,'cities':cities,'offers':offers,})
 
 def agency_list(request):
     agentes = Profile.objects.filter(agent_type="3",active=True)
@@ -38,7 +44,13 @@ def agency_detail(request,id):
                              active=True)
     agency_ads = Ads.objects.filter(pofile=agency).order_by('?')[:10]
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
-    return render(request, 'others/agency_detail.html', {'agency':agency,'agency_ads':agency_ads,'latests':latests})
+    qs = Ads.objects.all()
+    categories = Category.objects.all()
+    states = State.objects.all()
+    cities = Lga.objects.all()
+    offers = Offer.objects.all()
+    return render(request, 'others/agency_detail.html', {'agency':agency,'agency_ads':agency_ads,'latests':latests,'categories': categories,
+                                              'queryset': qs,'states':states,'cities':cities,'offers':offers,})
 
 def create_contact(request):
     if request.POST:

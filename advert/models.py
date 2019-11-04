@@ -9,6 +9,8 @@ import json
 from django.http import  HttpResponse
 from django.template.defaultfilters import slugify
 from django.urls import reverse
+from hitcount.models import HitCountMixin, HitCount
+from django.contrib.contenttypes.fields import GenericRelation
 import uuid
 
 
@@ -132,6 +134,9 @@ class Ads(models.Model):
     updated = models.DateTimeField(auto_now=True,null=True, blank=True)
     plan_image = models.ImageField(upload_to='plans_images/',
                                    null=True, blank=True,default='profile/None/no-img.jpg')
+    hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
+                                        related_query_name='hit_count_generic_relation')
+    favourite = models.ManyToManyField(User, related_name='favourite', blank=True)
 
     church = models.BooleanField(default=False, null=True, blank=True)
     school = models.BooleanField(default=False, null=True, blank=True)
@@ -167,6 +172,11 @@ class Ads(models.Model):
     def get_second_image(self):
         images = list(self.images.all())
         return images[0:1] if images else None
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.property_title)
+        super(Ads, self).save(*args, **kwargs)
 
 # def get_image_filename(instance, filename):
 #     title = instance.ads.property_title

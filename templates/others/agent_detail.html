@@ -3,6 +3,7 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% load thumbnail %}
+{% load humanize %}
 
 
 {% block title %}Agent Detail{% endblock %}
@@ -17,7 +18,7 @@
                     <div class="agency agency-list shadow-0 mt-2 mb-2">
 
                         <a href="" class="agency-avatar">
-                            <img src="{{ agent.photo.url }}" alt="">
+                            <img src="{{ agent.photo.url }}" width="259" height="259" alt="">
                         </a>
 
                         <div class="agency-content">
@@ -97,8 +98,8 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 list-layout">
 
                                             <!-- Single Listings -->
+                                           {% for agent_ad in agent_ads %}
                                             <div class="property-listing property-1">
-                                                {% for agent_ad in agent_ads %}
 
                                                 <div class="listing-img-wrapper">
                                                     {% for images in agent_ad.get_second_image %}
@@ -125,11 +126,12 @@
 
                                                     <div class="listing-detail-wrapper">
                                                         <div class="listing-short-detail">
+                                                            <span class="listing-location" style="color: #00A877">{{ agent_ad.category }}</span>
                                                             <h4 class="listing-name"><a href="{{ agent_ad.get_absolute_url }}">{{ agent_ad.property_title }}</a></h4>
                                                             <span class="listing-location"><i class="ti-location-pin"></i>{{ agent_ad.address }}</span>
                                                         </div>
                                                         <div class="list-author">
-                                                            <a href="#"><img src="{{ agent_ad.profile.photo.url }}" class="img-fluid img-circle avater-30" alt=""></a>
+                                                            <a href="#"><img src="{{ agent_ad.profile.photo.url }}" width="30px" height="30px" class="img-circle avater-30" alt=""></a>
                                                         </div>
                                                     </div>
 
@@ -143,7 +145,7 @@
 
                                                     <div class="listing-footer-wrapper">
                                                         <div class="listing-price">
-                                                            <h4 class="list-pr">₦{{ agent_ad.property_price }}</h4>
+                                                            <h4 class="list-pr">₦{{ agent_ad.property_price|intcomma }}</h4>
                                                         </div>
                                                         <div class="listing-detail-btn">
                                                             <a href="{{ agent_ad.get_absolute_url }}" class="more-btn">More Info</a>
@@ -151,9 +153,9 @@
                                                     </div>
 
                                                 </div>
-                                                {% endfor %}
 
                                             </div>
+                                        {% endfor %}
                                             <!-- End Single Listings -->
 
                                         </div>
@@ -200,78 +202,77 @@
                         <div class="sidebar-widgets">
 
                             <h4>Find New Property</h4>
-
-                            <div class="form-group">
-                                <div class="input-with-icon">
-                                    <input type="text" class="form-control" placeholder="Neighborhood">
-                                    <i class="ti-search"></i>
+                            <form method="GET" action="{% url 'search:filter' %}">
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <input type="search" class="form-control" name="title_contains_query" placeholder="Search">
+                                        <i class="ti-search"></i>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <div class="input-with-icon">
-                                            <input type="text" class="form-control" placeholder="Minimum">
-                                            <i class="ti-money"></i>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <div class="input-with-icon">
+                                                <input type="number" name="ad_price_min" class="form-control" placeholder="Min Price">
+                                                <i class="₦">₦</i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <div class="form-group">
+                                            <div class="input-with-icon">
+                                                <input type="number" name="ad_price_max" class="form-control" placeholder="Max Price">
+                                                <i class="">₦</i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-6 col-md-6 col-sm-6">
-                                    <div class="form-group">
-                                        <div class="input-with-icon">
-                                            <input type="text" class="form-control" placeholder="Maximum">
-                                            <i class="ti-money"></i>
-                                        </div>
+
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <select id="bedrooms" class="form-control" name="bedroom">
+                                            <option value=""></option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">More than 5</option>
+                                        </select>
+                                        <i class="fas fa-bed"></i>
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="input-with-icon">
-                                    <select id="bedrooms" class="form-control">
-                                        <option value="">&nbsp;</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                    <i class="fas fa-bed"></i>
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <select id="bathrooms" class="form-control" name="bathroom">
+                                            <option value="">&nbsp;</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">More than 5</option>
+                                        </select>
+                                        <i class="fas fa-bath"></i>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="input-with-icon">
-                                    <select id="bathrooms" class="form-control">
-                                        <option value="">&nbsp;</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                    </select>
-                                    <i class="fas fa-bath"></i>
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <select id="cities" class="form-control" name="city">
+                                            <option value="">&nbsp;</option>
+                                            {% for cit in cities %}
+                                              <option value="{{ cit }}">{{ cit }}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <i class="ti-briefcase"></i>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <div class="input-with-icon">
-                                    <select id="cities" class="form-control">
-                                        <option value="">&nbsp;</option>
-                                        <option value="1">Los Angeles, CA</option>
-                                        <option value="2">New York City, NY</option>
-                                        <option value="3">Chicago, IL</option>
-                                        <option value="4">Houston, TX</option>
-                                        <option value="5">Philadelphia, PA</option>
-                                        <option value="6">San Antonio, TX</option>
-                                        <option value="7">San Jose, CA</option>
-                                    </select>
-                                    <i class="ti-briefcase"></i>
-                                </div>
-                            </div>
-
-                            <button class="btn btn-theme full-width">Find New Home</button>
+                                <button class="btn btn-theme full-width">Find New Home</button>
+                            </form>
 
                         </div>
 
@@ -283,9 +284,9 @@
                             <div class="sidebar-property-slide">
 
                                 <!-- Single Property -->
+                            {% for latest in latests %}
                                 <div class="single-items">
                                     <div class="property-listing property-1">
-                                        {% for latest in latests %}
 
                                             <div class="listing-img-wrapper">
                                                 {% for images in latest.get_second_image %}
@@ -312,6 +313,7 @@
 
                                                 <div class="listing-detail-wrapper">
                                                     <div class="listing-short-detail">
+                                                        <span class="listing-location" style="color: #00A877">{{ latest.category }}</span>
                                                         <h4 class="listing-name"><a href="{{ latest.get_absolute_url }}">{{ latest.property_title }}</a></h4>
                                                         <span class="listing-location"><i class="ti-location-pin"></i>{{ latest.address }}</span>
                                                     </div>
@@ -338,10 +340,10 @@
                                                 </div>
 
                                             </div>
-                                        {% endfor %}
 
                                     </div>
                                 </div>
+                            {% endfor %}
 
 
                             </div>

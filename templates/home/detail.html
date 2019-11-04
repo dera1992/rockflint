@@ -3,10 +3,15 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% load thumbnail %}
+{% load hitcount_tags %}
+{% load prices %}
+{% load humanize %}
+
 
 {% block title %}Property Detail{% endblock %}
 
 {% block content %}
+    {% insert_hit_count_js_variables for ad %}
    <!-- ============================ Property Detail Start ================================== -->
     <section class="gray">
         <div class="container">
@@ -17,8 +22,9 @@
 
                     <div class="slide-property-first mb-4">
                         <div class="pr-price-into">
-                            <h2>₦{{ ad.property_price}} <i>/ {{ ad.rent_period }}</i> <span class="prt-type rent">{{ ad.property_offer }}</span></h2>
+                            <h2>₦{{ ad.property_price|intcomma}} <i>/ {{ ad.rent_period }}</i> <span class="prt-type rent">{{ ad.property_offer }}</span></h2>
                             <span><i class="lni-map-marker"></i> {{ ad.address }}</span>
+                            <p>Views: {% get_hit_count for ad %}</p>
                         </div>
                     </div>
 
@@ -254,7 +260,15 @@
                                 </div>
 
                                 <div class="pr-single-info">
-                                    <a href="JavaScript:Void(0);" class="like-bitt add-to-favorite" data-toggle="tooltip" data-original-title="Add To Favorites"><i class="lni-heart-filled"></i></a>
+                                    {% if is_favourite %}
+                                        <a href="{% url 'home:favourite_ads' id=ad.id %}" class="like-bitt add-to-favorite" >
+                                            <i class="lni-heart-filled"></i>
+                                        </a>
+                                    {% else %}
+                                         <a href="{% url 'home:favourite_ads' id=ad.id %}" class="like-bitt add-to-favorite" >
+                                            <i class="ti-heart"></i>
+                                        </a>
+                                    {% endif %}
                                 </div>
 
                             </div>
@@ -263,7 +277,7 @@
                         <!-- Agent Detail -->
                         <div class="agent-widget">
                             <div class="agent-title">
-                                <div class="agent-photo"><img src="{{ ad.profile.photo.url }}" alt=""></div>
+                                <div class="agent-photo"><img src="{{ ad.profile.photo.url }}" width="72px" height="72px" alt=""></div>
                                 <div class="agent-details">
                                     <h4><a href="#">{{ ad.profile.fullname }}</a></h4>
                                     <span><i class="lni-phone-handset"></i>{{ ad.profile.phone }}</span>
@@ -415,7 +429,7 @@
 
                                             <div class="listing-footer-wrapper">
                                                 <div class="listing-price">
-                                                    <h4 class="list-pr">₦{{ city.property_price }}</h4>
+                                                    <h4 class="list-pr">₦{{ city.property_price|intcomma }}</h4>
                                                 </div>
                                                 <div class="listing-detail-btn">
                                                     <a href="{{ city.get_absolute_url }}" class="more-btn">More Info</a>

@@ -25,7 +25,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
                         <div class="input-with-icon">
-                            <input type="number" name="ad_price_min" class="form-control" placeholder="Minimum Price">
+                            <input type="number" name="ad_price_min" class="form-control" placeholder="Min Price">
                             <i class="₦">₦</i>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="form-group">
                         <div class="input-with-icon">
-                            <input type="number" name="ad_price_max" class="form-control" placeholder="Maximum Price">
+                            <input type="number" name="ad_price_max" class="form-control" placeholder="Max Price">
                             <i class="">₦</i>
                         </div>
                     </div>
@@ -76,20 +76,20 @@
             </div>
 
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="form-group">
-                        <div class="input-with-icon">
-                            <select id="states" class="form-control" name="state">
-                                <option value="">&nbsp;</option>
-                                {% for state in states %}
-                                  <option value="{{ state }}">{{ state }}</option>
-                                {% endfor %}
-                            </select>
-                            <i class="ti-briefcase"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
+{#                <div class="col-lg-6 col-md-6 col-sm-6">#}
+{#                    <div class="form-group">#}
+{#                        <div class="input-with-icon">#}
+{#                            <select id="states" class="form-control" name="state">#}
+{#                                <option value="">&nbsp;</option>#}
+{#                                {% for state in states %}#}
+{#                                  <option value="{{ state }}">{{ state }}</option>#}
+{#                                {% endfor %}#}
+{#                            </select>#}
+{#                            <i class="ti-briefcase"></i>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+                <div class="col-lg-12 col-md-12 col-sm-12">
                     <div class="form-group">
                         <div class="input-with-icon">
                             <select id="cities" class="form-control" name="city">

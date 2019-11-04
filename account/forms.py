@@ -86,8 +86,10 @@ class ProfileEditForm(forms.ModelForm):
     address = forms.CharField(
         widget=forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Enter Address'}
-        )
+        ), required=False
     )
+    description = forms.CharField(widget=forms.Textarea(attrs={"rows":5, "cols":20})
+                                  ,label='About', required=False)
 
     class Meta:
         model = Profile

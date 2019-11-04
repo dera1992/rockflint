@@ -19,6 +19,7 @@ from django.views.decorators.csrf import csrf_exempt
 from account.models import Profile
 from .forms import MessageForm, ScheduleForm
 from django.core.mail import send_mail
+from hitcount.views import HitCountDetailView
 
 
 
@@ -31,13 +32,13 @@ def home_list(request, category_slug=None):
     states = State.objects.all()
     cities = Lga.objects.all()
     offers = Offer.objects.all()
-    # adsimage = AdsImages.objects.filter(ads=ad)
+    agents = Profile.objects.filter(agent_type="1", active=True)
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         ads = ads.filter(category=category)
     return render(request,'home/index.html', {'category': category,'categories': categories,'ads': ads,'latests':latests,
-                                              'queryset': qs,'states':states,'cities':cities,'offers':offers})
+                                              'queryset': qs,'states':states,'cities':cities,'offers':offers,'agents':agents})
 
 
 def ad_detail(request, id, slug):
@@ -51,6 +52,11 @@ def ad_detail(request, id, slug):
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     profile = Profile.objects.get(user=ad.profile.user)
     receiver = [profile.user.email]
+    is_favourite = False
+
+    if ad.favourite.filter(id=request.user.id).exists():
+        is_favourite = True
+
     if request.POST:
         form = MessageForm(request.POST)
         schedule_form =ScheduleForm(request.POST)
@@ -84,7 +90,25 @@ def ad_detail(request, id, slug):
         schedule_form = ScheduleForm()
     return render(request, 'home/detail.html', {'ad':ad,'adsimage':adsimage, 'ad_similar':ad_similar,
                                                'profile':profile,'form': form,'same_city':same_city,'latests':latests,
-                                                'schedule_form':schedule_form})
+                                                'schedule_form':schedule_form,'is_favourite': is_favourite,})
+
+def ads_favourite_list(request):
+    user = request.user
+    favourite_posts = user.favourite.all()
+    context = {
+        'favourite_posts': favourite_posts,
+    }
+    return render(request, 'owner/bookmarked.html', context)
+
+def favourite_ads(request, id):
+    ad = get_object_or_404(Ads, id=id)
+    print(ad)
+    if ad.favourite.filter(id=request.user.id).exists():
+        ad.favourite.remove(request.user)
+    else:
+        ad.favourite.add(request.user)
+    return HttpResponseRedirect(ad.get_absolute_url())
+
 
 def delete_post(request,pk=None):
     ad = Ads.objects.get(id=pk)

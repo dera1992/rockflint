@@ -3,6 +3,7 @@
 {% load bootstrap4 %}
 {% load i18n %}
 {% load thumbnail %}
+{% load humanize %}
 {% block title %}{% endblock %}
 
 {% block content %}
@@ -32,8 +33,9 @@
                         <div class="property-slide">
 
                             <!-- Single Property -->
+
+                            {% for latest in latests %}
                             <div class="single-items">
-                                {% for latest in latests %}
                                     <div class="property-listing property-2">
 
                                         <div class="listing-img-wrapper">
@@ -61,7 +63,7 @@
 
                                         <div class="price-features-wrapper">
                                             <div class="listing-price-fx">
-                                                <h6 class="listing-card-info-price price-prefix">{{ latest.property_price}}<span class="price-suffix">/{{ latest.rent_period }}</span></h6>
+                                                <h6 class="listing-card-info-price price-prefix">{{ latest.property_price|intcomma}}<span class="price-suffix">/{{ latest.rent_period }}</span></h6>
                                             </div>
                                             <div class="list-fx-features">
                                                 <div class="listing-card-info-icon">
@@ -73,9 +75,8 @@
                                             </div>
                                         </div>
                                     </div>
-                                {% endfor %}
                             </div>
-
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -83,7 +84,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-md-12">
                         <div class="text-center mt-4">
-                            <a href="#" class="btn btn-theme-2">Browse More Property</a>
+                            <a href="{% url 'search:filter' %}" class="btn btn-theme-2">Browse More Property</a>
                         </div>
                     </div>
                 </div>
@@ -108,6 +109,7 @@
                 <div class="row">
 
                     <!-- Single Agent -->
+                {% for agent in agents %}
                     <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="agents-grid">
 
@@ -116,14 +118,14 @@
                             <div class="agents-grid-wrap">
 
                                 <div class="fr-grid-thumb">
-                                    <a href="http://themezhub.com/">
+                                    <a href="{% url 'others:agent_detail' id=agent.id %}">
                                         <div class="overall-rate">4.4</div>
-                                        <img src="{% static 'assets/img/user-1.jpg' %}" class="img-fluid mx-auto" alt="" />
+                                        <img src="{{ agent.photo.url }}" class="img-fluid mx-auto" alt="" />
                                     </a>
                                 </div>
                                 <div class="fr-grid-deatil">
-                                    <h5 class="fr-can-name"><a href="#">Colin H. Renda</a></h5>
-                                    <span class="fr-position"><i class="lni-map-marker"></i>3599 Huntz Lane</span>
+                                    <h5 class="fr-can-name"><a href="{% url 'others:agent_detail' id=agent.id %}">{{ agent.fullname }}</a></h5>
+                                    <span class="fr-position"><i class="lni-map-marker"></i>{{ agent.address }}</span>
                                     <div class="fr-can-rating">
                                         <i class="ti-star filled"></i>
                                         <i class="ti-star filled"></i>
@@ -137,19 +139,21 @@
 
                             <div class="fr-grid-info">
                                 <ul>
-                                    <li>Property<span>306</span></li>
-                                    <li>Email<span>colin@gmail.com</span></li>
-                                    <li>Phone<span>91 123 456 7859</span></li>
+                                {% with total_property_created=ads.agent|length %}
+                                <li>Property<span>{{ total_property_created }}</span></li>
+                                {% endwith %}
+                                <li>Email<span>{{ agent.user.email }}</span></li>
+                                <li>Phone<span>{{ agent.phone }}</span></li>
                                 </ul>
                             </div>
 
                             <div class="fr-grid-footer">
-                                <a href="#" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                                <a href="{% url 'others:agent_detail' id=agent.id %}" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
                             </div>
 
                         </div>
                     </div>
-
+                    {% endfor %}
 
                 </div>
 
@@ -172,56 +176,57 @@
 
 					<div class="row">
 						<!-- Single Property -->
+                    {% for ad in ads %}
 						<div class="col-lg-4 col-md-6 col-sm-12">
-							{% for ad in ads %}
-                                    <div class="property-listing property-2">
+                            <div class="property-listing property-2">
 
-                                        <div class="listing-img-wrapper">
-                                            <div class="list-img-slide">
+                                <div class="listing-img-wrapper">
+                                    <div class="list-img-slide">
 
-                                                <div class="click">
-                                                    {% for images in ad.get_first_image %}
-                                                        {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
-                                                            <div><a href="{{ ad.get_absolute_url }}">
-                                                                <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  /></a>
-                                                            </div>
-                                                        {% endthumbnail %}
-                                                    {% endfor %}
-                                                </div>
-
-                                            </div>
-                                            <span class="property-type">{{ ad.property_offer }}</span>
+                                        <div class="click">
+                                            {% for images in ad.get_first_image %}
+                                                {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
+                                                    <div><a href="{{ ad.get_absolute_url }}">
+                                                        <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  /></a>
+                                                    </div>
+                                                {% endthumbnail %}
+                                            {% endfor %}
                                         </div>
 
-                                        <div class="listing-detail-wrapper pb-0">
-                                            <div class="listing-short-detail">
-                                                <h4 class="listing-name"><a href="{{ ad.get_absolute_url }}">{{ ad.property_title }}</a><i class="list-status ti-check"></i></h4>
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <span class="property-type">{{ ad.property_offer }}</span>
+                                </div>
 
-                                        <div class="price-features-wrapper">
-                                            <div class="listing-price-fx">
-                                                <h6 class="listing-card-info-price price-prefix">{{ ad.property_price}}<span class="price-suffix">/{{ ad.rent_period }}</span></h6>
-                                            </div>
-                                            <div class="list-fx-features">
-                                                <div class="listing-card-info-icon">
-                                                    <span class="inc-fleat inc-bed">{{ ad.bedroom }}Beds</span>
-                                                </div>
-                                                <div class="listing-card-info-icon">
-                                                    <span class="inc-fleat inc-bath">{{ ad.bathroom }} Bath</span>
-                                                </div>
-                                            </div>
+                                <div class="listing-detail-wrapper pb-0">
+                                    <div class="listing-short-detail">
+                                        <h4 class="listing-name"><a href="{{ ad.get_absolute_url }}">{{ ad.property_title }}</a><i class="list-status ti-check"></i></h4>
+                                    </div>
+                                </div>
+
+                                <div class="price-features-wrapper">
+                                    <div class="listing-price-fx">
+                                        <h6 class="listing-card-info-price price-prefix">{{ ad.property_price|intcomma}}<span class="price-suffix">/{{ ad.rent_period }}</span></h6>
+                                    </div>
+                                    <div class="list-fx-features">
+                                        <div class="listing-card-info-icon">
+                                            <span class="inc-fleat inc-bed">{{ ad.bedroom }}Beds</span>
+                                        </div>
+                                        <div class="listing-card-info-icon">
+                                            <span class="inc-fleat inc-bath">{{ ad.bathroom }} Bath</span>
                                         </div>
                                     </div>
-                                {% endfor %}
+                                </div>
+                            </div>
+
 						</div>
+                    {% endfor %}
 						<!-- End Single Property -->
 					</div>
 
 					<div class="row">
 						<div class="col-lg-12 col-md-12">
 							<div class="text-center mt-4">
-								<a href="#" class="btn btn-theme-2">Browse More Property</a>
+								<a href="{% url 'search:filter' %}" class="btn btn-theme-2">Browse More Property</a>
 							</div>
 						</div>
 					</div>

@@ -62,7 +62,7 @@
                                 </a>
                             </div>
                             <div class="fr-grid-deatil">
-                                <h5 class="fr-can-name"><a href="#">{{ agent.fullname }}</a></h5>
+                                <h5 class="fr-can-name"><a href="{% url 'others:agent_detail' id=agent.id %}">{{ agent.fullname }}</a></h5>
                                 <span class="fr-position"><i class="lni-map-marker"></i>{{ agent.address }}</span>
                                 <div class="fr-can-rating">
                                     <i class="ti-star filled"></i>
@@ -77,7 +77,7 @@
 
                         <div class="fr-grid-info">
                             <ul>
-                                {% with total_property_created=ads.agent.count %}
+                                {% with total_property_created=ads.agent|length %}
                                 <li>Property<span>{{ total_property_created }}</span></li>
                                 {% endwith %}
                                 <li>Email<span>{{ agent.user.email }}</span></li>

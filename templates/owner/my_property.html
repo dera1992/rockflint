@@ -2,6 +2,8 @@
 {% load static %}
 {% load bootstrap4 %}
 {% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
 
 {% block title %}My properties{% endblock %}
 
@@ -46,16 +48,19 @@
                                 </tr>
 
                                 <!-- Item #1 -->
-                                <tr>
-                                    {% for mya in myab %}
-                                        <td class="property-container">
+                                {% for mya in myab %}
+                                    <tr>
+                                        <td class="property-container" width="353px" height="187px">
                                             {% for image in mya.get_second_image %}
-                                                <img src="{{image.ad_image.url}}" alt="">
+                                                {% thumbnail image.ad_image "150x100" crop="center"  as im %}
+                                                    <img  src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" alt="Alt">
+                                                {% endthumbnail %}
+{#                                                <img src="{{image.ad_image.url}}" alt="">#}
                                             {% endfor %}
                                             <div class="title">
                                                 <h4><a href="{{ mya.get_absolute_url }}">{{mya.property_title}}</a></h4>
-                                                <span>{{mya.address}}</span>
-                                                <span class="table-property-price">₦{{mya.property_price}}/ {{mya.rent_period}}</span>
+                                                <span>{{mya.address}}.{{ mya.city }}</span>
+                                                <span class="table-property-price">₦{{mya.property_price|intcomma}}/ {{mya.rent_period}}</span>
                                             </div>
                                         </td>
                                         <td class="expire-date">December 30, 2016</td>
@@ -64,9 +69,9 @@
                                             <a href="{% url 'owner:delete_post' pk=mya.pk %}"><i class="ti-eye"></i> Hide</a>
                                             <a href="{% url 'owner:delete_post' pk=mya.pk %}" class="delete"><i class="ti-close"></i> Delete</a>
                                         </td>
-                                    {% endfor %}
-                                </tr>
 
+                                    </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
 

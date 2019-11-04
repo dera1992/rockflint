@@ -43,6 +43,7 @@
 
                                 <!-- Item #1 -->
                                 <tr>
+                                    {% for p in favourite_posts %}
                                     <td class="property-container">
                                         <img src="assets/img/p-2.jpg" alt="">
                                         <div class="title">
@@ -54,6 +55,11 @@
                                     <td class="action">
                                         <a href="#" class="delete"><i class="ti-close"></i> Delete</a>
                                     </td>
+                                    {% empty %}
+                                        <div class="container-fluid" >
+                                            <h3 style="text-align:center;"> No Fovourite Posts Found</h3>
+                                        </div>
+                                    {% endfor %}
                                 </tr>
 
                             </tbody>
