@@ -1,4 +1,9 @@
 {% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
 
 {% block title %}Bookmarked property{% endblock %}
 
@@ -42,25 +47,33 @@
                                 </tr>
 
                                 <!-- Item #1 -->
+                                {% for p in favourite_posts %}
                                 <tr>
-                                    {% for p in favourite_posts %}
                                     <td class="property-container">
-                                        <img src="assets/img/p-2.jpg" alt="">
+                                        {% for images in p.get_second_image %}
+                                            {% thumbnail images.ad_image "150x100" crop="10px 10px"  as im %}
+                                            <a href="{{ p.get_absolute_url }}">
+                                                <img   src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class=""  />
+                                            </a>
+                                            {% endthumbnail %}
+                                        {% endfor %}
                                         <div class="title">
-                                            <h4><a href="#">Serene Uptown</a></h4>
-                                            <span>6 Bishop Ave. Perkasie, PA </span>
-                                            <span class="table-property-price">$900 / monthly</span>
+                                            <h4><a href="{{ p.get_absolute_url }}">{{ p.property_title}}</a></h4>
+                                            <span>{{ p.address}}</span>
+                                            <span class="table-property-price">₦{{ p.property_price|intcomma}}</span>
                                         </div>
                                     </td>
                                     <td class="action">
-                                        <a href="#" class="delete"><i class="ti-close"></i> Delete</a>
+                                        <a href="{% url 'home:favourite_ads' id=p.id %}" class="delete" id="delete"><i class="ti-close"></i> Delete</a>
                                     </td>
-                                    {% empty %}
-                                        <div class="container-fluid" >
-                                            <h3 style="text-align:center;"> No Fovourite Posts Found</h3>
-                                        </div>
-                                    {% endfor %}
                                 </tr>
+                                {% empty %}
+                                 <tr>
+                                    <td class="container-fluid" >
+                                        <h3 style="text-align:center;"> No Fovourite Property Found</h3>
+                                    </td>
+                                 </tr>
+                                {% endfor %}
 
                             </tbody>
                         </table>

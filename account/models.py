@@ -22,7 +22,7 @@ class Profile(models.Model):
     twitter = models.URLField(max_length=255, null=True, blank=True)
     google = models.URLField(max_length=255, null=True, blank=True)
     linkedin = models.URLField(max_length=255, null=True, blank=True)
-    photo = models.ImageField(upload_to='profile/%Y/%m/%d/',blank=True, default='profile/None/no-img.jpg')
+    photo = models.ImageField(upload_to='profile/%Y/%m/%d/',blank=True, default='profile/None/avater.png')
     email_confirmed = models.BooleanField(default=False)
     active = models.BooleanField(default=True, null=True, blank=True)
 

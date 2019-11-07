@@ -28,36 +28,35 @@
         <div class="container">
 
             <!-- row Start -->
+            <form class="" method="get" action='{% url 'others:agent_list' %}'>
             <div class="row">
-
                 <div class="col-lg-6 col-md-6">
                     <div class="form-group">
                         <div class="input-with-icon">
-                            <input type="text" class="form-control" placeholder="Search agents">
+                            <input type="search" class="form-control" placeholder="Search agents" name='q'>
                             <i class="ti-search"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3">
-                    <a href="#" class="btn search-btn">Find Agents</a>
+                    <a href="{% url 'others:agent_list' %}" class="btn search-btn">Find Agents</a>
                 </div>
-
             </div>
+            </form>
             <!-- /row -->
 
             <div class="row">
 
                 <!-- Single Agent -->
+               {% for agent in agents %}
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="agents-grid">
-                    {% for agent in agents %}
                         <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
                         <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
                         <div class="agents-grid-wrap">
 
                             <div class="fr-grid-thumb">
                                 <a href="{% url 'others:agent_detail' id=agent.id %}">
-                                    <div class="overall-rate">4.4</div>
                                     <img src="{{ agent.photo.url }}" class="img-fluid mx-auto" alt="" />
                                 </a>
                             </div>
@@ -88,12 +87,36 @@
                         <div class="fr-grid-footer">
                             <a href="{% url 'others:agent_detail' id=agent.id %}" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
                         </div>
-
-                    {% endfor %}
-
                     </div>
                 </div>
+                {% endfor %}
+            </div>
 
+            <!-- Pagination -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    {% if agents.has_other_pages %}
+                      <ul class="pagination p-center">
+                        {% if agents.has_previous %}
+                          <li class="page-item"><a class="page-link" href="?page={{ agents.previous_page_number }}" aria-label="Previous">&laquo;</a></li>
+                        {% else %}
+                          <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in agents.paginator.page_range %}
+                          {% if agents.number == i %}
+                            <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                          {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                        {% if agents.has_next %}
+                          <li><a class="page-link" href="?page={{ agents.next_page_number }}" aria-label="Next">&raquo;</a></li>
+                        {% else %}
+                          <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                      </ul>
+                    {% endif %}
+                </div>
             </div>
         </div>
 

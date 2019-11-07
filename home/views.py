@@ -6,10 +6,9 @@ from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
-from django.http import  HttpResponse
 from django.db.models import Q
 from django.contrib import messages
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404,HttpResponse
 from django.urls import reverse
 import json
 from django.core import serializers
@@ -20,6 +19,7 @@ from account.models import Profile
 from .forms import MessageForm, ScheduleForm
 from django.core.mail import send_mail
 from hitcount.views import HitCountDetailView
+from django.contrib.auth.decorators import login_required
 
 
 
@@ -32,7 +32,7 @@ def home_list(request, category_slug=None):
     states = State.objects.all()
     cities = Lga.objects.all()
     offers = Offer.objects.all()
-    agents = Profile.objects.filter(agent_type="1", active=True)
+    agents = Profile.objects.filter(agent_type="2", active=True)
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -91,7 +91,7 @@ def ad_detail(request, id, slug):
     return render(request, 'home/detail.html', {'ad':ad,'adsimage':adsimage, 'ad_similar':ad_similar,
                                                'profile':profile,'form': form,'same_city':same_city,'latests':latests,
                                                 'schedule_form':schedule_form,'is_favourite': is_favourite,})
-
+@login_required
 def ads_favourite_list(request):
     user = request.user
     favourite_posts = user.favourite.all()
@@ -100,6 +100,7 @@ def ads_favourite_list(request):
     }
     return render(request, 'owner/bookmarked.html', context)
 
+@login_required
 def favourite_ads(request, id):
     ad = get_object_or_404(Ads, id=id)
     print(ad)
@@ -109,11 +110,13 @@ def favourite_ads(request, id):
         ad.favourite.add(request.user)
     return HttpResponseRedirect(ad.get_absolute_url())
 
-
+@login_required
 def delete_post(request,pk=None):
     ad = Ads.objects.get(id=pk)
+    if request.user != ad.profile.user:
+        raise Http404()
     ad.delete()
-    messages.success(request, "Successfuly deleted")
+    messages.success(request, "You property has been successfuly deleted")
     return redirect('home:my_aids')
 
 

@@ -11,8 +11,10 @@ from django.db.models import Count
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 import random
 
+@login_required
 def my_property(request):
     myab_list = Ads.objects.filter(profile__user=request.user)
     profile = Profile.objects.get(user=request.user)
@@ -39,7 +41,7 @@ def my_property(request):
 def bookmarked(request):
     return render(request, 'owner/bookmarked.html', {})
 
-
+@login_required
 def delete_post(request,pk=None):
     ad = Ads.objects.get(id=pk)
     ad.is_active = False

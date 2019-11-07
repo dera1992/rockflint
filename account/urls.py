@@ -31,7 +31,7 @@ urlpatterns = [
 
     path('register/', views.register, name='register'),
     path('edit/', views.edit, name='edit'),
-    path('edit_display/', views.edit_display, name='edit_display'),
+    path('profile_display/', views.profile_display, name='profile_display'),
 
     path('activate/(<uidb64>[0-9A-Za-z_\-]+)/(<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/',
         views.activate, name='activate'),

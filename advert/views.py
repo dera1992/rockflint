@@ -46,7 +46,7 @@ def postAd(request):
     return render(request, 'advert/post.html',
                   {'postForm': postForm, 'formset': formset})
 
-
+@login_required
 def editAd(request, pk):
     ad = Ads.objects.get(id=pk)
     ImageFormSet = modelformset_factory(AdsImages,fields=('ad_image',), extra=9, max_num=9)

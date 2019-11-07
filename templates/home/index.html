@@ -119,8 +119,12 @@
 
                                 <div class="fr-grid-thumb">
                                     <a href="{% url 'others:agent_detail' id=agent.id %}">
-                                        <div class="overall-rate">4.4</div>
-                                        <img src="{{ agent.photo.url }}" class="img-fluid mx-auto" alt="" />
+{#                                        <div class="overall-rate">4.4</div>#}
+                                        {% if agent.photo %}
+                                            <img src="{{ agent.photo.url }}" class="img-fluid mx-auto" alt="" />
+                                        {% else %}
+                                            <img src="{% static 'assets/img/avater.png' %}" class="img-fluid mx-auto" alt="">
+                                        {% endif %}
                                     </a>
                                 </div>
                                 <div class="fr-grid-deatil">
@@ -139,9 +143,9 @@
 
                             <div class="fr-grid-info">
                                 <ul>
-                                {% with total_property_created=ads.agent|length %}
-                                <li>Property<span>{{ total_property_created }}</span></li>
-                                {% endwith %}
+{#                                {% with total_property_created=ads.agent|length %}#}
+{#                                <li>Property<span>{{ ads.agent.count }}</span></li>#}
+{#                                {% endwith %}#}
                                 <li>Email<span>{{ agent.user.email }}</span></li>
                                 <li>Phone<span>{{ agent.phone }}</span></li>
                                 </ul>

@@ -37,10 +37,10 @@
                             </ul>
 
                             <ul class="social-icons">
-                                <li><a class="facebook" href="#"><i class="lni-facebook"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="lni-twitter"></i></a></li>
+                                <li><a class="facebook" href="{{ agent.facebook }}"><i class="lni-facebook"></i></a></li>
+                                <li><a class="twitter" href="{{ agency.twitter }}"><i class="lni-twitter"></i></a></li>
                                 <li><a class="linkedin" href="#"><i class="lni-instagram"></i></a></li>
-                                <li><a class="linkedin" href="#"><i class="lni-linkedin"></i></a></li>
+                                <li><a class="linkedin" href="{{ agency.linkedin }}"><i class="lni-linkedin"></i></a></li>
                             </ul>
                             <div class="clearfix"></div>
                         </div>
@@ -103,11 +103,13 @@
 
                                                 <div class="listing-img-wrapper">
                                                     {% for images in agent_ad.get_second_image %}
-                                                        {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
+                                                        {% thumbnail images.ad_image "259x259" crop="10px 10px"  as im %}
                                                         <a href="{{ agent_ad.get_absolute_url }}">
-                                                            <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  />
+                                                            <img  style="margin:{{ im|margin:"259x259" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  />
                                                         </a>
                                                         {% endthumbnail %}
+                                                    {% empty %}
+                                                         <img src="{% static 'assets/img/avater.png' %}" class="img-fluid mx-auto" alt="">
                                                     {% endfor %}
                                                     <div class="listing-like-top">
                                                         <i class="ti-heart"></i>
@@ -155,9 +157,18 @@
                                                 </div>
 
                                             </div>
-                                        {% endfor %}
+                                            {% empty %}
+                                               <div class="container-fluid">
+                                               {% if request.profile %}
+                                               <p style="text-align:center;">No Property found. Click here to add a property
+                                                   <a href="{% url "advert:post" %}"  ><button type="submit" class="btn btn-theme">Submit Property</button></a>
+                                               </p>
+                                               {% else %}
+                                                   <h3 style="text-align:center;">No Property found </h3>
+                                               {% endif %}
+                                                </div>
+                                            {% endfor %}
                                             <!-- End Single Listings -->
-
                                         </div>
                                     </div>
                                     <!-- // row -->
@@ -290,11 +301,13 @@
 
                                             <div class="listing-img-wrapper">
                                                 {% for images in latest.get_second_image %}
-                                                    {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
+                                                    {% thumbnail images.ad_image "370x240" crop="10px 10px"  as im %}
                                                     <a href="{{ latest.get_absolute_url }}">
-                                                        <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  />
+                                                        <img  style="margin:{{ im|margin:"370x240" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  />
                                                     </a>
                                                     {% endthumbnail %}
+                                                {% empty %}
+                                                    <img src="{% static 'assets/img/avater.png' %}" class="avater-img" alt="" width="370px" height="240px">
                                                 {% endfor %}
                                                 <div class="listing-like-top">
                                                     <i class="ti-heart"></i>
@@ -318,7 +331,7 @@
                                                         <span class="listing-location"><i class="ti-location-pin"></i>{{ latest.address }}</span>
                                                     </div>
                                                     <div class="list-author">
-                                                        <a href="#"><img src="{{ latest.profile.photo.url }}" class="img-fluid img-circle avater-30" alt=""></a>
+                                                        <a href="#"><img src="{{ latest.profile.photo.url }}" class="img-circle avater-30" alt="" width="30px" height="30px"></a>
                                                     </div>
                                                 </div>
 

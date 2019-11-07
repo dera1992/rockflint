@@ -76,7 +76,7 @@ def edit(request):
                         'profile_form': profile_form})
 
 @login_required
-def edit_display(request):
+def profile_display(request):
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user,
                                  data=request.POST)

@@ -382,8 +382,8 @@
                             <div class="sidebar-property-slide">
 
                                 <!-- Single Property -->
+                            {% for city in same_city %}
                                 <div class="single-items">
-                                    {% for city in same_city %}
                                     <div class="property-listing property-1">
 
                                         <div class="listing-img-wrapper">
@@ -411,7 +411,7 @@
 
                                             <div class="listing-detail-wrapper">
                                                 <div class="listing-short-detail">
-                                                    <h4 class="listing-name"><a href="single-property-2.html">{{ city.property_title }}</a></h4>
+                                                    <h4 class="listing-name"><a href="{{ city.get_absolute_url }}">{{ city.property_title }}</a></h4>
                                                     <span class="listing-location"><i class="ti-location-pin"></i>{{ city.address }}</span>
                                                 </div>
                                                 <div class="list-author">
@@ -439,8 +439,8 @@
                                         </div>
 
                                     </div>
-                                    {% endfor %}
                                 </div>
+                            {% endfor %}
 
                             </div>
 

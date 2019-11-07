@@ -43,9 +43,9 @@
                     <div class="row">
 
                         <!-- Single blog Grid -->
+                        {% for obj in object_list %}
                         <div class="col-lg-4 col-md-6">
                             <div class="blog-wrap-grid">
-                                {% for obj in object_list %}
 
                                 <div class="blog-thumb">
                                 {% if obj.image %}
@@ -59,38 +59,39 @@
 
                                 <div class="blog-body">
                                     <h4 class="bl-title"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></h4>
-                                    <p>{{ obj.content|linebreaks|truncatechars_html:140 }} </p>
+                                    <p>{{ obj.content|linebreaks|truncatechars_html:50 }} </p>
                                     <a href="{{ obj.get_absolute_url }}" class="bl-continue">Continue</a>
                                 </div>
 
-                                {% endfor %}
-
                             </div>
                         </div>
+                        {% endfor %}
 
                     </div>
                     <!-- Pagination -->
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12">
-                            <ul class="pagination p-center">
-                                <li class="page-item">
-                                  <a class="page-link" href="#" aria-label="Previous">
-                                    <span class="ti-arrow-left"></span>
-                                    <span class="sr-only">Previous</span>
-                                  </a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                <li class="page-item"><a class="page-link" href="#">18</a></li>
-                                <li class="page-item">
-                                  <a class="page-link" href="#" aria-label="Next">
-                                    <span class="ti-arrow-right"></span>
-                                    <span class="sr-only">Next</span>
-                                  </a>
-                                </li>
-                            </ul>
+                            {% if object_list.has_other_pages %}
+                              <ul class="pagination p-center">
+                                {% if object_list.has_previous %}
+                                  <li class="page-item"><a class="page-link" href="?page={{ object_list.previous_page_number }}" aria-label="Previous">&laquo;</a></li>
+                                {% else %}
+                                  <li class="disabled"><span>&laquo;</span></li>
+                                {% endif %}
+                                {% for i in object_list.paginator.page_range %}
+                                  {% if object_list.number == i %}
+                                    <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                  {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+                                {% if object_list.has_next %}
+                                  <li><a class="page-link" href="?page={{ object_list.next_page_number }}" aria-label="Next">&raquo;</a></li>
+                                {% else %}
+                                  <li class="disabled"><span>&raquo;</span></li>
+                                {% endif %}
+                              </ul>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -101,8 +102,8 @@
                     <!-- Searchbard -->
                     <div class="single-widgets widget_search">
                         <h4 class="title">Search</h4>
-                        <form action="#" class="sidebar-search-form">
-                            <input type="search" name="search" placeholder="Search..">
+                        <form action="{% url 'blog:list' %}" method="get" class="sidebar-search-form">
+                            <input type="search" name="q" placeholder="Search..">
                             <button type="submit"><i class="ti-search"></i></button>
                         </form>
                     </div>

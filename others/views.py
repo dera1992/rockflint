@@ -10,12 +10,32 @@ from django.http import  HttpResponse
 from django.contrib import messages
 from .forms import InformationForm
 from django.core.mail import send_mail
+from django.db.models import Q
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
 
 def agent_list(request):
-    agents = Profile.objects.filter(agent_type="1",active=True)
+    agent_list = Profile.objects.filter(agent_type="2",active=True)
+    query = request.GET.get('q')
+    if query:
+        agent_list = agent_list.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(phone=query) |
+            Q(description__icontains=query)|
+            Q(address__icontains=query)
+        )
+    paginator = Paginator(agent_list, 6)
+    page_request_var = "page"
+    page = request.GET.get('page')
+    try:
+        agents = paginator.page(page)
+    except PageNotAnInteger:
+        agents = paginator.page(1)
+    except EmptyPage:
+        agents = paginator.page(paginator.num_pages)
     return render(request,'others/agent_list.html', {'agents':agents})
 
 
@@ -34,7 +54,25 @@ def agent_detail(request,id):
                                               'queryset': qs,'states':states,'cities':cities,'offers':offers,})
 
 def agency_list(request):
-    agentes = Profile.objects.filter(agent_type="3",active=True)
+    agentes_list = Profile.objects.filter(agent_type="3",active=True)
+    query = request.GET.get('q')
+    if query:
+        agentes_list = agentes_list.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(phone=query) |
+            Q(description__icontains=query) |
+            Q(address__icontains=query)
+        )
+    paginator = Paginator(agentes_list, 6)
+    page_request_var = "page"
+    page = request.GET.get('page')
+    try:
+        agentes = paginator.page(page)
+    except PageNotAnInteger:
+        agentes = paginator.page(1)
+    except EmptyPage:
+        agentes = paginator.page(paginator.num_pages)
     return render(request, 'others/agency_list.html', {'agentes':agentes})
 
 
@@ -42,7 +80,7 @@ def agency_detail(request,id):
     agency = get_object_or_404(Profile,
                              id=id,
                              active=True)
-    agency_ads = Ads.objects.filter(pofile=agency).order_by('?')[:10]
+    agency_ads = Ads.objects.filter(profile=agency).order_by('?')[:10]
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     qs = Ads.objects.all()
     categories = Category.objects.all()

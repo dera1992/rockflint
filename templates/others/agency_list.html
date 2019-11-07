@@ -28,21 +28,21 @@
         <div class="container">
 
             <!-- row Start -->
+           <form class="" method="get" action='{% url 'others:agency_list' %}'>
             <div class="row mb-3">
-
                 <div class="col-lg-6 col-md-6">
                     <div class="form-group">
                         <div class="input-with-icon">
-                            <input type="text" class="form-control" placeholder="Search agencies">
+                            <input type="search" class="form-control" placeholder="Search agencies" name='q'>
                             <i class="ti-search"></i>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3">
-                    <a href="#" class="btn search-btn">Find Agency</a>
+                    <button type="submit" class="btn search-btn">Find Agency</button>
                 </div>
-
             </div>
+           </form>
             <!-- /row -->
 
             <div class="row">
@@ -50,11 +50,11 @@
                 <div class="col-lg-12 col-md-12">
 
                     <!-- Single Agency -->
+                    {% for agency in agentes %}
                     <div class="agency agency-list">
-                        {% for agency in agentes %}
 
                         <a href="{% url 'others:agency_detail' id=agency.id %}" class="agency-avatar">
-                            <img src="{{ agency.photo.url }}" alt="">
+                            <img src="{{ agency.photo.url }}" class=" mx-auto" alt=""  width="259px" height="259px">
                         </a>
 
                         <div class="agency-content">
@@ -80,10 +80,8 @@
                             </ul>
                             <div class="clearfix"></div>
                         </div>
-
-                        {% endfor %}
-
                     </div>
+                    {% endfor %}
 
                 </div>
 
@@ -93,25 +91,27 @@
             <!-- Pagination -->
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12">
-                    <ul class="pagination p-center">
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Previous">
-                            <span class="ti-arrow-left"></span>
-                            <span class="sr-only">Previous</span>
-                          </a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item"><a class="page-link" href="#">...</a></li>
-                        <li class="page-item"><a class="page-link" href="#">18</a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#" aria-label="Next">
-                            <span class="ti-arrow-right"></span>
-                            <span class="sr-only">Next</span>
-                          </a>
-                        </li>
-                    </ul>
+                    {% if agentes.has_other_pages %}
+                      <ul class="pagination p-center">
+                        {% if agentes.has_previous %}
+                          <li class="page-item"><a class="page-link" href="?page={{ agentes.previous_page_number }}" aria-label="Previous">&laquo;</a></li>
+                        {% else %}
+                          <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+                        {% for i in agentes.paginator.page_range %}
+                          {% if agentes.number == i %}
+                            <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                          {% else %}
+                            <li><a href="?page={{ i }}">{{ i }}</a></li>
+                          {% endif %}
+                        {% endfor %}
+                        {% if agentes.has_next %}
+                          <li><a class="page-link" href="?page={{ agentes.next_page_number }}" aria-label="Next">&raquo;</a></li>
+                        {% else %}
+                          <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                      </ul>
+                    {% endif %}
                 </div>
             </div>
 

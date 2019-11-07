@@ -69,7 +69,12 @@
                                             <a href="{% url 'owner:delete_post' pk=mya.pk %}"><i class="ti-eye"></i> Hide</a>
                                             <a href="{% url 'owner:delete_post' pk=mya.pk %}" class="delete"><i class="ti-close"></i> Delete</a>
                                         </td>
-
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                      <td class="container-fluid">
+                                        <h3>No Posts.Click here to add your property <a href="{% url "advert:post" %}" class="submit-attri theme-log">Submit Property</a></h3>
+                                      </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

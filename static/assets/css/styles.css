@@ -7742,7 +7742,7 @@ footer.skin-dark-footer ul.footer-bottom-social li a:hover, footer.skin-dark-foo
 		display: block;
 	}
 	.main-banner.image-banner, .hero-header, .hero-banner{
-		height:100vh;
+		height:70vh;
 		min-height:580px;
 	}
 	.hero-header.min-banner{
