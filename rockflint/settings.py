@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'owner',
     'search',
     'comments',
+    'marketing',
 
     'social_django',
     'bootstrap4',
@@ -53,11 +54,14 @@ INSTALLED_APPS = [
     'hitcount',
     'django_prices',
     'django.contrib.humanize',
+    'bootstrap_datepicker_plus',
+    'tracking',
 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'tracking.middleware.VisitorTrackingMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -178,3 +182,5 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'XXX'
 
 SESSION_SAVE_EVERY_REQUEST = True
 
+HITCOUNT_KEEP_HIT_ACTIVE = { 'days': 1}
+HITCOUNT_HITS_PER_IP_LIMIT = 0

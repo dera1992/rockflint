@@ -125,6 +125,13 @@
                     {% endfor %}
                 </ul>
             {% endif %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
             {% block content %}
 
@@ -184,10 +191,81 @@
               $('#delete').click(function(){
               return confirm("Are you sure to delete this post?");
             });
+
+             $('.reply-btn').click(function() {
+              $(this).parent().parent().next('.replied-comments').fadeToggle()
+            });
+
+             $(document).on('submit', '.comment-form', function(event){
+              event.preventDefault();
+              console.log($(this).serialize());
+              $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(response) {
+                  $('.main-comment-section').html(response['form']);
+                  $('textarea').val('');
+                  $('.reply-btn').click(function() {
+                    $(this).parent().parent().next('.replied-comments').fadeToggle();
+                    $('textarea').val('');
+                  });
+                },
+                error: function(rs, e) {
+                  console.log(rs.responseText);
+                },
+              });
+            });
+
+
+            $(document).on('submit', '.reply-form', function(event){
+              event.preventDefault();
+              console.log($(this).serialize());
+              $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'),
+                data: $(this).serialize(),
+                dataType: 'json',
+                success: function(response) {
+                  $('.main-comment-section').html(response['form']);
+                  $('textarea').val('');
+                  $('.reply-btn').click(function() {
+                    $(this).parent().parent().next('.replied-comments').fadeToggle();
+                    $('textarea').val('');
+                  });
+                },
+                error: function(rs, e) {
+                  console.log(rs.responseText);
+                },
+              });
+            });
+
+            $(document).on('click', '#favourite', function(event){
+              event.preventDefault();
+              var pk = $(this).attr('value');
+              $.ajax({
+                type: 'POST',
+                url: '{% url 'home:favourite_ads'%}',
+                data: {'id':pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
+                dataType: 'json',
+                success: function(response){
+                  $('#favourite-section').html(response['html']);
+                  {#console.log($('#favourite-section').html(response['form']));#}
+                },
+                error: function(rs, e){
+                  console.log(rs.responseText);
+                },
+              });
+            });
+
           });
 
         </script>
         {% block script %}
+
+        {% endblock %}
+        {% block favourite %}
 
         {% endblock %}
 

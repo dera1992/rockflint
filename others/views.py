@@ -12,9 +12,33 @@ from .forms import InformationForm
 from django.core.mail import send_mail
 from django.db.models import Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from .models import Testimony
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 
+
+def allagent_list(request):
+    agent_list = Profile.objects.all()
+    print(agent_list)
+    query = request.GET.get('q')
+    if query:
+        agent_list = agent_list.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(phone=query) |
+            Q(description__icontains=query)|
+            Q(address__icontains=query)
+        )
+    paginator = Paginator(agent_list, 6)
+    page_request_var = "page"
+    page = request.GET.get('page')
+    try:
+        agents = paginator.page(page)
+    except PageNotAnInteger:
+        agents = paginator.page(1)
+    except EmptyPage:
+        agents = paginator.page(paginator.num_pages)
+    return render(request,'others/allagent_list.html', {'agents':agents})
 
 def agent_list(request):
     agent_list = Profile.objects.filter(agent_type="2",active=True)
@@ -114,3 +138,11 @@ def create_contact(request):
 
         args = {'form': form}
         return render(request, 'others/contact.html', args)
+
+def about_us(request):
+    return render(request, 'others/about.html',)
+
+
+def testimonies(request):
+    users_tests = Testimony.objects.all()
+    return render(request, 'home/index.html', {'users_tests':users_tests})

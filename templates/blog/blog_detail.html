@@ -8,14 +8,19 @@
 
 {% block content %}
   <!-- ============================ Page Title Start================================== -->
-    <div class="page-title">
+      <div class="page-title">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-
-                    <h2 class="ipt-title">Blog Detail</h2>
-                    <span class="ipn-subtitle">See Our Latest Articles & News</span>
-
+                    <div class="row">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'blog:list' %}">Blog</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ instance.title }}</li>
+                          </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,214 +49,31 @@
                             <div class="post-top-meta">
                                 <ul class="meta-comment-tag">
                                     <li><a href="#"><span class="icons"><i class="ti-user"></i></span>by {{ instance.profile.fullname }}</a></li>
-                                    <li><a href="#"><span class="icons"><i class="ti-comment-alt"></i></span>45 Comments</a></li>
+                                    <li><a href="#"><span class="icons"><i class="ti-comment-alt"></i></span>{{ instance.publish }}</a></li>
                                 </ul>
                             </div>
                             <h2 class="post-title">{{ instance.title }}</h2>
                             <p>{{ instance.content|safe }}</p>
-                            <div class="post-bottom-meta">
-                                <div class="post-tags">
-                                    <h4 class="pbm-title">Related Tags</h4>
-                                    <ul class="list">
-                                        <li><a href="#">organic</a></li>
-                                        <li><a href="#">Foods</a></li>
-                                        <li><a href="#">tasty</a></li>
-                                    </ul>
-                                </div>
-                                <div class="post-share">
-                                    <h4 class="pbm-title">Social Share</h4>
-                                    <ul class="list">
-                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-vk"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-tumblr"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="single-post-pagination">
-                                <div class="prev-post">
-                                    <a href="#">
-                                        <div class="title-with-link">
-                                            <span class="intro">Prev Post</span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <div class="next-post">
-                                    <a href="#">
-                                        <div class="title-with-link">
-                                            <span class="intro">Next Post</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!-- Blog Comment -->
-                    <div class="blog-details single-post-item format-standard">
-
-                        <div class="comment-area">
-                            <div class="comment-box submit-form">
-                                <h3 class="reply-title">Post Comment</h3>
-                                <div class="comment-form">
-                                    <form action="." method="POST">
-                                        {% csrf_token %}
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <div class="form-group">
-                                                    {% bootstrap_field form.content %}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-md-12 col-sm-12">
-                                                <div class="form-group">
-                                                    <button class="btn search-btn" type="submit">Submit Now</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div class="all-comments">
-                                <h3 class="comments-title">{{ comments.count }} Comment{{ comments|pluralize }}</h3>
-                                    {% for comment in comments %}
-                                        <div class="comment-list">
-                                        <ul>
-                                            <li class="single-comment">
-                                                <article>
-                                                    <div class="comment-author">
-                                                        <img src="assets/img/user-1.jpg" alt="">
-                                                    </div>
-                                                    <div class="comment-details">
-                                                        <div class="comment-meta">
-                                                            <div class="comment-left-meta">
-                                                                <h4 class="author-name">{{ comment.user }} <span class="selected"><i class="fas fa-bookmark"></i></span></h4>
-                                                                <div class="comment-date">{{ comment.timestamp|timesince }} ago</div>
-                                                            </div>
-                                                            <div class="comment-reply">
-                                                                <a href="#" class="reply"><span class="icona"><i class="ti-back-left"></i></span> Reply</a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="comment-text">
-                                                            <p>{{ comment.content }}</p>
-                                                        </div>
-                                                    </div>
-                                                </article>
-                                                <ul class="children">
-                                                    <li class="single-comment">
-                                                        <article>
-                                                            <div class="comment-author">
-                                                                <img src="assets/img/user-2.jpg" alt="">
-                                                            </div>
-                                                            <div class="comment-details">
-                                                                <div class="comment-meta">
-                                                                    <div class="comment-left-meta">
-                                                                        <h4 class="author-name">Rosalina Kelian</h4>
-                                                                        <div class="comment-date">19th May 2018</div>
-                                                                    </div>
-                                                                    <div class="comment-reply">
-                                                                        <a href="#" class="reply"><span class="icons"><i class="ti-back-left"></i></span> Reply</a>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="comment-text">
-                                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim laborumab.
-                                                                        perspiciatis unde omnis iste natus error.</p>
-                                                                </div>
-                                                            </div>
-                                                        </article>
-                                                        <ul class="children">
-                                                            <li class="single-comment">
-                                                                <article>
-                                                                    <div class="comment-author">
-                                                                        <img src="assets/img/user-4.jpg" alt="">
-                                                                    </div>
-                                                                    <div class="comment-details">
-                                                                        <div class="comment-meta">
-                                                                            <div class="comment-left-meta">
-                                                                                <h4 class="author-name">Rosalina Kelian</h4>
-                                                                                <div class="comment-date">19th May 2018</div>
-                                                                            </div>
-                                                                            <div class="comment-reply">
-                                                                                <a href="#" class="reply"><span class="icons"><i class="ti-back-left"></i></span> Reply</a>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="comment-text">
-                                                                            <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim laborumab.
-                                                                                perspiciatis unde omnis iste natus error.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </article>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </li>
+                                <div class="single-post-pagination">
+                                    <div class="posts-author">
+                                        <ul class="social-links">
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-behance"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                                         </ul>
-                                    {% endfor %}
+								    </div>
                                 </div>
-                            </div>
-
                         </div>
-
                     </div>
-
-
+                    <div class="main-comment-section">
+                        {% include 'blog/comments.html' %}
+                    </div>
                 </div>
 
                 <!-- Single blog Grid -->
-                <div class="col-lg-4 col-md-12 col-sm-12 col-12">
-
-                    <!-- Searchbard -->
-                    <div class="single-widgets widget_search">
-                        <h4 class="title">Search</h4>
-                        <form action="#" class="sidebar-search-form">
-                            <input type="search" name="search" placeholder="Search..">
-                            <button type="submit"><i class="ti-search"></i></button>
-                        </form>
-                    </div>
-
-                    <!-- Categories -->
-                    <div class="single-widgets widget_category">
-                        <h4 class="title">Categories</h4>
-                        <ul>
-                            <li><a href="#">Lifestyle <span>09</span></a></li>
-                            <li><a href="#">Travel <span>12</span></a></li>
-                            <li><a href="#">Fashion <span>19</span></a>
-                            </li><li><a href="#">Branding <span>17</span></a></li>
-                            <li><a href="#">Music <span>10</span></a></li>
-                        </ul>
-                    </div>
-
-                    <!-- Trending Posts -->
-                    <div class="single-widgets widget_thumb_post">
-                        <h4 class="title">Trending Posts</h4>
-                        <ul>
-                            <li>
-                                <span class="left">
-                                    <img src="assets/img/tour-1.jpg" alt="" class="">
-                                </span>
-                                <span class="right">
-                                    <a class="feed-title" href="#">Alonso Kelina Falao Asiano Pero</a>
-                                    <span class="post-date"><i class="ti-calendar"></i>10 Min ago</span>
-                                </span>
-                            </li>
-                        </ul>
-                    </div>
-
-                    <!-- Tags Cloud -->
-                    <div class="single-widgets widget_tags">
-                        <h4 class="title">Tags Cloud</h4>
-                        <ul>
-                            <li><a href="#">Lifestyle</a></li>
-                            <li><a href="#">Travel</a></li>
-                            <li><a href="#">Fashion</a></li>
-                            <li><a href="#">Branding</a></li>
-                            <li><a href="#">Music</a></li>
-                        </ul>
-                    </div>
-
-                </div>
+                {% include 'blog/sidebar.html' with most_recent=most_recent category_count=category_count lates=lates %}
 
             </div>
             <!-- /row -->

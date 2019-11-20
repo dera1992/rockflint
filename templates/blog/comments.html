@@ -1,0 +1,90 @@
+{% load static %}
+{% load bootstrap4 %}
+
+<!-- Blog Comment -->
+<div class="blog-details single-post-item format-standard">
+
+    <div class="comment-area">
+        <div class="comment-box submit-form">
+            <h3 class="reply-title">Post Comment</h3>
+            <div class="comment-form">
+                <form action="." class="comment-form" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="form-group">
+                                {% bootstrap_field comment_form.content %}
+                            </div>
+                        </div>
+                        {% if request.user.is_authenticated %}
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="form-group">
+                                <button class="btn search-btn" type="submit">Submit</button>
+                            </div>
+                        </div>
+                        {% else %}
+                            <div class="col-lg-3 col-md-3 col-sm-3">
+                                <div class="form-group">
+                                    <button class="btn search-btn" type="submit" disabled>Submit</button>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="all-comments">
+            <h3 class="comments-title">{{ comments.count }} Comment{{ comments|pluralize }}</h3>
+            {% for comment in comments %}
+
+              <blockquote class="blockquote">
+                <p class="mb-0"><small>{{ comment.content }}</small></p>
+                <footer class="blockquote-footer"><small>by <cite title="Source Title">{{ comment.user.profile.fullname|capfirst }}| {{ comment.timestamp|timesince }} ago </cite></small>
+                  <button type="button" name="button" class="reply-btn btn btn-theme">Reply</button>
+                </footer>
+                  <div class="container mt-2">
+                      {% for reply in comment.replies.all %}
+                        <blockquote class="blockquote">
+                          <p class="mb-0"><small>{{ reply.content }}</small></p>
+                          <footer class="blockquote-footer"><small>by <cite title="Source Title">{{ reply.user|capfirst }}| {{ reply.timestamp|timesince }} ago </cite></small>
+                        </footer>
+                        </blockquote>
+                      {% endfor %}
+                  </div>
+              </blockquote>
+
+
+              <div class="replied-comments container mt-2" style="display:none;">
+
+                <div class="comment-form">
+                  <form method="post" class="reply-form" action=".">
+                    {% csrf_token %}
+                    <input type="hidden" name="comment_id" value="{{ comment.id }}">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            {% bootstrap_field comment_form.content %}
+                        </div>
+                    </div>
+
+                    {% if request.user.is_authenticated %}
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="form-group">
+                                <button class="btn search-btn" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="col-lg-3 col-md-3 col-sm-3">
+                            <div class="form-group">
+                                <button class="btn search-btn" type="submit" disabled>Submit</button>
+                            </div>
+                        </div>
+                    {% endif %}
+                  </form>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>

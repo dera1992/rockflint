@@ -8,6 +8,7 @@
         <h3>Find Your Dream</h3>
     </div>
     <form method="GET" action="{% url 'search:filter' %}">
+    {% csrf_token %}
         <div class="hero-search-content">
 
             <div class="row">

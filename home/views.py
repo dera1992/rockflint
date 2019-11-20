@@ -8,7 +8,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Count
 from django.db.models import Q
 from django.contrib import messages
-from django.http import HttpResponseRedirect, Http404,HttpResponse
+from django.http import HttpResponseRedirect, Http404,HttpResponse, JsonResponse
+from django.contrib.auth.models import User
 from django.urls import reverse
 import json
 from django.core import serializers
@@ -20,6 +21,28 @@ from .forms import MessageForm, ScheduleForm
 from django.core.mail import send_mail
 from hitcount.views import HitCountDetailView
 from django.contrib.auth.decorators import login_required
+from django.template.loader import render_to_string
+from tracking.models import Visitor
+from datetime import datetime
+from blog.models import Post
+from others.models import Testimony
+
+
+def dashboard(request, category_slug=None):
+    category = None
+    ads = Ads.objects.all()
+    latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
+    categories = Category.objects.all()
+    users = User.objects.all()
+    visitor = Visitor.objects.filter(start_time=datetime.today())
+    blog = Post.objects.all()
+    counts = Ads.objects.all().values('category__name').annotate(total=Count('category'))
+
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        ads = ads.filter(category=category)
+    return render(request,'home/dashboard.html', {'category': category,'categories': categories,'ads': ads,'latests':latests,
+                                              'users':users,'visitor':visitor,'blog':blog})
 
 
 
@@ -32,13 +55,76 @@ def home_list(request, category_slug=None):
     states = State.objects.all()
     cities = Lga.objects.all()
     offers = Offer.objects.all()
+    users_tests = Testimony.objects.all()
     agents = Profile.objects.filter(agent_type="2", active=True)
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         ads = ads.filter(category=category)
     return render(request,'home/index.html', {'category': category,'categories': categories,'ads': ads,'latests':latests,
+                                              'queryset': qs,'states':states,'cities':cities,'offers':offers,'agents':agents,
+                                              'users_tests': users_tests})
+
+def ads_list(request, category_slug=None):
+    category = None
+    ad_list = Ads.objects.filter(active=True)
+    latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
+    qs = Ads.objects.all()
+    categories = Category.objects.all()
+    states = State.objects.all()
+    cities = Lga.objects.all()
+    offers = Offer.objects.all()
+    agents = Profile.objects.filter(agent_type="2", active=True)
+
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        ad_list = ad_list.filter(category=category)
+
+    paginator = Paginator(ad_list, 10)
+    page_request_var = "page"
+    page = request.GET.get('page')
+    try:
+        ads = paginator.page(page)
+    except PageNotAnInteger:
+        ads = paginator.page(1)
+    except EmptyPage:
+        ads = paginator.page(paginator.num_pages)
+    return render(request,'home/product_list.html', {'category': category,'categories': categories,'ads': ads,'latests':latests,
                                               'queryset': qs,'states':states,'cities':cities,'offers':offers,'agents':agents})
+
+def allads_list(request, category_slug=None):
+    category = None
+    ad_list = Ads.objects.all().order_by('-created', '?')
+    categories = Category.objects.all()
+    states = State.objects.all()
+    cities = Lga.objects.all()
+    offers = Offer.objects.all()
+    agents = Profile.objects.filter(agent_type="2", active=True)
+    query = request.GET.get('q')
+    if query:
+        ad_list = ad_list.filter(
+            Q(first_name__icontains=query) |
+            Q(last_name__icontains=query) |
+            Q(phone=query) |
+            Q(description__icontains=query) |
+            Q(address__icontains=query)
+        )
+
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        ad_list = ad_list.filter(category=category)
+
+    paginator = Paginator(ad_list, 10)
+    page_request_var = "page"
+    page = request.GET.get('page')
+    try:
+        ads = paginator.page(page)
+    except PageNotAnInteger:
+        ads = paginator.page(1)
+    except EmptyPage:
+        ads = paginator.page(paginator.num_pages)
+    return render(request,'home/allads_list.html', {'category': category,'categories': categories,'ads': ads,
+                                              'states':states,'cities':cities,'offers':offers,'agents':agents})
 
 
 def ad_detail(request, id, slug):
@@ -101,14 +187,56 @@ def ads_favourite_list(request):
     return render(request, 'owner/bookmarked.html', context)
 
 @login_required
-def favourite_ads(request, id):
+def favourite_ad(request, id):
     ad = get_object_or_404(Ads, id=id)
     print(ad)
     if ad.favourite.filter(id=request.user.id).exists():
         ad.favourite.remove(request.user)
     else:
         ad.favourite.add(request.user)
+
     return HttpResponseRedirect(ad.get_absolute_url())
+
+@login_required
+def favourite_delete(request, id):
+    ad = get_object_or_404(Ads, id=id)
+    print(ad)
+    if ad.favourite.filter(id=request.user.id).exists():
+        ad.favourite.remove(request.user)
+    else:
+        ad.favourite.add(request.user)
+
+    return redirect('home:favourites')
+
+# @login_required
+# def favourite_ads(request):
+#     ad = get_object_or_404(Ads, id=request.POST.get('id'))
+#     if ad.favourite.filter(id=request.user.id).exists():
+#         ad.favourite.remove(request.user)
+#     else:
+#         ad.favourite.add(request.user)
+#
+#     return HttpResponse({"success": True})
+
+@login_required
+def favourite_ads(request):
+    ad = get_object_or_404(Ads, id=request.POST.get('id'))
+    is_favourite = False
+    print(ad)
+    if ad.favourite.filter(id=request.user.id).exists():
+        ad.favourite.remove(request.user)
+        is_favourite = False
+    else:
+        ad.favourite.add(request.user)
+        is_favourite = True
+    # context = {
+    #     'is_favourite': is_favourite,
+    # }
+    if request.is_ajax():
+        ad = Ads.objects.get(id=ad.id)
+        html = render_to_string('home/favourite_section.html',{'is_favourite': is_favourite,'ad':ad}, request=request)
+        return JsonResponse({'html': html})
+
 
 @login_required
 def delete_post(request,pk=None):

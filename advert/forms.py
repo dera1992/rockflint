@@ -210,7 +210,7 @@ class AdsEditForm(forms.ModelForm):
     #         attrs={'class': 'form-control', 'placeholder': 'Enter Title'}
     #     )
     # )
-    # category = forms.ModelChoiceField(queryset=Category.objects.all(), to_field_name='id', required=True,label='Property Type')
+    category = forms.ModelChoiceField(queryset=Category.objects.all(), to_field_name='id', required=True,label='Property Type')
     # state = forms.ModelChoiceField(queryset=State.objects.all(), to_field_name='id', required=True)
     # property_offer = forms.ModelChoiceField(queryset=Offer.objects.all(), to_field_name='id', required=True,label='Property Status')
     # # subcategory = forms.ModelChoiceField(queryset=SubCategory.objects.all(), to_field_name='id', required=True,)

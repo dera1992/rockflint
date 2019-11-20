@@ -172,7 +172,7 @@ html body .mdi-set {
   line-height: initial;
 }
 section{
-	padding:80px 0 80px;
+	padding:40px 0 80px;
 }
 p {
     line-height:1.8;
@@ -4394,13 +4394,13 @@ form.search-big-form.search-shadow, form.search-form.search-shadow {
 	height:60px;
 	background: #ffffff;
 	overflow: hidden;
-    box-shadow: 0 0 6px 1px rgba(62,28,131,0.1);
+    box-shadow: 0 0 0px 1px rgba(62,28,131,0.1);
 	/*-webkit-box-shadow: 0 0 6px 1px rgba(62,28,131,0.1);*/
 }
 .input-with-icon i {
     position: absolute;
     top: 60%;
-    transform: translateY(-50%);
+    transform: translateY(-80%);
     left: 15px;
     font-size:18px;
     color:#a2a9bf;
@@ -5609,7 +5609,7 @@ span.tag_t {
 }
 .page-title {
     width: 100%;
-    height: 200px;
+    height: 60px;
     text-align: left;
     display: flex;
     flex-direction: column;
@@ -8297,4 +8297,20 @@ a.blue2-theme {
 .img-fluid {
     max-width: 100%;
      height: 180px;
+}
+
+.breadcrumb{
+    padding: .75rem 1rem;
+    margin-bottom: 1rem;
+    list-style: none;
+    background-color: #f2f4f6;
+    border-radius: .25rem;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    display: inline-block;
+    padding-right: .5rem;
+    padding-left: .5rem;
+    color: #868e96;
+    content: ">";
 }

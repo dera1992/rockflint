@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+{% load bootstrap4 %}
+{% load thumbnail %}
+{% load humanize %}
+<html lang="en">
+
+<!-- Mirrored from uxliner.com/adminkit/demo/main/ltr/index-ecommerce.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Nov 2019 14:51:15 GMT -->
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{% block title %}Rockflint Dashboard{% endblock %}</title>
+<!-- Tell the browser to be responsive to screen width -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- v4.0.0 -->
+<link rel="stylesheet" href="{% static 'dist/bootstrap/css/bootstrap.min.css' %}">
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" sizes="16x16" href="{% static 'dist/img/favicon-16x16.png' %}">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+
+<!-- Theme style -->
+<link rel="stylesheet" href="{% static 'dist/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'dist/css/font-awesome/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'dist/css/et-line-font/et-line-font.css' %}">
+<link rel="stylesheet" href="{% static 'dist/css/themify-icons/themify-icons.css' %}">
+<link rel="stylesheet" href="{% static 'dist/css/simple-lineicon/simple-line-icons.css' %}">
+
+<!-- Chartist CSS -->
+<link rel="stylesheet" href="{% static 'dist/plugins/chartist-js/chartist.min.css' %}">
+<link rel="stylesheet" href="{% static 'dist/plugins/chartist-js/chartist-plugin-tooltip.css' %}">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body class="skin-blue sidebar-mini">
+<div class="wrapper boxed-wrapper">
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="index.html" class="logo blue-bg">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><img src="{% static 'dist/img/logo-n-blue.png' %}" alt=""></span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><img src="{% static 'dist/img/logo-blue.png' %}" alt=""></span> </a>
+    <!-- Header Navbar -->
+    <nav class="navbar blue-bg navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <ul class="nav navbar-nav pull-left">
+        <li><a class="sidebar-toggle" data-toggle="push-menu" href="#"></a> </li>
+      </ul>
+      <div class="pull-left search-box">
+        <form action="#" method="get" class="search-form">
+          <div class="input-group">
+            <input name="search" class="form-control" placeholder="" type="text">
+            <span class="input-group-btn">
+            <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i> </button>
+            </span></div>
+        </form>
+        <!-- search form --> </div>
+      <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+          <!-- User Account  -->
+          <li class="dropdown user user-menu p-ph-res"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              {% if request.user.profile.photo %}
+                <img src="{{ request.user.profile.photo.url }}" class="user-image" alt="" width="35px" height="35px">
+              {% else %}
+                 <img src="{% static 'assets/img/avater.png' %}" class="user-image" alt="" width="35px" height="35px">
+              {% endif %}
+              <span class="hidden-xs">{{ request.user.profile.fullname }}</span> </a>
+            <ul class="dropdown-menu">
+              <li><a href="{% url "profile_display" %}"><i class="icon-profile-male"></i> My Profile</a></li>
+              <li><a href="{% url "owner:my_property" %}"><i class="icon-wallet"></i> Property List</a></li>
+              <li><a href="{% url "home:favourites" %}"><i class="icon-envelope"></i> Bookmarked Listings</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="{% url "logout" %}"><i class="fa fa-power-off"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="image text-center"><img src="{{ user.profile.photo.url }}" width="45px" height="45px" class="img-circle" alt="User Image"> </div>
+        <div class="info">
+          <p>{{ user.profile.fullname }}</p>
+        </div>
+      </div>
+
+      <!-- sidebar menu -->
+      <ul class="sidebar-menu" data-widget="tree">
+        {% with request.resolver_match.url_name as url_name %}
+            <li class="{% if url_name == 'dashboard' %}active{% endif %}"> <a href="{% url "home:dashboard" %}"> <i class="icon-home"></i> <span>Dashboard</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
+            <li class="{% if url_name == 'allagent_list' %}active{% endif %}"> <a href="{% url "others:allagent_list" %}"><i class="ti-user"></i> <span>Users List</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
+            <li class="{% if url_name == 'allads_list' %}active{% endif %}"> <a href="{% url "home:allads_list" %}"><i class="ti-list"></i> <span>Property List</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
+            <li class="{% if url_name == 'profile_display' %}active{% endif %}"> <a href="{% url "profile_display" %}"> <i class="icon-user"></i> My Profile <span class="pull-right-container"> <i class="fa fa-angle-right "></i> </span> </a>
+            </li>
+            <li class="{% if url_name == 'favourites' %}active{% endif %}"> <a href="{% url "home:favourites" %}"> <i class="ti-bookmark"></i> <span>Bookmarked Listings</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
+            <li class="{% if url_name == 'my_property' %}active{% endif %}"> <a href="{% url "owner:my_property" %}"> <i class="ti-layers"></i> <span>My Properties</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
+            <li class="{% if url_name == 'post' %}active{% endif %}"> <a href="{% url "advert:post" %}"> <i class="icon-note"></i> <span>Submit New Property</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
+            <li class="{% if url_name == 'password_change' %}active{% endif %}"> <a href="{% url "password_change" %}"> <i class="ti-unlock"></i> <span>Change Password</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
+            <li class="{% if url_name == 'logout' %}active{% endif %}"> <a href="{% url "logout" %}"> <i class="fa fa-power-off"></i> <span>Log Out</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
+        {% endwith %}
+      </ul>
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  {% block content %}
+
+  {% endblock %}
+
+  <footer class="main-footer">
+    <div class="pull-right hidden-xs">Version 1.0</div>
+    Copyright © 2018 Yourdomian. All rights reserved.</footer>
+</div>
+<!-- ./wrapper -->
+
+<!-- jQuery 3 -->
+<script src="{% static 'dist/js/jquery.min.js' %}"></script>
+
+<!-- v4.0.0-alpha.6 -->
+<script src="{% static 'dist/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<!-- template -->
+<script src="{% static 'dist/js/adminkit.js' %}"></script>
+
+<!-- Chart Peity JavaScript -->
+<script src="{% static 'dist/plugins/peity/jquery.peity.min.js' %}"></script>
+<script src="{% static 'dist/plugins/functions/jquery.peity.init.js' %}"></script>
+
+<!-- Chartjs JavaScript -->
+<script src="{% static 'dist/plugins/chartjs/chart.min.js' %}"></script>
+<script src="{% static 'dist/plugins/chartjs/chart-int.js' %}"></script>
+</body>
+
+<!-- Mirrored from uxliner.com/adminkit/demo/main/ltr/index-ecommerce.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Nov 2019 14:51:20 GMT -->
+</html>

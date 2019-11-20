@@ -1,0 +1,70 @@
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+
+
+<div class="col-lg-4 col-md-12 col-sm-12 col-12">
+
+    <!-- Searchbard -->
+    <div class="single-widgets widget_search">
+        <h4 class="title">Search</h4>
+        <form action="{% url 'blog:list' %}" method="get" class="sidebar-search-form">
+            <input type="search" name="q" placeholder="Search..">
+            <button type="submit"><i class="ti-search"></i></button>
+        </form>
+    </div>
+
+    <!-- Trending Posts -->
+    <div class="single-widgets widget_thumb_post">
+        <h4 class="title">Trending Posts</h4>
+        <ul>
+            {% for post in most_recent %}
+            <li>
+                <span class="left">
+                    <img src="{{ post.image.url }}" alt="" class="">
+                </span>
+                <span class="right">
+                    <a class="feed-title" href="{{ post.get_absolute_url }}">{{ post.title }}</a>
+                    <span class="post-date"><i class="ti-calendar"></i>{{ post.timestamp|timesince }} ago</span>
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Categories -->
+    <div class="single-widgets widget_category">
+        <h4 class="title">Categories</h4>
+        <ul>
+            {% for cat in category_count %}
+                <li><a href="#">{{ cat.categories__title }}<span>{{ cat.categories__title__count }}</span></a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Trending Posts -->
+    <div class="single-widgets widget_thumb_post">
+        <h4 class="title">Trending Properties</h4>
+        <ul>
+            {% for late in lates %}
+            <li>
+                <span class="left">
+                    {% for images in late.get_second_image %}
+                        {% thumbnail images.ad_image "80x53" crop="10px 10px"  as im %}
+                        <a href="{{ late.get_absolute_url }}">
+                            <img  style="margin:{{ im|margin:"80x53" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="mx-auto"  />
+                        </a>
+                        {% endthumbnail %}
+                    {% endfor %}
+                </span>
+                <span class="right">
+                    <a class="feed-title" href="{{ late.get_absolute_url }}">{{ late.property_title }}</a>
+                    <span class="post-date">₦{{ late.property_price|intcomma }}</span>
+                </span>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

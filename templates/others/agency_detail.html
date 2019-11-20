@@ -9,6 +9,23 @@
 {% block title %}Agency detail{% endblock %}
 
 {% block content %}
+    <div class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="row">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'others:agency_list' %}">Agent List</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ agency.fullname }}</li>
+                          </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- ============================ Agency Name Start================================== -->
     <div class="agency-page">
         <div class="container">
@@ -128,7 +145,7 @@
                                                         <div class="listing-short-detail">
                                                             <span class="listing-location" style="color: #00A877">{{ agency_ad.category }}</span>
                                                             <h4 class="listing-name"><a href="{{ agency_ad.get_absolute_url }}">{{ agency_ad.property_title }}</a></h4>
-                                                            <span class="listing-location"><i class="ti-location-pin"></i>{{ agency_ad.address }}</span>
+                                                            <span class="listing-location"><i class="ti-location-pin"></i>{{ agency_ad.address|truncatechars_html:50 }}</span>
                                                         </div>
                                                         <div class="list-author">
                                                             <a href="#"><img src="{{ agency_ad.profile.photo.url }}" class="img-fluid img-circle avater-30" alt=""></a>
@@ -174,25 +191,27 @@
 
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12">
-                                            <ul class="pagination">
-                                                <li class="page-item">
-                                                  <a class="page-link" href="#" aria-label="Previous">
-                                                    <span class="ti-arrow-left"></span>
-                                                    <span class="sr-only">Previous</span>
-                                                  </a>
-                                                </li>
-                                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                                <li class="page-item active"><a class="page-link" href="#">3</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">...</a></li>
-                                                <li class="page-item"><a class="page-link" href="#">18</a></li>
-                                                <li class="page-item">
-                                                  <a class="page-link" href="#" aria-label="Next">
-                                                    <span class="ti-arrow-right"></span>
-                                                    <span class="sr-only">Next</span>
-                                                  </a>
-                                                </li>
-                                            </ul>
+                                            {% if agency_ads.has_other_pages %}
+                                              <ul class="pagination p-center">
+                                                {% if agency_ads.has_previous %}
+                                                  <li class="page-item"><a class="page-link" href="?page={{ agency_ads.previous_page_number }}" aria-label="Previous">&laquo;</a></li>
+                                                {% else %}
+                                                  <li class="disabled"><span>&laquo;</span></li>
+                                                {% endif %}
+                                                {% for i in agency_ads.paginator.page_range %}
+                                                  {% if agency_ads.number == i %}
+                                                    <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                                  {% else %}
+                                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                                  {% endif %}
+                                                {% endfor %}
+                                                {% if agency_ads.has_next %}
+                                                  <li><a class="page-link" href="?page={{ agency_ads.next_page_number }}" aria-label="Next">&raquo;</a></li>
+                                                {% else %}
+                                                  <li class="disabled"><span>&raquo;</span></li>
+                                                {% endif %}
+                                              </ul>
+                                            {% endif %}
                                         </div>
                                     </div>
 

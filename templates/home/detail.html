@@ -4,27 +4,48 @@
 {% load i18n %}
 {% load thumbnail %}
 {% load hitcount_tags %}
-{% load prices %}
 {% load humanize %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 
 
 {% block title %}Property Detail{% endblock %}
 
 {% block content %}
     {% insert_hit_count_js_variables for ad %}
+    <!-- ============================ Page Title Start================================== -->
+    <div class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <nav aria-label="breadcrumb">
+                      <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{% url "home:ads_list" %}">Property List</a></li>
+                        <li class="breadcrumb-item"><a href="{{ ad.category.get_absolute_url }}">{{ ad.category }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ ad.property_title }}</li>
+                      </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
    <!-- ============================ Property Detail Start ================================== -->
     <section class="gray">
         <div class="container">
-            <div class="row">
 
+            <div class="row">
                 <!-- property main detail -->
                 <div class="col-lg-8 col-md-12 col-sm-12">
 
-                    <div class="slide-property-first mb-4">
-                        <div class="pr-price-into">
+                    <div class="slide-property-first mb-4 row">
+                        <div class="pr-price-into col-lg-6 col-md-6 col-sm-6">
                             <h2>₦{{ ad.property_price|intcomma}} <i>/ {{ ad.rent_period }}</i> <span class="prt-type rent">{{ ad.property_offer }}</span></h2>
                             <span><i class="lni-map-marker"></i> {{ ad.address }}</span>
-                            <p>Views: {% get_hit_count for ad %}</p>
+                        </div>
+                        <div class="pr-price-into col-lg-6 col-md-6 col-sm-6">
+                            <h5 class="property-name">{{ ad.property_title }}</h5>
+                            <span><i class="lni-eye"></i> Views: {% get_hit_count for ad %}</span>
                         </div>
                     </div>
 
@@ -95,53 +116,85 @@
 
                     <!-- Single Block Wrap -->
                     <div class="block-wrap">
-
-                        <div class="block-header">
-                            <h4 class="block-title">Ameneties</h4>
-                        </div>
-
-                        <div class="block-body">
-                            <ul class="avl-features third">
-                                {% if ad.air_conditioning == yes %}
-                                    <li>Air Conditioning</li>
-                                {% endif %}
-                                {% if ad.swimming_pool == yes %}
-                                    <li>Swimming Pool</li>
-                                {% endif %}
-                                {% if ad.parking == yes %}
-                                    <li>Parking Space</li>
-                                {% endif %}
-                                {% if ad.lawn == yes %}
-                                    <li>Lawn</li>
-                                {% endif %}
-                                {% if ad.gym == yes %}
-                                    <li>Gym</li>
-                                {% endif %}
-                                {% if ad.sewer == yes %}
-                                    <li>Sewer</li>
-                                {% endif %}
-                                {% if ad.water == yes %}
-                                    <li>Water</li>
-                                {% endif %}
-                                {% if ad.microwave == yes %}
-                                    <li>Microwave</li>
-                                {% endif %}
-                                {% if ad.swimming_pool == yes %}
-                                    <li>Swimming Pool</li>
-                                {% endif %}
-                                {% if ad.barbecue == yes %}
-                                    <li>Barbecue</li>
-                                {% endif %}
-                                {% if ad.tv_cable == yes %}
-                                     <li>Tv Cable</li>
-                                {% endif %}
-                                {% if ad.wi_fi == yes %}
-                                     <li>Wi_fie</li>
-                                {% endif %}
-                            </ul>
-                        </div>
-
-                    </div>
+							<div class="block-header">
+                                <h4 class="block-title">Property Features</h4>
+                             </div>
+							<div id="accordion" class="accordion">
+								<div class="card mb-0">
+									<a class="card-header collapsed active " data-toggle="collapse" href="#collapseOne">
+										<h5 class="card-title">Ameneties</h5>
+									</a>
+									<div id="collapseOne" class="card-body collapse" data-parent="#accordion" >
+										<ul class="avl-features third">
+                                        {% if ad.air_conditioning is True %}
+                                            <li>Air Conditioning</li>
+                                        {% endif %}
+                                        {% if ad.swimming_pool is True %}
+                                            <li>Swimming Pool</li>
+                                        {% endif %}
+                                        {% if ad.parking is True %}
+                                            <li>Parking Space</li>
+                                        {% endif %}
+                                        {% if ad.lawn is True %}
+                                            <li>Lawn</li>
+                                        {% endif %}
+                                        {% if ad.gym is True %}
+                                            <li>Gym</li>
+                                        {% endif %}
+                                        {% if ad.sewer is True %}
+                                            <li>Sewer</li>
+                                        {% endif %}
+                                        {% if ad.water is True %}
+                                            <li>Water</li>
+                                        {% endif %}
+                                        {% if ad.microwave is True %}
+                                            <li>Microwave</li>
+                                        {% endif %}
+                                        {% if ad.swimming_pool is True %}
+                                            <li>Swimming Pool</li>
+                                        {% endif %}
+                                        {% if ad.barbecue is True %}
+                                            <li>Barbecue</li>
+                                        {% endif %}
+                                        {% if ad.tv_cable is True %}
+                                             <li>Tv Cable</li>
+                                        {% endif %}
+                                        {% if ad.wi_fi is True %}
+                                             <li>Wi_fie</li>
+                                        {% endif %}
+                                    </ul>
+									</div>
+									<a class="card-header collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+										<h5 class="card-title">Close to Property</h5>
+									</a>
+									<div id="collapseTwo" class="card-body collapse" data-parent="#accordion" >
+										<ul class="avl-features third">
+                                            {% if ad.church is True %}
+                                                <li>Church</li>
+                                            {% endif %}
+                                            {% if ad.mosque is True %}
+                                                <li>Mosque</li>
+                                            {% endif %}
+                                            {% if ad.school is True %}
+                                                <li>School</li>
+                                            {% endif %}
+                                            {% if ad.market is True %}
+                                                <li>Market</li>
+                                            {% endif %}
+                                            {% if ad.hospital is True %}
+                                                <li>Hospital</li>
+                                            {% endif %}
+                                            {% if ad.resturant is True %}
+                                                <li>Resturant</li>
+                                            {% endif %}
+                                            {% if ad.beach is True %}
+                                                <li>Beach</li>
+                                            {% endif %}
+                                        </ul>
+									</div>
+								</div>
+							</div>
+						</div>
 
                     <!-- Single Block Wrap -->
                     <div class="block-wrap">
@@ -155,12 +208,15 @@
                                 <div class="card">
                                     <div class="card-header" id="firstFloor">
                                         <h2 class="mb-0">
-                                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#firstfloor">First Floor<span>740 sq ft</span></button>
+                                            <button type="button" class="btn btn-link" data-toggle="collapse" data-target="#firstfloor">First Floor</button>
                                         </h2>
                                     </div>
                                     <div id="firstfloor" class="collapse" aria-labelledby="firstFloor" data-parent="#floor-option">
                                         <div class="card-body">
-                                            <img src="{{ad.plan_image.url}}" class="img-fluid" alt="" />
+                                            {% thumbnail ad.plan_image "648x371" crop="center"  as im %}
+                                                <img  style="margin:{{ im|margin:"648x371" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" alt="Alt">
+                                            {% endthumbnail %}
+{#                                            <img src="{{ad.plan_image.url}}" class="img-fluid" alt="" />#}
                                         </div>
                                     </div>
                                 </div>
@@ -177,11 +233,11 @@
                         </div>
 
                         <div class="block-body">
+                            {{ schedule_form.media }}
                             <form action="." method="post">
-                            <div class="form-row">
 
                                 {% csrf_token %}
-{#                            <div class="">#}
+                                <div class="form-row">
                                     <div class="form-group col-md-6">
                                         {% bootstrap_field schedule_form.date %}
                                     </div>
@@ -200,7 +256,7 @@
                                     <div class="form-group col-lg-3 col-md-3">
                                        <button class="btn btn-theme full-width">Send Message</button>
                                     </div>
-                            </div>
+                                </div>
                             </form>
 
                         </div>
@@ -222,10 +278,6 @@
                         </div>
 
                     </div>
-
-
-
-
 
                 </div>
 
@@ -259,13 +311,13 @@
                                     <a href="JavaScript:Void(0);" class="compare-button" data-toggle="tooltip" data-original-title="Compare"><i class="ti-control-shuffle"></i></a>
                                 </div>
 
-                                <div class="pr-single-info">
+                                <div class="pr-single-info" id = "favourite-section">
                                     {% if is_favourite %}
-                                        <a href="{% url 'home:favourite_ads' id=ad.id %}" class="like-bitt add-to-favorite" >
+                                        <a href="{% url 'home:favourite_ad' id=ad.id %}"  class="like-bitt add-to-favorite" >
                                             <i class="lni-heart-filled"></i>
                                         </a>
                                     {% else %}
-                                         <a href="{% url 'home:favourite_ads' id=ad.id %}" class="like-bitt add-to-favorite" >
+                                         <a href="{% url 'home:favourite_ad' id=ad.id %}" class="like-bitt add-to-favorite" >
                                             <i class="ti-heart"></i>
                                         </a>
                                     {% endif %}
@@ -388,9 +440,9 @@
 
                                         <div class="listing-img-wrapper">
                                                 {% for image in city.get_second_image %}
-                                                    {% thumbnail image.ad_image "800x530" crop="10px 10px"  as im %}
+                                                    {% thumbnail image.ad_image "370x240" crop="10px 10px"  as im %}
                                                         <div><a href="{{ city.get_absolute_url }}">
-                                                            <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  /></a>
+                                                            <img  style="margin:{{ im|margin:"370x240" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class=" mx-auto"  /></a>
                                                         </div>
                                                     {% endthumbnail %}
                                                 {% endfor %}
@@ -411,11 +463,12 @@
 
                                             <div class="listing-detail-wrapper">
                                                 <div class="listing-short-detail">
-                                                    <h4 class="listing-name"><a href="{{ city.get_absolute_url }}">{{ city.property_title }}</a></h4>
+                                                    <span class="listing-location" style="color: #00A877">{{ city.category }}</span>
+                                                    <h4 class="listing-name"><a href="{{  city.get_absolute_url }}">{{ city.property_title}}</a></h4>
                                                     <span class="listing-location"><i class="ti-location-pin"></i>{{ city.address }}</span>
                                                 </div>
                                                 <div class="list-author">
-                                                    <a href="#"><img src="assets/img/add-user.png" class="img-fluid img-circle avater-30" alt=""></a>
+                                                    <a href="#"><img src="{{ city.profile.photo.url }}" class="img-circle avater-30" alt="" width="30px" height="30px"></a>
                                                 </div>
                                             </div>
 
@@ -453,4 +506,7 @@
         </div>
     </section>
     <!-- ============================ Property Detail End ================================== -->
+{% endblock %}
+{% block favourite %}
+
 {% endblock %}

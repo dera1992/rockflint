@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+{% load hitcount_tags %}
+
+{% block title %}Properties List{% endblock %}
+
+{% block content %}
+<!-- ============================ Page Title Start================================== -->
+    <div class="page-title">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="row">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                            {% if not category %}
+                                <li class="breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Property List</li>
+                            {% else %}
+                               <li class="breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url "home:ads_list" %}">Property List</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+                            {% endif %}
+                          </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ============================ Page Title End ================================== -->
+
+    <!-- ============================ All Property ================================== -->
+    <section>
+
+        <div class="container">
+            <div class="row">
+
+                 <!-- property Sidebar -->
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="page-sidebar">
+
+                        <!-- Find New Property -->
+                        {% include 'search/sub_search.html' %}
+                    </div>
+                    <!-- Sidebar End -->
+
+                </div>
+
+                <div class="col-lg-8 col-md-12 list-layout">
+                    <div class="row">
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="filter-fl">
+                                {% with total_property=ads|length %}
+                                    <h4>Total Property Find is: <span class="theme-cl">{{ total_property }}</span></h4>
+                                {% endwith %}
+                                <div class="btn-group custom-drop">
+                                    <button type="button" class="btn btn-order-by-filt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        Short By<i class="ti-angle-down"></i>
+                                    </button>
+                                    <div class="dropdown-menu pull-right animated flipInX">
+                                        <a href="#">Latest</a>
+                                        <a href="#">Most View</a>
+                                        <a href="#">Most Popular</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- Single Property Start -->
+                        <div class="col-lg-12 col-md-12">
+                            {% for ad in ads %}
+                            <div class="property-listing property-1">
+
+                                <div class="listing-img-wrapper">
+                                    {% for images in ad.get_first_image %}
+                                        {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
+                                            <a href="{{ ad.get_absolute_url }}">
+                                                <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto" alt="" />
+                                            </a>
+                                        {% endthumbnail %}
+                                    {% endfor %}
+                                    <div class="listing-like-top" id = "favourite-section">
+                                      {% include 'home/favourite_section.html' with ad=ad  %}
+                                    </div>
+
+                                    <div class="listing-rating">
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star filled"></i>
+                                        <i class="ti-star"></i>
+                                    </div>
+                                    <span class="property-type">{{ ad.property_offer }}</span>
+                                </div>
+
+                                <div class="listing-content">
+
+                                    <div class="listing-detail-wrapper">
+
+{#                                        <h6 class="">{{ ad.category }}</h6>#}
+                                        <div class="listing-short-detail">
+                                            <span class="listing-location" style="color: #00A877">{{ ad.category }}</span>
+                                            <h4 class="listing-name"><a href="{{ ad.get_absolute_url }}">{{ ad.property_title }}</a></h4>
+                                            <span class="listing-location"><i class="ti-location-pin"></i>{{ ad.address|truncatechars_html:50 }}</span>
+                                        </div>
+                                        <div class="list-author">
+                                            <a href="#"><img src="{{ ad.profile.photo.url }}" class="img-circle avater-30" alt=""></a>
+                                        </div>
+                                    </div>
+
+                                    <div class="listing-features-info">
+                                        <ul>
+                                            <li><strong>Bed:</strong>{{ ad.bedroom }}</li>
+                                            <li><strong>Bath:</strong>{{ ad.bathroom }}</li>
+                                            <li><strong>Sqft:</strong>{{ ad.property_area }}</li>
+                                        </ul>
+                                    </div>
+
+                                    <div class="listing-footer-wrapper">
+                                        <div class="listing-price">
+                                            <h4 class="list-pr">₦{{ ad.property_price|intcomma}}</h4>
+                                        </div>
+                                        <div class="listing-detail-btn">
+                                            <a href="{{ ad.get_absolute_url }}" class="more-btn">More Info</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            {% empty %}
+                                <div class="container-fluid">
+                                    <h3 style="text-align:center;">No Property found </h3>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- Single Property End -->
+
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            {% if ads.has_other_pages %}
+                              <ul class="pagination p-center">
+                                {% if ads.has_previous %}
+                                  <li class="page-item"><a class="page-link" href="?page={{ ads.previous_page_number }}" aria-label="Previous">&laquo;</a></li>
+                                {% else %}
+                                  <li class="disabled"><span>&laquo;</span></li>
+                                {% endif %}
+                                {% for i in ads.paginator.page_range %}
+                                  {% if ads.number == i %}
+                                    <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                  {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+                                {% if ads.has_next %}
+                                  <li><a class="page-link" href="?page={{ ads.next_page_number }}" aria-label="Next">&raquo;</a></li>
+                                {% else %}
+                                  <li class="disabled"><span>&raquo;</span></li>
+                                {% endif %}
+                              </ul>
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- ============================ All Property ================================== -->
+{% endblock %}

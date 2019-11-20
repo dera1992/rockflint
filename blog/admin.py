@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post
+from .models import Post,Category
 
 class PostModelAdmin(admin.ModelAdmin):
     list_display = ["title", "updated", "timestamp"]
@@ -14,3 +14,4 @@ class PostModelAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post, PostModelAdmin)
+admin.site.register(Category)

@@ -15,7 +15,8 @@ def filter(request):
     states = State.objects.all()
     cities = Lga.objects.all()
     offers = Offer.objects.all()
-    title_contains_query = request.GET.get('title_contains')
+    is_favourite = False
+    title_contains_query = request.GET.get('title_contains_query')
     ad_price_min = request.GET.get('ad_price_min')
     ad_price_max = request.GET.get('ad_price_max')
     ad_area_min = request.GET.get('ad_area_min')
@@ -23,6 +24,7 @@ def filter(request):
     date_min = request.GET.get('date_min')
     date_max = request.GET.get('date_max')
     category = request.GET.get('category')
+    sorting = request.GET.get('sorting')
     state = request.GET.get('state')
     city = request.GET.get('city')
     ad_offer = request.GET.get('ad_offer')
@@ -65,6 +67,9 @@ def filter(request):
         qs = qs.filter(property_price__gte=ad_price_min)
 
     if is_valid_queryparam(ad_price_max):
+        qs = qs.filter(property_price__lt=ad_price_max)
+
+    if is_valid_queryparam(sorting):
         qs = qs.filter(property_price__lt=ad_price_max)
 
 
@@ -179,17 +184,19 @@ def filter(request):
     try:
         queryset = paginator.page(page)
     except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
         queryset = paginator.page(1)
     except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver last page of results.
         queryset = paginator.page(paginator.num_pages)
+
+    # if queryset.favourite.filter(id=request.user.id).exists():
+    #     is_favourite = True
     context = {
         'queryset': queryset,
         'categories': categories,
         'states':states,
         'cities':cities,
-        'offers':offers
+        'offers':offers,
+        'is_favourite': is_favourite
     }
     return render(request, "search/main_search.html", context)
 

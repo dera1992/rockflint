@@ -9,10 +9,12 @@ urlpatterns = [
     path('social-auth/',include('social_django.urls', namespace='social')),
     path('advert/',include('advert.urls', namespace='advert')),
     path('blog/',include('blog.urls', namespace='blog')),
+    path('marketing/',include('marketing.urls', namespace='marketing')),
     path('',include('home.urls', namespace='home')),
     path('others/',include('others.urls', namespace='others')),
     path('owner/',include('owner.urls', namespace='owner')),
     path('search/',include('search.urls', namespace='search')),
     path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
+    path('tracking/', include('tracking.urls')),
 ]
 if settings.DEBUG:urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

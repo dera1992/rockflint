@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 
-from .models import  Information
+from .models import  Information,Testimony
 
 class InfoModelAdmin(admin.ModelAdmin):
     list_display = ["name", "subject", "email","pub_date"]
@@ -11,3 +11,4 @@ class InfoModelAdmin(admin.ModelAdmin):
         model = Information
 
 admin.site.register(Information, InfoModelAdmin)
+admin.site.register(Testimony)

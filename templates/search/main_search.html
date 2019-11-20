@@ -4,8 +4,9 @@
 {% load i18n %}
 {% load thumbnail %}
 {% load humanize %}
+{% load hitcount_tags %}
 
-{% block title %}List view for properties{% endblock %}
+{% block title %}Search for list for properties{% endblock %}
 
 {% block content %}
 <!-- ============================ Page Title Start================================== -->
@@ -13,10 +14,20 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-
-                    <h2 class="ipt-title">Property List</h2>
-                    <span class="ipn-subtitle">Property List With Sidebar</span>
-
+                    <div class="row">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                            {% if not category %}
+                                <li class="breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Property List</li>
+                            {% else %}
+                               <li class="breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
+                                <li class="breadcrumb-item"><a href="{% url "home:ads_list" %}">Property List</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{ category.name }}</li>
+                            {% endif %}
+                          </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -34,161 +45,7 @@
                     <div class="page-sidebar">
 
                         <!-- Find New Property -->
-                        <div class="sidebar-widgets">
-
-                            <h4>Find New Property</h4>
-                            <form method="GET" action="{% url 'search:filter' %}">
-                                <div class="form-group">
-                                    <div class="input-with-icon">
-                                        <input type="search" class="form-control" name="title_contains_query" placeholder="Search">
-                                        <i class="ti-search"></i>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="input-with-icon">
-                                        <select id="ptypes" class="form-control" name="category">
-                                            <option value="">&nbsp;</option>
-                                            {% for category in categories %}
-                                              <option value="{{ category }}">{{ category }}</option>
-                                            {% endfor %}
-                                        </select>
-                                        <i class="ti-briefcase"></i>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <div class="input-with-icon">
-                                                <input type="number" name="ad_price_min" class="form-control" placeholder="Min Price">
-                                                <i class="">₦</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-6">
-                                        <div class="form-group">
-                                            <div class="input-with-icon">
-                                                <input type="number" name="ad_price_max" class="form-control" placeholder="Max Price">
-                                                <i class="">₦</i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="input-with-icon">
-                                        <select id="bedrooms" class="form-control" name="bedroom">
-                                            <option value=""></option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">More than 5</option>
-                                        </select>
-                                        <i class="fas fa-bed"></i>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="input-with-icon">
-                                        <select id="bathrooms" class="form-control" name="bathroom">
-                                            <option value="">&nbsp;</option>
-                                            <option value="1">1</option>
-                                            <option value="2">2</option>
-                                            <option value="3">3</option>
-                                            <option value="4">4</option>
-                                            <option value="5">5</option>
-                                            <option value="6">More than 5</option>
-                                        </select>
-                                        <i class="fas fa-bath"></i>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="input-with-icon">
-                                        <select id="cities" class="form-control" name="city">
-                                            <option value="">&nbsp;</option>
-                                            {% for cit in cities %}
-                                              <option value="{{ cit }}">{{ cit }}</option>
-                                            {% endfor %}
-                                        </select>
-                                        <i class="ti-briefcase"></i>
-                                    </div>
-                                </div>
-
-                                 <div class="range-slider">
-                                    <label>Area</label>
-                                    <div data-min="0" data-max="10000" data-min-name="ad_area_min" data-max-name="ad_area_max" data-unit="Sq ft" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-                                <div class="range-slider">
-                                    <label>Lot Size</label>
-                                    <div data-min="0" data-max="50000" data-min-name="lot_size_min" data-max-name="lot_size_max" data-unit="Sqft" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-                                    <div class="clearfix"></div>
-                                </div>
-
-
-                                <div class="ameneties-features">
-                                    <div class="form-group" id="module">
-                                        <a role="button" class="" data-toggle="collapse" href="#advance-search" aria-expanded="true" aria-controls="advance-search"></a>
-                                    </div>
-                                    <div class="collapse" id="advance-search" aria-expanded="false" role="banner">
-                                        <ul class="no-ul-list">
-                                            <li>
-                                                <input id="air_conditioning" class="checkbox-custom" name="air_conditioning" type="checkbox">
-                                                <label for="air_conditioning" class="checkbox-custom-label">Air Condition</label>
-                                            </li>
-                                            <li>
-                                                <input id="parking" class="checkbox-custom" name="parking" type="checkbox">
-                                                <label for="parking" class="checkbox-custom-label">Parking</label>
-                                            </li>
-                                            <li>
-                                                <input id="sewer" class="checkbox-custom" name="sewer" type="checkbox">
-                                                <label for="sewer" class="checkbox-custom-label">Sewer</label>
-                                            </li>
-                                            <li>
-                                                <input id="water" class="checkbox-custom" name="water" type="checkbox">
-                                                <label for="water" class="checkbox-custom-label">Water</label>
-                                            </li>
-                                            <li>
-                                                <input id="microwave" class="checkbox-custom" name="microwave" type="checkbox">
-                                                <label for="microwave" class="checkbox-custom-label">Microwave</label>
-                                            </li>
-                                            <li>
-                                                <input id="swimming_pool" class="checkbox-custom" name="swimming_pool" type="checkbox">
-                                                <label for="swimming_pool" class="checkbox-custom-label">Swimming Pool</label>
-                                            </li>
-                                            <li>
-                                                <input id="barbecue" class="checkbox-custom" name="barbecue" type="checkbox">
-                                                <label for="barbecue" class="checkbox-custom-label">Barbecue</label>
-                                            </li>
-                                            <li>
-                                                <input id="lawn" class="checkbox-custom" name="lawn" type="checkbox">
-                                                <label for="lawn" class="checkbox-custom-label">Lawn</label>
-                                            </li>
-                                            <li>
-                                                <input id="tv_cable" class="checkbox-custom" name="tv_cable" type="checkbox">
-                                                <label for="tv_cable" class="checkbox-custom-label">Tv_cable</label>
-                                            </li>
-                                            <li>
-                                                <input id="wi_fi" class="checkbox-custom" name="wi_fi" type="checkbox">
-                                                <label for="wi_fi" class="checkbox-custom-label">Wi_fi</label>
-                                            </li>
-                                            <li>
-                                                <input id="gym" class="checkbox-custom" name="gym" type="checkbox">
-                                                <label for="gym" class="checkbox-custom-label">Gym</label>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <button class="btn btn-theme full-width">Find New Home</button>
-
-                                </div>
-                            </form>
-                        </div>
+                       {% include 'search/sub_search.html' %}
                     </div>
                     <!-- Sidebar End -->
 
@@ -229,9 +86,10 @@
                                             </a>
                                         {% endthumbnail %}
                                     {% endfor %}
-                                    <div class="listing-like-top">
-                                        <i class="ti-heart"></i>
+                                    <div class="listing-like-top" id = "favourite-section">
+                                      {% include 'home/favourite_section.html' %}
                                     </div>
+
                                     <div class="listing-rating">
                                         <i class="ti-star filled"></i>
                                         <i class="ti-star filled"></i>
@@ -250,7 +108,7 @@
                                         <div class="listing-short-detail">
                                             <span class="listing-location" style="color: #00A877">{{ ad.category }}</span>
                                             <h4 class="listing-name"><a href="{{ ad.get_absolute_url }}">{{ ad.property_title }}</a></h4>
-                                            <span class="listing-location"><i class="ti-location-pin"></i>{{ ad.address }}</span>
+                                            <span class="listing-location"><i class="ti-location-pin"></i>{{ ad.address|truncatechars_html:50 }}</span>
                                         </div>
                                         <div class="list-author">
                                             <a href="#"><img src="{{ ad.profile.photo.url }}" class="img-circle avater-30" alt=""></a>

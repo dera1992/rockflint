@@ -1,0 +1,151 @@
+{% extends "base_dashboard.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+{% load hitcount_tags %}
+
+{% block title %}Property List{% endblock %}
+
+{% block content %}
+      <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header sty-one">
+      <h1>Property List</h1>
+      <ol class="breadcrumb">
+        <li><a href="#">Dashboard</a></li>
+        <li><i class="fa fa-angle-right"></i> Properties</li>
+      </ol>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-12">
+                <h4 class="text-black m-b-1">Property List</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum raesent mauris nec.</p>
+                <div class="row m-t-4">
+                  <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-darkblue">
+                    <div class="col-12">
+                    <span class="info-box-icon bg-transparent"><i class="ti-stats-up text-white"></i></span>
+                      <div class="info-box-content">
+                        <h6 class="info-box-text text-white">New Orders</h6>
+                        <h1 class="text-white">1,150</h1>
+                        <span class="progress-description text-white"> 70% Increase in 30 Days </span> </div>
+                      </div>
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-green text-white">
+                    <div class="col-12">
+                    <span class="info-box-icon bg-transparent"><i class="ti-face-smile"></i></span>
+                      <div class="info-box-content">
+                        <h6 class="info-box-text text-white">New Users</h6>
+                        <h1 class="text-white">565</h1>
+                        <span class="progress-description text-white"> 45% Increase in 30 Days </span> </div>
+                      </div>
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-aqua">
+                    <div class="col-12">
+                    <span class="info-box-icon bg-transparent"><i class="ti-bar-chart"></i></span>
+                      <div class="info-box-content">
+                        <h6 class="info-box-text text-white">Online Revenue</h6>
+                        <h1 class="text-white">$5,450</h1>
+                        <span class="progress-description text-white"> 50% Increase in 30 Days </span> </div>
+                      </div>
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                  <div class="col-lg-3 col-sm-6 col-xs-12">
+                    <div class="info-box bg-orange">
+                    <div class="col-12">
+                    <span class="info-box-icon bg-transparent"><i class="ti-money"></i></span>
+                      <div class="info-box-content">
+                        <h6 class="info-box-text text-white">Total Profit</h6>
+                        <h1 class="text-white">$8,188</h1>
+                        <span class="progress-description text-white"> 35% Increase in 30 Days </span> </div>
+                      </div>
+                    </div>
+                    <!-- /.info-box -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <div class="box-body">
+                <div class="table-responsive">
+                  <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                      <tr>
+                        <th>ID #</th>
+                        <th>Property Title</th>
+                        <th>Property Type</th>
+                        <th>Propert Price(₦)</th>
+                        <th>Property Offer</th>
+                        <th>Property Owner</th>
+                        <th>Date Created</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for ad in ads %}
+                      <tr>
+                        <td>{{ ad.id }}</td>
+                        <td>
+                             {% for images in ad.get_second_image %}
+                                {% thumbnail images.ad_image "30x30" crop="10px 10px"  as im %}
+                                    <img  style="margin:{{ im|margin:"30x30" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-circle img-w-30"  />
+                                    <a href="{{ ad.get_absolute_url }}">{{ ad.property_title }}</a>
+
+                                {% endthumbnail %}
+                            {% endfor %}
+{#                            <img src="dist/img/img1.jpg" class="img-circle img-w-30" alt="User Image"> <a href="#">{{ ad.property_title }}</a>#}
+                        </td>
+                        <td>{{ ad.category }}</td>
+                        <td>₦{{ ad.property_price|intcomma}}</td>
+                        <td>{{ ad.property_offer }}</td>
+                        <td>{{ ad.profile.fullname }}</td>
+                        <td>{{ ad.created_date }}</td>
+                        <td><span class="label label-danger">Delete</span></td>
+                      </tr>
+                      {% endfor %}
+                    </tbody>
+                    <tfoot>
+                      <tr>
+                        <th>ID #</th>
+                        <th>Property Title</th>
+                        <th>Property Type</th>
+                        <th>Propert Price</th>
+                        <th>Property Offer</th>
+                        <th>Property Owner</th>
+                        <th>Date Created</th>
+                        <th>Action</th>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+      <!-- Main row -->
+    </div>
+    <!-- /.content -->
+  </div>
+{% endblock %}

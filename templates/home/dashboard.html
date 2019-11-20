@@ -1,0 +1,183 @@
+{% extends "base_dashboard.html" %}
+{% load static %}
+{% load bootstrap4 %}
+{% load i18n %}
+{% load thumbnail %}
+{% load humanize %}
+{% load hitcount_tags %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+    <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header sty-one">
+      <h1>Rockflint Dashboard</h1>
+      <ol class="breadcrumb">
+        <li><a href="{% url 'home:home' %}">Home</a></li>
+        <li><i class="fa fa-angle-right"></i> Rockflint Dashboard</li>
+      </ol>
+    </div>
+
+    <!-- Main content -->
+    <div class="content">
+      <div class="row">
+        <div class="col-lg-3">
+          <div class="tile-progress tile-pink">
+            <div class="tile-header">
+              <h5>Visitors </h5>
+              <h3>{{ visitor.count }}</h3>
+            </div>
+            <div class="tile-progressbar"> <span data-fill="65.5%" style="width: 65.5%;"></span> </div>
+            <div class="tile-footer">
+              <h4> <span class="pct-counter">65.5</span>% increase </h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="tile-progress tile-red">
+            <div class="tile-header">
+              <h5>All Properties</h5>
+              <h3>{{ ads.count }}</h3>
+            </div>
+            <div class="tile-progressbar"> <span data-fill="70%" style="width: 70%;"></span> </div>
+            <div class="tile-footer">
+              <h4> <span class="pct-counter">70</span>% increase </h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="tile-progress tile-cyan">
+            <div class="tile-header">
+              <h5>Users</h5>
+              <h3>{{ users.count }}</h3>
+            </div>
+            <div class="tile-progressbar"> <span data-fill="50%" style="width: 50%;"></span> </div>
+            <div class="tile-footer">
+              <h4> <span class="pct-counter">50</span>% increase </h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3">
+          <div class="tile-progress tile-aqua">
+            <div class="tile-header">
+              <h5>Blogs</h5>
+              <h3>{{ blog.count }}</h3>
+            </div>
+            <div class="tile-progressbar"> <span data-fill="75.5%" style="width: 75.5%;"></span> </div>
+            <div class="tile-footer">
+              <h4> <span class="pct-counter">75.5</span>% increase </h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <div class="col-lg-7">
+          <div class="info-box">
+            <div class="col-12">
+              <div class="d-flex flex-wrap">
+                <div class="m-b-1">
+                  <h5>Products Sales</h5>
+                </div>
+              </div>
+              <canvas id="line-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-xlg-3">
+          <div class="info-box">
+            <div class="col-12">
+              <div class="d-flex flex-wrap">
+                <div class="m-b-2">
+                  <h4 class="text-black">Our Customers</h4>
+                </div>
+              </div>
+              <canvas id="pie-chart" height="210"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+      <div class="row">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 m-b-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="m-b-1"> <i class="icon-facebook f-30 text-blue"></i> <span class="pull-right text-muted">Likes</span> </div>
+              <div class="info-widget-text row">
+                <div class="col-sm-6 pull-left"><span>Facebook</span></div>
+                <div class="col-sm-6 pull-right text-right text-blue f-25">3,500</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 m-b-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="m-b-1"> <i class="icon-twitter f-30 text-blue"></i> <span class="pull-right text-muted">Tweets</span> </div>
+              <div class="info-widget-text row">
+                <div class="col-sm-6 pull-left"><span>Twwitter</span></div>
+                <div class="col-sm-6 pull-right text-right text-blue f-25">2,950</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 m-b-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="m-b-1"> <i class="icon-googleplus f-30 text-blue"></i> <span class="pull-right text-muted">Share</span> </div>
+              <div class="info-widget-text row">
+                <div class="col-sm-6 pull-left"><span>Google+</span></div>
+                <div class="col-sm-6 pull-right text-right text-blue f-25">1,750</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 m-b-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="m-b-1"> <i class="icon-rss f-30 text-blue"></i> <span class="pull-right text-muted">Posts</span> </div>
+              <div class="info-widget-text row">
+                <div class="col-sm-6 pull-left"><span>Blog</span></div>
+                <div class="col-sm-6 pull-right text-right text-blue f-25">2,250</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+
+      <div class="row">
+        <div class="col-lg-5 col-xlg-3">
+          <div class="info-box">
+            <div class="col-12">
+              <div class="d-flex flex-wrap">
+                <div class="m-b-2">
+                  <h4 class="text-black">Our Customers</h4>
+                </div>
+              </div>
+              <canvas id="doughnut-chart" height="210"> </canvas>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-7">
+          <div class="info-box">
+            <div class="col-12">
+              <div class="d-flex flex-wrap">
+                <div class="m-b-1">
+                  <h5>Products Sales</h5>
+                </div>
+              </div>
+              <canvas id="bar-chart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+    </div>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+{% endblock %}

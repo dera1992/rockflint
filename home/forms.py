@@ -1,4 +1,6 @@
+from bootstrap_datepicker_plus import DatePickerInput, TimePickerInput, DateTimePickerInput, MonthPickerInput, YearPickerInput
 from django import forms
+
 
 class MessageForm(forms.Form):
     phone = forms.CharField(max_length=25,required=False,
@@ -20,14 +22,10 @@ class MessageForm(forms.Form):
 
 class ScheduleForm(forms.Form):
     date = forms.DateField(required=False,
-                           widget=forms.DateInput(
-                               attrs={'class': 'form-control', 'placeholder': 'Date', }
-                           ), label='',
+                           widget=DatePickerInput(format='%m/%d/%Y',attrs={'placeholder': 'Date'}), label='',
                            )
     time = forms.TimeField( required=False,
-                            widget=forms.TimeInput(
-                                attrs={'class': 'form-control', 'placeholder': 'Time', }
-                            ), label='',
+                            widget=TimePickerInput(attrs={'placeholder': 'Time', }),label='',
                             )
     name = forms.CharField(max_length=255, required=False,
                             widget=forms.TextInput(
@@ -44,4 +42,6 @@ class ScheduleForm(forms.Form):
                                widget=forms.Textarea(
                                attrs={'class': 'form-control', 'placeholder': 'Message', }
                            ), label='',)
+
+
 

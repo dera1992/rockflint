@@ -7,9 +7,11 @@ from django.urls import reverse
 from django.db import models
 from django.db.models.signals import pre_save
 from django.utils import timezone
+from django.contrib.auth.models import User
 from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from account.models import Profile
+from django.dispatch import receiver
 
 # from markdown_deux import markdown
 
@@ -32,6 +34,13 @@ def upload_location(instance, filename):
     # return "%s/%s" % (new_id, filename)
     return "%s/%s" % (instance.id, filename)
 
+class Category(models.Model):
+    title = models.CharField(max_length=20,null=True,
+                              blank=True)
+
+    def __str__(self):
+        return self.title
+
 
 class Post(models.Model):
 
@@ -44,10 +53,12 @@ class Post(models.Model):
                               null=True,
                               blank=True,
                               width_field="width_field",
-                              height_field="height_field")
+                              height_field="height_field",default='profile/None/no-img.jpg')
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     content = models.TextField()
+    categories = models.ManyToManyField(Category,blank=True)
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
     draft = models.BooleanField(default=False)
     publish = models.DateField(auto_now=False, auto_now_add=False)
     read_time = models.IntegerField(default=0)  # models.TimeField(null=True, blank=True) #assume minutes
@@ -62,20 +73,17 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def total_likes(self):
+        return self.likes.count()
+
     def get_absolute_url(self):
-        return reverse("blog:detail", kwargs={"slug": self.slug})
+        return reverse("blog:post_detail", args=[self.id, self.slug])
 
     def get_api_url(self):
         return reverse("posts-api:detail", kwargs={"slug": self.slug})
 
     class Meta:
         ordering = ["-timestamp", "-updated"]
-
-    # @property
-    # def comments(self):
-    #     instance = self
-    #     qs = Comment.objects.filter_by_instance(instance)
-    #     return qs
 
     @property
     def get_content_type(self):
@@ -84,16 +92,22 @@ class Post(models.Model):
         return content_type
 
 
-def pre_save_post_receiver(sender, instance, *args, **kwargs):
-    if not instance.slug:
-        instance.slug = unique_slug_generator(instance)
-
-    if instance.content:
-        read_time_var = get_read_time(instance.content)
-        instance.read_time = read_time_var
+@receiver(pre_save, sender=Post)
+def pre_save_slug(sender, **kwargs):
+    slug = slugify(kwargs['instance'].title)
+    kwargs['instance'].slug = slug
 
 
-pre_save.connect(pre_save_post_receiver, sender=Post)
+# def pre_save_post_receiver(sender, instance, *args, **kwargs):
+#     if not instance.slug:
+#         instance.slug = unique_slug_generator(instance)
+#
+#     if instance.content:
+#         read_time_var = get_read_time(instance.content)
+#         instance.read_time = read_time_var
+#
+#
+# pre_save.connect(pre_save_post_receiver, sender=Post)
 
 
 # for contact
