@@ -80,7 +80,7 @@
                                              <img src="{% static 'assets/img/avater.png' %}" class="avater-img" alt="" width="35px" height="35px">
 {#                                            <img src="{% static 'assets/img/user-5.jpg' %}" class="avater-img" alt="">#}
                                         {% endif %}
-                                        Hi, {{ request.user.profile.first_name }}
+                                        <span>Hi, {{ request.user.profile.first_name }}</span>
                                     </button>
                                     <div class="dropdown-menu pull-right animated flipInX">
                                         <a href="{% url "profile_display" %}"><i class="ti-user"></i>My Profile</a>
@@ -241,17 +241,18 @@
               });
             });
 
-            $(document).on('click', '#favourite', function(event){
+           $(document).on('click', '#favourite', function(event){
               event.preventDefault();
-              var pk = $(this).attr('value');
+              var pk = $(this).data('id');
+              var check = pk;
               $.ajax({
                 type: 'POST',
                 url: '{% url 'home:favourite_ads'%}',
                 data: {'id':pk, 'csrfmiddlewaretoken': '{{ csrf_token }}'},
                 dataType: 'json',
                 success: function(response){
-                  $('#favourite-section').html(response['html']);
-                  {#console.log($('#favourite-section').html(response['form']));#}
+                  $('#part' + check).html(response['form']);
+                  {#console.log($('#part' + check).html(response['form']));#}
                 },
                 error: function(rs, e){
                   console.log(rs.responseText);

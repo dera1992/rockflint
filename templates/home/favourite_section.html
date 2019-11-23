@@ -1,16 +1,16 @@
 {% if request.user.is_authenticated %}
 
-    {% if is_favourite %}
+    {% if request.user in ad.favourite.all %}
         {% csrf_token %}
-        <button type="submit" id="favourite" value="{{ ad.id }}" class="like-bitt add-to-favorite">
-             <i class="lni-heart-filled"></i>
-        </button>
+         <a href="#" id="favourite" data-id="{{ ad.id }}" >
+            <i class="lni-heart-filled"></i>
+        </a>
 
     {% else %}
-        <button type="submit" id="favourite" value="{{ ad.id }}" class="like-bitt add-to-favorite">
-              <i class="ti-heart"></i>
-        </button>
-
+         <a href="#" id="favourite" data-id="{{ ad.id }}" >
+            <i class="ti-heart"></i>
+        </a>
     {% endif %}
+
 
 {% endif %}

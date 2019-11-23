@@ -75,6 +75,7 @@ def ads_list(request, category_slug=None):
     cities = Lga.objects.all()
     offers = Offer.objects.all()
     agents = Profile.objects.filter(agent_type="2", active=True)
+    is_favourite = False
 
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
@@ -90,8 +91,10 @@ def ads_list(request, category_slug=None):
     except EmptyPage:
         ads = paginator.page(paginator.num_pages)
     return render(request,'home/product_list.html', {'category': category,'categories': categories,'ads': ads,'latests':latests,
-                                              'queryset': qs,'states':states,'cities':cities,'offers':offers,'agents':agents})
+                                              'queryset': qs,'states':states,'cities':cities,'offers':offers,'agents':agents,
+                                                 'is_favourite': is_favourite})
 
+# admin ad list
 def allads_list(request, category_slug=None):
     category = None
     ad_list = Ads.objects.all().order_by('-created', '?')
@@ -213,29 +216,31 @@ def favourite_delete(request, id):
 #     ad = get_object_or_404(Ads, id=request.POST.get('id'))
 #     if ad.favourite.filter(id=request.user.id).exists():
 #         ad.favourite.remove(request.user)
+#         is_favourite = False
 #     else:
 #         ad.favourite.add(request.user)
+#         is_favourite = True
 #
-#     return HttpResponse({"success": True})
+#     return JsonResponse({'status': 'ok'})
+    # return HttpResponse({"success": True})
 
 @login_required
 def favourite_ads(request):
     ad = get_object_or_404(Ads, id=request.POST.get('id'))
     is_favourite = False
-    print(ad)
     if ad.favourite.filter(id=request.user.id).exists():
         ad.favourite.remove(request.user)
         is_favourite = False
     else:
         ad.favourite.add(request.user)
         is_favourite = True
-    # context = {
-    #     'is_favourite': is_favourite,
-    # }
+    context = {
+        'ad': ad,
+        'is_favourite': is_favourite,
+    }
     if request.is_ajax():
-        ad = Ads.objects.get(id=ad.id)
-        html = render_to_string('home/favourite_section.html',{'is_favourite': is_favourite,'ad':ad}, request=request)
-        return JsonResponse({'html': html})
+        html = render_to_string('home/favourite_section.html',context, request=request)
+        return JsonResponse({'form': html})
 
 
 @login_required
