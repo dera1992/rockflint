@@ -11,6 +11,8 @@
             <i class="ti-heart"></i>
         </a>
     {% endif %}
-
-
+{% else %}
+    <a href="{% url 'home:favourite_ad' id=ad.id %}" >
+        <i class="ti-heart"></i>
+    </a>
 {% endif %}

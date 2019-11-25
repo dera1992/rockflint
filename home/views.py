@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+
 from django.shortcuts import render, redirect
 from advert.models import Ads, AdsImages, Category, State ,Offer,Lga
 from django.shortcuts import get_object_or_404
@@ -26,6 +27,7 @@ from tracking.models import Visitor
 from datetime import datetime
 from blog.models import Post
 from others.models import Testimony
+from django.views.decorators.http import require_POST
 
 
 def dashboard(request, category_slug=None):
@@ -225,6 +227,7 @@ def favourite_delete(request, id):
     # return HttpResponse({"success": True})
 
 @login_required
+@require_POST
 def favourite_ads(request):
     ad = get_object_or_404(Ads, id=request.POST.get('id'))
     is_favourite = False
@@ -251,7 +254,6 @@ def delete_post(request,pk=None):
     ad.delete()
     messages.success(request, "You property has been successfuly deleted")
     return redirect('home:my_aids')
-
 
 def category_count(request):
     counts = Ads.objects.all().values('category__name').annotate(total=Count('category'))

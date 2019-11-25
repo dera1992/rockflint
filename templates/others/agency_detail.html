@@ -126,9 +126,26 @@
                                                         </a>
                                                         {% endthumbnail %}
                                                     {% endfor %}
-                                                    <div class="listing-like-top">
-                                                        <i class="ti-heart"></i>
-                                                    </div>
+                                                     <div class="listing-like-top" id = "part{{ agency_ad.id }}">
+                                                        {% if request.user.is_authenticated %}
+
+                                                            {% if request.user in agency_ad.favourite.all %}
+                                                                {% csrf_token %}
+                                                                 <a href="#" id="favourite" data-id="{{ agency_ad.id }}" >
+                                                                    <i class="lni-heart-filled"></i>
+                                                                </a>
+
+                                                            {% else %}
+                                                                 <a href="#" id="favourite" data-id="{{ agency_ad.id }}" >
+                                                                    <i class="ti-heart"></i>
+                                                                </a>
+                                                            {% endif %}
+                                                        {% else %}
+                                                            <a href="{% url 'home:favourite_ad' id=agency_ad.id %}" >
+                                                                <i class="ti-heart"></i>
+                                                            </a>
+                                                        {% endif %}
+                                                     </div>
                                                     <div class="listing-rating">
                                                         <i class="ti-star filled"></i>
                                                         <i class="ti-star filled"></i>
@@ -326,9 +343,6 @@
                                                     </a>
                                                     {% endthumbnail %}
                                                 {% endfor %}
-                                                <div class="listing-like-top">
-                                                    <i class="ti-heart"></i>
-                                                </div>
                                                 <div class="listing-rating">
                                                     <i class="ti-star filled"></i>
                                                     <i class="ti-star filled"></i>

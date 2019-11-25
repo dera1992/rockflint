@@ -128,9 +128,26 @@
                                                     {% empty %}
                                                          <img src="{% static 'assets/img/avater.png' %}" class="img-fluid mx-auto" alt="">
                                                     {% endfor %}
-                                                    <div class="listing-like-top">
-                                                        <i class="ti-heart"></i>
-                                                    </div>
+                                                     <div class="listing-like-top" id = "part{{ agent_ad.id }}">
+                                                        {% if request.user.is_authenticated %}
+
+                                                            {% if request.user in agent_ad.favourite.all %}
+                                                                {% csrf_token %}
+                                                                 <a href="#" id="favourite" data-id="{{ agent_ad.id }}" >
+                                                                    <i class="lni-heart-filled"></i>
+                                                                </a>
+
+                                                            {% else %}
+                                                                 <a href="#" id="favourite" data-id="{{ agent_ad.id }}" >
+                                                                    <i class="ti-heart"></i>
+                                                                </a>
+                                                            {% endif %}
+                                                        {% else %}
+                                                            <a href="{% url 'home:favourite_ad' id=agent_ad.id %}" >
+                                                                <i class="ti-heart"></i>
+                                                            </a>
+                                                        {% endif %}
+                                                     </div>
                                                     <div class="listing-rating">
                                                         <i class="ti-star filled"></i>
                                                         <i class="ti-star filled"></i>
@@ -328,9 +345,6 @@
                                                 {% empty %}
                                                     <img src="{% static 'assets/img/avater.png' %}" class="avater-img" alt="" width="370px" height="240px">
                                                 {% endfor %}
-                                                <div class="listing-like-top">
-                                                    <i class="ti-heart"></i>
-                                                </div>
                                                 <div class="listing-rating">
                                                     <i class="ti-star filled"></i>
                                                     <i class="ti-star filled"></i>

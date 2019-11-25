@@ -8,7 +8,7 @@ from advert.models import Ads, AdsImages, Category
 from advert.forms import AdsForm
 from django.db.models import Q
 from django.db.models import Count
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404,HttpResponse, JsonResponse
 from django.contrib import messages
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
@@ -44,6 +44,26 @@ def bookmarked(request):
 @login_required
 def delete_post(request,pk=None):
     ad = Ads.objects.get(id=pk)
+    if request.user != ad.profile.user:
+        raise Http404()
     ad.is_active = False
     messages.success(request, "Successfuly deleted")
+    return redirect('home:my_aids')
+
+# @login_required
+# def delete_post(request,pk=None):
+#     ad = Ads.objects.get(id=pk)
+#     if request.user != ad.profile.user:
+#         raise Http404()
+#     ad.delete()
+#     messages.success(request, "You property has been successfuly deleted")
+#     return redirect('home:my_aids')
+
+@login_required
+def hide_post(request,pk=None):
+    ad = Ads.objects.get(id=pk)
+    if request.user != ad.profile.user:
+        raise Http404()
+    ad.is_active = False
+    messages.success(request, "You property has been successfuly deleted")
     return redirect('home:my_aids')

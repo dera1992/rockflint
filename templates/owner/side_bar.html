@@ -12,6 +12,9 @@
         <div class="d-navigation">
             <ul>
                 {% with request.resolver_match.url_name as url_name %}
+                    {% if user.is_admin %}
+                    <li class="{% if url_name == 'dashboard' %}active{% endif %}"><a href="{% url "home:dashboard" %}"><i class="ti-home"></i>Dashboard</a></li>
+                    {% endif %}
                     <li class="{% if url_name == 'profile_display' %}active{% endif %}"><a href="{% url "profile_display" %}"><i class="ti-user"></i>My Profile</a></li>
                     <li class="{% if url_name == 'favourites' %}active{% endif %}"><a href="{% url "home:favourites" %}"><i class="ti-bookmark"></i>Bookmarked Listings</a></li>
                     <li class="{% if url_name == 'my_property' %}active{% endif %}"><a href="{% url "owner:my_property" %}"><i class="ti-layers"></i>My Properties</a></li>

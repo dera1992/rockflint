@@ -70,8 +70,14 @@ def filter(request):
         qs = qs.filter(property_price__lt=ad_price_max)
 
     if is_valid_queryparam(sorting):
-        qs = qs.filter(property_price__lt=ad_price_max)
-
+        if sorting.ascending:
+            qs = qs.filter(active=True).order_by('property_price', '?')
+        elif sorting.descending:
+            qs = qs.filter(active=True).order_by('-property_price', '?')
+        elif sorting.latest:
+            qs = qs.filter(active=True).order_by('-created', '?')
+        else:
+            qs = qs.filter(active=True)
 
     if is_valid_queryparam(ad_area_min):
         qs = qs.filter(property_area__gte=ad_area_min)
