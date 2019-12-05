@@ -1,5 +1,5 @@
 asgiref==3.2.2
-Django==2.2.5
+Django==2.2.8
 pytz==2019.2
 sqlparse==0.3.0
 django-bootstrap4
