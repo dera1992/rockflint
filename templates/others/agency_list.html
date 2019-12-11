@@ -83,6 +83,10 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
+                    {% empty %}
+                        <div class="container-fluid">
+                            <h3 style="text-align:center;">No Agents found </h3>
+                        </div>
                     {% endfor %}
 
                 </div>

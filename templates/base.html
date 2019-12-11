@@ -80,7 +80,7 @@
                                              <img src="{% static 'assets/img/avater.png' %}" class="avater-img" alt="" width="35px" height="35px">
 {#                                            <img src="{% static 'assets/img/user-5.jpg' %}" class="avater-img" alt="">#}
                                         {% endif %}
-                                        <span>Hi, {{ request.user.profile.first_name }}</span>
+                                        <span>Hi, {{ request.user.profile.first_name }}<i class="fas fa-caret-down"></i></span>
                                     </button>
                                     <div class="dropdown-menu pull-right animated flipInX">
                                         {% if user.is_admin %}
@@ -263,9 +263,61 @@
               });
             });
 
+           {#$(document).on('click', '#sort', function(event){#}
+           {#     var latest = $(this).data('latest');#}
+           {#     var descending = $(this).data('descending');#}
+           {#     var ascending = $(this).data('ascending');#}
+           {#     $.ajax({#}
+           {#         url:'{% url 'search:filter'%}',#}
+           {#         method:"POST",#}
+           {#         data:{latest:latest, descending:descending, ascending:ascending ,'csrfmiddlewaretoken': '{{ csrf_token }}'},#}
+           {#         dataType: 'json',#}
+           {#         success:function(data){#}
+           {#             $('.filter_data').html(data);#}
+           {#         }#}
+           {#     });#}
+           {# });#}
+
           });
 
         </script>
+
+{#        <script>#}
+{#        $(document).ready(function(){#}
+{##}
+{#        filter_data();#}
+{##}
+{#        function filter_data()#}
+{#        {#}
+{#            var latest = $("#latest").val();#}
+{#            var descending = $("#descending").val();#}
+{#            var ascending = $("#acending").val();#}
+{#            $.ajax({#}
+{#                url:'{% url 'search:filter'%}',#}
+{#                method:"POST",#}
+{#                data:{sorting:descending ,'csrfmiddlewaretoken': '{{ csrf_token }}'},#}
+{#                dataType: 'json',#}
+{#                success:function(response){#}
+{#                    $('.filter_data').html(response['form']);#}
+{#                }#}
+{#            });#}
+{#        }#}
+{##}
+{#        function get_filter(class_name)#}
+{#        {#}
+{#            var filter = [];#}
+{#            $('.'+class_name+':sorting').each(function(){#}
+{#                filter.push($(this).val());#}
+{#            });#}
+{#            return filter;#}
+{#        }#}
+{##}
+{#        $('.common_selector').click(function(){#}
+{#            filter_data();#}
+{#        });#}
+{##}
+{#        });#}
+{#        </script>#}
         {% block script %}
 
         {% endblock %}

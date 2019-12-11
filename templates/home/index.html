@@ -38,44 +38,44 @@
 
                             {% for latest in latests %}
                             <div class="single-items">
-                                    <div class="property-listing property-2">
+                                <div class="property-listing property-2">
 
-                                        <div class="listing-img-wrapper">
-                                            <div class="list-img-slide">
+                                    <div class="listing-img-wrapper">
+                                        <div class="list-img-slide">
 
-                                                <div class="click">
-                                                    {% for images in latest.get_first_image %}
-                                                        {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
-                                                            <div><a href="{{ latest.get_absolute_url }}">
-                                                                <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  /></a>
-                                                            </div>
-                                                        {% endthumbnail %}
-                                                    {% endfor %}
-                                                </div>
-                                            </div>
-                                            <span class="property-type">{{ latest.property_offer }}</span>
-                                        </div>
-
-                                        <div class="listing-detail-wrapper pb-0">
-                                            <div class="listing-short-detail">
-                                                <h4 class="listing-name"><a href="{{ latest.get_absolute_url }}">{{ latest.property_title }}</a><i class="list-status ti-check"></i></h4>
+                                            <div class="click">
+                                                {% for images in latest.get_first_image %}
+                                                    {% thumbnail images.ad_image "800x530" crop="10px 10px"  as im %}
+                                                        <div><a href="{{ latest.get_absolute_url }}">
+                                                            <img  style="margin:{{ im|margin:"800x530" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="img-fluid mx-auto"  /></a>
+                                                        </div>
+                                                    {% endthumbnail %}
+                                                {% endfor %}
                                             </div>
                                         </div>
+                                        <span class="property-type">{{ latest.property_offer }}</span>
+                                    </div>
 
-                                        <div class="price-features-wrapper">
-                                            <div class="listing-price-fx">
-                                                <h6 class="listing-card-info-price price-prefix">{{ latest.property_price|intcomma}}<span class="price-suffix">/{{ latest.rent_period }}</span></h6>
+                                    <div class="listing-detail-wrapper pb-0">
+                                        <div class="listing-short-detail">
+                                            <h4 class="listing-name"><a href="{{ latest.get_absolute_url }}">{{ latest.property_title }}</a><i class="list-status ti-check"></i></h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-features-wrapper">
+                                        <div class="listing-price-fx">
+                                            <h6 class="listing-card-info-price price-prefix">{{ latest.property_price|intcomma}}<span class="price-suffix">/{{ latest.rent_period }}</span></h6>
+                                        </div>
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bed">{{ latest.bedroom }}Beds</span>
                                             </div>
-                                            <div class="list-fx-features">
-                                                <div class="listing-card-info-icon">
-                                                    <span class="inc-fleat inc-bed">{{ latest.bedroom }}Beds</span>
-                                                </div>
-                                                <div class="listing-card-info-icon">
-                                                    <span class="inc-fleat inc-bath">{{ latest.bathroom }} Bath</span>
-                                                </div>
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bath">{{ latest.bathroom }} Bath</span>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
                             </div>
                             {% endfor %}
                         </div>
@@ -118,7 +118,7 @@
                                     <div class="agents-grid">
 
                                         <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
-                                        <div class="agent-call"><a href="#"><i class="lni-phone-handset"></i></a></div>
+                                        <div class="agent-call"><a ><i class="lni-phone-handset"></i></a></div>
                                         <div class="agents-grid-wrap">
 
                                             <div class="fr-grid-thumb">

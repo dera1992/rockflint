@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-3">
-                    <a href="{% url 'others:agent_list' %}" class="btn search-btn">Find Agents</a>
+                    <button type="submit" class="btn search-btn">Find Agents</button>
                 </div>
             </div>
             </form>
@@ -91,6 +91,10 @@
                         </div>
                     </div>
                 </div>
+                {% empty %}
+                    <div class="container-fluid">
+                        <h3 style="text-align:center;">No Agents found </h3>
+                    </div>
                 {% endfor %}
             </div>
 

@@ -6,11 +6,12 @@
  <div class="sidebar-widgets">
 
     <h4>Find New Property</h4>
-    <form method="GET" action="{% url 'search:filter' %}">
-    {% csrf_token %}
+    <form method="GET" id="list_data" action="{% url 'search:filter' %}">
+{#    {% csrf_token %}#}
+        <input type="hidden" name="order" value="{{ request.GET.order.strip }}"/>
         <div class="form-group">
             <div class="input-with-icon">
-                <input type="search" class="form-control" name="title_contains_query" placeholder="Search">
+                <input id="title" type="search" class="form-control" name="title_contains_query" value="{{ request.GET.title_contains_query.strip }}" placeholder="Search">
                 <i class="ti-search"></i>
             </div>
         </div>
@@ -20,7 +21,7 @@
                 <select id="ptypes" class="form-control" name="category">
                     <option value="">&nbsp;</option>
                     {% for category in categories %}
-                      <option value="{{ category }}">{{ category }}</option>
+                      <option value="{{category.name}}" {% if category.name == request.GET.category.strip %}selected{% endif %}>{{ category }}</option>
                     {% endfor %}
                 </select>
                 <i class="ti-briefcase"></i>
@@ -31,7 +32,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="form-group">
                     <div class="input-with-icon">
-                        <input type="number" name="ad_price_min" class="form-control" placeholder="Min Price">
+                        <input id="price_min" type="number" name="ad_price_min" value="{{ request.GET.ad_price_min.strip }}" class="form-control" placeholder="Min Price">
                         <i class="">₦</i>
                     </div>
                 </div>
@@ -39,7 +40,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="form-group">
                     <div class="input-with-icon">
-                        <input type="number" name="ad_price_max" class="form-control" placeholder="Max Price">
+                        <input id="price_max" type="number" name="ad_price_max" value="{{ request.GET.ad_price_max.strip }}" class="form-control" placeholder="Max Price">
                         <i class="">₦</i>
                     </div>
                 </div>
@@ -50,12 +51,12 @@
             <div class="input-with-icon">
                 <select id="bedrooms" class="form-control" name="bedroom">
                     <option value=""></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">More than 5</option>
+                    <option value="1" {% if bedroom == '1' %}selected{% endif %}>1</option>
+                    <option value="2" {% if bedroom == '2' %}selected{% endif %}>2</option>
+                    <option value="3" {% if bedroom == '3' %}selected{% endif %}>3</option>
+                    <option value="4" {% if bedroom == '4' %}selected{% endif %}>4</option>
+                    <option value="5" {% if bedroom == '5' %}selected{% endif %}>5</option>
+                    <option value="6" {% if bedroom == '6' %}selected{% endif %}>More than 5</option>
                 </select>
                 <i class="fas fa-bed"></i>
             </div>
@@ -65,12 +66,12 @@
             <div class="input-with-icon">
                 <select id="bathrooms" class="form-control" name="bathroom">
                     <option value="">&nbsp;</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">More than 5</option>
+                    <option value="1" {% if bathroom == '1' %}selected{% endif %}>1</option>
+                    <option value="2" {% if bathroom == '2' %}selected{% endif %}>2</option>
+                    <option value="3" {% if bathroom == '3' %}selected{% endif %}>3</option>
+                    <option value="4" {% if bathroom == '4' %}selected{% endif %}>4</option>
+                    <option value="5" {% if bathroom == '5' %}selected{% endif %}>5</option>
+                    <option value="6" {% if bathroom == '6' %}selected{% endif %}>More than 5</option>
                 </select>
                 <i class="fas fa-bath"></i>
             </div>
@@ -81,7 +82,9 @@
                 <select id="cities" class="form-control" name="city">
                     <option value="">&nbsp;</option>
                     {% for cit in cities %}
-                      <option value="{{ cit }}">{{ cit }}</option>
+                      <option value="{{cit.name}}" {% if cit.name == request.GET.city.strip %}selected{% endif %}>
+                          {{ cit }}
+                      </option>
                     {% endfor %}
                 </select>
                 <i class="ti-briefcase"></i>
@@ -91,7 +94,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="form-group">
                     <div class="input-with-icon">
-                        <input type="number" name="ad_area_min" class="form-control" placeholder="Min Area">
+                        <input id="area_min" type="number" name="ad_area_min" class="form-control"  value="{{ request.GET.ad_area_min.strip }}" placeholder="Min Area">
                         <i class="ti-location-pin"></i>
                     </div>
                 </div>
@@ -99,12 +102,23 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="form-group">
                     <div class="input-with-icon">
-                        <input type="number" name="ad_area_max" class="form-control" placeholder="Max Area">
+                        <input id="area_max" type="number" name="ad_area_max" class="form-control" value="{{ request.GET.ad_area_max.strip }}" placeholder="Max Area">
                         <i class="ti-location-pin"></i>
                     </div>
                 </div>
             </div>
         </div>
+{#        <div class="form-group">#}
+{#            <div class="input-with-icon">#}
+{#                <select name="sorting" id="sort" class=" custom-drop btn btn-order-by-filt">#}
+{#                    <option value="">Default</option>#}
+{#                    <option id="latest" value="latest">Latest</option>#}
+{#                    <option id="descending" value="descending">Highest Price</option>#}
+{#                    <option id="ascending" value="ascending">Lowest Price</option>#}
+{#                </select>#}
+{##}
+{#            </div>#}
+{#        </div>#}
 
 {#                                 <div class="range-slider">#}
 {#                                    <label>Area</label>#}
@@ -128,47 +142,47 @@
                     <h6>By Amenities</h6>
                     <ul class="no-ul-list">
                     <li>
-                        <input id="air_conditioning" class="checkbox-custom" name="air_conditioning" type="checkbox">
+                        <input id="air_conditioning" class="checkbox-custom" name="air_conditioning" {% if air_conditioning %}checked{% endif %} type="checkbox">
                         <label for="air_conditioning" class="checkbox-custom-label">Air Condition</label>
                     </li>
                     <li>
-                        <input id="parking" class="checkbox-custom" name="parking" type="checkbox">
+                        <input id="parking" class="checkbox-custom" name="parking" {% if parking %}checked{% endif %} type="checkbox">
                         <label for="parking" class="checkbox-custom-label">Parking</label>
                     </li>
                     <li>
-                        <input id="sewer" class="checkbox-custom" name="sewer" type="checkbox">
+                        <input id="sewer" class="checkbox-custom" name="sewer" {% if sewer %}checked{% endif %} type="checkbox">
                         <label for="sewer" class="checkbox-custom-label">Sewer</label>
                     </li>
                     <li>
-                        <input id="water" class="checkbox-custom" name="water" type="checkbox">
+                        <input id="water" class="checkbox-custom" name="water" {% if water %}checked{% endif %} type="checkbox">
                         <label for="water" class="checkbox-custom-label">Water</label>
                     </li>
                     <li>
-                        <input id="microwave" class="checkbox-custom" name="microwave" type="checkbox">
+                        <input id="microwave" class="checkbox-custom" name="microwave" {% if microwave %}checked{% endif %} type="checkbox">
                         <label for="microwave" class="checkbox-custom-label">Microwave</label>
                     </li>
                     <li>
-                        <input id="swimming_pool" class="checkbox-custom" name="swimming_pool" type="checkbox">
+                        <input id="swimming_pool" class="checkbox-custom" name="swimming_pool" {% if swimming_pool %}checked{% endif %} type="checkbox">
                         <label for="swimming_pool" class="checkbox-custom-label">Swimming Pool</label>
                     </li>
                     <li>
-                        <input id="barbecue" class="checkbox-custom" name="barbecue" type="checkbox">
+                        <input id="barbecue" class="checkbox-custom" name="barbecue" {% if barbecue %}checked{% endif %} type="checkbox">
                         <label for="barbecue" class="checkbox-custom-label">Barbecue</label>
                     </li>
                     <li>
-                        <input id="lawn" class="checkbox-custom" name="lawn" type="checkbox">
+                        <input id="lawn" class="checkbox-custom" name="lawn" {% if lawn %}checked{% endif %} type="checkbox">
                         <label for="lawn" class="checkbox-custom-label">Lawn</label>
                     </li>
                     <li>
-                        <input id="tv_cable" class="checkbox-custom" name="tv_cable" type="checkbox">
+                        <input id="tv_cable" class="checkbox-custom" name="tv_cable" {% if tv_cable %}checked{% endif %} type="checkbox">
                         <label for="tv_cable" class="checkbox-custom-label">Tv_cable</label>
                     </li>
                     <li>
-                        <input id="wi_fi" class="checkbox-custom" name="wi_fi" type="checkbox">
+                        <input id="wi_fi" class="checkbox-custom" name="wi_fi" {% if wi_fi %}checked{% endif %} type="checkbox">
                         <label for="wi_fi" class="checkbox-custom-label">Wi_fi</label>
                     </li>
                     <li>
-                        <input id="gym" class="checkbox-custom" name="gym" type="checkbox">
+                        <input id="gym" class="checkbox-custom" name="gym" {% if gym %}checked{% endif %} type="checkbox">
                         <label for="gym" class="checkbox-custom-label">Gym</label>
                     </li>
                 </ul>
@@ -178,37 +192,38 @@
                     <h6>Close to property</h6>
                     <ul class="no-ul-list">
                     <li>
-                        <input id="church" class="checkbox-custom" name="church" type="checkbox">
+                        <input id="church" class="checkbox-custom" name="church" {% if church %}checked{% endif %} type="checkbox">
                         <label for="church" class="checkbox-custom-label">Church</label>
                     </li>
                     <li>
-                        <input id="mosque" class="checkbox-custom" name="mosque" type="checkbox">
+                        <input id="mosque" class="checkbox-custom" name="mosque" {% if mosque %}checked{% endif %} type="checkbox">
                         <label for="mosque" class="checkbox-custom-label">Mosque</label>
                     </li>
                     <li>
-                        <input id="school" class="checkbox-custom" name="school" type="checkbox">
+                        <input id="school" class="checkbox-custom" name="school" {% if school %}checked{% endif %} type="checkbox">
                         <label for="school" class="checkbox-custom-label">School</label>
                     </li>
                     <li>
-                        <input id="market" class="checkbox-custom" name="market" type="checkbox">
+                        <input id="market" class="checkbox-custom" name="market" {% if market %}checked{% endif %} type="checkbox">
                         <label for="market" class="checkbox-custom-label">Market</label>
                     </li>
                     <li>
-                        <input id="hospital" class="checkbox-custom" name="hospital" type="checkbox">
+                        <input id="hospital" class="checkbox-custom" name="hospital" {% if hospital %}checked{% endif %} type="checkbox">
                         <label for="hospital" class="checkbox-custom-label">Hospital</label>
                     </li>
                     <li>
-                        <input id="resturant" class="checkbox-custom" name="resturant" type="checkbox">
+                        <input id="resturant" class="checkbox-custom" name="resturant" {% if resturant %}checked{% endif %} type="checkbox">
                         <label for="resturant" class="checkbox-custom-label">Resturant</label>
                     </li>
                     <li>
-                        <input id="beach" class="checkbox-custom" name="beach" type="checkbox">
+                        <input id="beach" class="checkbox-custom" name="beach" {% if beach %}checked{% endif %} type="checkbox">
                         <label for="beach" class="checkbox-custom-label">Beach</label>
                     </li>
                 </ul>
                 </div>
             </div>
 
+{#            <button class="btn btn-theme full-width" id="display_filterd">Find New Home</button>#}
             <button class="btn btn-theme full-width">Find New Home</button>
 
         </div>
