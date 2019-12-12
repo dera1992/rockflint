@@ -70,6 +70,8 @@ def home_list(request, category_slug=None):
 def ads_list(request, category_slug=None):
     category = None
     ad_list = Ads.objects.filter(active=True)
+    order = request.GET.get('order', '-created_date')
+    ad_list = ad_list.order_by(order)
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     qs = Ads.objects.all()
     categories = Category.objects.all()
@@ -83,7 +85,7 @@ def ads_list(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         ad_list = ad_list.filter(category=category)
 
-    paginator = Paginator(ad_list, 10)
+    paginator = Paginator(ad_list, 3)
     page_request_var = "page"
     page = request.GET.get('page')
     try:
@@ -94,7 +96,7 @@ def ads_list(request, category_slug=None):
         ads = paginator.page(paginator.num_pages)
     return render(request,'home/product_list.html', {'category': category,'categories': categories,'ads': ads,'latests':latests,
                                               'queryset': qs,'states':states,'cities':cities,'offers':offers,'agents':agents,
-                                                 'is_favourite': is_favourite})
+                                                 'is_favourite': is_favourite,'order': order,'page': page})
 
 # admin ad list
 def allads_list(request, category_slug=None):
@@ -142,6 +144,10 @@ def ad_detail(request, id, slug):
     same_city = Ads.objects.filter(city=ad.city).exclude(id=ad.id).order_by('?')[:7]
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     profile = Profile.objects.get(user=ad.profile.user)
+    categories = Category.objects.all()
+    states = State.objects.all()
+    cities = Lga.objects.all()
+    offers = Offer.objects.all()
     receiver = [profile.user.email]
     is_favourite = False
 
@@ -181,7 +187,8 @@ def ad_detail(request, id, slug):
         schedule_form = ScheduleForm()
     return render(request, 'home/detail.html', {'ad':ad,'adsimage':adsimage, 'ad_similar':ad_similar,
                                                'profile':profile,'form': form,'same_city':same_city,'latests':latests,
-                                                'schedule_form':schedule_form,'is_favourite': is_favourite,})
+                                                'schedule_form':schedule_form,'is_favourite': is_favourite,'states':states,
+                                                'cities':cities,'offers':offers,'categories': categories})
 @login_required
 def ads_favourite_list(request):
     user = request.user

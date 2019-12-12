@@ -22,7 +22,8 @@
                       <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
                         <li class="breadcrumb-item"><a href="{% url "home:ads_list" %}">Property List</a></li>
-                        <li class="breadcrumb-item"><a href="{{ ad.category.get_absolute_url }}">{{ ad.category }}</a></li>
+{#                        <li class="breadcrumb-item"><a href="{{ ad.category.get_absolute_url }}">{{ ad.category }}</a></li>#}
+                        <li class="breadcrumb-item"><a href="{% url 'search:filter' %}?category={{ ad.category }}">{{ ad.category }}</a></li>
                         <li class="breadcrumb-item active" aria-current="page">{{ ad.property_title }}</li>
                       </ol>
                     </nav>

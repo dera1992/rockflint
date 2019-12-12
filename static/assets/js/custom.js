@@ -212,6 +212,12 @@ $(function() {
 	
 	// Select Property Types
 	$('#ptypes').select2({
+		placeholder: "Property Category",
+		allowClear: true
+	});
+
+	// Select Property Types
+	$('#poffer').select2({
 		placeholder: "Property Types",
 		allowClear: true
 	});

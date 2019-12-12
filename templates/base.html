@@ -71,6 +71,8 @@
 					</ul>
                     {% if user.is_authenticated %}
                         <ul class="attributes">
+                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell">Sell</a></li>
+                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent">Rent</a></li>
                             <li class="login-attri">
                                 <div class="btn-group account-drop">
                                     <button type="button" class="btn btn-order-by-filt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -98,7 +100,10 @@
                         </ul>
                     {% else %}
                         <ul class="attributes attributes-desk">
-                            <li class="log-icon log-seprate"><a href="{% url "login" %}">Log In</a></li>
+                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell">Sell</a></li>
+                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent">Rent</a></li>
+                            <li class="dropdown"></li>
+                            <li class="log-icon"><a href="{% url "login" %}">Log In</a></li>
                             <li class="log-icon"><a href="{% url "register" %}">Sign Up</a></li>
                             <li class="submit-attri theme-log"><a href="{% url "advert:post" %}">Submit Property</a></li>
                         </ul>

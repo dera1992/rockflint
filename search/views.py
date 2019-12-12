@@ -93,7 +93,7 @@ def filter(request):
     if is_valid_queryparam(city) and city != 'Choose...':
         qs = qs.filter(city__name=city)
 
-    if is_valid_queryparam(ad_offer) and state != 'Choose...':
+    if is_valid_queryparam(ad_offer) and ad_offer != 'Choose...':
         qs = qs.filter(property_offer__name=ad_offer)
 
     if is_valid_queryparam(condition) and condition != 'Choose...':

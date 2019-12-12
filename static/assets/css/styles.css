@@ -115,7 +115,7 @@ form.dropzone.dz-clickable.primary-dropzone {
 body {
 	background: #ffffff;
 	color:#4a4d56;
-	font-size:16px;
+	font-size:16.5px;
 	font-family: 'Muli', sans-serif;
 	margin: 0;
 	overflow-x: hidden !important;
@@ -3140,8 +3140,8 @@ li.login-attri a {
     padding: 0 35px !important;
     border-radius: 50px;
 	transition:ease 0.4s;
-    box-shadow: 0 10px 20px rgba(0, 22, 84, 0.15);
-    color: #2b4db9 !important;
+    /*box-shadow: 0 10px 20px rgba(0, 22, 84, 0.15);*/
+    color: #595c63 !important;
     font-size: 16px;
 }
 ul li.login-attri {

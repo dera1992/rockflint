@@ -5,6 +5,7 @@
 {% load thumbnail %}
 {% load humanize %}
 {% load hitcount_tags %}
+{% load templatehelps %}
 
 {% block title %}Properties List{% endblock %}
 
@@ -64,9 +65,9 @@
                                         Short By<i class="ti-angle-down"></i>
                                     </button>
                                     <div class="dropdown-menu pull-right animated flipInX">
-                                        <a href="#">Latest</a>
-                                        <a href="#">Most View</a>
-                                        <a href="#">Most Popular</a>
+                                        <a href="{% relatived_url '-created_date' 'order' params %}">Latest</a>
+                                        <a href="{% relatived_url '-property_price' 'order' params %}">Highest Price</a>
+                                        <a href="{% relatived_url 'property_price' 'order' params %}">Lowest Price</a>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +160,8 @@
                                   {% if ads.number == i %}
                                     <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
                                   {% else %}
-                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+{#                                    <li><a href="?page={{ i }}">{{ i }}</a></li>#}
+                                    <li><a href={% relatived_url i 'page' request.GET.urlencode %}>{{ i }}</a></li>
                                   {% endif %}
                                 {% endfor %}
                                 {% if ads.has_next %}
