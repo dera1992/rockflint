@@ -15,8 +15,9 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Testimony
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def allagent_list(request):
     agent_list = Profile.objects.all()
     print(agent_list)

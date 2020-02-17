@@ -20,11 +20,11 @@
                 <div class="col-lg-12 col-md-12">
                     <nav aria-label="breadcrumb">
                       <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url "home:home" %}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{% url "home:ads_list" %}">Property List</a></li>
+                        <li class="breadcrumb-item"><a href="{% url "home:home" %}"><span style="font-weight:bold;">Home</span></a></li>
+                        <li class="breadcrumb-item"><a href="{% url "home:ads_list" %}"><span style="font-weight:bold;">Property List</span></a></li>
 {#                        <li class="breadcrumb-item"><a href="{{ ad.category.get_absolute_url }}">{{ ad.category }}</a></li>#}
-                        <li class="breadcrumb-item"><a href="{% url 'search:filter' %}?category={{ ad.category }}">{{ ad.category }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ ad.property_title }}</li>
+                        <li class="breadcrumb-item"><a href="{% url 'search:filter' %}?category={{ ad.category }}"><span style="font-weight:bold;">{{ ad.category }}</span></a></li>
+                        <li class="breadcrumb-item active" aria-current="page"><span style="font-weight:bold;">{{ ad.property_title|title  }}</span></li>
                       </ol>
                     </nav>
                 </div>
@@ -41,12 +41,12 @@
 
                     <div class="slide-property-first mb-4 row">
                         <div class="pr-price-into col-lg-6 col-md-6 col-sm-6">
-                            <h2>₦{{ ad.property_price|intcomma}} <i>/ {{ ad.rent_period }}</i> <span class="prt-type rent">{{ ad.property_offer }}</span></h2>
+                            <h5>₦{{ ad.property_price|intcomma}} <i>/ {{ ad.rent_period }}</i> <span class="prt-type rent">{{ ad.property_offer }}</span></h5>
                             <span><i class="lni-map-marker"></i> {{ ad.address }}</span>
                         </div>
                         <div class="pr-price-into col-lg-6 col-md-6 col-sm-6">
                             <h5 class="property-name">{{ ad.property_title }}</h5>
-                            <span><i class="lni-eye"></i> Views: {% get_hit_count for ad %}</span>
+                            <span><i class="lni-eye"></i> : {% get_hit_count for ad %} Views</span>
                         </div>
                     </div>
 
@@ -56,7 +56,7 @@
                             {% for adv in adsimage %}
 
                                 <a href="{{adv.ad_image.url}}" class="item-slick">
-                                    {% thumbnail adv.ad_image "770x511" crop="center"  as im %}
+                                    {% thumbnail adv.ad_image "770x511" crop="10px 10px"  as im %}
                                         <img  style="margin:{{ im|margin:"770x511" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" alt="Alt">
                                     {% endthumbnail %}
                                 </a>
@@ -86,16 +86,16 @@
 
                         <div class="block-body">
                             <ul class="dw-proprty-info">
-                                <li><strong>Bedrooms</strong>{{ ad.bedroom }}</li>
-                                <li><strong>Bathrooms</strong>{{ ad.bathroom }}</li>
+                                <li><strong>Bedrooms</strong>{{ ad.get_bedroom_display }}</li>
+                                <li><strong>Bathrooms</strong>{{ ad.get_bathroom_display }}</li>
                                 <li><strong>State</strong>{{ ad.state }}</li>
                                 <li><strong>Area</strong>{{ ad.property_area}} sq ft</li>
                                 <li><strong>Type</strong>{{ ad.category }}</li>
-                                <li><strong>House Condition</strong>{{ ad.condition }}</li>
+                                <li><strong>House Condition</strong>{{ ad.get_condition_display }}</li>
                                 <li><strong>Price</strong>₦{{ ad.property_price }}</li>
                                 <li><strong>City</strong>{{ ad.city}}</li>
-                                <li><strong>Build On</strong>{{ ad.building_age }}</li>
-                                <li><strong>Propeerty Room</strong>{{ ad.property_room }}</li>
+                                <li><strong>Build On</strong>{{ ad.get_building_age_display }}</li>
+                                <li><strong>Propeerty Room</strong>{{ ad.get_property_room_display }}</li>
                                 <li><strong>Lot Size</strong>{{ ad.lot_size }}</li>
                             </ul>
                         </div>
@@ -332,7 +332,7 @@
                             <div class="agent-title">
                                 <div class="agent-photo"><img src="{{ ad.profile.photo.url }}" width="72px" height="72px" alt=""></div>
                                 <div class="agent-details">
-                                    <h4><a href="#">{{ ad.profile.fullname }}</a></h4>
+                                    <h4><a>{{ ad.profile.fullname }}</a></h4>
                                     <span><i class="lni-phone-handset"></i>{{ ad.profile.phone }}</span>
                                 </div>
                                 <div class="clearfix"></div>
@@ -460,7 +460,7 @@
 
                                             <div class="listing-detail-wrapper">
                                                 <div class="listing-short-detail">
-                                                    <span class="listing-location" style="color: #00A877">{{ city.category }}</span>
+                                                    <span class="listing-location" style="color: #ef6247">{{ city.category }}</span>
                                                     <h4 class="listing-name"><a href="{{  city.get_absolute_url }}">{{ city.property_title}}</a></h4>
                                                     <span class="listing-location"><i class="ti-location-pin"></i>{{ city.address }}</span>
                                                 </div>

@@ -11,14 +11,14 @@
 .goodred-skin .btn-theme-2, .goodred-skin .top-header, .goodred-skin .pricing-bottom .btn-pricing,
 .goodgreen-skin .btn-theme-2, .goodgreen-skin .top-header, .goodgreen-skin .pricing-bottom .btn-pricing,
 .blue2-skin .btn-theme-2, .blue2-skin .top-header, .blue2-skin .pricing-bottom .btn-pricing{ 
-	background-color:#252c41;
-	background:#252c41;
-	border-color:#252c41;
+	background-color:#da5338;
+	background:#da5338;
+	border-color:#da5338;
 }
 .red-skin .hero-search h1, .green-skin .hero-search h1, .blue-skin .hero-search h1, .yellow-skin .hero-search h1, .darkblue-skin .hero-search h1,
 .oceangreen-skin .hero-search h1,
 .purple-skin .hero-search h1, .goodred-skin .hero-search h1, .goodgreen-skin .hero-search h1, .blue2-skin .hero-search h1{
-	color:#252c41 !important;
+	color:#da5338 !important;
 }
 /*-------------- Red Color Option --------------------*/
 .red-skin li.login-attri.theme-log a,
@@ -120,8 +120,8 @@
 .green-skin .single-widgets.widget_search form button,
 .green-skin .single-widgets.widget_tags ul li a:hover, .green-skin .single-widgets.widget_tags ul li a:focus,
 .green-skin .pagination>.active>a, .green-skin .pagination>.active>a:focus, .green-skin .pagination>.active>a:hover, .green-skin .pagination>.active>span, .green-skin .pagination>.active>span:focus, .green-skin .pagination>.active>span:hover, .green-skin .pagination>li>a:focus, .green-skin .pagination>li>a:hover{
-	background-color:#00ba74;
-	background:#00ba74;
+	background-color:#ef6247;
+	background:#ef6247;
 }
  
 .green-skin a.link:hover, .green-skin a.link:focus, .green-skin a:hover, a:focus,
@@ -145,7 +145,7 @@
 .green-skin .blog-page .blog-details .comment-area .all-comments article .comment-details .comment-meta .comment-left-meta .comment-date,
 .green-skin .cn-info-icon i, .green-skin .client-info h5,
 .green-skin .listing-card-info-price{
-	color:#00ba74;
+	color:#ef6247;
 }
 
 .green-skin .pagination>.active>a, .green-skin .pagination>.active>a:focus, .green-skin .pagination>.active>a:hover, .green-skin .pagination>.active>span, .green-skin .pagination>.active>span:focus, .green-skin .pagination>.active>span:hover, .green-skin .pagination>li>a:focus, .green-skin .pagination>li>a:hover,
@@ -165,7 +165,7 @@
 .green-skin .nav-tabs .nav-item.show .nav-link, .green-skin .nav-tabs .nav-link.active,
 .green-skin .btn.pop-login,
 .green-skin .single-widgets.widget_tags ul li a:hover, .green-skin .single-widgets.widget_tags ul li a:focus{
-	border-color:#00ba74;
+	border-color:#ef6247;
 }
 
 .green-skin li.login-attri.theme-log a {

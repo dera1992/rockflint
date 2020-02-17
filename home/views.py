@@ -28,6 +28,7 @@ from datetime import datetime
 from blog.models import Post
 from others.models import Testimony
 from django.views.decorators.http import require_POST
+from django.utils import timezone
 
 
 def dashboard(request, category_slug=None):
@@ -36,7 +37,7 @@ def dashboard(request, category_slug=None):
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     categories = Category.objects.all()
     users = User.objects.all()
-    visitor = Visitor.objects.filter(start_time=datetime.today())
+    visitor = Visitor.objects.filter(start_time=timezone.now())
     blog = Post.objects.all()
     counts = Ads.objects.all().values('category__name').annotate(total=Count('category'))
 
@@ -99,6 +100,7 @@ def ads_list(request, category_slug=None):
                                                  'is_favourite': is_favourite,'order': order,'page': page})
 
 # admin ad list
+@login_required
 def allads_list(request, category_slug=None):
     category = None
     ad_list = Ads.objects.all().order_by('-created', '?')
@@ -168,6 +170,7 @@ def ad_detail(request, id, slug):
             send_mail(subject, message, sender, to)
             messages.add_message(request, messages.INFO, 'Your message has been sent')
             form = MessageForm()
+            return HttpResponseRedirect(ad.get_absolute_url())
         else:
             if schedule_form.is_valid():
                 cd = schedule_form.cleaned_data
@@ -180,6 +183,7 @@ def ad_detail(request, id, slug):
                 send_mail(subject, message, sender, to)
                 messages.add_message(request, messages.INFO, 'Your message has been sent')
                 form = ScheduleForm()
+                return HttpResponseRedirect(ad.get_absolute_url())
 
 
     else:
@@ -267,7 +271,7 @@ def category_count(request):
     lates = Ads.objects.order_by('-created_date')[:3]
     return render(request, 'home/footer.html', {'counts': counts, 'lates':lates})
 
-
+@login_required
 def send_message(request,ad_id):
     ad = get_object_or_404(Ads, id=ad_id)
     sent = False

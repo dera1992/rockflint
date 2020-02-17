@@ -35,10 +35,10 @@ def postAd(request):
                     ad_image = form['ad_image']
                     photo = AdsImages(ads=post_form, ad_image=ad_image)
                     photo.save()
-                    messages.success(request,
-                             "Your property has been created")
-            return HttpResponseRedirect("/")
+                    messages.success(request,"Your property has been created succcessfully")
+            return redirect('owner:my_property')
         else:
+            messages.error(request, 'Sorry,Error creating your property')
             print(postForm.errors, formset.errors)
     else:
         postForm = AdsForm()
@@ -77,8 +77,9 @@ def editAd(request, pk):
                         d.image = photo.ad_image
                         d.save()
             messages.success(request, "{} has been successfully updated!".format(ad.property_title))
-            return HttpResponseRedirect("/")
+            return redirect('owner:my_property')
         else:
+            messages.error(request, 'Sorry,Error updating your property')
             print(postForm.errors, formset.errors)
     else:
         postForm = AdsEditForm(instance=ad)

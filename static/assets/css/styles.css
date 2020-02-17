@@ -4856,7 +4856,7 @@ span.tag_t {
     z-index: 2;
     width: 20px;
     height: 20px;
-    background: #0ac186;
+    background: #ef6247;
     text-align: center;
     border-radius: 50%;
     font-size: 9px;
@@ -5225,7 +5225,7 @@ span.tag_t {
     top: 25px;
 }
 .agent-call a, .agent-call a:hover, .agent-call a:focus{
-	color:#19b12a;
+	color:#ef6247;
 	font-size:22px;
 }
 /*---------- Slick Arrow ---------*/
@@ -8305,12 +8305,52 @@ a.blue2-theme {
     list-style: none;
     background-color: #f2f4f6;
     border-radius: .25rem;
+    font-weight: bold;
 }
 
 .breadcrumb-item+.breadcrumb-item::before {
     display: inline-block;
     padding-right: .5rem;
     padding-left: .5rem;
-    color: #868e96;
+    font-weight: bold;
+    color: #1d1f23;
     content: ">";
+}
+
+/* messages */
+ul.messages {
+    margin:10px 100px;
+    padding:0;
+    list-style-type:
+    none;
+}
+ul.messages li.success,
+ul.messages li.warning,
+ul.messages li.error,
+ul.messages li.info {
+    margin:0;
+    padding:14px 20px;
+    list-style:none;
+    color:#fff;
+}
+
+ul.messages li.success { background:#81ce81; }
+ul.messages li.success a { color:#0ac33e; }
+
+ul.messages li.error { background:#a30029; color:#e9828e; }
+ul.messages li.error a { color:#e9828e; }
+
+ul.messages li.info { background:#faffae; color:#696b4e; }
+ul.messages li.info a { color:#1586de; }
+
+ul.messages li.warning { background:#de9404; }
+ul.messages li.warning a { color:#f49000; }
+
+ul.messages li a.close {
+    margin:0;
+    float:right;
+    opacity:1;
+    border:0;
+    box-shadow:none;
+    text-shadow:none;
 }

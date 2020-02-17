@@ -40,7 +40,7 @@
                             <h4>My Property</h4>
                         </div>
 
-                        <table class="property-table-wrap responsive-table">
+                        <table class="property-table-wrap responsive-table bkmark">
 
                             <tbody>
                                 <tr>
@@ -52,10 +52,10 @@
                                 <!-- Item #1 -->
                                 {% for mya in myab %}
                                     <tr>
-                                        <td class="property-container" width="353px" height="187px">
+                                        <td class="property-container">
                                             {% for image in mya.get_second_image %}
-                                                {% thumbnail image.ad_image "150x100" crop="center"  as im %}
-                                                    <img  src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" alt="Alt">
+                                                {% thumbnail image.ad_image "150x100" crop="10px 10px"  as im %}
+                                                    <img  src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" class="" />
                                                 {% endthumbnail %}
 {#                                                <img src="{{image.ad_image.url}}" alt="">#}
                                             {% endfor %}
@@ -67,8 +67,8 @@
                                         </td>
 {#                                        <td class="expire-date">December 30, 2016</td>#}
                                         <td class="action">
-                                            <a href="{% url 'advert:edit_post' pk=mya.pk %}"><i class="ti-pencil"></i> Edit</a>
-                                            <a href="{% url 'owner:hide_post' pk=mya.pk %}"><i class="ti-eye"></i> Hide</a>
+                                            <a href="{% url 'advert:edit_post' pk=mya.pk %}" class="delete"><i class="ti-pencil"></i> Edit</a>
+                                            <a href="{% url 'owner:hide_post' pk=mya.pk %}" class="delete"><i class="ti-eye"></i> Hide</a>
                                             <a href="{% url 'owner:delete_post' pk=mya.pk %}" class="delete"><i class="ti-close"></i> Delete</a>
                                         </td>
                                     </tr>

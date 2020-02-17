@@ -48,7 +48,7 @@ def delete_post(request,pk=None):
         raise Http404()
     ad.is_active = False
     messages.success(request, "Successfuly deleted")
-    return redirect('home:my_aids')
+    return redirect('owner:my_property')
 
 # @login_required
 # def delete_post(request,pk=None):
@@ -66,4 +66,4 @@ def hide_post(request,pk=None):
         raise Http404()
     ad.is_active = False
     messages.success(request, "You property has been successfuly deleted")
-    return redirect('home:my_aids')
+    return redirect('owner:my_property')
