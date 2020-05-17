@@ -7,6 +7,7 @@
 {% load humanize %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+{% load ratings %}
 
 
 {% block title %}Property Detail{% endblock %}
@@ -47,6 +48,16 @@
                         <div class="pr-price-into col-lg-6 col-md-6 col-sm-6">
                             <h5 class="property-name">{{ ad.property_title }}</h5>
                             <span><i class="lni-eye"></i> : {% get_hit_count for ad %} Views</span>
+                            <div class="rating_wrap" >
+
+                                 <span><i class="fas fa-star" {% if rating.average > 0 %} style="color: orange"{% endif %}></i></span>
+                                 <span><i class="fas fa-star" {% if rating.average > 1 %} style="color: orange"{% endif %}></i></span>
+                                 <span><i class="fas fa-star" {% if rating.average > 2 %} style="color: orange"{% endif %}></i></span>
+                                 <span><i class="fas fa-star" {% if rating.average > 3 %} style="color: orange"{% endif %}></i></span>
+                                 <span><i class="fas fa-star" {% if rating.average > 4 %} style="color: orange"{% endif %}></i></span>
+
+                                <span class="rating_num"><a href="{{ ad.get_rating_url }}">({{ rating.count }})</a></span>
+                            </div>
                         </div>
                     </div>
 

@@ -165,6 +165,9 @@ class Ads(models.Model):
     def get_absolute_url(self):
         return reverse('home:ad_detail', args=[self.id, self.slug])
 
+    def get_rating_url(self):
+        return reverse('home:ad_detail_rating', args=[self.id, self.slug])
+
     def get_first_image(self):
         images = list(self.images.all())
         return images[0:3] if images else None

@@ -169,6 +169,10 @@ def ad_detail(request, id, slug):
     same_city = Ads.objects.filter(city=ad.city).exclude(id=ad.id).order_by('?')[:7]
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     profile = Profile.objects.get(user=ad.profile.user)
+    try:
+        rating = Rating.objects.get(object_id=ad.id)
+    except Rating.DoesNotExist:
+        pass
     categories = Category.objects.all()
     states = State.objects.all()
     cities = Lga.objects.all()
@@ -215,7 +219,7 @@ def ad_detail(request, id, slug):
     return render(request, 'home/detail.html', {'ad':ad,'adsimage':adsimage, 'ad_similar':ad_similar,
                                                'profile':profile,'form': form,'same_city':same_city,'latests':latests,
                                                 'schedule_form':schedule_form,'is_favourite': is_favourite,'states':states,
-                                                'cities':cities,'offers':offers,'categories': categories})
+                                                'cities':cities,'offers':offers,'categories': categories,'rating':rating})
 
 def ad_detail_rating(request, id, slug):
     ad = get_object_or_404(Ads,
