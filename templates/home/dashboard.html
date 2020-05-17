@@ -63,59 +63,35 @@
       <!-- /.row -->
 
       <div class="row">
-        <div class="col-lg-7">
+        <div class="col-lg-10">
           <div class="info-box">
             <div class="col-12">
               <div class="d-flex flex-wrap">
                 <div class="m-b-1">
-                  <h5>Products Sales</h5>
+                  <h5>Products By Category</h5>
                 </div>
               </div>
-              <canvas id="line-chart"></canvas>
+              <div id="container" style="width: 100%;">
+                <canvas id="category-chart" data-url="{% url 'home:category_chart' %}"></canvas>
+             </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-5 col-xlg-3">
-          <div class="info-box">
-            <div class="col-12">
-              <div class="d-flex flex-wrap">
-                <div class="m-b-2">
-                  <h4 class="text-black">Our Customers</h4>
-                </div>
-              </div>
-              <canvas id="pie-chart" height="210"></canvas>
-            </div>
-          </div>
-        </div>
+{#        <div class="col-lg-5 col-xlg-3">#}
+{#          <div class="info-box">#}
+{#            <div class="col-12">#}
+{#              <div class="d-flex flex-wrap">#}
+{#                <div class="m-b-2">#}
+{#                  <h4 class="text-black">Our Customers</h4>#}
+{#                </div>#}
+{#              </div>#}
+{#              <canvas id="pie-chart" height="210"></canvas>#}
+{#            </div>#}
+{#          </div>#}
+{#        </div>#}
       </div>
       <!-- /.row -->
-      <div class="row">
-        <div class="col-lg-5 col-xlg-3">
-          <div class="info-box">
-            <div class="col-12">
-              <div class="d-flex flex-wrap">
-                <div class="m-b-2">
-                  <h4 class="text-black">Our Customers</h4>
-                </div>
-              </div>
-              <canvas id="doughnut-chart" height="210"> </canvas>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-7">
-          <div class="info-box">
-            <div class="col-12">
-              <div class="d-flex flex-wrap">
-                <div class="m-b-1">
-                  <h5>Products Sales</h5>
-                </div>
-              </div>
-              <canvas id="bar-chart"></canvas>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- /.row -->
+
     </div>
     <!-- /.content -->
   </div>

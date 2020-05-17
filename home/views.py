@@ -29,6 +29,9 @@ from blog.models import Post
 from others.models import Testimony
 from django.views.decorators.http import require_POST
 from django.utils import timezone
+from datetime import date
+from star_ratings.models import Rating
+from star_ratings.models import UserRating
 
 
 def dashboard(request, category_slug=None):
@@ -37,7 +40,8 @@ def dashboard(request, category_slug=None):
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     categories = Category.objects.all()
     users = User.objects.all()
-    visitor = Visitor.objects.filter(start_time=timezone.now())
+    today = date.today()
+    visitor = Visitor.objects.filter(start_time__day=today.day)
     blog = Post.objects.all()
     counts = Ads.objects.all().values('category__name').annotate(total=Count('category'))
 
@@ -48,6 +52,20 @@ def dashboard(request, category_slug=None):
                                               'users':users,'visitor':visitor,'blog':blog})
 
 
+def category_chart(request):
+    labels = []
+    data = []
+
+    queryset = Ads.objects.values('category__name').annotate(category_total=Count('category'))
+    print(queryset)
+    for entry in queryset:
+        labels.append(entry['category__name'])
+        data.append(entry['category_total'])
+
+    return JsonResponse(data={
+        'labels': labels,
+        'data': data,
+    })
 
 def home_list(request, category_slug=None):
     category = None
@@ -104,6 +122,10 @@ def ads_list(request, category_slug=None):
 def allads_list(request, category_slug=None):
     category = None
     ad_list = Ads.objects.all().order_by('-created', '?')
+    ad_total = Ads.objects.all()
+    today = date.today()
+    ad_today = Ads.objects.filter(created_date__day=today.day)
+    ad_active = Ads.objects.filter(active=True)
     categories = Category.objects.all()
     states = State.objects.all()
     cities = Lga.objects.all()
@@ -133,7 +155,8 @@ def allads_list(request, category_slug=None):
     except EmptyPage:
         ads = paginator.page(paginator.num_pages)
     return render(request,'home/allads_list.html', {'category': category,'categories': categories,'ads': ads,
-                                              'states':states,'cities':cities,'offers':offers,'agents':agents})
+                                              'states':states,'cities':cities,'offers':offers,'agents':agents,
+                                                    'ad_today':ad_today,'ad_active':ad_active,'ad_total':ad_total})
 
 
 def ad_detail(request, id, slug):
@@ -193,6 +216,19 @@ def ad_detail(request, id, slug):
                                                'profile':profile,'form': form,'same_city':same_city,'latests':latests,
                                                 'schedule_form':schedule_form,'is_favourite': is_favourite,'states':states,
                                                 'cities':cities,'offers':offers,'categories': categories})
+
+def ad_detail_rating(request, id, slug):
+    ad = get_object_or_404(Ads,
+                                id=id,
+                                slug=slug,
+                                active=True)
+    try:
+        rating = Rating.objects.get(object_id=ad.id)
+    except Rating.DoesNotExist:
+        pass
+    user_rating = UserRating.objects.filter(rating__object_id=ad.id)
+    return render(request, 'home/detail_rating.html', {'ad':ad,'rating':rating, 'user_rating':user_rating})
+
 @login_required
 def ads_favourite_list(request):
     user = request.user

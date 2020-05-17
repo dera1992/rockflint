@@ -24,6 +24,7 @@
 
 		<!-- Custom Color Option -->
 		<link href="{% static 'assets/css/colors.css' %}" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
 
     </head>
 
@@ -85,18 +86,22 @@
                                         <span>Hi, {{ request.user.profile.first_name }}<i class="fas fa-caret-down"></i></span>
                                     </button>
                                     <div class="dropdown-menu pull-right animated flipInX">
-                                        {% if user.is_admin %}
+                                        {% if user.is_superuser %}
                                         <a href="{% url "home:dashboard" %}"><i class="ti-user"></i>Dashboard</a>
                                         {% endif %}
                                         <a href="{% url "profile_display" %}"><i class="ti-user"></i>My Profile</a>
+                                        {% if user.is_staff %}
                                         <a href="{% url "owner:my_property" %}"><i class="ti-layers"></i>Property List</a>
+                                        {% endif %}
                                         <a href="{% url "home:favourites" %}"><i class="ti-bookmark"></i>Bookmarked Listings</a>
                                         <a class="active" href="{% url "password_change" %}"><i class="ti-unlock"></i>Change Password</a>
                                         <a href="{% url "logout" %}"><i class="ti-power-off"></i>Log Out</a>
                                     </div>
                                 </div>
                             </li>
+                            {% if user.is_staff %}
                             <li class="submit-attri theme-log"><a href="{% url "advert:post" %}"><span style="font-weight:bold;">Submit Property</span></a></li>
+                            {% endif %}
                         </ul>
                     {% else %}
                         <ul class="attributes attributes-desk">
@@ -105,7 +110,9 @@
                             <li class="dropdown"></li>
                             <li class="log-icon"><a href="{% url "login" %}"><span style="font-weight:bold;">Log In</span></a></li>
                             <li class="log-icon"><a href="{% url "register" %}"><span style="font-weight:bold;">Sign Up</span></a></li>
-                            <li class="submit-attri theme-log"><a href="{% url "advert:post" %}"><span style="font-weight:bold;">Submit Property</span></a></li>
+                            {% if user.is_staff %}
+                              <li class="submit-attri theme-log"><a href="{% url "advert:post" %}"><span style="font-weight:bold;">Submit Property</span></a></li>
+                            {% endif %}
                         </ul>
                     {% endif %}
 
@@ -114,24 +121,19 @@
                 {% if messages %}
                     <ul class="messages">
                         {% for message in messages %}
-                            {% if message.tags == 'success'%}
-                                <script>M.toast({html: "{{message}}", classes: 'green rounded', displayLength:2000});</script>
-                            {% elif message.tags == 'info'%}
-                                <script>M.toast({html: "{{message}}", classes: 'blue rounded', displayLength:2000});</script>
-                            {% elif message.tags == 'warning'%}
-                                <script>M.toast({html: "{{message}}", classes: 'orange rounded', displayLength:10000});</script>
-                            {% elif message.tags == 'error'%}
-                                <script>M.toast({html: "{{message}}", classes: 'red rounded', displayLength:10000});</script>
-                            {% endif %}
+                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}<a href="#" class="close">x</a></li>
                         {% endfor %}
                     </ul>
                 {% endif %}
                 {% if messages %}
-                    <ul class="messages">
-                        {% for message in messages %}
-                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}<a href="#" class="close">x</a></li>
-                        {% endfor %}
-                    </ul>
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                      {{ message }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    {% endfor %}
                 {% endif %}
 			</div>
 
@@ -155,25 +157,6 @@
 		<!-- End Wrapper -->
 		<!-- ============================================================== -->
 
-		<!-- Color Switcher -->
-		<div class="style-switcher">
-			<div class="css-trigger"><a href="#"><i class="ti-settings"></i></a></div>
-			<div>
-				<ul id="themecolors" class="m-t-20">
-					<li><a href="javascript:void(0)" data-skin="default-skin" class="default-theme">1</a></li>
-					<li><a href="javascript:void(0)" data-skin="red-skin" class="red-theme">2</a></li>
-					<li><a href="javascript:void(0)" data-skin="green-skin" class="green-theme">3</a></li>
-					<li><a href="javascript:void(0)" data-skin="blue-skin" class="blue-theme">4</a></li>
-					<li><a href="javascript:void(0)" data-skin="yellow-skin" class="yellow-theme">5</a></li>
-					<li><a href="javascript:void(0)" data-skin="purple-skin" class="purple-theme">6</a></li>
-					<li><a href="javascript:void(0)" data-skin="oceangreen-skin" class="oceangreen-theme">7</a></li>
-					<li><a href="javascript:void(0)" data-skin="goodgreen-skin" class="goodgreen-theme">8</a></li>
-					<li><a href="javascript:void(0)" data-skin="goodred-skin" class="goodred-theme">9</a></li>
-					<li><a href="javascript:void(0)" data-skin="blue2-skin" class="blue2-theme">10</a></li>
-				</ul>
-			</div>
-		</div>
-
 		<!-- ============================================================== -->
 		<!-- All Jquery -->
 		<!-- ============================================================== -->
@@ -194,6 +177,7 @@
 		<script src="{% static 'assets/js/custom.js' %}"></script>
         <script src="{% static 'assets/js/cl-switch.js' %}"></script>
         <script src="{% static 'hitcount/hitcount-jquery.js' %}"></script>
+        <script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
         <script type="text/javascript">
           $(document).ready(function(event){
               $('#delete').click(function(){

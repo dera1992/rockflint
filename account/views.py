@@ -11,6 +11,7 @@ from django.utils.encoding import force_bytes
 from account.tokens import account_activation_token
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
+from django.core.mail import EmailMessage
 
 from django.contrib import messages
 
@@ -40,7 +41,11 @@ def register(request):
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
-            user.email_user(subject, message)
+            to_email = user_form.cleaned_data.get('email')
+            email = EmailMessage(
+                subject, message, to=[to_email]
+            )
+            email.send()
             messages.success(request, 'An email has been sent to your email account,please go and activate your account')
             return render(request,
                 'home/index.html')

@@ -16,10 +16,16 @@ from .models import Testimony
 # Create your views here.
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from datetime import date
 
 @login_required
 def allagent_list(request):
     agent_list = Profile.objects.all()
+    agent_all = Profile.objects.all()
+    agent_active = Profile.objects.filter(active=True)
+    today = date.today()
+    agent_today = User.objects.filter(date_joined__day=today.day)
     print(agent_list)
     query = request.GET.get('q')
     if query:
@@ -39,7 +45,7 @@ def allagent_list(request):
         agents = paginator.page(1)
     except EmptyPage:
         agents = paginator.page(paginator.num_pages)
-    return render(request,'others/allagent_list.html', {'agents':agents})
+    return render(request,'others/allagent_list.html', {'agents':agents,'agent_all':agent_all,'agent_active':agent_active,'agent_today':agent_today})
 
 def agent_list(request):
     agent_list = Profile.objects.filter(agent_type="2",active=True)

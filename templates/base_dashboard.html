@@ -46,11 +46,11 @@
 <div class="wrapper boxed-wrapper">
   <header class="main-header">
     <!-- Logo -->
-    <a href="index.html" class="logo blue-bg">
+    <a href="{% url "home:home" %}" class="logo blue-bg">
     <!-- mini logo for sidebar mini 50x50 pixels -->
     <span class="logo-mini"><img src="{% static 'dist/img/logo-n-blue.png' %}" alt=""></span>
     <!-- logo for regular state and mobile devices -->
-    <span class="logo-lg"><img src="{% static 'dist/img/logo-blue.png' %}" alt=""></span> </a>
+    <span class="logo-lg"><img src="{% static 'assets/img/logo.png' %}" width="162" height="30" alt=""></span> </a>
     <!-- Header Navbar -->
     <nav class="navbar blue-bg navbar-static-top">
       <!-- Sidebar toggle button-->
@@ -105,6 +105,8 @@
         {% with request.resolver_match.url_name as url_name %}
             <li class="{% if url_name == 'dashboard' %}active{% endif %}"> <a href="{% url "home:dashboard" %}"> <i class="icon-home"></i> <span>Dashboard</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
             </li>
+            <li> <a href="{% url 'admin:index' %}"><i class="ti-user"></i> <span>Admin</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
+            </li>
             <li class="{% if url_name == 'allagent_list' %}active{% endif %}"> <a href="{% url "others:allagent_list" %}"><i class="ti-user"></i> <span>Users List</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
             </li>
             <li class="{% if url_name == 'allads_list' %}active{% endif %}"> <a href="{% url "home:allads_list" %}"><i class="ti-list"></i> <span>Property List</span> <span class="pull-right-container"> <i class="fa fa-angle-right"></i> </span> </a>
@@ -132,8 +134,7 @@
   {% endblock %}
 
   <footer class="main-footer">
-    <div class="pull-right hidden-xs">Version 1.0</div>
-    Copyright © 2018 Yourdomian. All rights reserved.</footer>
+    © {%now "Y"%} Rockflint.</footer>
 </div>
 <!-- ./wrapper -->
 
@@ -153,6 +154,46 @@
 <!-- Chartjs JavaScript -->
 <script src="{% static 'dist/plugins/chartjs/chart.min.js' %}"></script>
 <script src="{% static 'dist/plugins/chartjs/chart-int.js' %}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+
+    $(function () {
+
+      var $categoryChart = $("#category-chart");
+      $.ajax({
+        url: $categoryChart.data("url"),
+        success: function (data) {
+
+          var ctx = $categoryChart[0].getContext("2d");
+
+          new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: data.labels,
+              datasets: [{
+                label: 'Category',
+                backgroundColor: 'blue',
+                data: data.data
+              }]
+            },
+            options: {
+              responsive: true,
+              legend: {
+                position: 'top',
+              },
+              title: {
+                display: true,
+                text: 'Category Bar Chart'
+              }
+            }
+          });
+
+        }
+      });
+
+    });
+
+  </script>
 </body>
 
 <!-- Mirrored from uxliner.com/adminkit/demo/main/ltr/index-ecommerce.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 13 Nov 2019 14:51:20 GMT -->

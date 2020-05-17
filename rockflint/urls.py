@@ -16,5 +16,6 @@ urlpatterns = [
     path('search/',include('search.urls', namespace='search')),
     path('hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
     path('tracking/', include('tracking.urls')),
+    path('ratings/', include('star_ratings.urls', namespace='ratings')),
 ]
 if settings.DEBUG:urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -52,10 +52,10 @@ INSTALLED_APPS = [
     'bootstrap4',
     'sorl.thumbnail',
     'hitcount',
-    'django_prices',
     'django.contrib.humanize',
     'bootstrap_datepicker_plus',
     'tracking',
+    'star_ratings',
 
 ]
 
@@ -184,3 +184,12 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 HITCOUNT_KEEP_HIT_ACTIVE = { 'days': 1}
 HITCOUNT_HITS_PER_IP_LIMIT = 0
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ezechdr16@gmail.com'
+EMAIL_HOST_PASSWORD = ''
+EMAIL_PORT = 587
+
+STAR_RATINGS_STAR_HEIGHT = 22
+STAR_RATINGS_STAR_WIDTH = 22
