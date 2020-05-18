@@ -10,7 +10,7 @@
 {% load ratings %}
 
 
-{% block title %}Property Detail Rating{% endblock %}
+{% block title %}Agent Detail Rating{% endblock %}
 
 {% block content %}
     <!-- ============================ Page Title Start================================== -->
@@ -18,14 +18,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <nav aria-label="breadcrumb">
-                      <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{% url "home:home" %}"><span style="font-weight:bold;">Home</span></a></li>
-                        <li class="breadcrumb-item"><a href="{% url "home:ads_list" %}"><span style="font-weight:bold;">Property List</span></a></li>
-                        <li class="breadcrumb-item"><a href="{% url 'search:filter' %}?category={{ ad.category }}"><span style="font-weight:bold;">{{ ad.category }}</span></a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><span style="font-weight:bold;">{{ ad.property_title|title  }}</span></li>
-                      </ol>
-                    </nav>
+                    <div class="row">
+                        <nav aria-label="breadcrumb">
+                          <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'others:agent_list' %}">Agent List</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ agent.fullname }}</li>
+                          </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </div>
@@ -42,7 +43,7 @@
 
                         <!-- Bookmark Property -->
                         <div class="form-submit">
-                            <h5>Review For <span>{{ ad.property_title }}</span></h5>
+                            <h5>Review For <span>{{ agent.fullname }}</span></h5>
                         </div>
 
                         <table class="property-table-wrap responsive-table bkmark">
@@ -93,7 +94,7 @@
                     <form class="row mt-3">
                         <div class="form-group col-12">
                             <div class="star_rating">
-                                {% ratings ad %}
+                                {% ratings agent %}
                             </div>
                         </div>
                     </form>

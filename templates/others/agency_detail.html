@@ -39,7 +39,19 @@
 
                         <div class="agency-content">
                             <div class="agency-name">
-                                <h4>{{ agency.fullname }}</h4>
+                                <div class="row">
+                                    <h4>{{ agency.fullname }}</h4>
+                                    <div class="pr-single-info" style="text-align: right" >
+
+                                         <span><i class="fas fa-star" {% if rating.average > 0 %} style="color: orange"{% endif %}></i></span>
+                                         <span><i class="fas fa-star" {% if rating.average > 1 %} style="color: orange"{% endif %}></i></span>
+                                         <span><i class="fas fa-star" {% if rating.average > 2 %} style="color: orange"{% endif %}></i></span>
+                                         <span><i class="fas fa-star" {% if rating.average > 3 %} style="color: orange"{% endif %}></i></span>
+                                         <span><i class="fas fa-star" {% if rating.average > 4 %} style="color: orange"{% endif %}></i></span>
+
+                                        <span class="rating_num"><a href="{% url 'others:agency_detail_rating' id=agency.id %}">({{ rating.count }})</a></span>
+                                    </div>
+                                </div>
                                 <span><i class="lni-map-marker"></i>{{ agency.address }}</span>
                             </div>
 
@@ -146,13 +158,6 @@
                                                             </a>
                                                         {% endif %}
                                                      </div>
-                                                    <div class="listing-rating">
-                                                        <i class="ti-star filled"></i>
-                                                        <i class="ti-star filled"></i>
-                                                        <i class="ti-star filled"></i>
-                                                        <i class="ti-star filled"></i>
-                                                        <i class="ti-star"></i>
-                                                    </div>
                                                     <span class="property-type">{{ agency_ad.property_offer }}</span>
                                                 </div>
 
@@ -165,7 +170,7 @@
                                                             <span class="listing-location"><i class="ti-location-pin"></i>{{ agency_ad.address|truncatechars_html:50 }}</span>
                                                         </div>
                                                         <div class="list-author">
-                                                            <a href="#"><img src="{{ agency_ad.profile.photo.url }}" class="img-fluid img-circle avater-30" alt=""></a>
+                                                            <a href="#"><img src="{{ agency_ad.profile.photo.url }}" class="img-circle avater-30" alt="" width="30px" height="30px"></a>
                                                         </div>
                                                     </div>
 
@@ -343,13 +348,6 @@
                                                     </a>
                                                     {% endthumbnail %}
                                                 {% endfor %}
-                                                <div class="listing-rating">
-                                                    <i class="ti-star filled"></i>
-                                                    <i class="ti-star filled"></i>
-                                                    <i class="ti-star filled"></i>
-                                                    <i class="ti-star filled"></i>
-                                                    <i class="ti-star"></i>
-                                                </div>
                                                 <span class="property-type">{{ latest.property_offer }}</span>
                                             </div>
 

@@ -18,6 +18,8 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from datetime import date
+from star_ratings.models import Rating
+from star_ratings.models import UserRating
 
 @login_required
 def allagent_list(request):
@@ -48,7 +50,7 @@ def allagent_list(request):
     return render(request,'others/allagent_list.html', {'agents':agents,'agent_all':agent_all,'agent_active':agent_active,'agent_today':agent_today})
 
 def agent_list(request):
-    agent_list = Profile.objects.filter(agent_type="2",active=True)
+    agent_list = Profile.objects.filter(agent_type="1",active=True)
     query = request.GET.get('q')
     if query:
         agent_list = agent_list.filter(
@@ -83,9 +85,20 @@ def agent_detail(request,id):
     offers = Offer.objects.all()
     return render(request, 'others/agent_detail.html', {'agent':agent,'agent_ads':agent_ads,'latests':latests,'categories': categories,
                                               'queryset': qs,'states':states,'cities':cities,'offers':offers,})
+@login_required
+def agent_detail_rating(request,id):
+    agent = get_object_or_404(Profile,
+                             id=id,
+                             active=True)
+    try:
+        rating = Rating.objects.get(object_id=agent.id)
+    except Rating.DoesNotExist:
+        rating = None
+    user_rating = UserRating.objects.filter(rating__object_id=agent.id)
+    return render(request, 'others/agent_detail_rating.html', {'agent':agent,'rating':rating, 'user_rating':user_rating})
 
 def agency_list(request):
-    agentes_list = Profile.objects.filter(agent_type="3",active=True)
+    agentes_list = Profile.objects.filter(agent_type="2",active=True)
     query = request.GET.get('q')
     if query:
         agentes_list = agentes_list.filter(
@@ -120,6 +133,17 @@ def agency_detail(request,id):
     offers = Offer.objects.all()
     return render(request, 'others/agency_detail.html', {'agency':agency,'agency_ads':agency_ads,'latests':latests,'categories': categories,
                                               'queryset': qs,'states':states,'cities':cities,'offers':offers,})
+@login_required
+def agency_detail_rating(request,id):
+    agency = get_object_or_404(Profile,
+                             id=id,
+                             active=True)
+    try:
+        rating = Rating.objects.get(object_id=agency.id)
+    except Rating.DoesNotExist:
+        rating = None
+    user_rating = UserRating.objects.filter(rating__object_id=agency.id)
+    return render(request, 'others/agency_detail_rating.html', {'agency':agency,'rating':rating, 'user_rating':user_rating})
 
 def create_contact(request):
     if request.POST:

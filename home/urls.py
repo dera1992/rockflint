@@ -17,7 +17,7 @@ urlpatterns = [
     path('<int:id>/favourite_ad/',views.favourite_ad, name='favourite_ad'),
     path('<int:id>/favourite_delete/',views.favourite_delete, name='favourite_delete'),
     path('<int:id>/<slug:slug>/', views.ad_detail, name='ad_detail'),
-    path('<int:id>/<slug:slug>/', views.ad_detail_rating, name='ad_detail_rating'),
+    # path('<int:id>', views.ad_detail_rating, name='ad_detail_rating'),
     path('category_count/',views.category_count,name='category_count'),
     path('<int:post_id>/send/',views.send_message, name='send_message'),
 

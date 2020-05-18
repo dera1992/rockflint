@@ -169,16 +169,13 @@ def ad_detail(request, id, slug):
     same_city = Ads.objects.filter(city=ad.city).exclude(id=ad.id).order_by('?')[:7]
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     profile = Profile.objects.get(user=ad.profile.user)
-    try:
-        rating = Rating.objects.get(object_id=ad.id)
-    except Rating.DoesNotExist:
-        pass
     categories = Category.objects.all()
     states = State.objects.all()
     cities = Lga.objects.all()
     offers = Offer.objects.all()
     receiver = [profile.user.email]
     is_favourite = False
+
 
     if ad.favourite.filter(id=request.user.id).exists():
         is_favourite = True
@@ -219,19 +216,17 @@ def ad_detail(request, id, slug):
     return render(request, 'home/detail.html', {'ad':ad,'adsimage':adsimage, 'ad_similar':ad_similar,
                                                'profile':profile,'form': form,'same_city':same_city,'latests':latests,
                                                 'schedule_form':schedule_form,'is_favourite': is_favourite,'states':states,
-                                                'cities':cities,'offers':offers,'categories': categories,'rating':rating})
-
-def ad_detail_rating(request, id, slug):
-    ad = get_object_or_404(Ads,
-                                id=id,
-                                slug=slug,
-                                active=True)
-    try:
-        rating = Rating.objects.get(object_id=ad.id)
-    except Rating.DoesNotExist:
-        pass
-    user_rating = UserRating.objects.filter(rating__object_id=ad.id)
-    return render(request, 'home/detail_rating.html', {'ad':ad,'rating':rating, 'user_rating':user_rating})
+                                                'cities':cities,'offers':offers,'categories': categories})
+# @login_required
+# def ad_detail_rating(request, id):
+#     ad = get_object_or_404(Ads, id=id,
+#                            active=True)
+#     try:
+#         rating = Rating.objects.get(object_id=ad.id)
+#     except Rating.DoesNotExist:
+#         rating = None
+#     user_rating = UserRating.objects.filter(rating__object_id=ad.id)
+#     return render(request, 'home/detail_rating.html', {'ad':ad,'rating':rating, 'user_rating':user_rating})
 
 @login_required
 def ads_favourite_list(request):
@@ -245,7 +240,6 @@ def ads_favourite_list(request):
 @login_required
 def favourite_ad(request, id):
     ad = get_object_or_404(Ads, id=id)
-    print(ad)
     if ad.favourite.filter(id=request.user.id).exists():
         ad.favourite.remove(request.user)
     else:
@@ -256,7 +250,6 @@ def favourite_ad(request, id):
 @login_required
 def favourite_delete(request, id):
     ad = get_object_or_404(Ads, id=id)
-    print(ad)
     if ad.favourite.filter(id=request.user.id).exists():
         ad.favourite.remove(request.user)
     else:

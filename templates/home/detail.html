@@ -48,16 +48,7 @@
                         <div class="pr-price-into col-lg-6 col-md-6 col-sm-6">
                             <h5 class="property-name">{{ ad.property_title }}</h5>
                             <span><i class="lni-eye"></i> : {% get_hit_count for ad %} Views</span>
-                            <div class="rating_wrap" >
 
-                                 <span><i class="fas fa-star" {% if rating.average > 0 %} style="color: orange"{% endif %}></i></span>
-                                 <span><i class="fas fa-star" {% if rating.average > 1 %} style="color: orange"{% endif %}></i></span>
-                                 <span><i class="fas fa-star" {% if rating.average > 2 %} style="color: orange"{% endif %}></i></span>
-                                 <span><i class="fas fa-star" {% if rating.average > 3 %} style="color: orange"{% endif %}></i></span>
-                                 <span><i class="fas fa-star" {% if rating.average > 4 %} style="color: orange"{% endif %}></i></span>
-
-                                <span class="rating_num"><a href="{{ ad.get_rating_url }}">({{ rating.count }})</a></span>
-                            </div>
                         </div>
                     </div>
 
@@ -107,7 +98,7 @@
                                 <li><strong>City</strong>{{ ad.city}}</li>
                                 <li><strong>Build On</strong>{{ ad.get_building_age_display }}</li>
                                 <li><strong>Propeerty Room</strong>{{ ad.get_property_room_display }}</li>
-                                <li><strong>Lot Size</strong>{{ ad.lot_size }}</li>
+                                <li><strong>Lot Size</strong>{{ ad.lot_size }}sq ft</li>
                             </ul>
                         </div>
 
@@ -238,42 +229,42 @@
                     </div>
 
                     <!-- Single Block Wrap -->
-                    <div class="block-wrap">
-
-                        <div class="block-header">
-                            <h4 class="block-title">Schedule A Meeting</h4>
-                        </div>
-
-                        <div class="block-body">
-                            {{ schedule_form.media }}
-                            <form action="." method="post">
-
-                                {% csrf_token %}
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        {% bootstrap_field schedule_form.date %}
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        {% bootstrap_field schedule_form.time %}
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        {% bootstrap_field schedule_form.name %}
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        {% bootstrap_field schedule_form.phone %}
-                                    </div>
-                                    <div class="form-group col-md-12">
-                                        {% bootstrap_field schedule_form.message %}
-                                    </div>
-                                    <div class="form-group col-lg-3 col-md-3">
-                                       <button class="btn btn-theme full-width">Send Message</button>
-                                    </div>
-                                </div>
-                            </form>
-
-                        </div>
-
-                    </div>
+{#                    <div class="block-wrap">#}
+{##}
+{#                        <div class="block-header">#}
+{#                            <h4 class="block-title">Schedule A Meeting</h4>#}
+{#                        </div>#}
+{##}
+{#                        <div class="block-body">#}
+{#                            {{ schedule_form.media }}#}
+{#                            <form action="." method="post">#}
+{##}
+{#                                {% csrf_token %}#}
+{#                                <div class="form-row">#}
+{#                                    <div class="form-group col-md-6">#}
+{#                                        {% bootstrap_field schedule_form.date %}#}
+{#                                    </div>#}
+{#                                    <div class="form-group col-md-6">#}
+{#                                        {% bootstrap_field schedule_form.time %}#}
+{#                                    </div>#}
+{#                                    <div class="form-group col-md-6">#}
+{#                                        {% bootstrap_field schedule_form.name %}#}
+{#                                    </div>#}
+{#                                    <div class="form-group col-md-6">#}
+{#                                        {% bootstrap_field schedule_form.phone %}#}
+{#                                    </div>#}
+{#                                    <div class="form-group col-md-12">#}
+{#                                        {% bootstrap_field schedule_form.message %}#}
+{#                                    </div>#}
+{#                                    <div class="form-group col-lg-3 col-md-3">#}
+{#                                       <button class="btn btn-theme full-width">Send Message</button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </form>#}
+{##}
+{#                        </div>#}
+{##}
+{#                    </div>#}
 
 {#                    <!-- Single Block Wrap -->#}
 {#                    <div class="block-wrap">#}
@@ -335,6 +326,16 @@
                                     {% endif %}
                                 </div>
 
+{#                                <div class="pr-single-info" >#}
+{##}
+{#                                     <span><i class="fas fa-star" {% if rating.average > 0 %} style="color: orange"{% endif %}></i></span>#}
+{#                                     <span><i class="fas fa-star" {% if rating.average > 1 %} style="color: orange"{% endif %}></i></span>#}
+{#                                     <span><i class="fas fa-star" {% if rating.average > 2 %} style="color: orange"{% endif %}></i></span>#}
+{#                                     <span><i class="fas fa-star" {% if rating.average > 3 %} style="color: orange"{% endif %}></i></span>#}
+{#                                     <span><i class="fas fa-star" {% if rating.average > 4 %} style="color: orange"{% endif %}></i></span>#}
+{##}
+{#                                    <span class="rating_num"><a href="{% url 'home:ad_detail_rating' id=ad.id %}">({{ rating.count }})</a></span>#}
+{#                                </div>#}
                             </div>
                         </div>
 
@@ -457,13 +458,6 @@
                                                         </div>
                                                     {% endthumbnail %}
                                                 {% endfor %}
-                                            <div class="listing-rating">
-                                                <i class="ti-star filled"></i>
-                                                <i class="ti-star filled"></i>
-                                                <i class="ti-star filled"></i>
-                                                <i class="ti-star filled"></i>
-                                                <i class="ti-star"></i>
-                                            </div>
                                             <span class="property-type">{{ city.property_offer }}</span>
                                         </div>
 
