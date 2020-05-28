@@ -374,7 +374,7 @@
 
                                                 <div class="listing-footer-wrapper">
                                                     <div class="listing-price">
-                                                        <h4 class="list-pr">₦{{ latest.property_price }}</h4>
+                                                        <h4 class="list-pr">₦{{ latest.property_price|intcomma }}</h4>
                                                     </div>
                                                     <div class="listing-detail-btn">
                                                         <a href="{{ latest.get_absolute_url }}" class="more-btn">More Info</a>

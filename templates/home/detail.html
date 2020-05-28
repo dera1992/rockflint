@@ -94,7 +94,7 @@
                                 <li><strong>Area</strong>{{ ad.property_area}} sq ft</li>
                                 <li><strong>Type</strong>{{ ad.category }}</li>
                                 <li><strong>House Condition</strong>{{ ad.get_condition_display }}</li>
-                                <li><strong>Price</strong>₦{{ ad.property_price }}</li>
+                                <li><strong>Price</strong>₦{{ ad.property_price|intcomma  }}</li>
                                 <li><strong>City</strong>{{ ad.city}}</li>
                                 <li><strong>Build On</strong>{{ ad.get_building_age_display }}</li>
                                 <li><strong>Propeerty Room</strong>{{ ad.get_property_room_display }}</li>

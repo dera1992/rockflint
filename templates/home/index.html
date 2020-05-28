@@ -117,8 +117,7 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6">
                                     <div class="agents-grid">
 
-                                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"><i class="ti-bookmark"></i></a></div>
-                                        <div class="agent-call"><a ><i class="lni-phone-handset"></i></a></div>
+                                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"></a></div>
                                         <div class="agents-grid-wrap">
 
                                             <div class="fr-grid-thumb">
@@ -133,19 +132,9 @@
                                             </div>
                                             <div class="fr-grid-deatil">
                                                 <h5 class="fr-can-name"><a href="{% url 'others:agent_detail' id=agent.id %}">{{ agent.fullname }}</a></h5>
-                                                <span class="fr-position"><i class="lni-map-marker"></i>{{ agent.address }}</span>
+                                                <span class="fr-position"><i class="lni-phone-handset"></i> {{ agent.phone }}</span>
                                             </div>
 
-                                        </div>
-
-                                        <div class="fr-grid-info">
-                                            <ul>
-            {#                                {% with total_property_created=ads.agent|length %}#}
-            {#                                <li>Property<span>{{ ads.agent.count }}</span></li>#}
-            {#                                {% endwith %}#}
-{#                                            <li>Email<span>{{ agent.user.email }}</span></li>#}
-                                            <li>Phone<span>{{ agent.phone }}</span></li>
-                                            </ul>
                                         </div>
 
                                         <div class="fr-grid-footer">
