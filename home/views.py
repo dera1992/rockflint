@@ -57,7 +57,6 @@ def category_chart(request):
     data = []
 
     queryset = Ads.objects.values('category__name').annotate(category_total=Count('category'))
-    print(queryset)
     for entry in queryset:
         labels.append(entry['category__name'])
         data.append(entry['category_total'])
