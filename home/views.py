@@ -33,7 +33,7 @@ from datetime import date
 from star_ratings.models import Rating
 from star_ratings.models import UserRating
 
-
+@login_required
 def dashboard(request, category_slug=None):
     category = None
     ads = Ads.objects.all()
@@ -51,7 +51,7 @@ def dashboard(request, category_slug=None):
     return render(request,'home/dashboard.html', {'category': category,'categories': categories,'ads': ads,'latests':latests,
                                               'users':users,'visitor':visitor,'blog':blog})
 
-
+@login_required
 def category_chart(request):
     labels = []
     data = []
