@@ -103,7 +103,7 @@ def ads_list(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         ad_list = ad_list.filter(category=category)
 
-    paginator = Paginator(ad_list, 3)
+    paginator = Paginator(ad_list, 10)
     page_request_var = "page"
     page = request.GET.get('page')
     try:
