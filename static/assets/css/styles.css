@@ -5920,6 +5920,7 @@ span.view-pr {
     cursor: pointer;
     width:42px;
     height:42px;
+    align-items: center;
     border-radius: 2px;
 	display: flex;
     flex-wrap: wrap;
