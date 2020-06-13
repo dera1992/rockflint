@@ -50,7 +50,7 @@ def allagent_list(request):
     return render(request,'others/allagent_list.html', {'agents':agents,'agent_all':agent_all,'agent_active':agent_active,'agent_today':agent_today})
 
 def agent_list(request):
-    agent_list = Profile.objects.filter(agent_type="1",active=True)
+    agent_list = Profile.objects.filter(agent_type="2",active=True).order_by('id')
     query = request.GET.get('q')
     if query:
         agent_list = agent_list.filter(
@@ -98,7 +98,7 @@ def agent_detail_rating(request,id):
     return render(request, 'others/agent_detail_rating.html', {'agent':agent,'rating':rating, 'user_rating':user_rating})
 
 def agency_list(request):
-    agentes_list = Profile.objects.filter(agent_type="2",active=True)
+    agentes_list = Profile.objects.filter(agent_type="3",active=True).order_by('id')
     query = request.GET.get('q')
     if query:
         agentes_list = agentes_list.filter(
