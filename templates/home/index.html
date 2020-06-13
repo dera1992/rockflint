@@ -18,6 +18,103 @@
         </div>
         <!-- ============================ Hero Banner End ================================== -->
 
+
+                                    <div class="listing-detail-wrapper pb-0">
+                                        <div class="listing-short-detail">
+                                            <h4 class="listing-name"><a href="{{ latest.get_absolute_url }}">{{ latest.property_title }}</a></h4>
+                                        </div>
+                                    </div>
+
+                                    <div class="price-features-wrapper">
+                                        <div class="listing-price-fx">
+                                            <h6 class="listing-card-info-price price-prefix">{{ latest.property_price|intcomma}}<span class="price-suffix">/{{ latest.rent_period }}</span></h6>
+                                        </div>
+                                        <div class="list-fx-features">
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bed">{{ latest.bedroom }}Beds</span>
+                                            </div>
+                                            <div class="listing-card-info-icon">
+                                                <span class="inc-fleat inc-bath">{{ latest.bathroom }} Bath</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="text-center mt-4">
+                            <a href="{% url 'home:ads_list' %}" class="btn btn-theme-2">Browse More Property</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- ============================ Slide Property End ================================== -->
+
+        <!-- ============================ Agent Start ================================== -->
+        <section class="gray-bg">
+            <div class="container">
+                <div class="row align-items-center">
+
+                    <div class="col-lg-5 col-md-5">
+
+                        <div class="sec-heading">
+                            <h3>Our Featured Agent</h3>
+                            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti.</p>
+                            <a href="{% url 'others:agent_list' %}" class="btn btn-theme-2 mt-3">See More Agents</a>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-7 col-md-7">
+                        <div class="testi-slide item-slide">
+
+                            <!-- Single Testimonial -->
+                            {% for agent in agents %}
+                                <div class="col-lg-4 col-md-4 col-sm-6">
+                                    <div class="agents-grid">
+
+                                        <div class="jb-bookmark"><a href="javascript:void(0)" data-toggle="tooltip" data-original-title="Bookmark"></a></div>
+                                        <div class="agents-grid-wrap">
+
+                                            <div class="fr-grid-thumb">
+                                                <a href="{% url 'others:agent_detail' id=agent.id %}">
+            {#                                        <div class="overall-rate">4.4</div>#}
+                                                    {% if agent.photo %}
+                                                        <img src="{{ agent.photo.url }}" class="img-fluid mx-auto" alt="" />
+                                                    {% else %}
+                                                        <img src="{% static 'assets/img/avater.png' %}" class="img-fluid mx-auto" alt="">
+                                                    {% endif %}
+                                                </a>
+                                            </div>
+                                            <div class="fr-grid-deatil">
+                                                <h5 class="fr-can-name"><a href="{% url 'others:agent_detail' id=agent.id %}">{{ agent.fullname }}</a></h5>
+                                                <span class="fr-position"><i class="lni-phone-handset"></i> {{ agent.phone }}</span>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="fr-grid-footer">
+                                            <a href="{% url 'others:agent_detail' id=agent.id %}" class="btn btn-outline-theme full-width">View Profile<i class="ti-arrow-right ml-1"></i></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- ============================ Property Start ================================== -->
 			<section>
 				<div class="container">
 

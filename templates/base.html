@@ -69,6 +69,7 @@
 						<button class="toggle-bar"><span class="ti-align-justify"></span></button>
 					</div>
 					<ul class="menu">
+<<<<<<< HEAD
                         <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">For Sell</span></a></li>
                         <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">For Rent</span></a></li>
 					</ul>
@@ -76,6 +77,15 @@
                         <ul class="attributes">
                             <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">Sell</span></a></li>-->
                             <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">Rent</span></a></li>-->
+=======
+                         <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">For Sell</span></a></li>
+                          <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">For Rent</span></a></li>
+					</ul>
+                    {% if user.is_authenticated %}
+                        <ul class="attributes">
+{#                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">For Sell</span></a></li>#}
+{#                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">For Rent</span></a></li>#}
+>>>>>>> 03812fe5b551a793faa994e091ecab4b869f58be
                             <li class="login-attri">
                                 <div class="btn-group account-drop">
                                     <button type="button" class="btn btn-order-by-filt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -107,8 +117,13 @@
                         </ul>
                     {% else %}
                         <ul class="attributes attributes-desk">
+<<<<<<< HEAD
                             <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">Sell</span></a></li>-->
                             <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">Rent</span></a></li>-->
+=======
+{#                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">For Sell</span></a></li>#}
+{#                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">For Rent</span></a></li>#}
+>>>>>>> 03812fe5b551a793faa994e091ecab4b869f58be
                             <li class="dropdown"></li>
                             <li class="log-icon"><a href="{% url "login" %}"><span style="font-weight:bold;">Log In</span></a></li>
                             <li class="log-icon"><a href="{% url "register" %}"><span style="font-weight:bold;">Sign Up</span></a></li>
