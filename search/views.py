@@ -184,7 +184,7 @@ def filter(request):
     elif order == "-created_date":
         qs = qs.order_by(order)
 
-    paginator = Paginator(qs, 2)  # Show 25 contacts per page
+    paginator = Paginator(qs, 10)  # Show 25 contacts per page
     page_request_var = "page"
     page = request.GET.get('page')
     try:
