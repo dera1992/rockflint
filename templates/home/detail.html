@@ -22,8 +22,6 @@
                     <nav aria-label="breadcrumb">
                       <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{% url "home:home" %}"><span style="font-weight:bold;">Home</span></a></li>
-                        <li class="breadcrumb-item"><a href="{% url "home:ads_list" %}"><span style="font-weight:bold;">Property List</span></a></li>
-{#                        <li class="breadcrumb-item"><a href="{{ ad.category.get_absolute_url }}">{{ ad.category }}</a></li>#}
                         <li class="breadcrumb-item"><a href="{% url 'search:filter' %}?category={{ ad.category }}"><span style="font-weight:bold;">{{ ad.category }}</span></a></li>
                         <li class="breadcrumb-item active" aria-current="page"><span style="font-weight:bold;">{{ ad.property_title|title  }}</span></li>
                       </ol>
@@ -40,15 +38,10 @@
                 <!-- property main detail -->
                 <div class="col-lg-8 col-md-12 col-sm-12">
 
-                    <div class="slide-property-first mb-4 row">
-                        <div class="pr-price-into col-lg-6 col-md-6 col-sm-6">
-                            <h5>₦{{ ad.property_price|intcomma}} <i>/ {{ ad.rent_period }}</i> <span class="prt-type rent">{{ ad.property_offer }}</span></h5>
+                    <div class="slide-property-first mb-4">
+                        <div class="pr-price-into">
+                            <h2>₦{{ ad.property_price|intcomma}} <i>/ {{ ad.rent_period }}</i> <span class="prt-type rent">{{ ad.property_offer }}</span></h2>
                             <span><i class="lni-map-marker"></i> {{ ad.address }}</span>
-                        </div>
-                        <div class="pr-price-into col-lg-6 col-md-6 col-sm-6">
-                            <h5 class="property-name">{{ ad.property_title }}</h5>
-                            <span><i class="lni-eye"></i> : {% get_hit_count for ad %} Views</span>
-
                         </div>
                     </div>
 
@@ -59,7 +52,7 @@
 
                                 <a href="{{adv.ad_image.url}}" class="item-slick">
                                     {% thumbnail adv.ad_image "770x511" crop="10px 10px"  as im %}
-                                        <img  style="margin:{{ im|margin:"770x511" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" alt="Alt">
+                                        <img  style="margin:{{ im|margin:"770x511" }}" src="{{ im.url }}" alt="Alt">
                                     {% endthumbnail %}
                                 </a>
 
@@ -70,11 +63,22 @@
                                 <div class="item-slick">
 
                                        {% thumbnail adv2.ad_image "129x86" crop="center"  as im %}
-                                         <img  style="margin:{{ im|margin:"129x86" }}" src="{{ im.url }}" width="{{ im.x }}" height="{{ im.y }}" alt="Alt">
+                                         <img  style="margin:{{ im|margin:"129x86" }}" src="{{ im.url }}"  alt="Alt">
                                        {% endthumbnail %}
 
                                 </div>
                             {% endfor %}
+                        </div>
+
+                    </div>
+
+                    <!-- Single Block Wrap -->
+                    <div class="block-wrap">
+
+                        <h5 class="property-name">{{ ad.property_title }}</h5>
+
+                        <div class="block-body">
+                            <span>{% get_hit_count for ad %} Views</span>
                         </div>
 
                     </div>
