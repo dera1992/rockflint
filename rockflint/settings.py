@@ -25,7 +25,7 @@ SECRET_KEY = 'u7ogex964-8y#ks0&sfx_y^0+679h5)0b-(kl(39kiti#eto-v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dera1992.pythonanywhere.com']
+ALLOWED_HOSTS = ['www.rockflint.com']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -185,8 +185,8 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 
-SOCIAL_AUTH_FACEBOOK_KEY = ''
-SOCIAL_AUTH_FACEBOOK_SECRET = ''
+SOCIAL_AUTH_FACEBOOK_KEY = '398411560590020'
+SOCIAL_AUTH_FACEBOOK_SECRET = '7b11548afc8e89eb6de3bf235c661fd7'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
             'fields': 'id,name,email, picture.type(large), link'
@@ -200,8 +200,8 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
 ]
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
-SOCIAL_AUTH_TWITTER_KEY = 'XXX'
-SOCIAL_AUTH_TWITTER_SECRET = 'XXX'
+SOCIAL_AUTH_TWITTER_KEY = 'ThddafBXDfSQ2fFg4r3iHdUuS'
+SOCIAL_AUTH_TWITTER_SECRET = 'aqYeoJVHssNUkP9NsHwHpPBsXWAPBpElYgmSGOyOlTAVuDipX3'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
