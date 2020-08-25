@@ -1,22 +1,14 @@
 from __future__ import unicode_literals
 
-
-from django.conf import settings
 from django.contrib.contenttypes.models import ContentType
 from django.urls import reverse
 from django.db import models
 from django.db.models.signals import pre_save
 from django.utils import timezone
 from django.contrib.auth.models import User
-from django.utils.safestring import mark_safe
 from django.utils.text import slugify
 from account.models import Profile
 from django.dispatch import receiver
-
-# from markdown_deux import markdown
-
-
-from .utils import get_read_time, unique_slug_generator
 
 
 class PostManager(models.Manager):
@@ -29,9 +21,6 @@ class PostManager(models.Manager):
 
 
 def upload_location(instance, filename):
-    # PostModel = instance.__class__
-    # new_id = PostModel.objects.order_by("id").last().id + 1
-    # return "%s/%s" % (new_id, filename)
     return "%s/%s" % (instance.id, filename)
 
 class Category(models.Model):

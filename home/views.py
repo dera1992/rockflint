@@ -11,12 +11,6 @@ from django.db.models import Q
 from django.contrib import messages
 from django.http import HttpResponseRedirect, Http404,HttpResponse, JsonResponse
 from django.contrib.auth.models import User
-from django.urls import reverse
-import json
-from django.core import serializers
-import ast
-# Create your views here.
-from django.views.decorators.csrf import csrf_exempt
 from account.models import Profile
 from .forms import MessageForm, ScheduleForm
 from django.core.mail import send_mail
@@ -255,19 +249,6 @@ def favourite_delete(request, id):
         ad.favourite.add(request.user)
 
     return redirect('home:favourites')
-
-# @login_required
-# def favourite_ads(request):
-#     ad = get_object_or_404(Ads, id=request.POST.get('id'))
-#     if ad.favourite.filter(id=request.user.id).exists():
-#         ad.favourite.remove(request.user)
-#         is_favourite = False
-#     else:
-#         ad.favourite.add(request.user)
-#         is_favourite = True
-#
-#     return JsonResponse({'status': 'ok'})
-    # return HttpResponse({"success": True})
 
 @login_required
 @require_POST

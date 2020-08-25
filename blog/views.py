@@ -9,7 +9,6 @@ except:
     pass
 
 from django.contrib import messages
-from django.contrib.contenttypes.models import ContentType
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from django.db.models import Q
@@ -25,7 +24,6 @@ from .forms import PostForm
 from .models import Post
 from django.template.loader import render_to_string
 from django.contrib.auth.decorators import login_required
-from account.models import Profile
 
 
 def get_category_count():

@@ -69,8 +69,9 @@
 						<button class="toggle-bar"><span class="ti-align-justify"></span></button>
 					</div>
 					<ul class="menu">
-                        <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">For Sell</span></a></li>
-                        <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">For Rent</span></a></li>
+                         <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sale"><span style="font-weight:bold;">For Sale</span></a></li>
+                         <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">For Rent</span></a></li>
+                          <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Lease"><span style="font-weight:bold;">For Lease</span></a></li>
 					</ul>
                     {% if user.is_authenticated %}
                         <ul class="attributes">
