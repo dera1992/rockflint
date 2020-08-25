@@ -50,15 +50,6 @@ def delete_post(request,pk=None):
     messages.success(request, "Successfuly deleted")
     return redirect('owner:my_property')
 
-# @login_required
-# def delete_post(request,pk=None):
-#     ad = Ads.objects.get(id=pk)
-#     if request.user != ad.profile.user:
-#         raise Http404()
-#     ad.delete()
-#     messages.success(request, "You property has been successfuly deleted")
-#     return redirect('home:my_aids')
-
 @login_required
 def hide_post(request,pk=None):
     ad = Ads.objects.get(id=pk)

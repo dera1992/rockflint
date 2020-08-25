@@ -3,15 +3,10 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.db import models
 from account.models import Profile
-from django.utils.translation import ugettext_lazy as _
-from django.core import serializers
-import json
-from django.http import  HttpResponse
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from hitcount.models import HitCountMixin, HitCount
 from django.contrib.contenttypes.fields import GenericRelation
-import uuid
 
 
 class Category(models.Model):
@@ -181,10 +176,6 @@ class Ads(models.Model):
             self.slug = slugify(self.property_title)
         super(Ads, self).save(*args, **kwargs)
 
-# def get_image_filename(instance, filename):
-#     title = instance.ads.property_title
-#     slug = slugify(title)
-#     return "post_images/%s-%s" % (slug, filename)
 
 
 class AdsImages(models.Model):
