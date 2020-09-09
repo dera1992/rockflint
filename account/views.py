@@ -29,7 +29,7 @@ def register(request):
             profile.user = user
             profile.save()
             current_site = get_current_site(request)
-            subject = 'Activate Your MySite Account'
+            subject = 'Activate Your Rockflint Account'
             message = render_to_string('registration/account_activation_email.html', {
                 'user': user,
                 'domain': current_site.domain,
@@ -65,6 +65,7 @@ def edit(request):
             user_form.save()
             profile_form.save()
             messages.success(request, 'Profile updated successfully')
+            return redirect('profile_display')
         else:
             messages.error(request, 'Error updating your profile')
     else:
@@ -98,7 +99,7 @@ def profile_display(request):
                         {'user_form': user_form,
                         'profile_form': profile_form})
 
-def activate(request, uidb64, token):
+def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
         user = User.objects.get(pk=uid)
@@ -110,7 +111,7 @@ def activate(request, uidb64, token):
         user.is_active = True
         user.profile.email_confirmed = True
         user.save()
-        login(request, user)
+        login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return redirect('home:home')
     else:
         return render(request, 'registration/account_activation_invalid.html')

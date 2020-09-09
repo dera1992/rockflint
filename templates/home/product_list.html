@@ -105,7 +105,11 @@
                                             <span class="listing-location"><i class="ti-location-pin"></i>{{ ad.address|truncatechars_html:50 }}</span>
                                         </div>
                                         <div class="list-author">
-                                            <a href="#"><img src="{{ ad.profile.photo.url }}" class="img-circle avater-30" alt=""></a>
+                                            <a >
+                                                {% if ad.profile.photo %}
+                                                    <img src="{{ ad.profile.photo.url }}" class="img-circle avater-30" alt="">
+                                                {% endif %}
+                                            </a>
                                         </div>
                                     </div>
 

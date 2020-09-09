@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Application definition
 
@@ -188,8 +188,8 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.user.user_details',
 )
 
-SOCIAL_AUTH_FACEBOOK_KEY = ''
-SOCIAL_AUTH_FACEBOOK_SECRET = ''
+SOCIAL_AUTH_FACEBOOK_KEY = '398411560590020'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'f48a6d63dc15b3334d92a404c8657f50'
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
             'fields': 'id,name,email, picture.type(large), link'
@@ -214,10 +214,11 @@ SESSION_SAVE_EVERY_REQUEST = True
 HITCOUNT_KEEP_HIT_ACTIVE = { 'days': 1}
 HITCOUNT_HITS_PER_IP_LIMIT = 0
 
+
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ezechdr16@gmail.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'ederabright'
 EMAIL_PORT = 587
 
 STAR_RATINGS_STAR_HEIGHT = 22

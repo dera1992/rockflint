@@ -1,7 +1,12 @@
 {% autoescape off %}
 Hi {{ user.username }},
 
-Please click on the link below to confirm your registration:
+Thanks you for registering with us.
+Please click on the link below to confirm your registration.
 
-https://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+<a href="https://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Confirm your registration</a>
+
+Regards,
+
+Rockflint
 {% endautoescape %}
