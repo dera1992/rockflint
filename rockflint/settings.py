@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['www.rockflint.com']
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
 # Application definition
 
@@ -210,6 +210,7 @@ SESSION_SAVE_EVERY_REQUEST = True
 
 HITCOUNT_KEEP_HIT_ACTIVE = { 'days': 1}
 HITCOUNT_HITS_PER_IP_LIMIT = 0
+
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

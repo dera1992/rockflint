@@ -56,7 +56,9 @@
                     <div class="agency agency-list">
 
                         <a href="{% url 'others:agency_detail' id=agency.id %}" class="agency-avatar">
-                            <img src="{{ agency.photo.url }}" class=" mx-auto" alt=""  width="259px" height="259px">
+                            {% if agency.photo %}
+                                <img src="{{ agency.photo.url }}" class=" mx-auto" alt=""  width="259px" height="259px">
+                            {% endif %}
                         </a>
 
                         <div class="agency-content">

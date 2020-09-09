@@ -13,7 +13,7 @@ class UserRegistrationForm(forms.ModelForm):
          widget=forms.PasswordInput(
             attrs={'class': 'form-control', 'placeholder': 'Repeat Password'}
         ))
-    username = forms.CharField(label='',
+    username = forms.CharField(label='',help_text=False,
         widget=forms.TextInput(
             attrs={'class': 'form-control', 'placeholder': 'Username'}
         ))
@@ -84,6 +84,9 @@ class UserEditForm(UserChangeForm):
     class Meta:
         model = User
         fields = ('username','email')
+        help_texts = {
+            'username': None,
+        }
 # class UserEditForm(forms.ModelForm):
 #     class Meta:
 #         model = User

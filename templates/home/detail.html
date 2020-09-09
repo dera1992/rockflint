@@ -345,7 +345,11 @@
                         <!-- Agent Detail -->
                         <div class="agent-widget">
                             <div class="agent-title">
-                                <div class="agent-photo"><img src="{{ ad.profile.photo.url }}" width="72px" height="72px" alt=""></div>
+                                <div class="agent-photo">
+                                    {% if ad.profile.photo %}
+                                        <img src="{{ ad.profile.photo.url }}" width="72px" height="72px" alt="">
+                                    {% endif %}
+                                </div>
                                 <div class="agent-details">
                                     <h4><a>{{ ad.profile.fullname }}</a></h4>
                                     <span><i class="lni-phone-handset"></i>{{ ad.profile.phone }}</span>
@@ -473,7 +477,11 @@
                                                     <span class="listing-location"><i class="ti-location-pin"></i>{{ city.address }}</span>
                                                 </div>
                                                 <div class="list-author">
-                                                    <a href="#"><img src="{{ city.profile.photo.url }}" class="img-circle avater-30" alt="" width="30px" height="30px"></a>
+                                                    <a href="#">
+                                                        {% if city.profile.photo %}
+                                                            <img src="{{ city.profile.photo.url }}" class="img-circle avater-30" alt="" width="30px" height="30px">
+                                                        {% endif %}
+                                                    </a>
                                                 </div>
                                             </div>
 

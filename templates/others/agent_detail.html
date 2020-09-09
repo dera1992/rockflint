@@ -34,8 +34,10 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="agency agency-list shadow-0 mt-2 mb-2">
 
-                        <a href="" class="agency-avatar">
-                            <img src="{{ agent.photo.url }}" width="259" height="259" alt="">
+                        <a class="agency-avatar">
+                            {% if agent.photo %}
+                                <img src="{{ agent.photo.url }}" width="259" height="259" alt="">
+                            {% endif %}
                         </a>
 
                         <div class="agency-content">
@@ -172,7 +174,11 @@
                                                             <span class="listing-location"><i class="ti-location-pin"></i>{{ agent_ad.address|truncatechars_html:50 }}</span>
                                                         </div>
                                                         <div class="list-author">
-                                                            <a href="#"><img src="{{ agent_ad.profile.photo.url }}" width="30px" height="30px" class="img-circle avater-30" alt=""></a>
+                                                            <a>
+                                                                {% if agent_ad.profile.photo %}
+                                                                    <img src="{{ agent_ad.profile.photo.url }}" width="30px" height="30px" class="img-circle avater-30" alt="">
+                                                                {% endif %}
+                                                            </a>
                                                         </div>
                                                     </div>
 
@@ -362,7 +368,11 @@
                                                         <span class="listing-location"><i class="ti-location-pin"></i>{{ latest.address }}</span>
                                                     </div>
                                                     <div class="list-author">
-                                                        <a href="#"><img src="{{ latest.profile.photo.url }}" class="img-circle avater-30" alt="" width="30px" height="30px"></a>
+                                                        <a >
+                                                            {% if latest.profile.photo %}
+                                                                <img src="{{ latest.profile.photo.url }}" class="img-circle avater-30" alt="" width="30px" height="30px">
+                                                            {% endif %}
+                                                        </a>
                                                     </div>
                                                 </div>
 
