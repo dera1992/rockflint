@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54b971ba-9270-498e-a4c5-c08148a3b8d0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/others/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/others/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rockflint/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rockflint/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/dist/img/favicon.ico.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/dist/img/favicon.ico.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/edit.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/edit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/account/edit_display.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/account/edit_display.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/home/product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/product_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/others/agency_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/others/agency_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/others/agency_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/others/agency_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/others/agent_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/others/agent_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/others/agent_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/others/agent_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/account_activation_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/account_activation_email.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_confirm.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_reset_confirm.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/password_reset_email.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/password_reset_email.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/owner/side_bar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/owner/side_bar.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,29 +30,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="detail.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/home/detail.html">
+      <file leaf-file-name="base.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/base.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="243">
-              <caret line="480" column="56" selection-start-line="480" selection-start-column="56" selection-end-line="482" selection-end-column="67" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="agency_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/others/agency_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="582">
-              <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="agent_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/others/agent_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="62" column="40" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
+            <state relative-caret-position="-142">
+              <caret line="73" column="100" selection-start-line="73" selection-start-column="100" selection-end-line="73" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -87,11 +53,43 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="edit_display.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/account/edit_display.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="365">
+              <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="side_bar.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/owner/side_bar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my_property.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/owner/my_property.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-937" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compare.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/owner/compare.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1864" />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/others/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="201">
-              <caret line="59" column="44" lean-forward="true" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+            <state relative-caret-position="85">
+              <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
             </state>
           </provider>
         </entry>
@@ -115,18 +113,6 @@
               <caret line="67" column="12" selection-start-line="67" selection-start-column="12" selection-end-line="67" selection-end-column="46" />
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/account/forms.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="15" column="40" selection-start-line="15" selection-start-column="40" selection-end-line="15" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#52#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -160,7 +146,6 @@
         <option value="$PROJECT_DIR$/rockflint/urls.py" />
         <option value="$PROJECT_DIR$/templates/home/allads_list.html" />
         <option value="$PROJECT_DIR$/templates/others/allagent_list.html" />
-        <option value="$PROJECT_DIR$/templates/owner/side_bar.html" />
         <option value="$PROJECT_DIR$/templates/search/ajax_search.html" />
         <option value="$PROJECT_DIR$/templates/home/detail_rating.html" />
         <option value="$PROJECT_DIR$/others/urls.py" />
@@ -206,6 +191,7 @@
         <option value="$PROJECT_DIR$/templates/others/agent_detail.html" />
         <option value="$PROJECT_DIR$/templates/home/product_list.html" />
         <option value="$PROJECT_DIR$/others/views.py" />
+        <option value="$PROJECT_DIR$/templates/owner/side_bar.html" />
       </list>
     </option>
   </component>
@@ -241,27 +227,19 @@
             <path>
               <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
               <item name="rockflint" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rockflint" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rockflint" type="462c0819:PsiDirectoryNode" />
-              <item name="others" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
-              <item name="rockflint" type="462c0819:PsiDirectoryNode" />
-              <item name="rockflint" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
               <item name="rockflint" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="account" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rockflint" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="owner" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -372,14 +350,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/templates/blog/sidebar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-674" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/blog/comments.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/blog/blog_list.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -396,13 +366,6 @@
     <entry file="file://$PROJECT_DIR$/templates/others/agency_detail_rating.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1354" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/dashboard.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1326">
-          <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/footer.html">
@@ -499,13 +462,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/account/edit_display.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/registration/password_reset_confirm.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -524,13 +480,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret selection-end-line="9" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1241">
-          <caret line="73" column="100" selection-start-line="73" selection-start-column="100" selection-end-line="73" selection-end-column="100" />
         </state>
       </provider>
     </entry>
@@ -618,11 +567,6 @@
         <state relative-caret-position="-918" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/owner/my_property.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-872" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/search/main_search.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-874" />
@@ -659,9 +603,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/others/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="201">
-          <caret line="59" column="44" lean-forward="true" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+        <state relative-caret-position="85">
+          <caret line="25" column="58" selection-start-line="25" selection-start-column="58" selection-end-line="25" selection-end-column="58" />
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/dashboard.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="78" column="14" selection-start-line="78" selection-start-column="14" selection-end-line="78" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-142">
+          <caret line="73" column="100" selection-start-line="73" selection-start-column="100" selection-end-line="73" selection-end-column="100" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/account/edit_display.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="365">
+          <caret line="41" column="72" selection-start-line="41" selection-start-column="72" selection-end-line="41" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/owner/side_bar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/owner/my_property.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-937" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/owner/compare.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1864" />
       </provider>
     </entry>
   </component>
