@@ -4,7 +4,9 @@
     <div class="dashboard-navbar">
 
         <div class="d-user-avater">
+            {% if user.profile.photo %}
             <img src="{{ user.profile.photo.url }}" width="180px" height="180px" class="img-fluid avater" alt="">
+            {% endif %}
             <h4>{{ user.profile.fullname }}</h4>
             <span>{{ user.profile.address }}</span>
         </div>
