@@ -16,7 +16,7 @@ import random
 
 @login_required
 def my_property(request):
-    myab_list = Ads.objects.filter(profile__user=request.user)
+    myab_list = Ads.objects.filter(profile__user=request.user).order_by('-created_date')
     profile = Profile.objects.get(user=request.user)
     ads = Ads.objects.filter(active=True)
     lates = Ads.objects.all().order_by('-created_date')[:3]
