@@ -264,7 +264,7 @@ h1 {
 
 h2 {
   line-height: 36px;
-  font-size: 30px; }
+  font-size: 20px; }
 
 h3 {
   line-height: 30px;
@@ -5615,7 +5615,7 @@ span.tag_t {
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
+    /*justify-content: center;*/
     background: #f4f5f7;
 }
 .ipt-title {

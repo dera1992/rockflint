@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ''
+SECRET_KEY = 'u7ogex964-8y#ks0&sfx_y^0+679h5)0b-(kl(39kiti#eto-v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['www.rockflint.com']
+ALLOWED_HOSTS = ['rockflint.com','www.rockflint.com']
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -121,10 +121,10 @@ WSGI_APPLICATION = 'rockflint.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rockflint',
-        'USER': 'root',
-        'PASSWORD': '',
-        'HOST': 'localhost',
+        'NAME': 'dera1992$rockflint',
+        'USER': 'dera1992',
+        'PASSWORD': 'rockflint123',
+        'HOST': 'dera1992.mysql.pythonanywhere-services.com',
         'PORT': '3306',
         'OPTION': {'init_command':"SET sql_mode='STRICT_TRANS_TABLE',"},
     }
@@ -225,7 +225,7 @@ HITCOUNT_HITS_PER_IP_LIMIT = 0
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ezechdr16@gmail.com'
-EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_PASSWORD = 'ederabrighteze'
 EMAIL_PORT = 587
 
 STAR_RATINGS_STAR_HEIGHT = 22

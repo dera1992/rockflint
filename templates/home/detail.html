@@ -51,7 +51,7 @@
                             {% for adv in adsimage %}
 
                                 <a href="{{adv.ad_image.url}}" class="item-slick">
-                                    {% thumbnail adv.ad_image "770x511" crop="10px 10px"  as im %}
+                                    {% thumbnail adv.ad_image "770x511" crop="center"  as im %}
                                         <img  style="margin:{{ im|margin:"770x511" }}" src="{{ im.url }}" alt="Alt">
                                     {% endthumbnail %}
                                 </a>
