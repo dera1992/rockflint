@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u7ogex964-8y#ks0&sfx_y^0+679h5)0b-(kl(39kiti#eto-v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['rockflint.com','www.rockflint.com']
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -114,8 +114,18 @@ WSGI_APPLICATION = 'rockflint.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+=======
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dera1992$rockflint',
+        'USER': 'dera1992',
+        'PASSWORD': 'rockflint123',
+        'HOST': 'dera1992.mysql.pythonanywhere-services.com',
+        'PORT': '3306',
+        'OPTION': {'init_command':"SET sql_mode='STRICT_TRANS_TABLE',"},
+>>>>>>> d3ab35662714d905a665b2c5b73a5e65347d5bb4
     }
 }
 # DATABASES = {
@@ -167,14 +177,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "../static/")
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = "/home/dera1992/rockflint/static/"
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = '/home/dera1992/rockflint/media/'
 
 SITE_ID = 1
 
@@ -213,8 +220,8 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
 ]
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
-SOCIAL_AUTH_TWITTER_KEY = 'XXX'
-SOCIAL_AUTH_TWITTER_SECRET = 'XXX'
+SOCIAL_AUTH_TWITTER_KEY = 'ThddafBXDfSQ2fFg4r3iHdUuS'
+SOCIAL_AUTH_TWITTER_SECRET = 'aqYeoJVHssNUkP9NsHwHpPBsXWAPBpElYgmSGOyOlTAVuDipX3'
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''

@@ -12,7 +12,6 @@ from account.tokens import account_activation_token
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
 from django.core.mail import EmailMessage
-from django.template import loader
 from django.template.loader import get_template
 
 from django.contrib import messages

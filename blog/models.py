@@ -42,7 +42,7 @@ class Post(models.Model):
                               null=True,
                               blank=True,
                               width_field="width_field",
-                              height_field="height_field",default='profile/None/no-img.jpg')
+                              height_field="height_field",default='profile/None/no_image.png')
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     content = models.TextField()

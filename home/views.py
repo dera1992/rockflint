@@ -62,7 +62,7 @@ def category_chart(request):
 
 def home_list(request, category_slug=None):
     category = None
-    ads = Ads.objects.filter(active=True).order_by("?")[:6]
+    ads = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     latests = Ads.objects.filter(active=True).order_by('-created', '?')[:6]
     qs = Ads.objects.all()
     categories = Category.objects.all()

@@ -128,7 +128,7 @@ class Ads(models.Model):
     created_date = models.DateField(auto_now_add=True, null=True, blank=True)
     updated = models.DateTimeField(auto_now=True,null=True, blank=True)
     plan_image = models.ImageField(upload_to='plans_images/',
-                                   null=True, blank=True,default='profile/None/no-img.jpg')
+                                   null=True, blank=True,default='profile/None/no_image.png')
     hit_count_generic = GenericRelation(HitCount, object_id_field='object_pk',
                                         related_query_name='hit_count_generic_relation')
     favourite = models.ManyToManyField(User, related_name='favourite', blank=True)
@@ -180,7 +180,7 @@ class Ads(models.Model):
 
 class AdsImages(models.Model):
     ads = models.ForeignKey(Ads,related_name="images", on_delete=models.CASCADE)
-    ad_image = models.ImageField(upload_to='ads/', default='profile/None/no-img.jpg', null=True, blank=True)
+    ad_image = models.ImageField(upload_to='ads/', default='profile/None/no_image.png', null=True, blank=True)
 
     def get_ordering_queryset(self):
         return self.ads.images.all()

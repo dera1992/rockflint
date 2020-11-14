@@ -26,6 +26,7 @@
 		<!-- Custom Color Option -->
 		<link href="{% static 'assets/css/colors.css' %}" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+        <script data-ad-client="ca-pub-8674408567514379" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 
     </head>
 
@@ -75,8 +76,8 @@
 					</ul>
                     {% if user.is_authenticated %}
                         <ul class="attributes">
-{#                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">For Sell</span></a></li>#}
-{#                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">For Rent</span></a></li>#}
+                            <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">Sell</span></a></li>-->
+                            <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">Rent</span></a></li>-->
                             <li class="login-attri">
                                 <div class="btn-group account-drop">
                                     <button type="button" class="btn btn-order-by-filt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -108,8 +109,9 @@
                         </ul>
                     {% else %}
                         <ul class="attributes attributes-desk">
-{#                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">For Sell</span></a></li>#}
-{#                            <li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">For Rent</span></a></li>#}
+                            <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">Sell</span></a></li>-->
+                            <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">Rent</span></a></li>-->
+
                             <li class="dropdown"></li>
                             <li class="log-icon"><a href="{% url "login" %}"><span style="font-weight:bold;">Log In</span></a></li>
                             <li class="log-icon"><a href="{% url "register" %}"><span style="font-weight:bold;">Sign Up</span></a></li>
@@ -173,7 +175,7 @@
 		<script src="{% static '/assets/js/jquery.magnific-popup.min.js' %}"></script>
 		<script src="{% static '/assets/js/slick.js' %}"></script>
 		<script src="{% static '/assets/js/slider-bg.js' %}"></script>
-{#		<script src="{% static '/assets/js/lightbox.js' %}"></script>#}
+    	<!--<script src="{% static '/assets/js/lightbox.js' %}"></script>-->
 		<script src="{% static '/assets/js/imagesloaded.js' %}"></script>
 		<script src="{% static '/assets/js/isotope.min.js' %}"></script>
 		<script src="{% static '/assets/js/coreNavigation.js' %}"></script>
