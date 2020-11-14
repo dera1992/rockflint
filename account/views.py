@@ -1,7 +1,7 @@
 from django.contrib.sites.shortcuts import get_current_site
 from django.contrib.auth import login
 from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .forms import ProfileForm, UserRegistrationForm, \
 UserEditForm, ProfileEditForm
 from django.contrib.auth.decorators import login_required
@@ -12,6 +12,8 @@ from account.tokens import account_activation_token
 from django.utils.encoding import force_text
 from django.utils.http import urlsafe_base64_decode
 from django.core.mail import EmailMessage
+from django.template import loader
+from django.template.loader import get_template
 
 from django.contrib import messages
 
@@ -30,8 +32,8 @@ def register(request):
             profile.save()
             current_site = get_current_site(request)
             subject = 'Activate Your Rockflint Account'
-            message = render_to_string('registration/account_activation_email.html', {
-                'user': user,
+            message = get_template('registration/account_activation_email.html').render({
+                 'user': user,
                 'domain': current_site.domain,
                 'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
@@ -40,10 +42,10 @@ def register(request):
             email = EmailMessage(
                 subject, message, to=[to_email]
             )
+            email.content_subtype = 'html'
             email.send()
-            messages.success(request, 'An email has been sent to your email account,please go and activate your account')
-            return render(request,
-                'home/index.html')
+            messages.success(request, 'An email has been sent to you,please go and activate your account')
+            return redirect('home:home')
     else:
         user_form = UserRegistrationForm()
         profile_form =ProfileForm()
@@ -112,6 +114,8 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         user.profile.email_confirmed = True
         user.save()
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+        messages.success(request, 'Your account has been confirm successfully')
         return redirect('home:home')
     else:
+        messages.error(request, 'There is an error confirming your account')
         return render(request, 'registration/account_activation_invalid.html')
