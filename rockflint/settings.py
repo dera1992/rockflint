@@ -114,18 +114,17 @@ WSGI_APPLICATION = 'rockflint.wsgi.application'
 
 DATABASES = {
     'default': {
-<<<<<<< HEAD
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-=======
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dera1992$rockflint',
-        'USER': 'dera1992',
-        'PASSWORD': 'rockflint123',
-        'HOST': 'dera1992.mysql.pythonanywhere-services.com',
+        'NAME': '',
+        'USER': '',
+        'PASSWORD': '',
+        'HOST': '',
         'PORT': '3306',
         'OPTION': {'init_command':"SET sql_mode='STRICT_TRANS_TABLE',"},
->>>>>>> d3ab35662714d905a665b2c5b73a5e65347d5bb4
+
     }
 }
 # DATABASES = {
@@ -220,8 +219,8 @@ SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 # add this
 ]
 SOCIAL_AUTH_ADMIN_USER_SEARCH_FIELDS = ['username', 'first_name', 'email']
 
-SOCIAL_AUTH_TWITTER_KEY = 'ThddafBXDfSQ2fFg4r3iHdUuS'
-SOCIAL_AUTH_TWITTER_SECRET = 'aqYeoJVHssNUkP9NsHwHpPBsXWAPBpElYgmSGOyOlTAVuDipX3'
+SOCIAL_AUTH_TWITTER_KEY = ''
+SOCIAL_AUTH_TWITTER_SECRET = ''
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
@@ -235,7 +234,7 @@ HITCOUNT_HITS_PER_IP_LIMIT = 0
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'ezechdr16@gmail.com'
-EMAIL_HOST_PASSWORD = 'ederabrighteze'
+EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 
 STAR_RATINGS_STAR_HEIGHT = 22
