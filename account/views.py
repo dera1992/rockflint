@@ -39,7 +39,7 @@ def register(request):
             })
             to_email = user_form.cleaned_data.get('email')
             email = EmailMessage(
-                subject, message, to=[to_email]
+                subject, message,from_email='Rockflint <rockflint20@gmail.com>', to=[to_email]
             )
             email.content_subtype = 'html'
             email.send()

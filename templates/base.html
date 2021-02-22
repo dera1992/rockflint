@@ -76,8 +76,6 @@
 					</ul>
                     {% if user.is_authenticated %}
                         <ul class="attributes">
-                            <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">Sell</span></a></li>-->
-                            <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">Rent</span></a></li>-->
                             <li class="login-attri">
                                 <div class="btn-group account-drop">
                                     <button type="button" class="btn btn-order-by-filt" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -85,7 +83,6 @@
                                             <img src="{{ request.user.profile.photo.url }}" class="avater-img" alt="" width="35px" height="35px">
                                         {% else %}
                                              <img src="{% static 'assets/img/avater.png' %}" class="avater-img" alt="" width="35px" height="35px">
-{#                                            <img src="{% static 'assets/img/user-5.jpg' %}" class="avater-img" alt="">#}
                                         {% endif %}
                                         <span>Hi, {{ request.user.profile.first_name }}<i class="fas fa-caret-down"></i></span>
                                     </button>
@@ -94,42 +91,32 @@
                                         <a href="{% url "home:dashboard" %}"><i class="ti-user"></i>Dashboard</a>
                                         {% endif %}
                                         <a href="{% url "profile_display" %}"><i class="ti-user"></i>My Profile</a>
-                                        {% if user.is_staff %}
+{#                                        {% if user.is_staff %}#}
                                         <a href="{% url "owner:my_property" %}"><i class="ti-layers"></i>Property List</a>
-                                        {% endif %}
+{#                                        {% endif %}#}
                                         <a href="{% url "home:favourites" %}"><i class="ti-bookmark"></i>Bookmarked Listings</a>
                                         <a class="active" href="{% url "password_change" %}"><i class="ti-unlock"></i>Change Password</a>
                                         <a href="{% url "logout" %}"><i class="ti-power-off"></i>Log Out</a>
                                     </div>
                                 </div>
                             </li>
-                            {% if user.is_staff %}
+{#                            {% if user.is_staff %}#}
                             <li class="submit-attri theme-log"><a href="{% url "advert:post" %}"><span style="font-weight:bold;">Submit Property</span></a></li>
-                            {% endif %}
+{#                            {% endif %}#}
                         </ul>
                     {% else %}
                         <ul class="attributes attributes-desk">
-                            <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Sell"><span style="font-weight:bold;">Sell</span></a></li>-->
-                            <!--<li class="log-icon"><a href="{% url 'search:filter' %}?ad_offer=For+Rent"><span style="font-weight:bold;">Rent</span></a></li>-->
-
                             <li class="dropdown"></li>
                             <li class="log-icon"><a href="{% url "login" %}"><span style="font-weight:bold;">Log In</span></a></li>
                             <li class="log-icon"><a href="{% url "register" %}"><span style="font-weight:bold;">Sign Up</span></a></li>
-                            {% if user.is_staff %}
+{#                            {% if user.is_staff %}#}
                               <li class="submit-attri theme-log"><a href="{% url "advert:post" %}"><span style="font-weight:bold;">Submit Property</span></a></li>
-                            {% endif %}
+{#                            {% endif %}#}
                         </ul>
                     {% endif %}
 
 
 				</nav>
-{#                {% if messages %}#}
-{#                    <ul class="messages">#}
-{#                        {% for message in messages %}#}
-{#                        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}<a href="#" class="close">x</a></li>#}
-{#                        {% endfor %}#}
-{#                    </ul>#}
-{#                {% endif %}#}
                 {% if messages %}
                     {% for message in messages %}
                     <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">

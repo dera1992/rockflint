@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u7ogex964-8y#ks0&sfx_y^0+679h5)0b-(kl(39kiti#eto-v'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['rockflint.com','www.rockflint.com']
+ALLOWED_HOSTS = []
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
@@ -114,16 +114,16 @@ WSGI_APPLICATION = 'rockflint.wsgi.application'
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
 
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': '',
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',
-        'PORT': '3306',
-        'OPTION': {'init_command':"SET sql_mode='STRICT_TRANS_TABLE',"},
+        # 'ENGINE': 'django.db.backends.mysql',
+        # 'NAME': '',
+        # 'USER': '',
+        # 'PASSWORD': '',
+        # 'HOST': '',
+        # 'PORT': '3306',
+        # 'OPTION': {'init_command':"SET sql_mode='STRICT_TRANS_TABLE',"},
 
     }
 }
@@ -176,11 +176,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = "/home/dera1992/rockflint/static/"
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "../static/")
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/dera1992/rockflint/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+#
+# STATIC_URL = '/static/'
+# STATIC_ROOT = "/home/dera1992/rockflint/static/"
+#
+#
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = '/home/dera1992/rockflint/media/'
 
 SITE_ID = 1
 
