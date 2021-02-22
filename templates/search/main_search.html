@@ -101,14 +101,24 @@
                                 {% else %}
                                   <li class="disabled"><span>&laquo;</span></li>
                                 {% endif %}
+
+                                {% if queryset.number|add:'-4' > 1 %}
+                                    <li><a href="?page={{ queryset.number|add:'-5' }}">&hellip;</a></li>
+                                {% endif %}
+
                                 {% for i in queryset.paginator.page_range %}
                                   {% if queryset.number == i %}
                                     <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                                  {% else %}
+                                  {% elif i > queryset.number|add:'-5' and i < queryset.number|add:'5' %}
 {#                                    <li><a href="?page={{ i }}">{{ i }}</a></li>#}
                                     <li><a href={{ request.build_absolute_uri }}{% relative_url i 'page' request.GET.urlencode %}>{{ i }}</a></li>
                                   {% endif %}
                                 {% endfor %}
+
+                                {% if queryset.paginator.num_pages > queryset.number|add:'4' %}
+                                    <li><a href="?page={{ queryset.number|add:'5' }}">&hellip;</a></li>
+                                {% endif %}
+
                                 {% if queryset.has_next %}
                                   <li><a class="page-link" href="?page={{ queryset.next_page_number }}" aria-label="Next">&raquo;</a></li>
                                 {% else %}

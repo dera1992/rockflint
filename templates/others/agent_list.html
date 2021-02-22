@@ -110,13 +110,23 @@
                         {% else %}
                           <li class="disabled"><span>&laquo;</span></li>
                         {% endif %}
+
+                        {% if agents.number|add:'-4' > 1 %}
+                            <li><a href="?page={{ agents.number|add:'-5' }}">&hellip;</a></li>
+                        {% endif %}
+
                         {% for i in agents.paginator.page_range %}
                           {% if agents.number == i %}
                             <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                          {% else %}
+                          {% elif i > agents.number|add:'-5' and i < agents.number|add:'5' %}
                             <li><a href="?page={{ i }}">{{ i }}</a></li>
                           {% endif %}
                         {% endfor %}
+
+                        {% if agents.paginator.num_pages > agents.number|add:'4' %}
+                            <li><a href="?page={{ agents.number|add:'5' }}">&hellip;</a></li>
+                        {% endif %}
+
                         {% if agents.has_next %}
                           <li><a class="page-link" href="?page={{ agents.next_page_number }}" aria-label="Next">&raquo;</a></li>
                         {% else %}

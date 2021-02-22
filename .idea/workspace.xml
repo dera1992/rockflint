@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="54b971ba-9270-498e-a4c5-c08148a3b8d0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/account/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/account/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rockflint/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rockflint/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/blog/blog_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/blog/blog_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/home/product_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/product_list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/owner/side_bar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/owner/side_bar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/others/agency_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/others/agency_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/others/agency_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/others/agency_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/others/agent_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/others/agent_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/others/agent_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/others/agent_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/owner/my_property.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/owner/my_property.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/search/main_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/search/main_search.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,13 +46,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="product_list.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="product_list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/home/product_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="163" column="77" selection-start-line="163" selection-start-column="77" selection-end-line="163" selection-end-column="77" />
+            <state relative-caret-position="483">
+              <caret line="169" column="32" lean-forward="true" selection-start-line="169" selection-start-column="32" selection-end-line="171" selection-end-column="43" />
               <folding>
                 <element signature="e#8309#8317#1#HTML" expanded="true" />
+                <element signature="e#9225#9233#1#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,15 +62,25 @@
       <file leaf-file-name="main_search.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/search/main_search.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-978" />
+            <state relative-caret-position="344">
+              <caret line="117" column="32" lean-forward="true" selection-start-line="117" selection-start-column="32" selection-end-line="119" selection-end-column="43" />
+              <folding>
+                <element signature="e#5534#5542#1#HTML" expanded="true" />
+                <element signature="e#6535#6543#1#HTML" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="agency_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/others/agency_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="176" column="149" selection-start-line="176" selection-start-column="149" selection-end-line="176" selection-end-column="175" />
+            <state relative-caret-position="479">
+              <caret line="243" column="59" lean-forward="true" selection-start-line="241" selection-start-column="48" selection-end-line="243" selection-end-column="59" />
+              <folding>
+                <element signature="e#14107#14115#1#HTML" expanded="true" />
+                <element signature="e#15158#15166#1#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,8 +88,12 @@
       <file leaf-file-name="agency_list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/others/agency_list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
+            <state relative-caret-position="920">
+              <caret line="134" lean-forward="true" selection-start-line="98" selection-start-column="12" selection-end-line="134" />
+              <folding>
+                <element signature="e#4862#4870#1#HTML" expanded="true" />
+                <element signature="e#5630#5638#1#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,31 +101,34 @@
       <file leaf-file-name="agent_detail.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/others/agent_detail.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
+            <state relative-caret-position="458">
+              <caret line="244" column="59" lean-forward="true" selection-start-line="242" selection-start-column="48" selection-end-line="244" selection-end-column="59" />
+              <folding>
+                <element signature="e#14298#14306#1#HTML" expanded="true" />
+                <element signature="e#15342#15350#1#HTML" expanded="true" />
+              </folding>
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="agent_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/others/agent_list.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="62" column="40" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="allagent_list.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/others/allagent_list.html">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="my_property.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/owner/my_property.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-999">
-              <caret selection-end-line="5" selection-end-column="19" />
+            <state relative-caret-position="1128">
+              <caret line="117" column="66" selection-start-line="117" selection-start-column="66" selection-end-line="117" selection-end-column="66" />
+              <folding>
+                <element signature="e#5190#5198#1#HTML" expanded="true" />
+                <element signature="e#5898#5906#1#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/home/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="491">
+              <caret line="113" column="24" lean-forward="true" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -138,7 +156,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rockflint/urls.py" />
         <option value="$PROJECT_DIR$/templates/home/allads_list.html" />
         <option value="$PROJECT_DIR$/templates/others/allagent_list.html" />
         <option value="$PROJECT_DIR$/templates/home/detail_rating.html" />
@@ -148,7 +165,6 @@
         <option value="$PROJECT_DIR$/home/urls.py" />
         <option value="$PROJECT_DIR$/rockflint/utility.py" />
         <option value="$PROJECT_DIR$/rockflint/utils.py" />
-        <option value="$PROJECT_DIR$/templates/search/main_search.html" />
         <option value="$PROJECT_DIR$/templates/account/register.html" />
         <option value="$PROJECT_DIR$/templates/base_dashboard.html" />
         <option value="$PROJECT_DIR$/templates/registration/login.html" />
@@ -169,10 +185,6 @@
         <option value="$PROJECT_DIR$/account/forms.py" />
         <option value="$PROJECT_DIR$/templates/account/edit_display.html" />
         <option value="$PROJECT_DIR$/templates/registration/password_reset_email.html" />
-        <option value="$PROJECT_DIR$/templates/others/agency_list.html" />
-        <option value="$PROJECT_DIR$/templates/others/agent_list.html" />
-        <option value="$PROJECT_DIR$/templates/others/agency_detail.html" />
-        <option value="$PROJECT_DIR$/templates/others/agent_detail.html" />
         <option value="$PROJECT_DIR$/owner/views.py" />
         <option value="$PROJECT_DIR$/others/views.py" />
         <option value="$PROJECT_DIR$/templates/home/detail.html" />
@@ -185,10 +197,16 @@
         <option value="$PROJECT_DIR$/rockflint/settings.py" />
         <option value="$PROJECT_DIR$/static/assets/css/styles.css" />
         <option value="$PROJECT_DIR$/templates/blog/blog_list.html" />
-        <option value="$PROJECT_DIR$/templates/home/index.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
         <option value="$PROJECT_DIR$/templates/owner/side_bar.html" />
         <option value="$PROJECT_DIR$/templates/home/product_list.html" />
+        <option value="$PROJECT_DIR$/templates/search/main_search.html" />
+        <option value="$PROJECT_DIR$/templates/others/agency_detail.html" />
+        <option value="$PROJECT_DIR$/templates/others/agency_list.html" />
+        <option value="$PROJECT_DIR$/templates/others/agent_detail.html" />
+        <option value="$PROJECT_DIR$/templates/others/agent_list.html" />
+        <option value="$PROJECT_DIR$/templates/owner/my_property.html" />
+        <option value="$PROJECT_DIR$/templates/home/index.html" />
       </list>
     </option>
   </component>
@@ -201,7 +219,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1329" />
@@ -234,6 +252,12 @@
               <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
               <item name="rockflint" type="462c0819:PsiDirectoryNode" />
               <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
+              <item name="rockflint" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="rockflint" type="b2602c69:ProjectViewProjectNode" />
@@ -566,13 +590,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/home/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="102" column="100" selection-start-line="102" selection-start-column="100" selection-end-line="102" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/account/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -628,59 +645,95 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/templates/owner/bookmarked.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/templates/search/main_search.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-978" />
+        <state relative-caret-position="344">
+          <caret line="117" column="32" lean-forward="true" selection-start-line="117" selection-start-column="32" selection-end-line="119" selection-end-column="43" />
+          <folding>
+            <element signature="e#5534#5542#1#HTML" expanded="true" />
+            <element signature="e#6535#6543#1#HTML" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/others/agency_detail.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="176" column="149" selection-start-line="176" selection-start-column="149" selection-end-line="176" selection-end-column="175" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/others/agency_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="61" column="28" lean-forward="true" selection-start-line="61" selection-start-column="28" selection-end-line="61" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/others/agent_detail.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="38" column="32" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/others/agent_list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="62" column="40" selection-start-line="62" selection-start-column="40" selection-end-line="62" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/others/allagent_list.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/owner/bookmarked.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/owner/my_property.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-999">
-          <caret selection-end-line="5" selection-end-column="19" />
+        <state relative-caret-position="479">
+          <caret line="243" column="59" lean-forward="true" selection-start-line="241" selection-start-column="48" selection-end-line="243" selection-end-column="59" />
+          <folding>
+            <element signature="e#14107#14115#1#HTML" expanded="true" />
+            <element signature="e#15158#15166#1#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/home/product_list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="163" column="77" selection-start-line="163" selection-start-column="77" selection-end-line="163" selection-end-column="77" />
+        <state relative-caret-position="483">
+          <caret line="169" column="32" lean-forward="true" selection-start-line="169" selection-start-column="32" selection-end-line="171" selection-end-column="43" />
           <folding>
             <element signature="e#8309#8317#1#HTML" expanded="true" />
+            <element signature="e#9225#9233#1#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/others/allagent_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-143" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/others/agent_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="126" column="56" selection-start-line="126" selection-start-column="56" selection-end-line="126" selection-end-column="56" />
+          <folding>
+            <element signature="e#5420#5428#1#HTML" expanded="true" />
+            <element signature="e#6180#6188#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/others/agent_detail.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="244" column="59" lean-forward="true" selection-start-line="242" selection-start-column="48" selection-end-line="244" selection-end-column="59" />
+          <folding>
+            <element signature="e#14298#14306#1#HTML" expanded="true" />
+            <element signature="e#15342#15350#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/others/agency_list.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="920">
+          <caret line="134" lean-forward="true" selection-start-line="98" selection-start-column="12" selection-end-line="134" />
+          <folding>
+            <element signature="e#4862#4870#1#HTML" expanded="true" />
+            <element signature="e#5630#5638#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/owner/my_property.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1128">
+          <caret line="117" column="66" selection-start-line="117" selection-start-column="66" selection-end-line="117" selection-end-column="66" />
+          <folding>
+            <element signature="e#5190#5198#1#HTML" expanded="true" />
+            <element signature="e#5898#5906#1#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/home/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="491">
+          <caret line="113" column="24" lean-forward="true" selection-start-line="113" selection-start-column="24" selection-end-line="113" selection-end-column="24" />
         </state>
       </provider>
     </entry>

@@ -166,7 +166,7 @@
                                     <li><a href={% relatived_url i 'page' request.GET.urlencode %}>{{ i }}</a></li>
                                   {% endif %}
                                 {% endfor %}
-                              
+
                                 {% if ads.paginator.num_pages > ads.number|add:'4' %}
                                     <li><a href="?page={{ ads.number|add:'5' }}">&hellip;</a></li>
                                 {% endif %}

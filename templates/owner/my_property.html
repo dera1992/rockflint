@@ -87,6 +87,43 @@
 
             </div>
         </div>
+        <!-- Pagination -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                {% if myab.has_other_pages %}
+                  <ul class="pagination p-center">
+                    {% if myab.has_previous %}
+                      <li class="page-item"><a class="page-link" href="?page={{ myab.previous_page_number }}" aria-label="Previous">&laquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&laquo;</span></li>
+                    {% endif %}
+
+                    {% if myab.number|add:'-4' > 1 %}
+                        <li><a href="?page={{ myab.number|add:'-5' }}">&hellip;</a></li>
+                    {% endif %}
+
+                    {% for i in myab.paginator.page_range %}
+                      {% if myab.number == i %}
+                        <li class="page-item active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                      {% elif i > myab.number|add:'-5' and i < myab.number|add:'5' %}
+                        <li><a href="?page={{ i }}">{{ i }}</a></li>
+                      {% endif %}
+                    {% endfor %}
+
+                    {% if myab.paginator.num_pages > myab.number|add:'4' %}
+                        <li><a href="?page={{ myab.number|add:'5' }}">&hellip;</a></li>
+                    {% endif %}
+
+                    {% if myab.has_next %}
+                      <li><a class="page-link" href="?page={{ myab.next_page_number }}" aria-label="Next">&raquo;</a></li>
+                    {% else %}
+                      <li class="disabled"><span>&raquo;</span></li>
+                    {% endif %}
+                  </ul>
+                {% endif %}
+            </div>
+        </div>
+
     </section>
     <!-- ============================ User Dashboard End ================================== -->
 {% endblock %}
