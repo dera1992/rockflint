@@ -100,18 +100,14 @@
                                     </div>
                                 </div>
                             </li>
-{#                            {% if user.is_staff %}#}
                             <li class="submit-attri theme-log"><a href="{% url "advert:post" %}"><span style="font-weight:bold;">Submit Property</span></a></li>
-{#                            {% endif %}#}
                         </ul>
                     {% else %}
                         <ul class="attributes attributes-desk">
                             <li class="dropdown"></li>
                             <li class="log-icon"><a href="{% url "login" %}"><span style="font-weight:bold;">Log In</span></a></li>
                             <li class="log-icon"><a href="{% url "register" %}"><span style="font-weight:bold;">Sign Up</span></a></li>
-{#                            {% if user.is_staff %}#}
-                              <li class="submit-attri theme-log"><a href="{% url "advert:post" %}"><span style="font-weight:bold;">Submit Property</span></a></li>
-{#                            {% endif %}#}
+                            <li class="submit-attri theme-log"><a href="{% url "advert:post" %}"><span style="font-weight:bold;">Submit Property</span></a></li>
                         </ul>
                     {% endif %}
 
