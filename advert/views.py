@@ -14,7 +14,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse, Http40
 def postAd(request):
 
     ImageFormSet = modelformset_factory(AdsImages,
-                                        form=AdsImageForm, extra=9)
+                                        form=AdsImageForm, extra=6)
     if request.method == 'POST':
 
         postForm = AdsForm(request.POST, request.FILES)
@@ -45,7 +45,7 @@ def postAd(request):
 @login_required
 def editAd(request, pk):
     ad = Ads.objects.get(id=pk)
-    ImageFormSet = modelformset_factory(AdsImages,fields=('ad_image',), extra=9, max_num=9)
+    ImageFormSet = modelformset_factory(AdsImages,fields=('ad_image',), extra=6, max_num=6)
     if ad.profile.user != request.user:
         raise Http404()
     if request.method == 'POST':
